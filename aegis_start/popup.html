@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Aegis</title>
+    <style>
+      :root { --bg: #0b1020; --card: #131a2b; --muted: #93a0c0; --text: #e6ecff; --primary: #4f8cff; --success: #2ecc71; --warn: #f1c40f; --danger: #ff5c5c; }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+      .container { width: 340px; padding: 14px; }
+      .header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+      .logo { width: 28px; height: 28px; border-radius: 6px; overflow: hidden; }
+      .title { font-weight: 700; letter-spacing: 0.2px; }
+      .card { background: var(--card); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 12px; box-shadow: 0 6px 24px rgba(0,0,0,0.25); }
+      .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+      .status { font-size: 12px; color: var(--muted); }
+      .badge { padding: 4px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+      .badge.ready { background: rgba(79,140,255,0.15); color: var(--primary); border: 1px solid rgba(79,140,255,0.35); }
+      .badge.scanning { background: rgba(241,196,15,0.15); color: var(--warn); border: 1px solid rgba(241,196,15,0.35); }
+      .badge.safe { background: rgba(46,204,113,0.15); color: var(--success); border: 1px solid rgba(46,204,113,0.35); }
+      .badge.suspicious { background: rgba(241,196,15,0.15); color: var(--warn); border: 1px solid rgba(241,196,15,0.35); }
+      .badge.malicious { background: rgba(255,92,92,0.15); color: var(--danger); border: 1px solid rgba(255,92,92,0.35); }
+      .badge.disabled { background: rgba(147,160,192,0.15); color: var(--muted); border: 1px solid rgba(147,160,192,0.35); }
+      .actions { display: flex; gap: 8px; margin-top: 12px; }
+      .btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)); color: var(--text); cursor: pointer; transition: transform 0.06s ease, background 0.2s ease; }
+      .btn:hover { background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); }
+      .btn:active { transform: translateY(1px); }
+      .btn.primary { background: linear-gradient(180deg, rgba(79,140,255,0.3), rgba(79,140,255,0.15)); border-color: rgba(79,140,255,0.45); }
+      .btn.secondary { background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03)); }
+      .result { margin-top: 12px; display: grid; gap: 8px; }
+      .pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
+      .pill { font-size: 12px; padding: 4px 8px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); color: var(--muted); }
+      .kv { display: grid; grid-template-columns: 100px 1fr; gap: 6px 10px; }
+      .kv .k { color: var(--muted); }
+      .muted { color: var(--muted); }
+      .footer { margin-top: 10px; display: flex; justify-content: space-between; align-items: center; }
+      .link { color: var(--primary); text-decoration: none; font-weight: 600; }
+      .link:hover { text-decoration: underline; }
+      
+      /* Antivirus Toggle */
+      .toggle-section { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: rgba(255,255,255,0.03); border-radius: 10px; margin-bottom: 12px; }
+      .toggle-info { flex: 1; }
+      .toggle-title { font-weight: 600; margin-bottom: 2px; }
+      .toggle-subtitle { font-size: 11px; color: var(--muted); }
+      .toggle-switch { position: relative; display: inline-block; width: 52px; height: 28px; }
+      .toggle-switch input { opacity: 0; width: 0; height: 0; }
+      .toggle-slider { position: absolute; cursor: pointer; inset: 0; background: #4b546a; transition: .3s; border-radius: 28px; }
+      .toggle-slider:before { position: absolute; content: ""; height: 22px; width: 22px; left: 3px; bottom: 3px; background: white; transition: .3s; border-radius: 50%; }
+      input:checked + .toggle-slider { background: var(--primary); }
+      input:checked + .toggle-slider:before { transform: translateX(24px); }
+      
+      /* Enhanced Analysis Display */
+      .analysis-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px; margin-top: 8px; }
+      .threat-level { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+      .threat-level.safe { background: rgba(46,204,113,0.15); color: var(--success); }
+      .threat-level.suspicious { background: rgba(241,196,15,0.15); color: var(--warn); }
+      .threat-level.malicious { background: rgba(255,92,92,0.15); color: var(--danger); }
+      .threat-level.unknown { background: rgba(147,160,192,0.15); color: var(--muted); }
+      
+      .hover-details { position: relative; }
+      .hover-trigger { cursor: help; border-bottom: 1px dotted var(--muted); }
+      .hover-popup { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: var(--card); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 8px 10px; font-size: 11px; white-space: nowrap; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.3); opacity: 0; visibility: hidden; transition: opacity 0.2s; }
+      .hover-popup::after { content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 4px solid transparent; border-top-color: var(--card); }
+      .hover-trigger:hover .hover-popup { opacity: 1; visibility: visible; }
+      
+      .engine-results { display: grid; gap: 6px; margin-top: 8px; }
+      .engine-item { display: flex; justify-content: space-between; align-items: center; padding: 4px 6px; background: rgba(255,255,255,0.02); border-radius: 4px; }
+      .engine-name { font-size: 11px; color: var(--muted); }
+      .engine-verdict { font-size: 11px; font-weight: 600; }
+      
+      .connection-status { display: flex; align-items: center; gap: 6px; font-size: 11px; margin-top: 8px; }
+      .status-dot { width: 6px; height: 6px; border-radius: 50%; }
+      .status-dot.online { background: var(--success); }
+      .status-dot.offline { background: var(--danger); }
+      .status-dot.checking { background: var(--warn); animation: pulse 1.5s infinite; }
+      
+      @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img class="logo" src="icons/icon-48.png" alt="Aegis" />
+        <div class="title">Aegis</div>
+      </div>
+
+      <!-- Antivirus Toggle Section -->
+      <div class="toggle-section">
+        <div class="toggle-info">
+          <div class="toggle-title">Защита активна</div>
+          <div class="toggle-subtitle" id="toggle-subtitle">Сканирование ссылок и загрузок</div>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="antivirus-toggle" checked />
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div class="status" id="status">Готово</div>
+          <div class="badge ready" id="status-badge">READY</div>
+        </div>
+        <div class="connection-status" id="connection-status">
+          <div class="status-dot checking" id="status-dot"></div>
+          <span id="connection-text">Проверка подключения...</span>
+        </div>
+        <div class="actions">
+          <button class="btn primary" id="scan-tab">Проверить текущий URL</button>
+          <button class="btn secondary" id="open-options">Настройки</button>
+        </div>
+        <div class="result" id="result">
+          <div class="muted">Результаты проверки появятся здесь.</div>
+        </div>
+      </div>
+      <div class="footer">
+        <span class="muted">Aegis 1.0.0</span>
+        <a class="link" id="open-logs" href="#">Логи</a>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

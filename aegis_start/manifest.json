@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Aegis - Антивирусное расширение",
+  "version": "1.0.0",
+  "description": "Антивирусное расширение для защиты от вредоносных URL и файлов",
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab",
+    "downloads",
+    "notifications"
+  ],
+  "host_permissions": [
+    "http://*/",
+    "https://*/"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "SafeBrowse"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_script.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

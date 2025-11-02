@@ -1,0 +1,887 @@
+# app/main.py
+from fastapi import FastAPI, HTTPException, File, UploadFile, Request, Depends
+from app.services import analysis_service
+from app.database import db_manager
+from app.logger import logger
+from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
+import time
+from datetime import datetime
+from app.security import api_key_auth  # этот импорт должен быть
+
+def check_feature_access(request: Request, required_feature: str) -> bool:
+    """Проверяет доступ к конкретной функции"""
+    api_key_info = getattr(request.state, 'api_key_info', None)
+    if not api_key_info:
+        return False
+    
+    import json
+    try:
+        features = json.loads(api_key_info.get('features', '[]'))
+        return required_feature in features
+    except:
+        return False
+
+def require_feature(feature: str):
+    """Декоратор для проверки доступа к функции"""
+    def decorator(func):
+        async def wrapper(*args, **kwargs):
+            # Находим request в аргументах
+            request = None
+            for arg in args:
+                if hasattr(arg, 'state'):
+                    request = arg
+                    break
+            
+            if not request or not check_feature_access(request, feature):
+                raise HTTPException(
+                    status_code=403, 
+                    detail=f"Feature '{feature}' requires premium API key"
+                )
+            return await func(*args, **kwargs)
+        return wrapper
+    return decorator
+from app.schemas import CheckResponse, UrlCheckRequest, FileCheckRequest
+from typing import Dict
+from app.validators import security_validator  # ← ДОБАВЬ
+from app.external_apis.manager import external_api_manager
+from app.admin_ui import router as admin_ui_router
+from app.background_jobs import background_job_manager
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
+from app.auth import auth_manager
+from pydantic import BaseModel
+
+# Схемы для аутентификации
+class RegisterRequest(BaseModel):
+    username: str
+    email: str
+    password: str
+    api_key: str  # API ключ для привязки
+
+class LoginRequest(BaseModel):
+    username: str  # username или email
+    password: str
+
+app = FastAPI(
+    title="Antivirus Core API",
+    description="API ядра для антивирусного расширения браузера", 
+    version="0.3.0",
+)
+
+# Note: do not mount static at /admin/ui to avoid masking /admin/ui/* router routes
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["X-API-Key", "Authorization", "Content-Type"],
+)
+
+# Include admin ui router to serve /admin/ui -> index.html
+app.include_router(admin_ui_router)
+
+# Сжатие ответов для ускорения отдачи
+app.add_middleware(GZipMiddleware, minimum_size=500)
+
+# Подключаем админский UI роутер
+app.include_router(admin_ui_router)
+
+# Middleware логирования запросов в БД
+@app.middleware("http")
+async def request_logging_middleware(request: Request, call_next):
+    start = time.time()
+    response = None
+    status_code = 500
+    try:
+        response = await call_next(request)
+        status_code = response.status_code
+        return response
+    finally:
+        try:
+            duration_ms = int((time.time() - start) * 1000)
+            api_key = request.headers.get("X-API-Key") or (
+                request.headers.get("Authorization").split(" ", 1)[1].strip()
+                if (request.headers.get("Authorization") or "").startswith("Bearer ") else None
+            )
+            user_agent = request.headers.get("User-Agent")
+            client_ip = request.headers.get("X-Forwarded-For") or request.client.host if request.client else None
+            db_manager.log_request(api_key, request.url.path, request.method, status_code, duration_ms, user_agent, client_ip)
+        except Exception as e:
+            logger.error(f"Failed to log request: {e}")
+
+# Первый middleware - фильтрация некорректных запросов
+@app.middleware("http")
+async def filter_invalid_requests(request: Request, call_next):
+    """Фильтрует некорректные HTTP запросы"""
+    
+    # Пропускаем только корректные HTTP методы
+    valid_methods = {"GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"}
+    if request.method not in valid_methods:
+        logger.warning(f"Invalid HTTP method: {request.method}")
+        return JSONResponse(
+            status_code=400,
+            content={"detail": "Invalid HTTP method"}
+        )
+    
+    # Пропускаем только корректные пути
+    if request.url.path == "" or request.url.path == "/":
+        response = await call_next(request)
+        return response
+    
+    # Блокируем известные вредоносные пути (но разрешаем наши /admin эндпоинты)
+    malicious_paths = {"/.env", "/config", "/phpmyadmin", "/wp-admin"}
+    # Исключаем наши легитимные admin эндпоинты
+    if any(request.url.path.startswith(path) for path in malicious_paths) and not request.url.path.startswith("/admin/stats") and not request.url.path.startswith("/admin/api-keys") and not request.url.path.startswith("/admin/add"):
+        logger.warning(f"Blocked suspicious path: {request.url.path}")
+        return JSONResponse(
+            status_code=404,
+            content={"detail": "Not found"}
+        )
+    
+    
+    response = await call_next(request)
+    return response
+
+# Второй middleware - API key / Bearer authentication (опциональная)
+@app.middleware("http")
+async def optional_auth_middleware(request: Request, call_next):
+    """Опциональная проверка ключей для расширенных функций"""
+    
+    # Создание ключей теперь доступно без admin токена
+    if request.url.path == "/admin/api-keys/create":
+        return await call_next(request)
+    
+    # Валидация API ключа - требует API ключ
+    if request.url.path == "/admin/api-keys/validate":
+        api_key = request.headers.get("X-API-Key") or request.headers.get("Authorization", "").replace("Bearer ", "").strip()
+        if not api_key:
+            logger.warning(f"Missing API key for validation")
+            return JSONResponse(status_code=401, content={"detail": "API key required"})
+        
+        # Проверяем API ключ
+        api_key_info = db_manager.validate_api_key(api_key)
+        if not api_key_info:
+            logger.warning(f"Invalid API key for validation")
+            return JSONResponse(status_code=401, content={"detail": "Invalid API key"})
+        
+        # Сохраняем информацию о ключе в состоянии запроса
+        request.state.api_key_info = api_key_info
+        return await call_next(request)
+    
+    # Пути, которые не требуют аутентификации
+    skip_paths = ["/health", "/docs", "/redoc", "/", "/favicon.ico", "/openapi.json"]
+    admin_paths = ["/admin/stats", "/admin/add/malicious-hash", "/admin/api-keys/toggle", 
+                   "/admin/api-keys/"]
+    basic_api_paths = ["/check/url", "/check/file", "/check/upload", "/check/domain/"]
+    
+    # Пропускаем все админ функции и базовые API без проверки ключей
+    if (request.url.path in skip_paths or 
+        request.url.path.startswith("/admin/ui") or 
+        any(request.url.path.startswith(path) for path in admin_paths) or
+        any(request.url.path.startswith(path) for path in basic_api_paths)):
+        return await call_next(request)
+    
+    if request.method == "OPTIONS":
+        return await call_next(request)
+    
+    # Извлекаем API ключ (если есть)
+    api_key = request.headers.get("X-API-Key")
+    if not api_key:
+        auth_header = request.headers.get("Authorization")
+        if auth_header and auth_header.startswith("Bearer "):
+            api_key = auth_header.split(" ", 1)[1].strip()
+    
+    # Если ключ есть - проверяем его
+    if api_key:
+        is_valid, message = db_manager.validate_api_key(api_key)
+        if not is_valid:
+            logger.warning(f"Invalid API key used for {request.url.path}")
+            return JSONResponse(
+                status_code=401, 
+                content={"detail": message}
+            )
+        # Добавляем информацию о ключе в request state
+        request.state.api_key_info = db_manager.get_api_key_info(api_key)
+    else:
+        # Без ключа - базовый доступ
+        request.state.api_key_info = None
+    
+    return await call_next(request)
+
+
+
+# Третий middleware - обработка ошибок
+@app.middleware("http")
+async def error_handling_middleware(request: Request, call_next):
+    """Middleware для обработки ошибок"""
+    try:
+        return await call_next(request)
+    except HTTPException as e:
+        # Передаем HTTP исключения как есть
+        logger.warning(f"HTTP error {e.status_code}: {e.detail} for {request.url.path}")
+        return JSONResponse(
+            status_code=e.status_code,
+            content={"detail": e.detail, "error_code": e.status_code}
+        )
+    except Exception as e:
+        # Логируем полную информацию об ошибке
+        logger.error(f"Unhandled exception in {request.url.path}: {str(e)}", exc_info=True)
+        return JSONResponse(
+            status_code=500,
+            content={
+                "detail": "Internal server error",
+                "error_code": "INTERNAL_ERROR",
+                "request_id": f"req_{int(time.time())}"
+            }
+        )
+
+@app.get("/health")
+async def health_check():
+    """Простая проверка состояния системы"""
+    return JSONResponse(
+        status_code=200,
+        content={
+            "status": "success",
+            "safe": True,
+            "details": "Server running",
+            "timestamp": datetime.now().isoformat(),
+            "version": "0.3.0"
+        }
+    )
+
+@app.get("/auth/validate")
+async def validate_key(key_info: Dict = Depends(api_key_auth)):
+    """Проверка валидности API ключа для клиентских приложений"""
+    return {"valid": True, "name": key_info.get("name"), "limits": {
+        "daily": key_info.get("rate_limit_daily"),
+        "hourly": key_info.get("rate_limit_hourly")
+    }}
+
+@app.get("/")
+async def root():
+    return {"status": "success", "safe": True, "details": "API operational"}
+
+@app.get("/admin/ui")
+async def admin_ui():
+    """Admin UI для управления ключами"""
+    import os
+    # Путь к admin.html относительно app/main.py
+    admin_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "admin.html")
+    if not os.path.exists(admin_path):
+        raise HTTPException(status_code=404, detail="Admin UI not found")
+    return FileResponse(admin_path, headers={
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0"
+    })
+
+@app.get("/admin/ui/refresh")
+async def admin_ui_refresh():
+    """Admin UI с принудительным обновлением"""
+    import os
+    admin_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "admin.html")
+    if not os.path.exists(admin_path):
+        raise HTTPException(status_code=404, detail="Admin UI not found")
+    return FileResponse(admin_path, headers={
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0",
+        "Last-Modified": "Thu, 01 Jan 1970 00:00:00 GMT"
+    })
+
+@app.post("/check/url", response_model=CheckResponse)
+async def check_url_secure(
+    url_request: UrlCheckRequest,
+    request: Request
+):
+    """Проверка URL - базовый функционал доступен всем"""
+    validation_error = security_validator.validate_url(str(url_request.url))
+    if validation_error:
+        raise HTTPException(status_code=400, detail=validation_error)
+    
+    try:
+        # Проверяем уровень доступа для расширенного анализа
+        api_key_info = getattr(request.state, 'api_key_info', None)
+        use_external_apis = True  # Включаем внешние API для всех пользователей для базовой безопасности
+        
+        # Используем асинхронный вызов с учетом уровня доступа
+        result = await analysis_service.analyze_url(str(url_request.url), use_external_apis=use_external_apis)
+        return CheckResponse(**result)
+    except Exception as e:
+        logger.error(f"URL check failed: {e}")
+        raise HTTPException(status_code=500, detail="Analysis error")
+
+# Совместимый алиас для старых клиентов
+@app.post("/scan/url", response_model=CheckResponse)
+async def scan_url_alias(
+    url_request: UrlCheckRequest,
+    request: Request
+):
+    return await check_url_secure(url_request, request)
+
+@app.post("/check/file", response_model=CheckResponse)  
+async def check_file_secure(
+    file_request: FileCheckRequest,
+    request: Request
+):
+    """Проверка файла по хэшу - базовый функционал доступен всем"""
+    validation_error = security_validator.validate_file_hash(file_request.file_hash)
+    if validation_error:
+        raise HTTPException(status_code=400, detail=validation_error)
+    
+    try:
+        # Проверяем уровень доступа для расширенного анализа
+        api_key_info = getattr(request.state, 'api_key_info', None)
+        use_external_apis = api_key_info is not None and check_feature_access(request, "advanced_analysis")
+        
+        # Асинхронный вызов с учетом уровня доступа
+        result = await analysis_service.analyze_file_hash(file_request.file_hash, use_external_apis=use_external_apis)
+        return CheckResponse(**result)
+    except Exception as e:
+        logger.error(f"File hash check failed: {e}")
+        raise HTTPException(status_code=500, detail="Analysis error")
+
+@app.post("/check/upload")
+async def check_uploaded_file(file: UploadFile = File(...)):
+    """Анализ загруженного файла."""
+    try:
+        logger.info(f"File upload started: {file.filename}")
+        
+        # Валидация размера файла
+        file_content = await file.read()
+        size_validation = security_validator.validate_file_size(len(file_content))
+        if size_validation:
+            raise HTTPException(status_code=413, detail=size_validation)
+        
+        # Валидация имени файла
+        sanitized_filename = security_validator.sanitize_filename(file.filename or "unknown")
+        
+        result = await analysis_service.analyze_uploaded_file(file_content, sanitized_filename)
+        
+        return {
+            "status": "success",
+            "filename": sanitized_filename,
+            "file_size": len(file_content),
+            **result
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"File analysis failed: {file.filename} - {str(e)}")
+        raise HTTPException(status_code=500, detail=f"File analysis error: {str(e)}")
+    finally:
+        await file.close()
+
+@app.get("/check/domain/{domain}")
+async def check_domain(domain: str):
+    """Проверка домена на наличие угроз."""
+    try:
+        logger.info(f"Domain check requested: {domain}")
+        threats = db_manager.check_domain(domain)
+        
+        return {
+            "status": "success",
+            "domain": domain,
+            "safe": len(threats) == 0,
+            "threat_count": len(threats),
+            "threats": threats
+        }
+    except Exception as e:
+        logger.error(f"Domain check failed: {domain} - {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Domain check error: {str(e)}")
+
+# Упрощенные административные эндпоинты
+@app.get("/admin/stats")
+async def get_database_stats():
+    """Получение статистики базы данных."""
+    try:
+        stats = db_manager.get_database_stats()
+        return {"status": "success", "stats": stats}
+    except Exception as e:
+        logger.error(f"Stats error: {e}")
+        raise HTTPException(status_code=500, detail="Failed to get stats")
+
+@app.post("/admin/add/malicious-hash")
+async def add_malicious_hash(hash: str, threat_type: str, description: str = ""):
+    """Добавление вредоносного хэша."""
+    try:
+        success = db_manager.add_malicious_hash(hash, threat_type, description)
+        if success:
+            return {"status": "success", "message": "Hash added to database"}
+        else:
+            raise HTTPException(status_code=500, detail="Failed to add hash")
+    except Exception as e:
+        logger.error(f"Add hash error: {e}")
+        raise HTTPException(status_code=500, detail="Failed to add hash")
+
+@app.post("/admin/api-keys/toggle")
+async def toggle_api_key(api_key: str, is_active: bool):
+    """Активация/деактивация API ключа."""
+    try:
+        with db_manager._get_connection() as conn:
+            cur = conn.cursor()
+            cur.execute("UPDATE api_keys SET is_active = ? WHERE api_key = ?", (1 if is_active else 0, api_key))
+            conn.commit()
+        return {"status": "success", "api_key": api_key, "is_active": is_active}
+    except Exception as e:
+        logger.error(f"Toggle API key error: {e}")
+        raise HTTPException(status_code=500, detail="Failed to toggle API key")
+
+@app.post("/admin/api-keys/validate")
+async def validate_api_key(request: Request):
+    """Валидация API ключа"""
+    api_key_info = getattr(request.state, 'api_key_info', None)
+    if not api_key_info:
+        raise HTTPException(status_code=401, detail="Invalid API key")
+    
+    return {
+        "valid": True,
+        "key_id": api_key_info.get("id"),
+        "name": api_key_info.get("name"),
+        "access_level": api_key_info.get("access_level"),
+        "features": api_key_info.get("features", [])
+    }
+
+@app.post("/admin/api-keys/create")
+async def create_api_key(request: Request):
+    """Создание нового премиум API ключа."""
+    try:
+        # Получаем данные из JSON body
+        body = await request.json()
+        name = body.get("name")
+        description = body.get("description", "")
+        access_level = body.get("access_level", "premium")
+        daily_limit = body.get("daily_limit", 1000)
+        hourly_limit = body.get("hourly_limit", 100)
+        expires_days = body.get("expires_days", 30)
+        
+        # Валидация обязательных полей
+        if not name:
+            raise HTTPException(status_code=400, detail="Name is required")
+        
+        # Только премиум ключи
+        if access_level != "premium":
+            raise HTTPException(status_code=400, detail="Only premium keys can be created")
+        
+        api_key = db_manager.create_api_key(name, description, access_level, daily_limit, hourly_limit, expires_days)
+        if api_key:
+            return {
+                "status": "success",
+                "api_key": api_key,
+                "name": name,
+                "access_level": access_level,
+                "daily_limit": daily_limit,
+                "hourly_limit": hourly_limit,
+                "expires_days": expires_days,
+                "features": "advanced_analysis,hover_analysis"
+            }
+        else:
+            raise HTTPException(status_code=500, detail="Failed to create API key")
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"API key creation failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/admin/api-keys/extend")
+async def extend_api_key(request: Request):
+    """Продление срока действия API ключа"""
+    try:
+        # Получаем данные из JSON body
+        body = await request.json()
+        api_key = body.get("api_key")
+        extend_days = body.get("extend_days")
+        
+        # Валидация обязательных полей
+        if not api_key:
+            raise HTTPException(status_code=400, detail="API key is required")
+        if not extend_days:
+            raise HTTPException(status_code=400, detail="Extend days is required")
+        
+        # Валидация параметров
+        if extend_days <= 0:
+            raise HTTPException(status_code=400, detail="Extend days must be positive")
+        
+        success = db_manager.extend_api_key(api_key, extend_days)
+        if success:
+            return {
+                "status": "success",
+                "message": f"API key extended by {extend_days} days"
+            }
+        else:
+            raise HTTPException(status_code=404, detail="API key not found")
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Extend API key error: {e}")
+        raise HTTPException(status_code=500, detail="Failed to extend API key")
+
+@app.get("/admin/api-keys")
+async def list_api_keys(request: Request):
+    """Получение списка всех API ключей"""
+    try:
+        keys = db_manager.list_api_keys()
+        return keys
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"List API keys error: {e}")
+        raise HTTPException(status_code=500, detail="Failed to list API keys")
+
+@app.get("/admin/api-keys/{api_key}/stats")
+async def get_api_key_stats(api_key: str):
+    """Получение статистики по ключу."""
+    try:
+        stats = db_manager.get_api_key_stats(api_key)
+        if not stats:
+            raise HTTPException(status_code=404, detail="API key not found")
+        return {"status": "success", "stats": stats}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"API key stats error: {e}")
+        raise HTTPException(status_code=500, detail="Failed to get key stats")
+    # НОВЫЙ ЭНДПОИНТ ДЛЯ ПРОВЕРКИ IP
+@app.get("/check/ip/{ip_address}")
+async def check_ip_address(
+    ip_address: str,
+    request: Request
+):
+    """Проверка IP адреса - требует премиум API ключ"""
+    # Проверяем доступ к функции проверки IP
+    if not check_feature_access(request, "ip_check"):
+        raise HTTPException(
+            status_code=403, 
+            detail="IP address checking requires premium API key"
+        )
+    
+    try:
+        # Валидация IP адреса
+        ip_validation = security_validator.validate_ip_address(ip_address)
+        if ip_validation:
+            raise HTTPException(status_code=400, detail=ip_validation)
+        
+        result = await external_api_manager.check_ip_multiple_apis(ip_address)
+        return {
+            "status": "success",
+            "ip": ip_address,
+            **result
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"IP check failed: {e}")
+        raise HTTPException(status_code=500, detail="IP analysis error")
+
+@app.post("/check/hover")
+async def check_hover_analysis(request: Request):
+    """Анализ по наведению - требует премиум API ключ"""
+    # Проверяем доступ к функции анализа по наведению
+    if not check_feature_access(request, "hover_analysis"):
+        raise HTTPException(
+            status_code=403, 
+            detail="Hover analysis requires premium API key"
+        )
+    
+    try:
+        # Получаем данные из тела запроса
+        body = await request.json()
+        url = body.get("url")
+        file_hash = body.get("file_hash")
+        domain = body.get("domain")
+        
+        results = {}
+        
+        # Быстрый анализ URL если предоставлен
+        if url:
+            validation_error = security_validator.validate_url(url)
+            if validation_error:
+                results["url"] = {
+                    "safe": None,
+                    "details": f"Invalid URL: {validation_error}",
+                    "source": "validation_error"
+                }
+            else:
+                result = await analysis_service.analyze_url(url, use_external_apis=True)
+                results["url"] = result
+        
+        # Быстрый анализ файла если предоставлен хэш
+        if file_hash:
+            validation_error = security_validator.validate_file_hash(file_hash)
+            if validation_error:
+                results["file"] = {
+                    "safe": None,
+                    "details": f"Invalid file hash: {validation_error}",
+                    "source": "validation_error"
+                }
+            else:
+                result = await analysis_service.analyze_file_hash(file_hash, use_external_apis=True)
+                results["file"] = result
+        
+        # Быстрый анализ домена если предоставлен
+        if domain:
+            validation_error = security_validator.validate_domain(domain)
+            if validation_error:
+                results["domain"] = {
+                    "safe": None,
+                    "details": f"Invalid domain: {validation_error}",
+                    "source": "validation_error"
+                }
+            else:
+                threats = db_manager.check_domain(domain)
+                results["domain"] = {
+                    "safe": len(threats) == 0,
+                    "threat_count": len(threats),
+                    "threats": threats
+                }
+        
+        if not results:
+            raise HTTPException(status_code=400, detail="No valid input provided")
+        
+        return {
+            "status": "success",
+            "hover_analysis": True,
+            "results": results,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Hover analysis failed: {e}")
+        raise HTTPException(status_code=500, detail="Hover analysis error")
+
+# Обработчики ошибок остаются без изменений...
+
+# Обработчик для несуществующих маршрутов
+@app.exception_handler(404)
+async def not_found_handler(request: Request, exc):
+    """Обработчик 404 ошибок"""
+    return JSONResponse(
+        status_code=404,
+        content={
+            "detail": f"Маршрут не найден: {request.url.path}",
+            "available_endpoints": [
+                "GET /",
+                "GET /health", 
+                "POST /check/url",
+                "POST /check/file",
+                "POST /check/upload",
+                "GET /check/domain/{domain}",
+                "GET /check/ip/{ip_address}",
+                "GET /admin/stats",
+                "POST /admin/add/malicious-hash",
+                "POST /admin/api-keys/create",
+                "GET /docs",
+                "GET /redoc"
+            ]
+        }
+    )
+
+# ===== PASSWORD RECOVERY ENDPOINTS =====
+
+@app.post("/auth/forgot-password")
+async def forgot_password(request: Request):
+    """
+    Запрос на восстановление пароля.
+    Отправляет код восстановления на email.
+    """
+    try:
+        body = await request.json()
+        email = body.get("email", "").strip().lower()
+        
+        if not email:
+            raise HTTPException(status_code=400, detail="Email is required")
+        
+        # Генерируем код восстановления
+        reset_code = db_manager.generate_reset_code(email)
+        
+        if not reset_code:
+            # Не показываем, что email не найден (безопасность)
+            return {
+                "status": "success",
+                "message": "Если email зарегистрирован, код отправлен"
+            }
+        
+        # В реальном приложении здесь бы отправлялся email
+        # Пока просто логируем код для тестирования
+        logger.info(f"Password reset code for {email}: {reset_code}")
+        
+        return {
+            "status": "success",
+            "message": "Код восстановления отправлен на email",
+            "debug_code": reset_code  # Только для разработки!
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Forgot password error: {e}")
+        raise HTTPException(status_code=500, detail="Internal server error")
+
+@app.post("/auth/reset-password")
+async def reset_password(request: Request):
+    """
+    Сброс пароля с помощью кода восстановления.
+    """
+    try:
+        body = await request.json()
+        email = body.get("email", "").strip().lower()
+        code = body.get("code", "").strip()
+        new_password = body.get("new_password", "").strip()
+        
+        if not all([email, code, new_password]):
+            raise HTTPException(status_code=400, detail="All fields are required")
+        
+        if len(new_password) < 6:
+            raise HTTPException(status_code=400, detail="Password must be at least 6 characters")
+        
+        # Проверяем код восстановления
+        if not db_manager.verify_reset_code(email, code):
+            raise HTTPException(status_code=400, detail="Invalid or expired reset code")
+        
+        # Хешируем новый пароль
+        password_hash = auth_manager.hash_password(new_password)
+        
+        # Сбрасываем пароль
+        if not db_manager.reset_password(email, password_hash):
+            raise HTTPException(status_code=500, detail="Failed to reset password")
+        
+        return {
+            "status": "success",
+            "message": "Пароль успешно изменен"
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Reset password error: {e}")
+        raise HTTPException(status_code=500, detail="Internal server error")
+
+# ===== ACCOUNT AUTHENTICATION ENDPOINTS =====
+
+@app.post("/auth/register")
+async def register_account(request: RegisterRequest):
+    """
+    Регистрация нового аккаунта и привязка API ключа.
+    
+    Для премиум версии: пользователь создает аккаунт и привязывает к нему API ключ.
+    """
+    success, user_id, error_msg = auth_manager.register(
+        username=request.username,
+        email=request.email,
+        password=request.password,
+        api_key=request.api_key
+    )
+    
+    if not success:
+        raise HTTPException(
+            status_code=400,
+            detail=error_msg or "Ошибка регистрации"
+        )
+    
+    return {
+        "status": "success",
+        "message": "Аккаунт успешно создан",
+        "user_id": user_id,
+        "api_key": request.api_key
+    }
+
+@app.post("/auth/login")
+async def login_account(request: LoginRequest):
+    """
+    Авторизация в существующем аккаунте.
+    
+    Возвращает информацию об аккаунте и привязанных API ключах.
+    """
+    success, account_data, error_msg = auth_manager.login(
+        username=request.username,
+        password=request.password
+    )
+    
+    if not success:
+        raise HTTPException(
+            status_code=401,
+            detail=error_msg or "Ошибка авторизации"
+        )
+    
+    # Получаем привязанные API ключи
+    api_keys = db_manager.get_api_keys_for_account(account_data["id"])
+    
+    return {
+        "status": "success",
+        "message": "Успешная авторизация",
+        "account": account_data,
+        "api_keys": api_keys
+    }
+
+@app.get("/auth/me")
+async def get_current_user(request: Request):
+    """
+    Получение информации о текущем пользователе по API ключу.
+    """
+    api_key = request.headers.get("X-API-Key") or (
+        request.headers.get("Authorization").split(" ", 1)[1].strip()
+        if (request.headers.get("Authorization") or "").startswith("Bearer ") else None
+    )
+    
+    if not api_key:
+        raise HTTPException(
+            status_code=401,
+            detail="API key required"
+        )
+    
+    user = auth_manager.get_user_from_api_key(api_key)
+    
+    if not user:
+        # Если ключ не привязан к аккаунту (базовая версия)
+        return {
+            "status": "basic",
+            "message": "Базовый доступ без аккаунта"
+        }
+    
+    # Убираем пароль
+    user_data = {
+        "id": user["id"],
+        "username": user["username"],
+        "email": user["email"],
+        "created_at": user["created_at"],
+        "last_login": user["last_login"]
+    }
+    
+    return {
+        "status": "premium",
+        "account": user_data
+    }
+
+@app.on_event("startup")
+async def startup_event():
+    """Запуск приложения."""
+    try:
+        # Проверяем подключение к базе
+        conn = db_manager._get_connection()
+        conn.close()
+        logger.info("Database connection established successfully")
+        
+        # Сбрасываем лимиты при запуске
+        db_manager.reset_rate_limits()
+        logger.info("Rate limits reset")
+        
+        # Запускаем фоновый менеджер задач
+        await background_job_manager.start()
+        logger.info("Background job manager started")
+        
+    except Exception as e:
+        logger.error(f"Startup error: {e}")
+        raise
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    """Остановка приложения."""
+    try:
+        await background_job_manager.stop()
+        logger.info("Background job manager stopped")
+    except Exception as e:
+        logger.error(f"Shutdown error: {e}")   
