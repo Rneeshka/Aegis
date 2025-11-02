@@ -5,10 +5,10 @@ from urllib.parse import quote
 import os
 from datetime import datetime, timedelta
 
-from app.database import db_manager
+from database import db_manager
 
 router = APIRouter(prefix="/admin/ui", tags=["Админ UI"])
-
+#jkcjnvjknvknkjvn
 
 def _layout(title: str, body: str) -> str:
     return f"""
@@ -66,15 +66,15 @@ def _layout(title: str, body: str) -> str:
 async def dashboard(_: Request):
     stats = db_manager.get_database_stats()
     body = f"""
-    <div class=card>
+    <div class="card">
       <h1>Панель администратора</h1>
-      <p class=muted>Краткая сводка состояния системы</p>
+      <p class="muted">Краткая сводка состояния системы</p>
     </div>
-    <div class=row>
+    <div class="row">
       <div class="card col"><h2>Угрозы</h2><div>Хэши: <b>{stats.get('malicious_hashes', 0)}</b></div><div>URL: <b>{stats.get('malicious_urls', 0)}</b></div><div>Всего угроз: <b>{stats.get('total_threats', 0)}</b></div></div>
       <div class="card col"><h2>API ключи</h2><div>Активных ключей: <b>{stats.get('active_api_keys', 0)}</b></div><div>Всего запросов: <b>{stats.get('total_requests', 0)}</b></div></div>
     </div>
-    <div class=row>
+    <div class="row">
       <div class="card col">
         <h2>Быстрые действия</h2>
         <div style=\"display:grid;gap:8px\">
@@ -136,43 +136,75 @@ async def keys_page(_: Request):
                 return f"{minutes}м" if minutes > 0 else "Скоро истечёт"
         except:
             return "Неизвестно"
-     
-rows = "".join([
-    f"""
-    <tr>
-        <td><code>{k['api_key']}</code></td>
-        <td>{k['name']}</td>
-        <td>{'да' if k['is_active'] else 'нет'}</td>
-        <td><span class='badge-{k.get('access_level', 'basic')}'>{k.get('access_level', 'basic')}</span></td>
-        <td>{k['username'] or '<span style="color: #059669;">Свободен</span>'}</td>
-        <td>{'**' if k['password_hash'] else '-'}</td>
-        <td>{k['rate_limit_daily']}/{k['rate_limit_hourly']}</td>
-        <td>{k['requests_today']}/{k['requests_hour']}</td>
-        <td>{k['requests_total']}</td>
-        <td class='muted'>{k['last_used']}</td>
-        <td class='muted'>{k['expires_at'] or '-'}</td>
-        <td><span style='color: #059669; font-weight: 500;'>{format_time_remaining(k['expires_at'])}</span></td>
-    </tr>
-    """
-    for k in keys  
-])
+    
+    free_account_html = '<span style="color: #059669;">Свободен</span>'
+    rows = "".join([
+        (
+            f"<tr><td><code>{k['api_key']}</code></td><td>{k['name']}</td><td>{'да' if k['is_active'] else 'нет'}</td>"
+            f"<td><span class=\"badge-{k.get('access_level', 'basic')}\">{k.get('access_level', 'basic')}</span></td>"
+            f"<td>{k['username'] if k['username'] else free_account_html}</td>"
+            f"<td>{k['email'] or '-'}</td>"
+            f"<td>{'***' if k['password_hash'] else '-'}</td>"
+            f"<td>{k['rate_limit_daily']}/{k['rate_limit_hourly']}</td>"
+            f"<td>{k['requests_today']}/{k['requests_hour']}</td>"
+            f"<td>{k['requests_total']}</td>"
+            f"<td class=\"muted\">{k['last_used']}</td><td class=\"muted\">{k['expires_at'] or '-'}</td>"
+            f"<td><span style=\"color: #059669; font-weight: 500;\">{format_time_remaining(k['expires_at'])}</span></td></tr>"
+        )
+        for k in keys
+    ])
 
     body = f"""
-    <div class=card>
+    <div class="card">
       <h1>Ключи API</h1>
-      <p class=muted>Создание и просмотр API ключей</p>
+      <p class="muted">Создание и просмотр API ключей</p>
     </div>
-    <div class=card>
+    <div class="card">
       <h2>Создать новый премиум-ключ</h2>
-      <form method=\"post\" action=\"/admin/ui/keys/create\">\n        <label>Название клиента</label>\n        <input name=\"name\" required placeholder=\"Например: Браузерное расширение\" />\n        <label>Описание (необязательно)</label>\n        <input name=\"description\" placeholder=\"Краткое описание\" />\n        <input type=\"hidden\" name=\"access_level\" value=\"premium\" />\n        <div class=\"muted\">Уровень доступа: <b>premium</b></div>\n        <label>Срок действия (дней)</label>\n        <select name=\"expires_days\">\n          <option value=\"7\">7</option>\n          <option value=\"30\" selected>30</option>\n          <option value=\"90\">90</option>\n          <option value=\"365\">365</option>\n        </select>\n        <label>Дневной лимит</label>\n        <input name=\"daily_limit\" type=\"number\" min=\"1\" value=\"1000\" />\n        <label>Почасовой лимит</label>\n        <input name=\"hourly_limit\" type=\"number\" min=\"1\" value=\"100\" />\n        <button type=\"submit\">Создать ключ</button>\n      </form>
+      <form method="post" action="/admin/ui/keys/create">
+        <label>Название клиента</label>
+        <input name="name" required placeholder="Например: Браузерное расширение" />
+        <label>Описание (необязательно)</label>
+        <input name="description" placeholder="Краткое описание" />
+        <input type="hidden" name="access_level" value="premium" />
+        <div class="muted">Уровень доступа: <b>premium</b></div>
+        <label>Срок действия (дней)</label>
+        <select name="expires_days">
+          <option value="7">7</option>
+          <option value="30" selected>30</option>
+          <option value="90">90</option>
+          <option value="365">365</option>
+        </select>
+        <label>Дневной лимит</label>
+        <input name="daily_limit" type="number" min="1" value="1000" />
+        <label>Почасовой лимит</label>
+        <input name="hourly_limit" type="number" min="1" value="100" />
+        <button type="submit">Создать ключ</button>
+      </form>
     </div>
-    <div class=card>
+    <div class="card">
       <h2>Продлить ключ</h2>
-      <form method=\"post\" action=\"/admin/ui/keys/extend\">\n        <label>API ключ</label>\n        <input name=\"api_key\" required placeholder=\"PREMI*-*****-...\" />\n        <label>Продлить на (дней)</label>\n        <select name=\"extend_days\">\n          <option value=\"7\">7</option>\n          <option value=\"30\" selected>30</option>\n          <option value=\"90\">90</option>\n          <option value=\"365\">365</option>\n        </select>\n        <button type=\"submit\">Продлить</button>\n      </form>
+      <form method="post" action="/admin/ui/keys/extend">
+        <label>API ключ</label>
+        <input name="api_key" required placeholder="PREMI*-*****-..." />
+        <label>Продлить на (дней)</label>
+        <select name="extend_days">
+          <option value="7">7</option>
+          <option value="30" selected>30</option>
+          <option value="90">90</option>
+          <option value="365">365</option>
+        </select>
+        <button type="submit">Продлить</button>
+      </form>
     </div>
-    <div class=card>
+    <div class="card">
       <h2>Список ключей</h2>
-      <div style=\"overflow:auto\">\n        <table>\n          <thead><tr><th>Ключ</th><th>Имя</th><th>Активен</th><th>Уровень</th><th>Username</th><th>Email</th><th>Пароль</th><th>Лимиты (день/час)</th><th>Запросы (сегодня/час)</th><th>Всего</th><th>Последнее использование</th><th>Истекает</th><th>Осталось</th></tr></thead>\n          <tbody>{rows or '<tr><td colspan=13 class=muted>Ключей пока нет</td></tr>'}</tbody>\n        </table>\n      </div>
+      <div style="overflow:auto">
+        <table>
+          <thead><tr><th>Ключ</th><th>Имя</th><th>Активен</th><th>Уровень</th><th>Username</th><th>Email</th><th>Пароль</th><th>Лимиты (день/час)</th><th>Запросы (сегодня/час)</th><th>Всего</th><th>Последнее использование</th><th>Истекает</th><th>Осталось</th></tr></thead>
+          <tbody>{rows or '<tr><td colspan=13 class="muted">Ключей пока нет</td></tr>'}</tbody>
+        </table>
+      </div>
     </div>
     """
     return _layout("Админ панель – ключи API", body)
@@ -240,11 +272,11 @@ async def threats_page(_: Request):
     ])
 
     body = f"""
-    <div class=card>
+    <div class="card">
       <h1>База угроз (упрощенная)</h1>
-      <p class=muted>Универсальная таблица для всех типов угроз</p>
+      <p class="muted">Универсальная таблица для всех типов угроз</p>
     </div>
-    <div class=row>
+    <div class="row">
       <div class="card col">
         <h2>Добавить угрозу</h2>
         <form method=\"post\" action=\"/admin/ui/threats/add\">
@@ -283,7 +315,7 @@ async def threats_page(_: Request):
         </div>
       </div>
     </div>
-    <div class=card>
+    <div class="card">
       <h2>Все угрозы</h2>
       <div style=\"max-height:400px;overflow:auto\">
         <table>
@@ -322,28 +354,30 @@ async def logs_page(_: Request):
     logs = db_manager.get_all_logs()
     
     tr = "".join([
-        f"<tr><td class=muted>{log['created_at']}</td><td><code>{log['api_key_hash'] or '-'}</code></td><td>{log['method']} {log['endpoint']}</td>"
-        f"<td>{log['status_code']}</td><td>{log['response_time_ms'] or '-'}</td><td>{log['client_ip'] or '-'}</td></tr>"
+        (
+            f"<tr><td class=\"muted\">{log['created_at']}</td><td><code>{log['api_key_hash'] or '-'}</code></td><td>{log['method']} {log['endpoint']}</td>"
+            f"<td>{log['status_code']}</td><td>{log['response_time_ms'] or '-'}</td><td>{log['client_ip'] or '-'}</td></tr>"
+        )
         for log in logs[:200]  # Ограничиваем 200 записями
     ])
 
     body = f"""
-    <div class=card>
+    <div class="card">
       <h1>Логи запросов (упрощенные)</h1>
-      <p class=muted>Последние события API из таблицы logs</p>
+      <p class="muted">Последние события API из таблицы logs</p>
     </div>
-    <div class=card>
+    <div class="card">
       <h2>Статистика</h2>
       <div class=\"stats\">
         <div><strong>Всего записей:</strong> {len(logs)}</div>
         <div><strong>Показано:</strong> {min(len(logs), 200)}</div>
       </div>
     </div>
-    <div class=card>
+    <div class="card">
       <div style=\"max-height:600px;overflow:auto\">
         <table>
           <thead><tr><th>Время</th><th>API ключ</th><th>Запрос</th><th>Статус</th><th>Время ответа</th><th>IP</th></tr></thead>
-          <tbody>{tr or '<tr><td colspan=6 class=muted>Логи пусты</td></tr>'}</tbody>
+          <tbody>{tr or '<tr><td colspan=6 class="muted">Логи пусты</td></tr>'}</tbody>
         </table>
       </div>
     </div>
@@ -358,20 +392,20 @@ async def ip_page(_: Request):
     except Exception:
         rows = []
     tr = "".join([
-        f"<tr><td>{r['ip']}</td><td>{r.get('threat_type') or '-'}</td><td>{r.get('reputation_score') if r.get('reputation_score') is not None else '-'}</td><td>{r.get('source') or '-'}</td><td class=muted>{r.get('last_updated') or '-'}</td><td>{r.get('detection_count') or 0}</td></tr>"
+        f"<tr><td>{r['ip']}</td><td>{r.get('threat_type') or '-'}</td><td>{r.get('reputation_score') if r.get('reputation_score') is not None else '-'}</td><td>{r.get('source') or '-'}</td><td class=\"muted\">{r.get('last_updated') or '-'}</td><td>{r.get('detection_count') or 0}</td></tr>"
         for r in rows
     ])
 
     body = f"""
-    <div class=card>
+    <div class="card">
       <h1>IP репутация</h1>
-      <p class=muted>Сводка по известным IP из внешних источников</p>
+      <p class="muted">Сводка по известным IP из внешних источников</p>
     </div>
-    <div class=card>
+    <div class="card">
       <div style=\"overflow:auto\">
         <table>
           <thead><tr><th>IP</th><th>Тип угрозы</th><th>Оценка</th><th>Источник</th><th>Обновлено</th><th>Счетчик</th></tr></thead>
-          <tbody>{tr or '<tr><td colspan=6 class=muted>Пока нет данных</td></tr>'}</tbody>
+          <tbody>{tr or '<tr><td colspan=6 class="muted">Пока нет данных</td></tr>'}</tbody>
         </table>
       </div>
     </div>
