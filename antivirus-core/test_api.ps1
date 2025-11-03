@@ -2,7 +2,7 @@
 # Скрипт для тестирования API антивируса
 
 param(
-    [string]$BaseUrl = "http://127.0.0.1:8000",
+    [string]$BaseUrl = "http://127.0.0.1:9000",
     [string]$PremiumApiKey = "PREMI-12345-67890-ABCDE-FGHIJ-KLMNO"
 )
 

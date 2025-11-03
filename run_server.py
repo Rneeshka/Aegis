@@ -10,10 +10,10 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'antivirus-core'))
 def run_server():
     try:
         print("🚀 Starting Aegis server...")
-        print("📍 Address: http://127.0.0.1:8000")
-        print("📚 Documentation: http://127.0.0.1:8000/docs")
-        print("🎛️ Admin UI: http://127.0.0.1:8000/admin/ui")
-        print("💚 Status: http://127.0.0.1:8000/health")
+        print("📍 Address: http://127.0.0.1:9000")
+        print("📚 Documentation: http://127.0.0.1:9000/docs")
+        print("🎛️ Admin UI: http://127.0.0.1:9000/admin/ui")
+        print("💚 Status: http://127.0.0.1:9000/health")
         print("=" * 60)
         
         # Запускаем сервер
@@ -21,7 +21,7 @@ def run_server():
             sys.executable, '-m', 'uvicorn', 
             'app.main:app', 
             '--host', '127.0.0.1', 
-            '--port', '8000',
+            '--port', '9000',
             '--reload'
         ], cwd='antivirus-core')
         

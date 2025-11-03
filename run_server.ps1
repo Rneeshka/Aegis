@@ -7,7 +7,7 @@ Write-Host "============================================================" -Foreg
 
 # Попробуем убить процесс на порту 8000
 try {
-    $processes = Get-NetTCPConnection -LocalPort 8000 -ErrorAction SilentlyContinue
+    $processes = Get-NetTCPConnection -LocalPort 9000 -ErrorAction SilentlyContinue
     if ($processes) {
         foreach ($process in $processes) {
             $pid = $process.OwningProcess
@@ -33,7 +33,7 @@ Write-Host "============================================================" -Foreg
 Write-Host "🔄 Для остановки нажмите Ctrl+C" -ForegroundColor Yellow
 Write-Host "============================================================" -ForegroundColor Cyan
 
-python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+python -m uvicorn app.main:app --host 127.0.0.1 --port 9000 --reload
 Write-Host "============================================================" -ForegroundColor Cyan
 Write-Host "🛡️  AEGIS - Антивирусное браузерное расширение" -ForegroundColor Green
 Write-Host "============================================================" -ForegroundColor Cyan
@@ -42,7 +42,7 @@ Write-Host "============================================================" -Foreg
 
 # Попробуем убить процесс на порту 8000
 try {
-    $processes = Get-NetTCPConnection -LocalPort 8000 -ErrorAction SilentlyContinue
+    $processes = Get-NetTCPConnection -LocalPort 9000 -ErrorAction SilentlyContinue
     if ($processes) {
         foreach ($process in $processes) {
             $pid = $process.OwningProcess
@@ -68,7 +68,7 @@ Write-Host "============================================================" -Foreg
 Write-Host "🔄 Для остановки нажмите Ctrl+C" -ForegroundColor Yellow
 Write-Host "============================================================" -ForegroundColor Cyan
 
-python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+python -m uvicorn app.main:app --host 127.0.0.1 --port 9000 --reload
 Write-Host "============================================================" -ForegroundColor Cyan
 Write-Host "🛡️  AEGIS - Антивирусное браузерное расширение" -ForegroundColor Green
 Write-Host "============================================================" -ForegroundColor Cyan
@@ -77,7 +77,7 @@ Write-Host "============================================================" -Foreg
 
 # Попробуем убить процесс на порту 8000
 try {
-    $processes = Get-NetTCPConnection -LocalPort 8000 -ErrorAction SilentlyContinue
+    $processes = Get-NetTCPConnection -LocalPort 9000 -ErrorAction SilentlyContinue
     if ($processes) {
         foreach ($process in $processes) {
             $pid = $process.OwningProcess
@@ -103,7 +103,7 @@ Write-Host "============================================================" -Foreg
 Write-Host "🔄 Для остановки нажмите Ctrl+C" -ForegroundColor Yellow
 Write-Host "============================================================" -ForegroundColor Cyan
 
-python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+python -m uvicorn app.main:app --host 127.0.0.1 --port 9000 --reload
 Write-Host "============================================================" -ForegroundColor Cyan
 Write-Host "🛡️  AEGIS - Антивирусное браузерное расширение" -ForegroundColor Green
 Write-Host "============================================================" -ForegroundColor Cyan
@@ -112,7 +112,7 @@ Write-Host "============================================================" -Foreg
 
 # Попробуем убить процесс на порту 8000
 try {
-    $processes = Get-NetTCPConnection -LocalPort 8000 -ErrorAction SilentlyContinue
+    $processes = Get-NetTCPConnection -LocalPort 9000 -ErrorAction SilentlyContinue
     if ($processes) {
         foreach ($process in $processes) {
             $pid = $process.OwningProcess

@@ -4,7 +4,7 @@ import requests
 import json
 
 def test_server():
-    base_url = "http://127.0.0.1:8000"
+    base_url = "http://127.0.0.1:9000"
     
     print("🔍 Тестирование сервера...")
     print(f"📍 URL: {base_url}")
