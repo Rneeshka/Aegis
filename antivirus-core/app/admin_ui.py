@@ -5,7 +5,7 @@ from urllib.parse import quote
 import os
 from datetime import datetime, timedelta
 
-from database import db_manager
+from app.database import db_manager
 
 router = APIRouter(prefix="/admin/ui", tags=["Админ UI"])
 #jkcjnvjknvknkjvn
