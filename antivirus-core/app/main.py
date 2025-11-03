@@ -67,6 +67,7 @@ app = FastAPI(
     title="Antivirus Core API",
     description="API ядра для антивирусного расширения браузера", 
     version="0.3.0",
+    root_path="/proxy",
 )
 
 # Note: do not mount static at /admin/ui to avoid masking /admin/ui/* router routes
