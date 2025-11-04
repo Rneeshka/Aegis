@@ -1,0 +1,6 @@
+2025-11-04 02:35:37,893 - app.logger - INFO - Logging system initialized with rotation
+2025-11-04 02:35:38,065 - app.logger - INFO - Database connection established successfully
+2025-11-04 02:35:38,066 - app.database - INFO - Rate limits reset successfully
+2025-11-04 02:35:38,067 - app.logger - INFO - Rate limits reset
+2025-11-04 02:35:38,067 - app.logger - INFO - Background job manager started
+2025-11-04 02:35:38,067 - app.logger - INFO - Background job manager started

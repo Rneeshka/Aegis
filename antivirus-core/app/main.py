@@ -86,9 +86,6 @@ app.include_router(admin_ui_router)
 # Сжатие ответов для ускорения отдачи
 app.add_middleware(GZipMiddleware, minimum_size=500)
 
-# Подключаем админский UI роутер
-app.include_router(admin_ui_router)
-
 # Middleware логирования запросов в БД
 @app.middleware("http")
 async def request_logging_middleware(request: Request, call_next):
