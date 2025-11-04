@@ -8,9 +8,20 @@ from datetime import datetime, timedelta
 from app.database import db_manager
 
 router = APIRouter(prefix="/admin/ui", tags=["Админ UI"])
-#jkcjnvjknvknkjvn
 
-def _layout(title: str, body: str) -> str:
+
+def _layout(request: Request, title: str, body: str) -> str:
+    root_path = request.scope.get("root_path", "")
+    # Гарантируем, что суффиксы не дублируют слеши
+    def p(path: str) -> str:
+        if not path:
+            return root_path or "/"
+        if path.startswith("/"):
+            path = path[1:]
+        if root_path.endswith("/"):
+            return f"{root_path}{path}"
+        return f"{root_path}/{path}"
+
     return f"""
 <!DOCTYPE html>
 <html lang=\"ru\">
@@ -46,12 +57,12 @@ def _layout(title: str, body: str) -> str:
 <body>
   <header>
     <nav>
-      <a href=\"/admin/ui\">Обзор</a>
-      <a href=\"/admin/ui/keys\">Ключи API</a>
-      <a href=\"/admin/ui/threats\">Угрозы</a>
-      <a href=\"/admin/ui/ip\">IP репутация</a>
-      <a href=\"/admin/ui/logs\">Логи</a>
-      <a href=\"/docs\" style=\"float:right\">Документация</a>
+      <a href=\"{p('admin/ui')}\">Обзор</a>
+      <a href=\"{p('admin/ui/keys')}\">Ключи API</a>
+      <a href=\"{p('admin/ui/threats')}\">Угрозы</a>
+      <a href=\"{p('admin/ui/ip')}\">IP репутация</a>
+      <a href=\"{p('admin/ui/logs')}\">Логи</a>
+      <a href=\"{p('docs')}\" style=\"float:right\">Документация</a>
     </nav>
   </header>
   <main>
@@ -63,7 +74,7 @@ def _layout(title: str, body: str) -> str:
 
 
 @router.get("", response_class=HTMLResponse)
-async def dashboard(_: Request):
+async def dashboard(request: Request):
     stats = db_manager.get_database_stats()
     body = f"""
     <div class="card">
@@ -78,17 +89,17 @@ async def dashboard(_: Request):
       <div class="card col">
         <h2>Быстрые действия</h2>
         <div style=\"display:grid;gap:8px\">
-          <button onclick=\"nav('/admin/ui/keys')\">Создать API ключ</button>
-          <button onclick=\"nav('/admin/ui/threats')\">Добавить угрозу</button>
+          <button onclick=\"nav('{request.scope.get('root_path','') + ('/admin/ui/keys' if not request.scope.get('root_path','').endswith('/') else 'admin/ui/keys')}')\">Создать API ключ</button>
+          <button onclick=\"nav('{request.scope.get('root_path','') + ('/admin/ui/threats' if not request.scope.get('root_path','').endswith('/') else 'admin/ui/threats')}')\">Добавить угрозу</button>
         </div>
       </div>
     </div>
     """
-    return _layout("Админ панель – обзор", body)
+    return _layout(request, "Админ панель – обзор", body)
 
 
 @router.get("/keys", response_class=HTMLResponse)
-async def keys_page(_: Request):
+async def keys_page(request: Request):
     # Получаем список ключей (минимальная информация)
     keys = []
     try:
@@ -161,7 +172,7 @@ async def keys_page(_: Request):
     </div>
     <div class="card">
       <h2>Создать новый премиум-ключ</h2>
-      <form method="post" action="/admin/ui/keys/create">
+      <form method="post" action="{request.scope.get('root_path','') + ('/admin/ui/keys/create' if not request.scope.get('root_path','').endswith('/') else 'admin/ui/keys/create')}">
         <label>Название клиента</label>
         <input name="name" required placeholder="Например: Браузерное расширение" />
         <label>Описание (необязательно)</label>
@@ -184,7 +195,7 @@ async def keys_page(_: Request):
     </div>
     <div class="card">
       <h2>Продлить ключ</h2>
-      <form method="post" action="/admin/ui/keys/extend">
+      <form method="post" action="{request.scope.get('root_path','') + ('/admin/ui/keys/extend' if not request.scope.get('root_path','').endswith('/') else 'admin/ui/keys/extend')}">
         <label>API ключ</label>
         <input name="api_key" required placeholder="PREMI*-*****-..." />
         <label>Продлить на (дней)</label>
@@ -207,11 +218,12 @@ async def keys_page(_: Request):
       </div>
     </div>
     """
-    return _layout("Админ панель – ключи API", body)
+    return _layout(request, "Админ панель – ключи API", body)
 
 
 @router.post("/keys/create")
 async def create_key_action(
+    request: Request,
     name: str = Form(...),
     description: Optional[str] = Form(None),
     access_level: str = Form("premium"),
@@ -221,7 +233,8 @@ async def create_key_action(
 ):
     access_level = "premium"
     api_key = db_manager.create_api_key(name, description or "", access_level, daily_limit, hourly_limit, expires_days)
-    redirect = RedirectResponse(url="/admin/ui/keys", status_code=303)
+    prefix = request.scope.get("root_path", "")
+    redirect = RedirectResponse(url=(prefix + ("/admin/ui/keys" if not prefix.endswith('/') else "admin/ui/keys")), status_code=303)
     if api_key:
         safe_msg = quote(f"Создан {access_level} ключ: {api_key}")
         redirect.set_cookie("flash", safe_msg, max_age=10)
@@ -233,18 +246,20 @@ async def create_key_action(
 
 @router.post("/keys/extend")
 async def extend_key_action(
+    request: Request,
     api_key: str = Form(...),
     extend_days: int = Form(...),
 ):
     ok = db_manager.extend_api_key(api_key, extend_days)
-    redirect = RedirectResponse(url="/admin/ui/keys", status_code=303)
+    prefix = request.scope.get("root_path", "")
+    redirect = RedirectResponse(url=(prefix + ("/admin/ui/keys" if not prefix.endswith('/') else "admin/ui/keys")), status_code=303)
     msg = quote("Ключ продлён" if ok else "Ключ не найден или ошибка продления")
     redirect.set_cookie("flash", msg, max_age=10)
     return redirect
 
 
 @router.get("/threats", response_class=HTMLResponse)
-async def threats_page(_: Request):
+async def threats_page(request: Request):
     # Получаем все угрозы из универсальной таблицы
     threats = db_manager.get_all_threats()
     
@@ -279,7 +294,7 @@ async def threats_page(_: Request):
     <div class="row">
       <div class="card col">
         <h2>Добавить угрозу</h2>
-        <form method=\"post\" action=\"/admin/ui/threats/add\">
+        <form method=\"post\" action=\"{request.scope.get('root_path','') + ('/admin/ui/threats/add' if not request.scope.get('root_path','').endswith('/') else 'admin/ui/threats/add')}\">
           <label>Тип угрозы</label>
           <select name=\"type\" required>
             <option value=\"hash\">Хэш файла</option>
@@ -330,11 +345,12 @@ async def threats_page(_: Request):
       </div>
     </div>
     """
-    return _layout("Админ панель – угрозы", body)
+    return _layout(request, "Админ панель – угрозы", body)
 
 
 @router.post("/threats/add")
 async def add_threat_action(
+    request: Request,
     type: str = Form(...),
     value: str = Form(...),
     threat_level: str = Form("suspicious"),
@@ -342,14 +358,15 @@ async def add_threat_action(
 ):
     """Универсальный обработчик для добавления угроз"""
     success = db_manager.add_threat(type, value, threat_level, source)
-    redirect = RedirectResponse(url="/admin/ui/threats", status_code=303)
+    prefix = request.scope.get("root_path", "")
+    redirect = RedirectResponse(url=(prefix + ("/admin/ui/threats" if not prefix.endswith('/') else "admin/ui/threats")), status_code=303)
     msg = quote("Угроза добавлена" if success else "Ошибка добавления угрозы")
     redirect.set_cookie("flash", msg, max_age=10)
     return redirect
 
 
 @router.get("/logs", response_class=HTMLResponse)
-async def logs_page(_: Request):
+async def logs_page(request: Request):
     # Получаем логи из упрощенной таблицы logs
     logs = db_manager.get_all_logs()
     
@@ -382,11 +399,11 @@ async def logs_page(_: Request):
       </div>
     </div>
     """
-    return _layout("Админ панель – логи", body)
+    return _layout(request, "Админ панель – логи", body)
 
 
 @router.get("/ip", response_class=HTMLResponse)
-async def ip_page(_: Request):
+async def ip_page(request: Request):
     try:
         rows = db_manager.list_ip_reputation(200)
     except Exception:
@@ -410,6 +427,6 @@ async def ip_page(_: Request):
       </div>
     </div>
     """
-    return _layout("Админ панель – IP", body)
+    return _layout(request, "Админ панель – IP", body)
 
 
