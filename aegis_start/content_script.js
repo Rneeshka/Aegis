@@ -67,17 +67,19 @@ function hideTooltip(tooltip) {
 function formatAnalysisResult(result, url) {
   if (!result) return '<span style="color: #93a0c0;">Неизвестно</span>';
   
-  // Ошибка сети/таймаут → показываем как подозрительно в том же стиле
-  if ((result && result.source === 'error') || (result && result.safe === null && result.details)) {
-    const errorMsg = result.details || 'Не удалось подключиться к серверу';
-    return `
-      <div style="text-align: center; line-height: 1.2;">
-        <div style="color: #f1c40f; font-weight: bold; font-size: 14px; margin-bottom: 2px;">
-          ⚠ Подозрительно
+  // Ошибка сети/таймаут → показываем как подозрительно, но только для явных сетевых ошибок
+  if (result && result.source === 'error') {
+    const msg = String(result.details || '').toLowerCase();
+    const isNetwork = msg.includes('failed to fetch') || msg.includes('networkerror') || msg.includes('timeout') || msg.includes('превышено время ожидания');
+    if (isNetwork) {
+      const errorMsg = result.details || 'Не удалось подключиться к серверу';
+      return `
+        <div style="text-align: center; line-height: 1.2;">
+          <div style="color: #f1c40f; font-weight: bold; font-size: 14px; margin-bottom: 2px;">⚠ Подозрительно</div>
+          <div style="color: #93a0c0; font-size: 11px;">${errorMsg}</div>
         </div>
-        <div style="color: #93a0c0; font-size: 11px;">${errorMsg}</div>
-      </div>
-    `;
+      `;
+    }
   }
   
   let verdict = 'unknown';
@@ -202,8 +204,11 @@ chrome.runtime.onMessage.addListener((msg) => {
     let verdict = msg.res?.safe === false ? 'malicious' : 
                   msg.res?.safe === true ? 'safe' : 
                   msg.res?.result?.toLowerCase() || 'unknown';
-    if (msg.res && (msg.res.source === 'error' || (msg.res.safe === null && msg.res.details))) {
-      verdict = 'suspicious';
+    if (msg.res && msg.res.source === 'error') {
+      const m = String(msg.res.details || '').toLowerCase();
+      if (m.includes('failed to fetch') || m.includes('networkerror') || m.includes('timeout') || m.includes('превышено время ожидания')) {
+        verdict = 'suspicious';
+      }
     }
     // Update content and styling; if coords passed, snap to them for accuracy
     const x = typeof msg.mouseX === 'number' ? msg.mouseX : undefined;

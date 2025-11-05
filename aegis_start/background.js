@@ -145,7 +145,7 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
         const cached = getCached(url);
         const res = cached || await scanHover(url);
         
-        if (!cached && res) setCached(url, res);
+        if (!cached && res && typeof res.safe === 'boolean') setCached(url, res);
         if (tabId != null && res) {
           chrome.tabs.sendMessage(tabId, { type: 'hover_result', url, res, mouseX: msg.mouseX, mouseY: msg.mouseY });
         }
