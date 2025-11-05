@@ -31,7 +31,7 @@ async function getApiKey() {
 
 async function getApiBase() {
   const storage = await new Promise(r => chrome.storage.sync.get(['apiBase'], r));
-  return storage.apiBase || 'http://127.0.0.1:8000';
+  return storage.apiBase || 'https://45.87.247.88/proxy';
 }
 
 async function scanUrl(url, useCache = true) {
@@ -65,44 +65,31 @@ function fetchWithTimeout(resource, options = {}, timeoutMs = 800) {
 
 async function scanHover(url) {
   const apiKey = await getApiKey();
-  if (!apiKey) return null; // полностью отключаем hover без ключа
   const apiBase = await getApiBase();
-  const headers = { 'Content-Type': 'application/json', 'X-API-Key': apiKey };
+  const headers = { 'Content-Type': 'application/json' };
+  if (apiKey) headers['X-API-Key'] = apiKey;
 
-  const hoverReq = async () => {
-    const res = await fetchWithTimeout(`${apiBase.replace(/\/$/, '')}/check/hover`, {
-      method: 'POST', headers, body: JSON.stringify({ url })
-    }, 900);
-    if (!res.ok) throw new Error(`hover ${res.status}`);
-    const data = await res.json();
-    if (data && data.results && data.results.url) return data.results.url;
-    return data;
-  };
-
-  const basicReq = async () => {
-    const res = await fetchWithTimeout(`${apiBase.replace(/\/$/, '')}/check/url`, {
-      method: 'POST', headers, body: JSON.stringify({ url })
-    }, 900);
-    if (!res.ok) throw new Error(`url ${res.status}`);
-    return res.json();
+  const basicReq = async (retry = true) => {
+    try {
+      const res = await fetchWithTimeout(`${apiBase.replace(/\/$/, '')}/check/url`, {
+        method: 'POST', headers, body: JSON.stringify({ url })
+      }, 5000);
+      if (!res.ok) throw new Error(`url ${res.status}`);
+      return res.json();
+    } catch (e) {
+      if (retry && (e.name === 'AbortError' || String(e).includes('timeout'))) {
+        return basicReq(false);
+      }
+      throw e;
+    }
   };
 
   try {
-    // Параллельный запуск: берём первый успешный ответ
-    const first = await Promise.any([hoverReq(), basicReq()]);
-    return first;
-  } catch (e) {
-    console.log('Race failed, trying sequential fallback', e);
-    try {
-      return await hoverReq();
-    } catch (_) {
-      try {
-        return await basicReq();
-      } catch (err) {
-        console.error('Hover scan error:', err);
-        return { safe: null, details: String(err), source: 'error' };
-      }
-    }
+    const result = await basicReq();
+    return result;
+  } catch (err) {
+    console.error('Hover scan error:', err);
+    return { safe: null, details: String(err), source: 'error' };
   }
 }
 
@@ -123,14 +110,12 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
     chrome.storage.sync.get(DEFAULTS, (cfg) => {
       cfg.antivirusEnabled = msg.enabled;
       chrome.storage.sync.set(cfg);
-      console.log('Antivirus', msg.enabled ? 'enabled' : 'disabled');
     });
     return;
   }
 
   if (msg && msg.type === 'settings_updated') {
     chrome.storage.sync.set(msg.settings);
-    console.log('Settings updated:', msg.settings);
     return;
   }
 
@@ -147,28 +132,21 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
   if (msg && msg.type === 'hover_url') {
     const url = msg.url;
     const tabId = sender && sender.tab && sender.tab.id;
-    console.log('Hover URL request:', url, 'Tab ID:', tabId);
     
     getConfig().then(async (cfg) => {
-      console.log('Config:', cfg);
       if (!cfg.antivirusEnabled || !cfg.hoverScan) {
-        console.log('Hover disabled or antivirus disabled');
         return;
       }
       
       const apiKey = await getApiKey();
-      console.log('API Key present:', !!apiKey);
       if (!apiKey) return; // без ключа не запускаем ничего и не шлём hover_result
       
       try {
         const cached = getCached(url);
-        console.log('Cached result:', cached);
         const res = cached || await scanHover(url);
-        console.log('Scan result:', res);
         
         if (!cached && res) setCached(url, res);
         if (tabId != null && res) {
-          console.log('Sending hover result to tab:', tabId);
           chrome.tabs.sendMessage(tabId, { type: 'hover_result', url, res, mouseX: msg.mouseX, mouseY: msg.mouseY });
         }
       } catch (e) {
@@ -192,7 +170,6 @@ async function reinjectContentScriptIntoAllTabs() {
         });
       } catch (e) {
         // Ignore tabs where injection is not allowed
-        console.debug('Content script reinject skip:', tab.id, e && e.message);
       }
     }
   } catch (e) {

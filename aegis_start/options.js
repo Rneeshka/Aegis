@@ -5,7 +5,7 @@
     linkCheck: true,
     hoverScan: true,
     notify: true,
-    apiBase: 'http://127.0.0.1:8000',
+    apiBase: 'https://45.87.247.88/proxy',
     apiKey: ''
   };
 
@@ -46,6 +46,14 @@
     resetCodeSection: document.getElementById('reset-code-section')
   };
 
+  function normalizeApiBase(v) {
+    let base = (v || '').trim();
+    if (!base) return 'https://45.87.247.88/proxy';
+    base = base.replace(/\/+$/, '');
+    base = base.replace(/\/admin\/ui$/i, '');
+    return base || 'https://45.87.247.88/proxy';
+  }
+
   function load() {
     chrome.storage.sync.get(defaults, (cfg) => {
       el.antivirus.checked = cfg.antivirusEnabled;
@@ -81,7 +89,7 @@
       linkCheck: el.linkCheck.checked,
       hoverScan: el.hoverScan.checked,
       notify: el.notify.checked,
-      apiBase: (el.apiBase.value || '').trim()
+      apiBase: normalizeApiBase(el.apiBase.value)
     };
     chrome.storage.sync.set(cfg, () => {
       el.save.textContent = 'Сохранено';
@@ -106,7 +114,7 @@
       linkCheck: el.linkCheck.checked,
       hoverScan: el.hoverScan.checked,
       notify: el.notify.checked,
-      apiBase: (el.apiBase.value || '').trim()
+      apiBase: normalizeApiBase(el.apiBase.value)
     };
     chrome.storage.sync.set(cfg, () => {
       chrome.runtime.sendMessage({ type: 'settings_updated', settings: cfg });
@@ -163,7 +171,7 @@
   async function handleLogin() {
     const username = el.loginUsername.value.trim();
     const password = el.loginPassword.value.trim();
-    const apiBase = el.apiBase.value.trim();
+    const apiBase = normalizeApiBase(el.apiBase.value);
     
     if (!username || !password) {
       alert('Заполните все поля');
@@ -218,7 +226,7 @@
     const email = el.registerEmail.value.trim();
     const password = el.registerPassword.value.trim();
     const apiKey = el.registerApiKey.value.trim();
-    const apiBase = el.apiBase.value.trim();
+    const apiBase = normalizeApiBase(el.apiBase.value);
     
     if (!username || !email || !password || !apiKey) {
       alert('Заполните все поля');
@@ -290,7 +298,7 @@
   
   async function handleForgotPassword() {
     const email = el.forgotEmail.value.trim();
-    const apiBase = el.apiBase.value.trim();
+    const apiBase = normalizeApiBase(el.apiBase.value);
     
     if (!email) {
       alert('Введите email');
@@ -341,7 +349,7 @@
     const email = el.forgotEmail.value.trim();
     const code = el.resetCode.value.trim();
     const newPassword = el.newPassword.value.trim();
-    const apiBase = el.apiBase.value.trim();
+    const apiBase = normalizeApiBase(el.apiBase.value);
     
     if (!email || !code || !newPassword) {
       alert('Заполните все поля');

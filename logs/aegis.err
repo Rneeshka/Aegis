@@ -1,40 +1,123 @@
-2025-11-04 02:35:37,893 - app.logger - INFO - Logging system initialized with rotation
-2025-11-04 02:35:38,065 - app.logger - INFO - Database connection established successfully
-2025-11-04 02:35:38,066 - app.database - INFO - Rate limits reset successfully
-2025-11-04 02:35:38,067 - app.logger - INFO - Rate limits reset
-2025-11-04 02:35:38,067 - app.logger - INFO - Background job manager started
-2025-11-04 02:35:38,067 - app.logger - INFO - Background job manager started
-2025-11-04 11:36:45,621 - app.logger - INFO - Logging system initialized with rotation
-2025-11-04 11:36:45,794 - app.logger - INFO - Database connection established successfully
-2025-11-04 11:36:45,795 - app.database - INFO - Rate limits reset successfully
-2025-11-04 11:36:45,795 - app.logger - INFO - Rate limits reset
-2025-11-04 11:36:45,795 - app.logger - INFO - Background job manager started
-2025-11-04 11:36:45,796 - app.logger - INFO - Background job manager started
-2025-11-04 11:37:40,296 - app.database - ERROR - Get all threats error: no such table: threats
-2025-11-04 11:38:03,033 - app.database - ERROR - Get all logs error: no such table: logs
-2025-11-04 11:38:06,083 - app.database - ERROR - Get all threats error: no such table: threats
-2025-11-04 11:41:17,099 - app.database - INFO - API key created for Hrhrh with level premium
-2025-11-04 11:42:08,450 - app.database - ERROR - Get all threats error: no such table: threats
-2025-11-04 11:43:10,785 - app.database - ERROR - Get all threats error: no such table: threats
-2025-11-04 11:43:12,750 - app.database - ERROR - Get all logs error: no such table: logs
-2025-11-04 11:43:17,168 - app.database - ERROR - Get all threats error: no such table: threats
-2025-11-04 11:43:22,335 - app.database - ERROR - Get all threats error: no such table: threats
-2025-11-04 11:43:22,699 - app.database - ERROR - Get all threats error: no such table: threats
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+INFO:     Uvicorn running on http://127.0.0.1:9000 (Press CTRL+C to quit)
+INFO:     Started reloader process [520469] using StatReload
 2025-11-04 11:57:02,993 - app.logger - INFO - Logging system initialized with rotation
+INFO:     Started server process [520471]
+INFO:     Waiting for application startup.
 2025-11-04 11:57:03,146 - app.logger - INFO - Database connection established successfully
 2025-11-04 11:57:03,147 - app.database - INFO - Rate limits reset successfully
 2025-11-04 11:57:03,147 - app.logger - INFO - Rate limits reset
 2025-11-04 11:57:03,148 - app.logger - INFO - Background job manager started
 2025-11-04 11:57:03,148 - app.logger - INFO - Background job manager started
+INFO:     Application startup complete.
 2025-11-04 11:57:25,681 - app.database - ERROR - Get all threats error: no such table: threats
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
 2025-11-04 11:57:36,899 - app.logger - INFO - Background job manager stopped
 2025-11-04 11:57:36,899 - app.logger - INFO - Background job manager stopped
+INFO:     Application shutdown complete.
+INFO:     Finished server process [520471]
+INFO:     Stopping reloader process [520469]
+INFO:     Will watch for changes in these directories: ['/opt/Aegis/antivirus-core']
+INFO:     Uvicorn running on http://127.0.0.1:9000 (Press CTRL+C to quit)
+INFO:     Started reloader process [520491] using StatReload
 2025-11-04 11:57:37,650 - app.logger - INFO - Logging system initialized with rotation
+INFO:     Started server process [520493]
+INFO:     Waiting for application startup.
 2025-11-04 11:57:37,810 - app.logger - INFO - Database connection established successfully
 2025-11-04 11:57:37,810 - app.database - INFO - Rate limits reset successfully
 2025-11-04 11:57:37,811 - app.logger - INFO - Rate limits reset
 2025-11-04 11:57:37,811 - app.logger - INFO - Background job manager started
 2025-11-04 11:57:37,811 - app.logger - INFO - Background job manager started
+INFO:     Application startup complete.
 2025-11-04 11:57:40,184 - app.database - ERROR - Get all threats error: no such table: threats
 2025-11-04 18:03:36,885 - app.logger - INFO - 🔍 Analyzing URL: https://github.com/Rneeshka/Aegis
 2025-11-04 18:03:36,891 - app.logger - INFO - 🔍 Checking external APIs for: https://github.com/Rneeshka/Aegis

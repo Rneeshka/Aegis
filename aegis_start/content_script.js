@@ -67,6 +67,19 @@ function hideTooltip(tooltip) {
 function formatAnalysisResult(result, url) {
   if (!result) return '<span style="color: #93a0c0;">Неизвестно</span>';
   
+  // Ошибка сети/таймаут → показываем как подозрительно в том же стиле
+  if ((result && result.source === 'error') || (result && result.safe === null && result.details)) {
+    const errorMsg = result.details || 'Не удалось подключиться к серверу';
+    return `
+      <div style="text-align: center; line-height: 1.2;">
+        <div style="color: #f1c40f; font-weight: bold; font-size: 14px; margin-bottom: 2px;">
+          ⚠ Подозрительно
+        </div>
+        <div style="color: #93a0c0; font-size: 11px;">${errorMsg}</div>
+      </div>
+    `;
+  }
+  
   let verdict = 'unknown';
   if (result.safe === true) verdict = 'safe';
   else if (result.safe === false) verdict = 'malicious';
@@ -112,14 +125,10 @@ document.addEventListener('mouseover', (e) => {
   if (!link || !link.href) return;
   if (!/^https?:/i.test(link.href)) return;
   
-  console.log('Link hover detected:', link.href);
-  
-  // Check if hover analysis is enabled and API key exists
-  chrome.storage.sync.get(['hoverScan', 'apiKey', 'antivirusEnabled'], (result) => {
-    console.log('Storage result:', result);
-    if (!result.antivirusEnabled || !result.hoverScan || !result.apiKey) {
-      console.log('Hover analysis disabled or no API key');
-      return; // Don't show any hover analysis without premium key
+  // Check if hover analysis is enabled (не требуем ключ)
+  chrome.storage.sync.get(['hoverScan', 'antivirusEnabled'], (result) => {
+    if (!result.antivirusEnabled || !result.hoverScan) {
+      return;
     }
     
     // Ensure tooltip is initialized
@@ -138,11 +147,9 @@ document.addEventListener('mouseover', (e) => {
     
     // Show tooltip immediately with loading state
     updateTooltip(tooltip, lastMouseX, lastMouseY, 'Проверка...', 'info');
-    console.log('Showing loading tooltip');
     
     // Send hover message to background with mouse coords
     hoverTimeout = setTimeout(() => {
-      console.log('Sending hover_url message:', link.href);
       chrome.runtime.sendMessage({
         type: 'hover_url', 
         url: link.href,
@@ -171,6 +178,7 @@ document.addEventListener('mouseout', (e) => {
   if (tooltip) {
     hideTooltip(tooltip);
   }
+  try { link.style.outline = ''; } catch(_) {}
   currentHoveredLink = null;
 });
 
@@ -186,17 +194,17 @@ document.addEventListener('mousemove', (e) => {
 
 // Listen for analysis results from background
 chrome.runtime.onMessage.addListener((msg) => {
-  console.log('Content script received message:', msg);
   if (msg.type === 'hover_result' && currentHoveredLink && currentHoveredLink.href === msg.url) {
-    console.log('Processing hover result:', msg.res);
     if (!tooltip) {
       createHoverTooltip();
     }
     const content = formatAnalysisResult(msg.res, msg.url);
-    const verdict = msg.res?.safe === false ? 'malicious' : 
-                   msg.res?.safe === true ? 'safe' : 
-                   msg.res?.result?.toLowerCase() || 'unknown';
-    console.log('Updating tooltip with verdict:', verdict);
+    let verdict = msg.res?.safe === false ? 'malicious' : 
+                  msg.res?.safe === true ? 'safe' : 
+                  msg.res?.result?.toLowerCase() || 'unknown';
+    if (msg.res && (msg.res.source === 'error' || (msg.res.safe === null && msg.res.details))) {
+      verdict = 'suspicious';
+    }
     // Update content and styling; if coords passed, snap to them for accuracy
     const x = typeof msg.mouseX === 'number' ? msg.mouseX : undefined;
     const y = typeof msg.mouseY === 'number' ? msg.mouseY : undefined;
@@ -209,7 +217,6 @@ document.addEventListener('click', (e) => {
   const a = e.target.closest && e.target.closest('a');
   if (!a || !a.href) return;
   if (!/^https?:/i.test(a.href)) return;
-  console.log('Click detected:', a.href);
   chrome.runtime.sendMessage({type: 'check_url', url: a.href});
 }, true);
 // Visual indicator for dangerous links
@@ -247,5 +254,3 @@ if (document.readyState === 'loading') {
 } else {
   initTooltip();
 }
-
-console.log('SafeBrowse content script loaded');
