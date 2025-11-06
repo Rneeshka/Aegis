@@ -72,18 +72,21 @@ app = FastAPI(
 
 # Note: do not mount static at /admin/ui to avoid masking /admin/ui/* router routes
 
+# CORS middleware ДОЛЖЕН быть первым, чтобы обрабатывать OPTIONS запросы
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=False,
-    allow_methods=["GET", "POST", "OPTIONS"],
-    allow_headers=["X-API-Key", "Authorization", "Content-Type"],
+    allow_methods=["GET", "POST", "OPTIONS", "PUT", "DELETE"],
+    allow_headers=["X-API-Key", "Authorization", "Content-Type", "Origin", "Accept"],
+    expose_headers=["*"],
+    max_age=3600,
 )
 
 # Include admin ui router to serve /admin/ui -> index.html
 app.include_router(admin_ui_router)
 
-# Сжатие ответов для ускорения отдачи
+# Сжатие ответов для ускорения отдачи (после CORS, чтобы не мешать заголовкам)
 app.add_middleware(GZipMiddleware, minimum_size=500)
 
 # Middleware логирования запросов в БД
@@ -114,13 +117,24 @@ async def request_logging_middleware(request: Request, call_next):
 async def filter_invalid_requests(request: Request, call_next):
     """Фильтрует некорректные HTTP запросы"""
     
+    # OPTIONS запросы (CORS preflight) пропускаем сразу
+    if request.method == "OPTIONS":
+        response = await call_next(request)
+        # Добавляем явные CORS заголовки для OPTIONS
+        response.headers["Access-Control-Allow-Origin"] = "*"
+        response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS, PUT, DELETE"
+        response.headers["Access-Control-Allow-Headers"] = "X-API-Key, Authorization, Content-Type, Origin, Accept"
+        response.headers["Access-Control-Max-Age"] = "3600"
+        return response
+    
     # Пропускаем только корректные HTTP методы
     valid_methods = {"GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"}
     if request.method not in valid_methods:
         logger.warning(f"Invalid HTTP method: {request.method}")
         return JSONResponse(
             status_code=400,
-            content={"detail": "Invalid HTTP method"}
+            content={"detail": "Invalid HTTP method"},
+            headers={"Access-Control-Allow-Origin": "*"}
         )
     
     # Пропускаем только корректные пути
@@ -135,11 +149,14 @@ async def filter_invalid_requests(request: Request, call_next):
         logger.warning(f"Blocked suspicious path: {request.url.path}")
         return JSONResponse(
             status_code=404,
-            content={"detail": "Not found"}
+            content={"detail": "Not found"},
+            headers={"Access-Control-Allow-Origin": "*"}
         )
     
     
     response = await call_next(request)
+    # Добавляем CORS заголовки ко всем ответам
+    response.headers["Access-Control-Allow-Origin"] = "*"
     return response
 
 # Второй middleware - API key / Bearer authentication (опциональная)
@@ -221,7 +238,8 @@ async def error_handling_middleware(request: Request, call_next):
         logger.warning(f"HTTP error {e.status_code}: {e.detail} for {request.url.path}")
         return JSONResponse(
             status_code=e.status_code,
-            content={"detail": e.detail, "error_code": e.status_code}
+            content={"detail": e.detail, "error_code": e.status_code},
+            headers={"Access-Control-Allow-Origin": "*"}
         )
     except Exception as e:
         # Логируем полную информацию об ошибке
@@ -232,7 +250,8 @@ async def error_handling_middleware(request: Request, call_next):
                 "detail": "Internal server error",
                 "error_code": "INTERNAL_ERROR",
                 "request_id": f"req_{int(time.time())}"
-            }
+            },
+            headers={"Access-Control-Allow-Origin": "*"}
         )
 
 @app.get("/health")
@@ -246,7 +265,8 @@ async def health_check():
             "details": "Server running",
             "timestamp": datetime.now().isoformat(),
             "version": "0.3.0"
-        }
+        },
+        headers={"Access-Control-Allow-Origin": "*"}
     )
 
 @app.get("/auth/validate")
@@ -295,21 +315,39 @@ async def check_url_secure(
     request: Request
 ):
     """Проверка URL - базовый функционал доступен всем"""
-    validation_error = security_validator.validate_url(str(url_request.url))
-    if validation_error:
-        raise HTTPException(status_code=400, detail=validation_error)
-    
     try:
+        validation_error = security_validator.validate_url(str(url_request.url))
+        if validation_error:
+            return JSONResponse(
+                status_code=400,
+                content={"detail": validation_error, "safe": None, "source": "validation_error"},
+                headers={"Access-Control-Allow-Origin": "*"}
+            )
+        
         # Проверяем уровень доступа для расширенного анализа
         api_key_info = getattr(request.state, 'api_key_info', None)
         use_external_apis = True  # Включаем внешние API для всех пользователей для базовой безопасности
         
         # Используем асинхронный вызов с учетом уровня доступа
         result = await analysis_service.analyze_url(str(url_request.url), use_external_apis=use_external_apis)
-        return CheckResponse(**result)
+        response_data = CheckResponse(**result).dict()
+        return JSONResponse(
+            content=response_data,
+            headers={"Access-Control-Allow-Origin": "*"}
+        )
+    except HTTPException:
+        raise
     except Exception as e:
-        logger.error(f"URL check failed: {e}")
-        raise HTTPException(status_code=500, detail="Analysis error")
+        logger.error(f"URL check failed: {e}", exc_info=True)
+        return JSONResponse(
+            status_code=500,
+            content={
+                "detail": f"Analysis error: {str(e)}",
+                "safe": None,
+                "source": "server_error"
+            },
+            headers={"Access-Control-Allow-Origin": "*"}
+        )
 
 # Совместимый алиас для старых клиентов
 @app.post("/scan/url", response_model=CheckResponse)
