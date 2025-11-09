@@ -1,5 +1,6 @@
 # app/main.py
 from fastapi import FastAPI, HTTPException, File, UploadFile, Request, Depends
+app = FastAPI()
 from app.services import analysis_service
 from app.database import db_manager
 from app.logger import logger
@@ -8,6 +9,14 @@ from fastapi.staticfiles import StaticFiles
 import time
 from datetime import datetime
 from app.security import api_key_auth  # этот импорт должен быть
+from fastapi.middleware.cors import CORSMiddleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def check_feature_access(request: Request, required_feature: str) -> bool:
     """Проверяет доступ к конкретной функции"""
