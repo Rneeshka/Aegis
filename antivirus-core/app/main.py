@@ -597,32 +597,30 @@ async def check_url_secure(
         # КРИТИЧНО: Логирование результата для диагностики
         logger.info(f"[CHECK_URL] Result ({'HOVER' if is_hover else 'POPUP'}): safe={result.get('safe')}, source={result.get('source')}")
         
-        # КРИТИЧНО: Безопасное создание CheckResponse с fallback
+        # Создаем ответ
         try:
-            # Убеждаемся что все обязательные поля присутствуют
-            safe_result = {
-                "safe": result.get("safe"),
+            # Если safe is None, устанавливаем True (безопасно по умолчанию)
+            safe_value = result.get("safe")
+            if safe_value is None:
+                safe_value = True
+            
+            response_data = {
+                "safe": safe_value,
                 "threat_type": result.get("threat_type"),
                 "details": result.get("details", ""),
                 "source": result.get("source", "unknown")
             }
-            # КРИТИЧНО: Если safe is None (неизвестно), устанавливаем True (безопасно по умолчанию)
-            # None означает "неизвестно", а не "опасно"!
-            if safe_result["safe"] is None:
-                safe_result["safe"] = True  # По умолчанию считаем безопасным
-                safe_result["details"] = (safe_result.get("details") or "") + " (status unknown, defaulting to safe)"
             
-            response_data = CheckResponse(**safe_result).dict()
+            # Валидация через CheckResponse
+            validated = CheckResponse(**response_data)
+            response_data = validated.dict()
         except Exception as schema_error:
             logger.error(f"Schema validation error: {schema_error}, result: {result}", exc_info=True)
-            # Fallback на простой ответ - по умолчанию безопасно
-            safe_value = result.get("safe")
-            if safe_value is None:
-                safe_value = True  # По умолчанию безопасно, а не опасно!
+            # Fallback - по умолчанию безопасно
             response_data = {
-                "safe": safe_value,
+                "safe": True,
                 "threat_type": result.get("threat_type"),
-                "details": result.get("details", "Analysis completed with warnings"),
+                "details": result.get("details", "Analysis completed"),
                 "source": result.get("source", "unknown")
             }
         

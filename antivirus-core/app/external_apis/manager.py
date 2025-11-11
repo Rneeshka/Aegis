@@ -147,52 +147,29 @@ class ExternalAPIManager:
         # Парсим результаты каждого API
         parsed_results = {}
         
-        # КРИТИЧНО: Безопасный парсинг результатов с обработкой ошибок
-        try:
-            if 'virustotal' in results and results['virustotal']:
-                try:
-                    parsed_results['virustotal'] = self.virustotal.parse_virustotal_result(
-                        results['virustotal'], "url"
-                    )
-                    logger.info(f"🔍 VirusTotal parsed result: {parsed_results['virustotal']}")
-                except Exception as vt_error:
-                    logger.error(f"VirusTotal parsing failed: {vt_error}", exc_info=True)
-                    parsed_results['virustotal'] = {"safe": True, "error": str(vt_error)}
-        except Exception as e:
-            logger.error(f"Error processing VirusTotal result: {e}", exc_info=True)
+        if 'virustotal' in results and results['virustotal']:
+            try:
+                parsed_results['virustotal'] = self.virustotal.parse_virustotal_result(
+                    results['virustotal'], "url"
+                )
+                logger.info(f"🔍 VirusTotal parsed result: {parsed_results['virustotal']}")
+            except Exception as vt_error:
+                logger.error(f"VirusTotal parsing failed: {vt_error}", exc_info=True)
         
-        try:
-            if 'google_safe_browsing' in results and results['google_safe_browsing']:
-                try:
-                    parsed_results['google'] = self.google_safe_browsing.parse_google_result(
-                        results['google_safe_browsing'], original_url
-                    )
-                    logger.info(f"🔍 Google Safe Browsing parsed result: {parsed_results['google']}")
-                except Exception as gsb_error:
-                    logger.error(f"Google Safe Browsing parsing failed: {gsb_error}", exc_info=True)
-                    parsed_results['google'] = {"safe": True, "error": str(gsb_error)}
-        except Exception as e:
-            logger.error(f"Error processing Google Safe Browsing result: {e}", exc_info=True)
+        if 'google_safe_browsing' in results and results['google_safe_browsing']:
+            try:
+                parsed_results['google'] = self.google_safe_browsing.parse_google_result(
+                    results['google_safe_browsing'], original_url
+                )
+                logger.info(f"🔍 Google Safe Browsing parsed result: {parsed_results['google']}")
+            except Exception as gsb_error:
+                logger.error(f"Google Safe Browsing parsing failed: {gsb_error}", exc_info=True)
         
         # Определяем общий вердикт
         safe_count = 0
         total_checks = 0
         threats = []
         details = []
-        
-        # КРИТИЧНО: Инициализируем переменные перед использованием
-        is_safe = True
-        final_result = {
-            "safe": True,
-            "threat_type": None,
-            "details": "All external scans clean",
-            "external_scans": parsed_results,
-            "confidence": 50
-        }
-        
-        # Если нет результатов парсинга - возвращаем безопасный результат
-        if not parsed_results:
-            return final_result
         
         for api_name, result in parsed_results.items():
             if result and isinstance(result, dict):
@@ -206,17 +183,14 @@ class ExternalAPIManager:
             total_checks += 1
         
         # Если хотя бы один API обнаружил угрозу - считаем опасным
-        if total_checks > 0:
-            is_safe = safe_count == total_checks
-        else:
-            is_safe = True
+        is_safe = safe_count == total_checks if total_checks > 0 else True
         
         final_result = {
             "safe": is_safe,
             "threat_type": "malicious" if not is_safe else None,
             "details": " | ".join(details) if details else "All external scans clean",
             "external_scans": parsed_results,
-            "confidence": self._calculate_confidence(parsed_results)
+            "confidence": self._calculate_confidence(parsed_results) if parsed_results else 50
         }
         
         logger.info(f"🔍 Final external API result for {original_url}: {final_result}")

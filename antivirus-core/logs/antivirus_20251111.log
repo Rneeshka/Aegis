@@ -6786,3 +6786,79 @@ UnboundLocalError: local variable 'asyncio' referenced before assignment
 2025-11-11 22:28:59,059 - app.logger - INFO - Rate limits reset
 2025-11-11 22:28:59,060 - app.logger - INFO - Background job manager started
 2025-11-11 22:28:59,060 - app.logger - INFO - Background job manager started
+2025-11-11 22:29:27,694 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://www.google.com/search?q=%D0%BA%D1%83%D1%80, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:29:27,696 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 22:29:27,699 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 22:29:27,699 - app.logger - ERROR - ❌ URL analysis error for https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 215, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 241, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:29:27,701 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=None, source=error
+2025-11-11 22:29:36,803 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://www.google.com/search?q=%D0%BA%D1%83%D1%80, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:29:36,804 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 22:29:36,806 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 22:29:36,806 - app.logger - ERROR - ❌ URL analysis error for https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 215, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 241, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:29:36,807 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=None, source=error
+2025-11-11 22:29:41,202 - app.logger - INFO - [HEALTH HOVER] Status: healthy, Components: {'database': 'connected', 'external_apis': 'available', 'authentication': 'ok', 'memory': 'unavailable'}
+2025-11-11 22:29:41,242 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://pikabu.ru/story/kak_nalit_pobolshe_vodyi_v, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:29:41,242 - app.logger - INFO - 🔍 Analyzing URL: https://pikabu.ru/story/kak_nalit_pobolshe_vodyi_v_kursovuyu_13365005
+2025-11-11 22:29:41,245 - app.logger - INFO - 🔍 Checking external APIs for: https://pikabu.ru/story/kak_nalit_pobolshe_vodyi_v_kursovuyu_13365005
+2025-11-11 22:29:41,246 - app.logger - ERROR - ❌ URL analysis error for https://pikabu.ru/story/kak_nalit_pobolshe_vodyi_v_kursovuyu_13365005: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 215, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 241, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:29:41,246 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=None, source=error
+2025-11-11 22:33:52,525 - app.logger - INFO - Background job manager stopped
+2025-11-11 22:33:52,526 - app.logger - INFO - Background job manager stopped
+2025-11-11 22:33:53,133 - app.logger - INFO - Logging system initialized with rotation
+2025-11-11 22:33:53,145 - app.database - INFO - Database initialized successfully with all tables
+2025-11-11 22:33:53,328 - app.logger - INFO - Database connection established successfully
+2025-11-11 22:33:53,329 - app.database - INFO - Rate limits reset successfully
+2025-11-11 22:33:53,330 - app.logger - INFO - Rate limits reset
+2025-11-11 22:33:53,330 - app.logger - INFO - Background job manager started
+2025-11-11 22:33:53,330 - app.logger - INFO - Background job manager started
+2025-11-11 22:34:50,386 - app.logger - INFO - Background job manager stopped
+2025-11-11 22:34:50,387 - app.logger - INFO - Background job manager stopped
+2025-11-11 22:34:51,016 - app.logger - INFO - Logging system initialized with rotation
+2025-11-11 22:34:51,027 - app.database - INFO - Database initialized successfully with all tables
+2025-11-11 22:34:51,207 - app.logger - INFO - Database connection established successfully
+2025-11-11 22:34:51,208 - app.database - INFO - Rate limits reset successfully
+2025-11-11 22:34:51,208 - app.logger - INFO - Rate limits reset
+2025-11-11 22:34:51,208 - app.logger - INFO - Background job manager started
+2025-11-11 22:34:51,208 - app.logger - INFO - Background job manager started
+2025-11-11 22:35:07,502 - app.logger - INFO - Background job manager stopped
+2025-11-11 22:35:07,503 - app.logger - INFO - Background job manager stopped
+2025-11-11 22:35:08,148 - app.logger - INFO - Logging system initialized with rotation
+2025-11-11 22:35:08,158 - app.database - INFO - Database initialized successfully with all tables
+2025-11-11 22:35:08,400 - app.logger - INFO - Database connection established successfully
+2025-11-11 22:35:08,402 - app.database - INFO - Rate limits reset successfully
+2025-11-11 22:35:08,402 - app.logger - INFO - Rate limits reset
+2025-11-11 22:35:08,402 - app.logger - INFO - Background job manager started
+2025-11-11 22:35:08,403 - app.logger - INFO - Background job manager started
