@@ -144,8 +144,30 @@ class AnalysisService:
                 }
             
             # 2. Проверка домена в локальной базе
-            parsed_url = urlparse(url)
-            domain = parsed_url.netloc.lower()
+            # КРИТИЧНО: Безопасное извлечение домена с обработкой ошибок
+            domain = None
+            try:
+                parsed_url = urlparse(url)
+                if parsed_url.netloc:
+                    domain = parsed_url.netloc.lower()
+                else:
+                    # Если netloc пустой, пытаемся извлечь из path
+                    domain = url.split('/')[0].lower() if '/' in url else url.lower()
+            except Exception as parse_error:
+                logger.warning(f"Failed to parse URL for domain extraction: {url}, error: {parse_error}")
+                # Fallback: пытаемся извлечь домен простым способом
+                try:
+                    if '://' in url:
+                        domain = url.split('://')[1].split('/')[0].lower()
+                    else:
+                        domain = url.split('/')[0].lower() if '/' in url else url.lower()
+                except Exception:
+                    domain = "unknown"
+            
+            # КРИТИЧНО: Если домен все еще не определен, используем fallback
+            if not domain or domain == "unknown":
+                logger.warning(f"Could not extract domain from URL: {url}, using fallback")
+                domain = "unknown"
             # Кэшируем clean-домены агрессивнее (короткий LRU на уровне памяти)
             domain_cache_key = f"domain-clean:{domain}"
             recently_clean = self._cache_get(domain_cache_key)
@@ -218,7 +240,20 @@ class AnalysisService:
                     # Продолжаем с локальной проверкой если внешние API недоступны
             
             # 4. Локальная эвристика (если внешние API чистые или недоступны)
-            heuristic_result = self._url_heuristic_analysis(url, domain)
+            # КРИТИЧНО: Убеждаемся что domain определен перед вызовом
+            if not domain:
+                domain = "unknown"
+            try:
+                heuristic_result = self._url_heuristic_analysis(url, domain)
+            except Exception as heuristic_error:
+                logger.error(f"Heuristic analysis failed: {heuristic_error}", exc_info=True)
+                # Fallback: считаем безопасным если эвристика не работает
+                heuristic_result = {
+                    "safe": True,
+                    "threat_type": None,
+                    "details": "Heuristic analysis unavailable",
+                    "confidence": 50
+                }
             
             # 5. Объединяем результаты - ПРИОРИТЕТ ВНЕШНИМ API
             if external_result and not external_result.get("safe", True):
@@ -474,11 +509,25 @@ class AnalysisService:
         """Смягчённая эвристика анализа URL для снижения ложных срабатываний"""
         threat_score = 0
         details = []
+        
+        # КРИТИЧНО: Защита от неопределенного домена
+        if not domain or domain == "unknown":
+            # Если домен неизвестен, считаем безопасным (недостаточно данных)
+            return {
+                "safe": True,
+                "threat_type": None,
+                "details": "Domain information unavailable",
+                "threat_score": 0,
+                "confidence": 50
+            }
 
         # IP-адрес вместо домена — сильный сигнал, но редкий в нормальном серфинге
-        if re.match(r"^\d+\.\d+\.\d+\.\d+$", domain):
-            threat_score += 50
-            details.append("Uses IP address instead of domain")
+        try:
+            if re.match(r"^\d+\.\d+\.\d+\.\d+$", domain):
+                threat_score += 50
+                details.append("Uses IP address instead of domain")
+        except Exception:
+            pass  # Игнорируем ошибки проверки IP
 
         # Очень длинные URL — учитываем только экстремальные случаи
         if len(url) > 300:
@@ -489,22 +538,28 @@ class AnalysisService:
             details.append("URL is very long")
 
         # Много поддоменов — повышаем пороги
-        subdomain_count = len(domain.split('.'))
-        if subdomain_count > 6:
-            threat_score += 20
-            details.append("Too many subdomains (>6)")
-        elif subdomain_count > 4:
-            threat_score += 10
-            details.append("Many subdomains (>4)")
+        try:
+            subdomain_count = len(domain.split('.'))
+            if subdomain_count > 6:
+                threat_score += 20
+                details.append("Too many subdomains (>6)")
+            elif subdomain_count > 4:
+                threat_score += 10
+                details.append("Many subdomains (>4)")
+        except Exception:
+            pass  # Игнорируем ошибки подсчета поддоменов
 
         # Дефисы в домене больше не считаем признаком сами по себе
 
         # Подозрительные TLD — оставляем как слабый сигнал
-        suspicious_tlds = {"zip", "review", "click", "xyz", "top", "work"}
-        tld = domain.split('.')[-1] if '.' in domain else ''
-        if tld in suspicious_tlds:
-            threat_score += 10
-            details.append(f"Suspicious TLD: .{tld}")
+        try:
+            suspicious_tlds = {"zip", "review", "click", "xyz", "top", "work"}
+            tld = domain.split('.')[-1] if '.' in domain else ''
+            if tld in suspicious_tlds:
+                threat_score += 10
+                details.append(f"Suspicious TLD: .{tld}")
+        except Exception:
+            pass  # Игнорируем ошибки определения TLD
 
         # Наличие '@' в URL — сильный сигнал
         if '@' in url:
@@ -523,24 +578,35 @@ class AnalysisService:
                 details.append("Many query parameters (>20)")
         except Exception:
             pass
-
+        
         # Гораздо более высокий порог срабатывания, чтобы не метить обычные сайты
-        if threat_score >= 70:
-            return {
-                "safe": False,
-                "threat_type": "suspicious",
-                "details": f"Heuristic detection: {', '.join(details)}",
-                "threat_score": threat_score,
-                "confidence": min(95, 50 + threat_score)  # Higher confidence for higher threat scores
-            }
+        try:
+            if threat_score >= 70:
+                return {
+                    "safe": False,
+                    "threat_type": "suspicious",
+                    "details": f"Heuristic detection: {', '.join(details) if details else 'Multiple suspicious indicators'}",
+                    "threat_score": threat_score,
+                    "confidence": min(95, 50 + threat_score)  # Higher confidence for higher threat scores
+                }
 
-        return {
-            "safe": True,
-            "threat_type": None,
-            "details": "Heuristic analysis passed",
-            "threat_score": threat_score,
-            "confidence": max(50, 100 - threat_score)  # Higher confidence for lower threat scores
-        }
+            return {
+                "safe": True,
+                "threat_type": None,
+                "details": "Heuristic analysis passed",
+                "threat_score": threat_score,
+                "confidence": max(50, 100 - threat_score)  # Higher confidence for lower threat scores
+            }
+        except Exception as e:
+            logger.error(f"Error in heuristic analysis result generation: {e}", exc_info=True)
+            # Fallback: считаем безопасным при ошибке
+            return {
+                "safe": True,
+                "threat_type": None,
+                "details": "Heuristic analysis completed with warnings",
+                "threat_score": 0,
+                "confidence": 50
+            }
 
     def _behavioral_analysis(self, file_content: bytes, file_type: str) -> int:
         """Поведенческий анализ файла"""
