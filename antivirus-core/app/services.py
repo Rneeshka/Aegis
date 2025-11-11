@@ -104,6 +104,17 @@ class AnalysisService:
     
     async def analyze_url(self, url: str, use_external_apis: bool = None) -> Dict[str, Any]:
         """Улучшенный анализ URL с внешними API"""
+        # КРИТИЧНО: Инициализируем все переменные в начале функции для предотвращения UnboundLocalError
+        domain = None
+        domain_cache_key = None
+        external_result = None
+        heuristic_result = {
+            "safe": True,
+            "threat_type": None,
+            "details": "Heuristic analysis not performed",
+            "confidence": 50
+        }
+        
         try:
             logger.info(f"🔍 Analyzing URL: {url}")
             # Нормализация URL (убираем якорь, приводим к нижнему регистру хоста)
@@ -168,7 +179,9 @@ class AnalysisService:
             if not domain or domain == "unknown":
                 logger.warning(f"Could not extract domain from URL: {url}, using fallback")
                 domain = "unknown"
-            # Кэшируем clean-домены агрессивнее (короткий LRU на уровне памяти)
+            
+            # КРИТИЧНО: Инициализируем domain_cache_key сразу после определения domain
+            # Это гарантирует что переменная всегда определена
             domain_cache_key = f"domain-clean:{domain}"
             recently_clean = self._cache_get(domain_cache_key)
             if recently_clean:
@@ -243,6 +256,7 @@ class AnalysisService:
             # КРИТИЧНО: Убеждаемся что domain определен перед вызовом
             if not domain:
                 domain = "unknown"
+            
             try:
                 heuristic_result = self._url_heuristic_analysis(url, domain)
             except Exception as heuristic_error:
@@ -255,7 +269,18 @@ class AnalysisService:
                     "confidence": 50
                 }
             
+            # КРИТИЧНО: Убеждаемся что heuristic_result валиден
+            if not heuristic_result or not isinstance(heuristic_result, dict):
+                logger.warning(f"Invalid heuristic_result, using fallback")
+                heuristic_result = {
+                    "safe": True,
+                    "threat_type": None,
+                    "details": "Heuristic analysis returned invalid result",
+                    "confidence": 50
+                }
+            
             # 5. Объединяем результаты - ПРИОРИТЕТ ВНЕШНИМ API
+            # КРИТИЧНО: Убеждаемся что external_result определен (может быть None)
             if external_result and not external_result.get("safe", True):
                 # Внешние API обнаружили угрозу - это приоритет
                 result = {
@@ -265,7 +290,7 @@ class AnalysisService:
                 }
                 self._cache_set(cache_key, result)
                 return result
-            elif not heuristic_result.get("safe", True):
+            elif heuristic_result and not heuristic_result.get("safe", True):
                 # Локальная эвристика обнаружила угрозу
                 result = {
                     **heuristic_result,
@@ -282,7 +307,7 @@ class AnalysisService:
                     "details": "URL appears to be safe (local + external verification)",
                     "source": "combined",
                     "external_scans": external_result.get("external_scans", {}),
-                    "confidence": max(heuristic_result.get("confidence", 50), 
+                    "confidence": max(heuristic_result.get("confidence", 50) if heuristic_result else 50, 
                                     external_result.get("confidence", 50))
                 }
                 self._cache_set(cache_key, result)
@@ -296,7 +321,7 @@ class AnalysisService:
                     "threat_type": None,
                     "details": "URL appears to be safe",
                     "source": "local_only",
-                    "confidence": heuristic_result.get("confidence", 50)
+                    "confidence": heuristic_result.get("confidence", 50) if heuristic_result else 50
                 }
                 self._cache_set(cache_key, result)
                 return result
