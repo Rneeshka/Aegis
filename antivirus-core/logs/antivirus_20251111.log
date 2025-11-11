@@ -6035,3 +6035,195 @@ UnboundLocalError: local variable 'asyncio' referenced before assignment
 2025-11-11 21:50:42,160 - app.logger - INFO - Rate limits reset
 2025-11-11 21:50:42,160 - app.logger - INFO - Background job manager started
 2025-11-11 21:50:42,160 - app.logger - INFO - Background job manager started
+2025-11-11 21:51:08,231 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://www.google.com/search?q=%D0%BA%D1%83%D1%80, has_api_key=True, ip=127.0.0.1
+2025-11-11 21:51:08,232 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 21:51:08,235 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 21:51:08,237 - app.logger - ERROR - ❌ URL analysis error for https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1:
+  Type: UnboundLocalError
+  Message: local variable 'asyncio' referenced before assignment
+  Traceback:
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 220, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 248, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 220, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 248, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 21:51:08,237 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=None, source=error
+2025-11-11 21:51:16,540 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://www.google.com/search?q=%D0%BA%D1%83%D1%80, has_api_key=True, ip=127.0.0.1
+2025-11-11 21:51:16,541 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 21:51:16,544 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 21:51:16,544 - app.logger - ERROR - ❌ URL analysis error for https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1:
+  Type: UnboundLocalError
+  Message: local variable 'asyncio' referenced before assignment
+  Traceback:
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 220, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 248, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 220, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 248, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 21:51:16,545 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=None, source=error
+2025-11-11 21:51:26,535 - app.logger - INFO - [HEALTH HOVER] Status: healthy, Components: {'database': 'connected', 'external_apis': 'available', 'authentication': 'ok', 'memory': 'unavailable'}
+2025-11-11 21:51:26,573 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://pikabu.ru/story/kak_nalit_pobolshe_vodyi_v, has_api_key=True, ip=127.0.0.1
+2025-11-11 21:51:26,574 - app.logger - INFO - 🔍 Analyzing URL: https://pikabu.ru/story/kak_nalit_pobolshe_vodyi_v_kursovuyu_13365005
+2025-11-11 21:51:26,577 - app.logger - INFO - 🔍 Checking external APIs for: https://pikabu.ru/story/kak_nalit_pobolshe_vodyi_v_kursovuyu_13365005
+2025-11-11 21:51:26,578 - app.logger - ERROR - ❌ URL analysis error for https://pikabu.ru/story/kak_nalit_pobolshe_vodyi_v_kursovuyu_13365005:
+  Type: UnboundLocalError
+  Message: local variable 'asyncio' referenced before assignment
+  Traceback:
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 220, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 248, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 220, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 248, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 21:51:26,578 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=None, source=error
+2025-11-11 21:51:26,659 - app.logger - INFO - [HEALTH HOVER] Status: healthy, Components: {'database': 'connected', 'external_apis': 'available', 'authentication': 'ok', 'memory': 'unavailable'}
+2025-11-11 21:51:26,699 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://mgimo.ru/study/faculty/mp/kkp/docs/papers-, has_api_key=True, ip=127.0.0.1
+2025-11-11 21:51:26,699 - app.logger - INFO - 🔍 Analyzing URL: https://mgimo.ru/study/faculty/mp/kkp/docs/papers-rules/
+2025-11-11 21:51:26,702 - app.logger - INFO - 🔍 Checking external APIs for: https://mgimo.ru/study/faculty/mp/kkp/docs/papers-rules/
+2025-11-11 21:51:26,702 - app.logger - ERROR - ❌ URL analysis error for https://mgimo.ru/study/faculty/mp/kkp/docs/papers-rules/:
+  Type: UnboundLocalError
+  Message: local variable 'asyncio' referenced before assignment
+  Traceback:
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 220, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 248, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 220, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 248, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 21:51:26,702 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=None, source=error
+2025-11-11 21:51:29,890 - app.logger - INFO - [HEALTH HOVER] Status: healthy, Components: {'database': 'connected', 'external_apis': 'available', 'authentication': 'ok', 'memory': 'unavailable'}
+2025-11-11 21:51:29,928 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://tebestudent.ru/polezno-znat/kursovye-rabot, has_api_key=True, ip=127.0.0.1
+2025-11-11 21:51:29,929 - app.logger - INFO - 🔍 Analyzing URL: https://tebestudent.ru/polezno-znat/kursovye-raboty/obrazec-kursovoj-raboty/
+2025-11-11 21:51:29,932 - app.logger - INFO - 🔍 Checking external APIs for: https://tebestudent.ru/polezno-znat/kursovye-raboty/obrazec-kursovoj-raboty/
+2025-11-11 21:51:29,932 - app.logger - ERROR - ❌ URL analysis error for https://tebestudent.ru/polezno-znat/kursovye-raboty/obrazec-kursovoj-raboty/:
+  Type: UnboundLocalError
+  Message: local variable 'asyncio' referenced before assignment
+  Traceback:
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 220, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 248, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 220, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 248, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 21:51:29,932 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=None, source=error
+2025-11-11 21:51:31,809 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://www.google.com/search?q=%D0%BA%D1%83%D1%80, has_api_key=True, ip=127.0.0.1
+2025-11-11 21:51:31,809 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 21:51:31,813 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 21:51:31,813 - app.logger - ERROR - ❌ URL analysis error for https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1:
+  Type: UnboundLocalError
+  Message: local variable 'asyncio' referenced before assignment
+  Traceback:
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 220, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 248, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 220, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 248, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 21:51:31,814 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=None, source=error
+2025-11-11 21:57:02,745 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:57:02,745 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:57:03,362 - app.logger - INFO - Logging system initialized with rotation
+2025-11-11 21:57:03,374 - app.database - INFO - Database initialized successfully with all tables
+2025-11-11 21:57:03,587 - app.logger - INFO - Database connection established successfully
+2025-11-11 21:57:03,588 - app.database - INFO - Rate limits reset successfully
+2025-11-11 21:57:03,589 - app.logger - INFO - Rate limits reset
+2025-11-11 21:57:03,589 - app.logger - INFO - Background job manager started
+2025-11-11 21:57:03,589 - app.logger - INFO - Background job manager started

@@ -104,10 +104,16 @@ class AnalysisService:
     
     async def analyze_url(self, url: str, use_external_apis: bool = None) -> Dict[str, Any]:
         """Улучшенный анализ URL с внешними API"""
+        # КРИТИЧНО: Сохраняем оригинальный URL для использования в except блоке
+        original_url = url
+        
         # КРИТИЧНО: Инициализируем все переменные в начале функции для предотвращения UnboundLocalError
         domain = None
         domain_cache_key = None
         external_result = None
+        cache_key = None
+        url_threat = None
+        domain_threats = []
         heuristic_result = {
             "safe": True,
             "threat_type": None,
@@ -124,8 +130,8 @@ class AnalysisService:
                 normalized_netloc = parts.netloc.lower()
                 url = urlunsplit((parts.scheme, normalized_netloc, parts.path, parts.query, ""))
             except Exception:
-                pass
-            # Кэш
+                pass  # Используем оригинальный url если нормализация не удалась
+            # КРИТИЧНО: Инициализируем cache_key сразу после нормализации URL
             cache_key = f"url:{url}"
             cached = self._cache_get(cache_key)
             if cached is not None:
@@ -133,6 +139,7 @@ class AnalysisService:
             
             # 1. Проверка в локальной базе данных
             # КРИТИЧНО: Обработка ошибок соединения с БД с автоматическим восстановлением
+            # url_threat уже инициализирован как None в начале функции
             try:
                 url_threat = db_manager.check_url(url)
             except Exception as db_error:
@@ -144,7 +151,7 @@ class AnalysisService:
                     url_threat = db_manager.check_url(url)
                 except Exception as retry_error:
                     logger.error(f"Database check failed after retry: {retry_error}")
-                    url_threat = None
+                    url_threat = None  # Убеждаемся что это None
             
             if url_threat:
                 return {
@@ -156,24 +163,25 @@ class AnalysisService:
             
             # 2. Проверка домена в локальной базе
             # КРИТИЧНО: Безопасное извлечение домена с обработкой ошибок
-            domain = None
-            try:
-                parsed_url = urlparse(url)
-                if parsed_url.netloc:
-                    domain = parsed_url.netloc.lower()
-                else:
-                    # Если netloc пустой, пытаемся извлечь из path
-                    domain = url.split('/')[0].lower() if '/' in url else url.lower()
-            except Exception as parse_error:
-                logger.warning(f"Failed to parse URL for domain extraction: {url}, error: {parse_error}")
-                # Fallback: пытаемся извлечь домен простым способом
+            # domain уже инициализирован в начале функции, но переопределяем если нужно
+            if domain is None:
                 try:
-                    if '://' in url:
-                        domain = url.split('://')[1].split('/')[0].lower()
+                    parsed_url = urlparse(url)
+                    if parsed_url.netloc:
+                        domain = parsed_url.netloc.lower()
                     else:
+                        # Если netloc пустой, пытаемся извлечь из path
                         domain = url.split('/')[0].lower() if '/' in url else url.lower()
-                except Exception:
-                    domain = "unknown"
+                except Exception as parse_error:
+                    logger.warning(f"Failed to parse URL for domain extraction: {url}, error: {parse_error}")
+                    # Fallback: пытаемся извлечь домен простым способом
+                    try:
+                        if '://' in url:
+                            domain = url.split('://')[1].split('/')[0].lower()
+                        else:
+                            domain = url.split('/')[0].lower() if '/' in url else url.lower()
+                    except Exception:
+                        domain = "unknown"
             
             # КРИТИЧНО: Если домен все еще не определен, используем fallback
             if not domain or domain == "unknown":
@@ -192,15 +200,20 @@ class AnalysisService:
                     "source": "cache",
                     "confidence": 80
                 }
-                self._cache_set(cache_key, result)
+                try:
+                    if cache_key:
+                        self._cache_set(cache_key, result)
+                except Exception as cache_err:
+                    logger.warning(f"Failed to cache result: {cache_err}")
                 return result
             
             # КРИТИЧНО: Обработка ошибок соединения с БД
+            # domain_threats уже инициализирован как [] в начале функции
             try:
                 domain_threats = db_manager.check_domain(domain)
             except Exception as db_error:
                 logger.warning(f"Database domain check failed for {domain}: {db_error}")
-                domain_threats = []
+                domain_threats = []  # Убеждаемся что это список
             
             if domain_threats:
                 return {
@@ -288,7 +301,8 @@ class AnalysisService:
                     "source": "external_apis",
                     "confidence": external_result.get("confidence", 80)
                 }
-                self._cache_set(cache_key, result)
+                if cache_key:
+                    self._cache_set(cache_key, result)
                 return result
             elif heuristic_result and not heuristic_result.get("safe", True):
                 # Локальная эвристика обнаружила угрозу
@@ -297,7 +311,8 @@ class AnalysisService:
                     "source": "heuristic",
                     "external_scans": external_result.get("external_scans", {}) if external_result else {}
                 }
-                self._cache_set(cache_key, result)
+                if cache_key:
+                    self._cache_set(cache_key, result)
                 return result
             elif external_result and external_result.get("safe", True):
                 # Внешние API чистые, локальная проверка тоже чистая
@@ -310,9 +325,11 @@ class AnalysisService:
                     "confidence": max(heuristic_result.get("confidence", 50) if heuristic_result else 50, 
                                     external_result.get("confidence", 50))
                 }
-                self._cache_set(cache_key, result)
+                if cache_key:
+                    self._cache_set(cache_key, result)
                 # Отмечаем домен как недавно чистый (короткий TTL внутри disk_cache тоже есть)
-                self._cache_set(domain_cache_key, {"clean": True})
+                if domain_cache_key:
+                    self._cache_set(domain_cache_key, {"clean": True})
                 return result
             else:
                 # Все проверки чистые (только локальные)
@@ -323,7 +340,8 @@ class AnalysisService:
                     "source": "local_only",
                     "confidence": heuristic_result.get("confidence", 50) if heuristic_result else 50
                 }
-                self._cache_set(cache_key, result)
+                if cache_key:
+                    self._cache_set(cache_key, result)
                 return result
                 
         except Exception as e:
@@ -332,8 +350,11 @@ class AnalysisService:
             error_trace = traceback.format_exc()
             error_type = type(e).__name__
             
+            # КРИТИЧНО: Используем original_url который всегда определен
+            error_url = original_url
+            
             logger.error(
-                f"❌ URL analysis error for {url}:\n"
+                f"❌ URL analysis error for {error_url}:\n"
                 f"  Type: {error_type}\n"
                 f"  Message: {str(e)}\n"
                 f"  Traceback:\n{error_trace}",
