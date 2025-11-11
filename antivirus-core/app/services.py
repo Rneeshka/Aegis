@@ -104,23 +104,31 @@ class AnalysisService:
     
     async def analyze_url(self, url: str, use_external_apis: bool = None) -> Dict[str, Any]:
         """Улучшенный анализ URL с внешними API"""
-        # КРИТИЧНО: Сохраняем оригинальный URL для логирования
-        original_url = url
+        # КРИТИЧНО: Сохраняем оригинальный URL для логирования ДО любых изменений
+        original_url = str(url)  # Гарантируем что это строка
         # КРИТИЧНО: Инициализируем все переменные в начале
         cache_key = None
         domain = None
         domain_cache_key = None
+        url_threat = None
+        domain_threats = []
+        external_result = None
+        heuristic_result = None
         
         try:
-            logger.info(f"🔍 Analyzing URL: {url}")
+            logger.info(f"🔍 Analyzing URL: {original_url}")
             # Нормализация URL (убираем якорь, приводим к нижнему регистру хоста)
+            normalized_url = original_url
             try:
                 from urllib.parse import urlsplit, urlunsplit
-                parts = urlsplit(url)
+                parts = urlsplit(original_url)
                 normalized_netloc = parts.netloc.lower()
-                url = urlunsplit((parts.scheme, normalized_netloc, parts.path, parts.query, ""))
+                normalized_url = urlunsplit((parts.scheme, normalized_netloc, parts.path, parts.query, ""))
             except Exception:
                 pass  # Используем оригинальный url если нормализация не удалась
+            
+            # Используем normalized_url для дальнейшей работы
+            url = normalized_url
             # Кэш
             cache_key = f"url:{url}"
             cached = self._cache_get(cache_key)
@@ -128,14 +136,17 @@ class AnalysisService:
                 return cached
             
             # 1. Проверка в локальной базе данных
+            url_threat = None
             try:
                 url_threat = db_manager.check_url(url)
             except Exception as db_error:
-                logger.warning(f"Database check failed for {url}, retrying: {db_error}")
+                # КРИТИЧНО: Используем url который уже определен в try блоке
+                current_url = url if 'url' in locals() else original_url
+                logger.warning(f"Database check failed for {current_url}, retrying: {db_error}")
                 import asyncio
                 await asyncio.sleep(0.1)
                 try:
-                    url_threat = db_manager.check_url(url)
+                    url_threat = db_manager.check_url(current_url)
                 except Exception as retry_error:
                     logger.error(f"Database check failed after retry: {retry_error}")
                     url_threat = None
@@ -149,15 +160,20 @@ class AnalysisService:
                 }
             
             # 2. Проверка домена в локальной базе
+            # КРИТИЧНО: Используем url который уже определен выше
+            current_url = url
             try:
-                parsed_url = urlparse(url)
+                parsed_url = urlparse(current_url)
                 domain = parsed_url.netloc.lower() if parsed_url.netloc else ""
                 if not domain:
                     # Если netloc пустой, пытаемся извлечь из path
-                    domain = url.split('/')[0].lower() if '/' in url else url.lower()
+                    domain = current_url.split('/')[0].lower() if '/' in current_url else current_url.lower()
             except Exception:
-                # Fallback если парсинг не удался
-                domain = url.split('/')[0].lower() if '/' in url else url.lower()
+                # Fallback если парсинг не удался - используем current_url который всегда определен
+                try:
+                    domain = current_url.split('/')[0].lower() if '/' in current_url else current_url.lower()
+                except Exception:
+                    domain = "unknown"
             
             if not domain:
                 domain = "unknown"
@@ -223,9 +239,13 @@ class AnalysisService:
                     else:
                         logger.info(f"✅ External APIs found {url} to be safe")
                 except asyncio.TimeoutError:
-                    logger.error(f"External API check timed out for {url}")
+                    # КРИТИЧНО: Используем url который уже определен
+                    current_url = url if 'url' in locals() else original_url
+                    logger.error(f"External API check timed out for {current_url}")
                 except Exception as e:
-                    logger.error(f"External API check failed: {e}", exc_info=True)
+                    # КРИТИЧНО: Используем url который уже определен
+                    current_url = url if 'url' in locals() else original_url
+                    logger.error(f"External API check failed for {current_url}: {e}", exc_info=True)
             
             # 4. Локальная эвристика (если внешние API чистые или недоступны)
             try:
@@ -249,21 +269,32 @@ class AnalysisService:
                 }
             
             # 5. Объединяем результаты - ПРИОРИТЕТ ВНЕШНИМ API
+            # КРИТИЧНО: Убеждаемся что все переменные определены
+            if not heuristic_result:
+                heuristic_result = {
+                    "safe": True,
+                    "threat_type": None,
+                    "details": "Heuristic analysis not performed",
+                    "confidence": 50
+                }
+            
             if external_result and not external_result.get("safe", True):
                 result = {
                     **external_result,
                     "source": "external_apis",
                     "confidence": external_result.get("confidence", 80)
                 }
-                self._cache_set(cache_key, result)
+                if cache_key:
+                    self._cache_set(cache_key, result)
                 return result
-            elif not heuristic_result.get("safe", True):
+            elif heuristic_result and not heuristic_result.get("safe", True):
                 result = {
                     **heuristic_result,
                     "source": "heuristic",
                     "external_scans": external_result.get("external_scans", {}) if external_result else {}
                 }
-                self._cache_set(cache_key, result)
+                if cache_key:
+                    self._cache_set(cache_key, result)
                 return result
             elif external_result and external_result.get("safe", True):
                 result = {
@@ -272,11 +303,13 @@ class AnalysisService:
                     "details": "URL appears to be safe (local + external verification)",
                     "source": "combined",
                     "external_scans": external_result.get("external_scans", {}),
-                    "confidence": max(heuristic_result.get("confidence", 50), 
+                    "confidence": max(heuristic_result.get("confidence", 50) if heuristic_result else 50, 
                                     external_result.get("confidence", 50))
                 }
-                self._cache_set(cache_key, result)
-                self._cache_set(domain_cache_key, {"clean": True})
+                if cache_key:
+                    self._cache_set(cache_key, result)
+                if domain_cache_key:
+                    self._cache_set(domain_cache_key, {"clean": True})
                 return result
             else:
                 result = {
@@ -284,14 +317,15 @@ class AnalysisService:
                     "threat_type": None,
                     "details": "URL appears to be safe",
                     "source": "local_only",
-                    "confidence": heuristic_result.get("confidence", 50)
+                    "confidence": heuristic_result.get("confidence", 50) if heuristic_result else 50
                 }
-                self._cache_set(cache_key, result)
+                if cache_key:
+                    self._cache_set(cache_key, result)
                 return result
                 
         except Exception as e:
-            # КРИТИЧНО: Используем original_url который всегда определен
-            error_url = original_url if 'original_url' in locals() else url if 'url' in locals() else "unknown"
+            # КРИТИЧНО: Используем original_url который всегда определен в начале функции
+            error_url = original_url
             logger.error(f"❌ URL analysis error for {error_url}: {e}", exc_info=True)
             return {
                 "safe": None,
