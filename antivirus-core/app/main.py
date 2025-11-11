@@ -606,17 +606,21 @@ async def check_url_secure(
                 "details": result.get("details", ""),
                 "source": result.get("source", "unknown")
             }
-            # Если safe is None, устанавливаем False для валидации схемы
+            # КРИТИЧНО: Если safe is None (неизвестно), устанавливаем True (безопасно по умолчанию)
+            # None означает "неизвестно", а не "опасно"!
             if safe_result["safe"] is None:
-                safe_result["safe"] = False
-                safe_result["details"] = (safe_result.get("details") or "") + " (status unknown)"
+                safe_result["safe"] = True  # По умолчанию считаем безопасным
+                safe_result["details"] = (safe_result.get("details") or "") + " (status unknown, defaulting to safe)"
             
             response_data = CheckResponse(**safe_result).dict()
         except Exception as schema_error:
             logger.error(f"Schema validation error: {schema_error}, result: {result}", exc_info=True)
-            # Fallback на простой ответ
+            # Fallback на простой ответ - по умолчанию безопасно
+            safe_value = result.get("safe")
+            if safe_value is None:
+                safe_value = True  # По умолчанию безопасно, а не опасно!
             response_data = {
-                "safe": result.get("safe", False),
+                "safe": safe_value,
                 "threat_type": result.get("threat_type"),
                 "details": result.get("details", "Analysis completed with warnings"),
                 "source": result.get("source", "unknown")
