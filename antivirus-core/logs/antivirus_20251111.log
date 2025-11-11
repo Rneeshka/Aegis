@@ -20,3 +20,615 @@
 2025-11-11 21:20:37,887 - app.logger - INFO - Rate limits reset
 2025-11-11 21:20:37,887 - app.logger - INFO - Background job manager started
 2025-11-11 21:20:37,888 - app.logger - INFO - Background job manager started
+2025-11-11 21:22:26,474 - app.logger - ERROR - Unhandled exception in /check/url: 'HttpUrl' object is not subscriptable
+  + Exception Group Traceback (most recent call last):
+  |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 192, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "/opt/Aegis/venv/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 781, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/opt/Aegis/antivirus-core/app/main.py", line 240, in error_handling_middleware
+    |     return await call_next(request)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "/opt/Aegis/antivirus-core/app/main.py", line 199, in optional_auth_middleware
+    |     return await call_next(request)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "/opt/Aegis/antivirus-core/app/main.py", line 157, in filter_invalid_requests
+    |     response = await call_next(request)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "/opt/Aegis/antivirus-core/app/main.py", line 99, in request_logging_middleware
+    |     response = await call_next(request)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 29, in __call__
+    |     await responder(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 130, in __call__
+    |     await super().__call__(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 46, in __call__
+    |     await self.app(scope, receive, self.send_with_compression)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 716, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 736, in app
+    |     await route.handle(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 290, in handle
+    |     await self.app(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 124, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 110, in app
+    |     response = await f(request)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 390, in app
+    |     raw_response = await run_endpoint_function(
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 289, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |   File "/opt/Aegis/antivirus-core/app/main.py", line 373, in check_url_secure
+    |     logger.info(f"[CHECK_URL] Request from {'HOVER' if is_hover else 'POPUP'}: url={url_request.url[:50]}, has_api_key={bool(api_key)}, ip={client_ip}")
+    | TypeError: 'HttpUrl' object is not subscriptable
+    +------------------------------------
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/main.py", line 240, in error_handling_middleware
+    return await call_next(request)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/opt/Aegis/antivirus-core/app/main.py", line 199, in optional_auth_middleware
+    return await call_next(request)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/opt/Aegis/antivirus-core/app/main.py", line 157, in filter_invalid_requests
+    response = await call_next(request)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/opt/Aegis/antivirus-core/app/main.py", line 99, in request_logging_middleware
+    response = await call_next(request)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 29, in __call__
+    await responder(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 130, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 46, in __call__
+    await self.app(scope, receive, self.send_with_compression)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 124, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 110, in app
+    response = await f(request)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 390, in app
+    raw_response = await run_endpoint_function(
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 289, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/opt/Aegis/antivirus-core/app/main.py", line 373, in check_url_secure
+    logger.info(f"[CHECK_URL] Request from {'HOVER' if is_hover else 'POPUP'}: url={url_request.url[:50]}, has_api_key={bool(api_key)}, ip={client_ip}")
+TypeError: 'HttpUrl' object is not subscriptable
+2025-11-11 21:22:36,806 - app.logger - INFO - [HEALTH HOVER] Check: db=connected, has_key=True
+2025-11-11 21:22:36,855 - app.logger - ERROR - Unhandled exception in /check/url: 'HttpUrl' object is not subscriptable
+  + Exception Group Traceback (most recent call last):
+  |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 192, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "/opt/Aegis/venv/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 781, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/opt/Aegis/antivirus-core/app/main.py", line 240, in error_handling_middleware
+    |     return await call_next(request)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "/opt/Aegis/antivirus-core/app/main.py", line 199, in optional_auth_middleware
+    |     return await call_next(request)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "/opt/Aegis/antivirus-core/app/main.py", line 157, in filter_invalid_requests
+    |     response = await call_next(request)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "/opt/Aegis/antivirus-core/app/main.py", line 99, in request_logging_middleware
+    |     response = await call_next(request)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 29, in __call__
+    |     await responder(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 130, in __call__
+    |     await super().__call__(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 46, in __call__
+    |     await self.app(scope, receive, self.send_with_compression)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 716, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 736, in app
+    |     await route.handle(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 290, in handle
+    |     await self.app(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 124, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 110, in app
+    |     response = await f(request)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 390, in app
+    |     raw_response = await run_endpoint_function(
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 289, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |   File "/opt/Aegis/antivirus-core/app/main.py", line 373, in check_url_secure
+    |     logger.info(f"[CHECK_URL] Request from {'HOVER' if is_hover else 'POPUP'}: url={url_request.url[:50]}, has_api_key={bool(api_key)}, ip={client_ip}")
+    | TypeError: 'HttpUrl' object is not subscriptable
+    +------------------------------------
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/main.py", line 240, in error_handling_middleware
+    return await call_next(request)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/opt/Aegis/antivirus-core/app/main.py", line 199, in optional_auth_middleware
+    return await call_next(request)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/opt/Aegis/antivirus-core/app/main.py", line 157, in filter_invalid_requests
+    response = await call_next(request)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/opt/Aegis/antivirus-core/app/main.py", line 99, in request_logging_middleware
+    response = await call_next(request)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 29, in __call__
+    await responder(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 130, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 46, in __call__
+    await self.app(scope, receive, self.send_with_compression)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 124, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 110, in app
+    response = await f(request)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 390, in app
+    raw_response = await run_endpoint_function(
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 289, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/opt/Aegis/antivirus-core/app/main.py", line 373, in check_url_secure
+    logger.info(f"[CHECK_URL] Request from {'HOVER' if is_hover else 'POPUP'}: url={url_request.url[:50]}, has_api_key={bool(api_key)}, ip={client_ip}")
+TypeError: 'HttpUrl' object is not subscriptable
+2025-11-11 21:22:38,807 - app.logger - INFO - [HEALTH HOVER] Check: db=connected, has_key=True
+2025-11-11 21:22:38,856 - app.logger - ERROR - Unhandled exception in /check/url: 'HttpUrl' object is not subscriptable
+  + Exception Group Traceback (most recent call last):
+  |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 192, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "/opt/Aegis/venv/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 781, in __aexit__
+  |     raise BaseExceptionGroup(
+  | exceptiongroup.ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/opt/Aegis/antivirus-core/app/main.py", line 240, in error_handling_middleware
+    |     return await call_next(request)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "/opt/Aegis/antivirus-core/app/main.py", line 199, in optional_auth_middleware
+    |     return await call_next(request)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "/opt/Aegis/antivirus-core/app/main.py", line 157, in filter_invalid_requests
+    |     response = await call_next(request)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |   File "/opt/Aegis/antivirus-core/app/main.py", line 99, in request_logging_middleware
+    |     response = await call_next(request)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    |     raise app_exc from app_exc.__cause__ or app_exc.__context__
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 29, in __call__
+    |     await responder(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 130, in __call__
+    |     await super().__call__(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 46, in __call__
+    |     await self.app(scope, receive, self.send_with_compression)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 716, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 736, in app
+    |     await route.handle(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 290, in handle
+    |     await self.app(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 124, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 110, in app
+    |     response = await f(request)
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 390, in app
+    |     raw_response = await run_endpoint_function(
+    |   File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 289, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |   File "/opt/Aegis/antivirus-core/app/main.py", line 373, in check_url_secure
+    |     logger.info(f"[CHECK_URL] Request from {'HOVER' if is_hover else 'POPUP'}: url={url_request.url[:50]}, has_api_key={bool(api_key)}, ip={client_ip}")
+    | TypeError: 'HttpUrl' object is not subscriptable
+    +------------------------------------
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/main.py", line 240, in error_handling_middleware
+    return await call_next(request)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/opt/Aegis/antivirus-core/app/main.py", line 199, in optional_auth_middleware
+    return await call_next(request)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/opt/Aegis/antivirus-core/app/main.py", line 157, in filter_invalid_requests
+    response = await call_next(request)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/opt/Aegis/antivirus-core/app/main.py", line 99, in request_logging_middleware
+    response = await call_next(request)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 29, in __call__
+    await responder(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 130, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/gzip.py", line 46, in __call__
+    await self.app(scope, receive, self.send_with_compression)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 124, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 110, in app
+    response = await f(request)
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 390, in app
+    raw_response = await run_endpoint_function(
+  File "/opt/Aegis/venv/lib/python3.10/site-packages/fastapi/routing.py", line 289, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/opt/Aegis/antivirus-core/app/main.py", line 373, in check_url_secure
+    logger.info(f"[CHECK_URL] Request from {'HOVER' if is_hover else 'POPUP'}: url={url_request.url[:50]}, has_api_key={bool(api_key)}, ip={client_ip}")
+TypeError: 'HttpUrl' object is not subscriptable
+2025-11-11 21:25:46,396 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:25:46,397 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:25:47,045 - app.logger - INFO - Logging system initialized with rotation
+2025-11-11 21:25:47,253 - app.logger - INFO - Database connection established successfully
+2025-11-11 21:25:47,254 - app.database - INFO - Rate limits reset successfully
+2025-11-11 21:25:47,255 - app.logger - INFO - Rate limits reset
+2025-11-11 21:25:47,255 - app.logger - INFO - Background job manager started
+2025-11-11 21:25:47,255 - app.logger - INFO - Background job manager started
+2025-11-11 21:26:11,574 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:26:11,575 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:26:12,243 - app.logger - INFO - Logging system initialized with rotation
+2025-11-11 21:26:12,453 - app.logger - INFO - Database connection established successfully
+2025-11-11 21:26:12,454 - app.database - INFO - Rate limits reset successfully
+2025-11-11 21:26:12,455 - app.logger - INFO - Rate limits reset
+2025-11-11 21:26:12,455 - app.logger - INFO - Background job manager started
+2025-11-11 21:26:12,455 - app.logger - INFO - Background job manager started
+2025-11-11 21:26:26,121 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:26:26,122 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:26:26,839 - app.logger - INFO - Logging system initialized with rotation
+2025-11-11 21:26:27,032 - app.logger - INFO - Database connection established successfully
+2025-11-11 21:26:27,033 - app.database - INFO - Rate limits reset successfully
+2025-11-11 21:26:27,034 - app.logger - INFO - Rate limits reset
+2025-11-11 21:26:27,034 - app.logger - INFO - Background job manager started
+2025-11-11 21:26:27,034 - app.logger - INFO - Background job manager started
+2025-11-11 21:27:32,322 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:27:32,323 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:27:32,950 - app.logger - INFO - Logging system initialized with rotation
+2025-11-11 21:27:33,149 - app.logger - INFO - Database connection established successfully
+2025-11-11 21:27:33,150 - app.database - INFO - Rate limits reset successfully
+2025-11-11 21:27:33,150 - app.logger - INFO - Rate limits reset
+2025-11-11 21:27:33,150 - app.logger - INFO - Background job manager started
+2025-11-11 21:27:33,151 - app.logger - INFO - Background job manager started
+2025-11-11 21:27:53,747 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:27:53,748 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:27:54,393 - app.logger - INFO - Logging system initialized with rotation
+2025-11-11 21:27:54,588 - app.logger - INFO - Database connection established successfully
+2025-11-11 21:27:54,590 - app.database - INFO - Rate limits reset successfully
+2025-11-11 21:27:54,590 - app.logger - INFO - Rate limits reset
+2025-11-11 21:27:54,590 - app.logger - INFO - Background job manager started
+2025-11-11 21:27:54,590 - app.logger - INFO - Background job manager started

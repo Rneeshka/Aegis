@@ -566,47 +566,85 @@ class DatabaseManager:
             return None
     
     def check_url(self, url: str) -> Optional[Dict[str, Any]]:
-        """Проверяет URL в базе данных."""
-        try:
-            with self._get_connection() as conn:
-                cursor = conn.cursor()
-                cursor.execute("""
-                    SELECT url, domain, threat_type, severity, description, detection_count
-                    FROM malicious_urls 
-                    WHERE url = ?
-                """, (url.lower(),))
-                
-                result = cursor.fetchone()
-                if result:
-                    # Увеличиваем счетчик обнаружений
+        """Проверяет URL в базе данных с улучшенной обработкой ошибок."""
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                with self._get_connection() as conn:
+                    cursor = conn.cursor()
                     cursor.execute("""
-                        UPDATE malicious_urls 
-                        SET detection_count = detection_count + 1,
-                            last_updated = CURRENT_TIMESTAMP
+                        SELECT url, domain, threat_type, severity, description, detection_count
+                        FROM malicious_urls 
                         WHERE url = ?
                     """, (url.lower(),))
-                    conn.commit()
-                
-                return dict(result) if result else None
-        except sqlite3.Error as e:
-            logger.error(f"URL check error: {e}")
-            return None
+                    
+                    result = cursor.fetchone()
+                    if result:
+                        # Увеличиваем счетчик обнаружений
+                        try:
+                            cursor.execute("""
+                                UPDATE malicious_urls 
+                                SET detection_count = detection_count + 1,
+                                    last_updated = CURRENT_TIMESTAMP
+                                WHERE url = ?
+                            """, (url.lower(),))
+                            conn.commit()
+                        except sqlite3.Error as update_error:
+                            logger.warning(f"Failed to update detection_count for {url}: {update_error}")
+                            # Не критично, продолжаем
+                    
+                    return dict(result) if result else None
+            except sqlite3.OperationalError as e:
+                error_msg = str(e).lower()
+                if "database is locked" in error_msg and attempt < max_retries - 1:
+                    logger.warning(f"Database locked during URL check (attempt {attempt + 1}/{max_retries}), retrying...")
+                    import time
+                    time.sleep(0.1 * (attempt + 1))
+                    continue
+                logger.error(f"URL check operational error: {e}", exc_info=True)
+                raise
+            except sqlite3.Error as e:
+                logger.error(f"URL check database error: {e}", exc_info=True)
+                if attempt == max_retries - 1:
+                    raise
+                import time
+                time.sleep(0.1 * (attempt + 1))
+        
+        logger.error(f"URL check failed after {max_retries} attempts")
+        return None
     
     def check_domain(self, domain: str) -> List[Dict[str, Any]]:
-        """Проверяет домен в базе данных."""
-        try:
-            with self._get_connection() as conn:
-                cursor = conn.cursor()
-                cursor.execute("""
-                    SELECT url, threat_type, severity, description, detection_count
-                    FROM malicious_urls 
-                    WHERE domain = ?
-                """, (domain.lower(),))
-                
-                return [dict(row) for row in cursor.fetchall()]
-        except sqlite3.Error as e:
-            logger.error(f"Domain check error: {e}")
-            return []
+        """Проверяет домен в базе данных с улучшенной обработкой ошибок."""
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                with self._get_connection() as conn:
+                    cursor = conn.cursor()
+                    cursor.execute("""
+                        SELECT url, threat_type, severity, description, detection_count
+                        FROM malicious_urls 
+                        WHERE domain = ?
+                    """, (domain.lower(),))
+                    
+                    return [dict(row) for row in cursor.fetchall()]
+            except sqlite3.OperationalError as e:
+                error_msg = str(e).lower()
+                if "database is locked" in error_msg and attempt < max_retries - 1:
+                    logger.warning(f"Database locked during domain check (attempt {attempt + 1}/{max_retries}), retrying...")
+                    import time
+                    time.sleep(0.1 * (attempt + 1))
+                    continue
+                logger.error(f"Domain check operational error: {e}", exc_info=True)
+                raise
+            except sqlite3.Error as e:
+                logger.error(f"Domain check database error: {e}", exc_info=True)
+                if attempt == max_retries - 1:
+                    raise
+                import time
+                time.sleep(0.1 * (attempt + 1))
+        
+        logger.error(f"Domain check failed after {max_retries} attempts")
+        return []
     
     def add_malicious_hash(self, file_hash: str, threat_type: str, 
                           description: str = "", severity: str = "medium") -> bool:

@@ -267,11 +267,24 @@ class AnalysisService:
                 return result
                 
         except Exception as e:
-            logger.error(f"❌ URL analysis error: {e}")
+            # КРИТИЧНО: Детальное логирование ошибок анализа
+            import traceback
+            error_trace = traceback.format_exc()
+            error_type = type(e).__name__
+            
+            logger.error(
+                f"❌ URL analysis error for {url}:\n"
+                f"  Type: {error_type}\n"
+                f"  Message: {str(e)}\n"
+                f"  Traceback:\n{error_trace}",
+                exc_info=True
+            )
+            
+            # Возвращаем безопасный результат вместо падения
             return {
-                "safe": False,
+                "safe": None,  # None означает "неизвестно", а не "опасно"
                 "threat_type": "analysis_error",
-                "details": f"Analysis error: {str(e)}",
+                "details": f"Analysis temporarily unavailable: {error_type}",
                 "source": "error"
             }
     
@@ -284,8 +297,19 @@ class AnalysisService:
             if cached is not None:
                 return cached
             
-            # 1. Локальная проверка
-            hash_threat = db_manager.check_hash(file_hash)
+            # 1. Локальная проверка с обработкой ошибок БД
+            try:
+                hash_threat = db_manager.check_hash(file_hash)
+            except Exception as db_error:
+                logger.warning(f"Database hash check failed for {file_hash}, retrying: {db_error}")
+                import asyncio
+                await asyncio.sleep(0.1)
+                try:
+                    hash_threat = db_manager.check_hash(file_hash)
+                except Exception as retry_error:
+                    logger.error(f"Database hash check failed after retry: {retry_error}")
+                    hash_threat = None
+            
             if hash_threat:
                 return {
                     "safe": False,
@@ -339,11 +363,24 @@ class AnalysisService:
             return result
             
         except Exception as e:
-            logger.error(f"❌ File hash analysis error: {e}")
+            # КРИТИЧНО: Детальное логирование ошибок анализа файла
+            import traceback
+            error_trace = traceback.format_exc()
+            error_type = type(e).__name__
+            
+            logger.error(
+                f"❌ File hash analysis error for {file_hash}:\n"
+                f"  Type: {error_type}\n"
+                f"  Message: {str(e)}\n"
+                f"  Traceback:\n{error_trace}",
+                exc_info=True
+            )
+            
+            # Возвращаем безопасный результат вместо падения
             return {
-                "safe": False,
-                "threat_type": "analysis_error", 
-                "details": f"Analysis error: {str(e)}",
+                "safe": None,  # None означает "неизвестно"
+                "threat_type": "analysis_error",
+                "details": f"Analysis temporarily unavailable: {error_type}",
                 "source": "error"
             }
     
@@ -411,11 +448,25 @@ class AnalysisService:
             
             return base_result
         except Exception as e:
-            logger.error(f"❌ Uploaded file analysis error: {original_filename} - {e}")
+            # КРИТИЧНО: Детальное логирование ошибок анализа загруженного файла
+            import traceback
+            error_trace = traceback.format_exc()
+            error_type = type(e).__name__
+            
+            logger.error(
+                f"❌ Uploaded file analysis error for {original_filename}:\n"
+                f"  Type: {error_type}\n"
+                f"  Message: {str(e)}\n"
+                f"  Traceback:\n{error_trace}",
+                exc_info=True
+            )
+            
+            # Возвращаем безопасный результат вместо падения
             return {
-                "safe": False,
+                "filename": original_filename,
+                "safe": None,  # None означает "неизвестно"
                 "threat_type": "analysis_error",
-                "details": f"File analysis error: {str(e)}",
+                "details": f"Analysis temporarily unavailable: {error_type}",
                 "source": "error",
             }
 

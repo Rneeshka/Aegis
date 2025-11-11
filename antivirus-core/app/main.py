@@ -247,15 +247,41 @@ async def error_handling_middleware(request: Request, call_next):
             headers={"Access-Control-Allow-Origin": "*"}
         )
     except Exception as e:
-        # Логируем полную информацию об ошибке
-        logger.error(f"Unhandled exception in {request.url.path}: {str(e)}", exc_info=True)
+        # КРИТИЧНО: Детальное логирование для диагностики 500 ошибок
+        import traceback
+        error_trace = traceback.format_exc()
+        error_type = type(e).__name__
+        error_message = str(e)
+        
+        logger.error(
+            f"[500 ERROR] Unhandled exception in {request.url.path}:\n"
+            f"  Type: {error_type}\n"
+            f"  Message: {error_message}\n"
+            f"  Method: {request.method}\n"
+            f"  Headers: {dict(request.headers)}\n"
+            f"  Traceback:\n{error_trace}",
+            exc_info=True
+        )
+        
+        # В режиме разработки возвращаем больше информации
+        import os
+        is_debug = os.getenv("DEBUG", "false").lower() == "true"
+        
+        error_detail = {
+            "detail": "Internal server error",
+            "error_code": "INTERNAL_ERROR",
+            "request_id": f"req_{int(time.time())}",
+            "path": request.url.path,
+            "method": request.method
+        }
+        
+        if is_debug:
+            error_detail["error_type"] = error_type
+            error_detail["error_message"] = error_message[:200]  # Ограничиваем длину
+        
         return JSONResponse(
             status_code=500,
-            content={
-                "detail": "Internal server error",
-                "error_code": "INTERNAL_ERROR",
-                "request_id": f"req_{int(time.time())}"
-            },
+            content=error_detail,
             headers={"Access-Control-Allow-Origin": "*"}
         )
 

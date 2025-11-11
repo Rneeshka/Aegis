@@ -55,14 +55,28 @@ class ExternalAPIManager:
         return self._combine_external_results(results, url)
     
     async def _safe_api_call_with_context(self, client, method_name, *args, api_name: str):
-        """Безопасный вызов API с контекстным менеджером"""
-        try:
-            async with client as c:
-                method = getattr(c, method_name)
-                return await method(*args)
-        except Exception as e:
-            logger.error(f"{api_name} API error: {e}")
-            raise
+        """Безопасный вызов API с контекстным менеджером и улучшенной обработкой ошибок"""
+        max_retries = 2
+        for attempt in range(max_retries):
+            try:
+                async with client as c:
+                    method = getattr(c, method_name)
+                    result = await method(*args)
+                    return result
+            except asyncio.TimeoutError as e:
+                logger.warning(f"{api_name} API timeout (attempt {attempt + 1}/{max_retries}): {e}")
+                if attempt == max_retries - 1:
+                    raise
+                await asyncio.sleep(0.5 * (attempt + 1))
+            except Exception as e:
+                error_type = type(e).__name__
+                logger.error(f"{api_name} API error (attempt {attempt + 1}/{max_retries}): {error_type}: {e}")
+                # Для сетевых ошибок делаем retry
+                if "connection" in str(e).lower() or "timeout" in str(e).lower():
+                    if attempt < max_retries - 1:
+                        await asyncio.sleep(0.5 * (attempt + 1))
+                        continue
+                raise
     
     async def check_file_hash_multiple_apis(self, file_hash: str) -> Dict[str, Any]:
         """Проверка файла по хэшу через внешние API"""
