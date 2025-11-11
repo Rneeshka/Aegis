@@ -1,7 +1,5 @@
 # app/main.py
 from fastapi import FastAPI, HTTPException, File, UploadFile, Request, Depends
-from app.services import analysis_service
-from app.database import db_manager
 from app.logger import logger
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -9,6 +7,27 @@ import time
 import sqlite3
 from datetime import datetime
 from app.security import api_key_auth  # этот импорт должен быть
+
+# КРИТИЧНО: Безопасный импорт сервисов с обработкой ошибок
+try:
+    from app.services import analysis_service
+except Exception as import_error:
+    logger.critical(f"Failed to import analysis_service: {import_error}", exc_info=True)
+    # Создаем заглушку для предотвращения полного падения
+    class DummyAnalysisService:
+        async def analyze_url(self, url, use_external_apis=None):
+            return {"safe": None, "details": "Service unavailable", "source": "error"}
+        async def analyze_file_hash(self, file_hash, use_external_apis=None):
+            return {"safe": None, "details": "Service unavailable", "source": "error"}
+        async def analyze_uploaded_file(self, file_content, original_filename):
+            return {"safe": None, "details": "Service unavailable", "source": "error"}
+    analysis_service = DummyAnalysisService()
+
+try:
+    from app.database import db_manager
+except Exception as import_error:
+    logger.critical(f"Failed to import db_manager: {import_error}", exc_info=True)
+    db_manager = None
 
 def check_feature_access(request: Request, required_feature: str) -> bool:
     """Проверяет доступ к конкретной функции"""
@@ -127,11 +146,12 @@ async def request_logging_middleware(request: Request, call_next):
                 pass  # Игнорируем ошибки получения IP
             
             # КРИТИЧНО: Логирование в БД не должно падать
-            try:
-                db_manager.log_request(api_key, request.url.path, request.method, status_code, duration_ms, user_agent, client_ip)
-            except Exception as db_error:
-                # Логируем ошибку БД, но не падаем
-                logger.warning(f"Failed to log request to DB (non-critical): {db_error}")
+            if db_manager:
+                try:
+                    db_manager.log_request(api_key, request.url.path, request.method, status_code, duration_ms, user_agent, client_ip)
+                except Exception as db_error:
+                    # Логируем ошибку БД, но не падаем
+                    logger.warning(f"Failed to log request to DB (non-critical): {db_error}")
         except Exception as e:
             # Двойная защита - на случай если что-то еще упадет
             logger.error(f"Critical error in request logging middleware: {e}", exc_info=True)
@@ -202,6 +222,13 @@ async def optional_auth_middleware(request: Request, call_next):
                 return JSONResponse(status_code=401, content={"detail": "API key required"}, headers={"Access-Control-Allow-Origin": "*"})
             
             # КРИТИЧНО: Проверка БД обернута в try-except
+            if not db_manager:
+                logger.error("Database manager not available")
+                return JSONResponse(
+                    status_code=503, 
+                    content={"detail": "Service temporarily unavailable"},
+                    headers={"Access-Control-Allow-Origin": "*"}
+                )
             try:
                 api_key_info = db_manager.validate_api_key(api_key)
             except Exception as db_error:
@@ -252,27 +279,32 @@ async def optional_auth_middleware(request: Request, call_next):
     
     # Если ключ есть - проверяем его
     if api_key:
-        try:
-            is_valid, message = db_manager.validate_api_key(api_key)
-            if not is_valid:
-                logger.warning(f"Invalid API key used for {request.url.path}")
-                return JSONResponse(
-                    status_code=401, 
-                    content={"detail": message},
-                    headers={"Access-Control-Allow-Origin": "*"}
-                )
-            # Добавляем информацию о ключе в request state
-            request.state.api_key_info = db_manager.get_api_key_info(api_key)
-            
-            # КРИТИЧНО: Логирование для диагностики аутентификации
-            is_hover_req = request.headers.get("X-Request-Source") == "hover"
-            if is_hover_req:
-                logger.debug(f"[AUTH] Hover request authenticated: key={api_key[:10]}..., path={request.url.path}")
-        except Exception as db_error:
-            # КРИТИЧНО: Ошибка БД не должна ломать запросы
-            logger.error(f"Database error during API key check: {db_error}", exc_info=True)
-            # Продолжаем без аутентификации (базовый доступ)
+        if not db_manager:
+            # БД недоступна - продолжаем без аутентификации
+            logger.warning("Database manager not available, skipping API key validation")
             request.state.api_key_info = None
+        else:
+            try:
+                is_valid, message = db_manager.validate_api_key(api_key)
+                if not is_valid:
+                    logger.warning(f"Invalid API key used for {request.url.path}")
+                    return JSONResponse(
+                        status_code=401, 
+                        content={"detail": message},
+                        headers={"Access-Control-Allow-Origin": "*"}
+                    )
+                # Добавляем информацию о ключе в request state
+                request.state.api_key_info = db_manager.get_api_key_info(api_key)
+                
+                # КРИТИЧНО: Логирование для диагностики аутентификации
+                is_hover_req = request.headers.get("X-Request-Source") == "hover"
+                if is_hover_req:
+                    logger.debug(f"[AUTH] Hover request authenticated: key={api_key[:10]}..., path={request.url.path}")
+            except Exception as db_error:
+                # КРИТИЧНО: Ошибка БД не должна ломать запросы
+                logger.error(f"Database error during API key check: {db_error}", exc_info=True)
+                # Продолжаем без аутентификации (базовый доступ)
+                request.state.api_key_info = None
     else:
         # Без ключа - базовый доступ
         request.state.api_key_info = None
@@ -499,15 +531,30 @@ async def check_url_secure(
 ):
     """Проверка URL - базовый функционал доступен всем"""
     # КРИТИЧНО: Логирование для диагностики разницы между popup и hover запросами
-    client_ip = request.headers.get("X-Forwarded-For") or (request.client.host if request.client else None)
-    user_agent = request.headers.get("User-Agent", "")
-    api_key = request.headers.get("X-API-Key") or request.headers.get("Authorization", "").replace("Bearer ", "").strip()
-    is_hover = "hover" in user_agent.lower() or request.headers.get("X-Request-Source") == "hover"
-    
-    logger.info(f"[CHECK_URL] Request from {'HOVER' if is_hover else 'POPUP'}: url={url_request.url[:50]}, has_api_key={bool(api_key)}, ip={client_ip}")
+    try:
+        client_ip = request.headers.get("X-Forwarded-For") or (request.client.host if request.client else None)
+        user_agent = request.headers.get("User-Agent", "")
+        api_key = request.headers.get("X-API-Key") or request.headers.get("Authorization", "").replace("Bearer ", "").strip()
+        is_hover = "hover" in user_agent.lower() or request.headers.get("X-Request-Source") == "hover"
+        
+        logger.info(f"[CHECK_URL] Request from {'HOVER' if is_hover else 'POPUP'}: url={str(url_request.url)[:50]}, has_api_key={bool(api_key)}, ip={client_ip}")
+    except Exception as log_error:
+        logger.warning(f"Error in request logging: {log_error}")
+        is_hover = False
     
     try:
-        validation_error = security_validator.validate_url(str(url_request.url))
+        # КРИТИЧНО: Валидация URL с обработкой ошибок
+        try:
+            url_str = str(url_request.url)
+            validation_error = security_validator.validate_url(url_str)
+        except Exception as validation_ex:
+            logger.error(f"URL validation error: {validation_ex}", exc_info=True)
+            return JSONResponse(
+                status_code=400,
+                content={"detail": f"Invalid URL format: {str(validation_ex)}", "safe": None, "source": "validation_error"},
+                headers={"Access-Control-Allow-Origin": "*"}
+            )
+        
         if validation_error:
             logger.warning(f"[CHECK_URL] Validation error ({'HOVER' if is_hover else 'POPUP'}): {validation_error}")
             return JSONResponse(
@@ -524,13 +571,57 @@ async def check_url_secure(
         if is_hover:
             logger.debug(f"[CHECK_URL HOVER] Starting analysis with external APIs")
         
-        # Используем асинхронный вызов с учетом уровня доступа
-        result = await analysis_service.analyze_url(str(url_request.url), use_external_apis=use_external_apis)
+        # КРИТИЧНО: Используем асинхронный вызов с обработкой ошибок
+        try:
+            result = await analysis_service.analyze_url(url_str, use_external_apis=use_external_apis)
+        except Exception as analysis_error:
+            logger.error(f"Analysis service error for {url_str}: {analysis_error}", exc_info=True)
+            # Возвращаем безопасный результат вместо падения
+            result = {
+                "safe": None,
+                "threat_type": None,
+                "details": f"Analysis temporarily unavailable: {type(analysis_error).__name__}",
+                "source": "error"
+            }
+        
+        # КРИТИЧНО: Проверяем что result валиден
+        if not result or not isinstance(result, dict):
+            logger.error(f"Invalid result from analysis_service: {result}")
+            result = {
+                "safe": None,
+                "threat_type": None,
+                "details": "Analysis returned invalid result",
+                "source": "error"
+            }
         
         # КРИТИЧНО: Логирование результата для диагностики
         logger.info(f"[CHECK_URL] Result ({'HOVER' if is_hover else 'POPUP'}): safe={result.get('safe')}, source={result.get('source')}")
         
-        response_data = CheckResponse(**result).dict()
+        # КРИТИЧНО: Безопасное создание CheckResponse с fallback
+        try:
+            # Убеждаемся что все обязательные поля присутствуют
+            safe_result = {
+                "safe": result.get("safe"),
+                "threat_type": result.get("threat_type"),
+                "details": result.get("details", ""),
+                "source": result.get("source", "unknown")
+            }
+            # Если safe is None, устанавливаем False для валидации схемы
+            if safe_result["safe"] is None:
+                safe_result["safe"] = False
+                safe_result["details"] = (safe_result.get("details") or "") + " (status unknown)"
+            
+            response_data = CheckResponse(**safe_result).dict()
+        except Exception as schema_error:
+            logger.error(f"Schema validation error: {schema_error}, result: {result}", exc_info=True)
+            # Fallback на простой ответ
+            response_data = {
+                "safe": result.get("safe", False),
+                "threat_type": result.get("threat_type"),
+                "details": result.get("details", "Analysis completed with warnings"),
+                "source": result.get("source", "unknown")
+            }
+        
         return JSONResponse(
             content=response_data,
             headers={"Access-Control-Allow-Origin": "*"}
@@ -538,11 +629,18 @@ async def check_url_secure(
     except HTTPException:
         raise
     except Exception as e:
-        logger.error(f"URL check failed: {e}", exc_info=True)
+        # КРИТИЧНО: Детальное логирование всех ошибок
+        import traceback
+        error_trace = traceback.format_exc()
+        logger.error(
+            f"[CHECK_URL] Critical error: {type(e).__name__}: {str(e)}\n"
+            f"Traceback:\n{error_trace}",
+            exc_info=True
+        )
         return JSONResponse(
             status_code=500,
             content={
-                "detail": f"Analysis error: {str(e)}",
+                "detail": f"Internal server error: {type(e).__name__}",
                 "safe": None,
                 "source": "server_error"
             },
