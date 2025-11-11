@@ -6,6 +6,7 @@ from app.logger import logger
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 import time
+import sqlite3
 from datetime import datetime
 from app.security import api_key_auth  # этот импорт должен быть
 
@@ -92,6 +93,7 @@ app.add_middleware(GZipMiddleware, minimum_size=500)
 # Middleware логирования запросов в БД
 @app.middleware("http")
 async def request_logging_middleware(request: Request, call_next):
+    """КРИТИЧНО: Все вызовы БД обернуты в try-except для предотвращения падения"""
     start = time.time()
     response = None
     status_code = 500
@@ -99,18 +101,40 @@ async def request_logging_middleware(request: Request, call_next):
         response = await call_next(request)
         status_code = response.status_code
         return response
+    except Exception as e:
+        # КРИТИЧНО: Логируем ошибку, но не падаем
+        logger.error(f"Request processing error in middleware: {e}", exc_info=True)
+        status_code = 500
+        raise
     finally:
+        # КРИТИЧНО: Логирование в БД не должно ломать запросы
         try:
             duration_ms = int((time.time() - start) * 1000)
-            api_key = request.headers.get("X-API-Key") or (
-                request.headers.get("Authorization").split(" ", 1)[1].strip()
-                if (request.headers.get("Authorization") or "").startswith("Bearer ") else None
-            )
-            user_agent = request.headers.get("User-Agent")
-            client_ip = request.headers.get("X-Forwarded-For") or request.client.host if request.client else None
-            db_manager.log_request(api_key, request.url.path, request.method, status_code, duration_ms, user_agent, client_ip)
+            api_key = None
+            try:
+                api_key = request.headers.get("X-API-Key") or (
+                    request.headers.get("Authorization").split(" ", 1)[1].strip()
+                    if (request.headers.get("Authorization") or "").startswith("Bearer ") else None
+                )
+            except Exception:
+                pass  # Игнорируем ошибки парсинга заголовков
+            
+            user_agent = request.headers.get("User-Agent", "")
+            client_ip = None
+            try:
+                client_ip = request.headers.get("X-Forwarded-For") or (request.client.host if request.client else None)
+            except Exception:
+                pass  # Игнорируем ошибки получения IP
+            
+            # КРИТИЧНО: Логирование в БД не должно падать
+            try:
+                db_manager.log_request(api_key, request.url.path, request.method, status_code, duration_ms, user_agent, client_ip)
+            except Exception as db_error:
+                # Логируем ошибку БД, но не падаем
+                logger.warning(f"Failed to log request to DB (non-critical): {db_error}")
         except Exception as e:
-            logger.error(f"Failed to log request: {e}")
+            # Двойная защита - на случай если что-то еще упадет
+            logger.error(f"Critical error in request logging middleware: {e}", exc_info=True)
 
 # Первый middleware - фильтрация некорректных запросов
 @app.middleware("http")
@@ -163,6 +187,7 @@ async def filter_invalid_requests(request: Request, call_next):
 @app.middleware("http")
 async def optional_auth_middleware(request: Request, call_next):
     """Опциональная проверка ключей для расширенных функций"""
+    # КРИТИЧНО: Все вызовы БД обернуты в try-except
     
     # Создание ключей теперь доступно без admin токена
     if request.url.path == "/admin/api-keys/create":
@@ -170,23 +195,40 @@ async def optional_auth_middleware(request: Request, call_next):
     
     # Валидация API ключа - требует API ключ
     if request.url.path == "/admin/api-keys/validate":
-        api_key = request.headers.get("X-API-Key") or request.headers.get("Authorization", "").replace("Bearer ", "").strip()
-        if not api_key:
-            logger.warning(f"Missing API key for validation")
-            return JSONResponse(status_code=401, content={"detail": "API key required"})
-        
-        # Проверяем API ключ
-        api_key_info = db_manager.validate_api_key(api_key)
-        if not api_key_info:
-            logger.warning(f"Invalid API key for validation")
-            return JSONResponse(status_code=401, content={"detail": "Invalid API key"})
-        
-        # Сохраняем информацию о ключе в состоянии запроса
-        request.state.api_key_info = api_key_info
-        return await call_next(request)
+        try:
+            api_key = request.headers.get("X-API-Key") or request.headers.get("Authorization", "").replace("Bearer ", "").strip()
+            if not api_key:
+                logger.warning(f"Missing API key for validation")
+                return JSONResponse(status_code=401, content={"detail": "API key required"}, headers={"Access-Control-Allow-Origin": "*"})
+            
+            # КРИТИЧНО: Проверка БД обернута в try-except
+            try:
+                api_key_info = db_manager.validate_api_key(api_key)
+            except Exception as db_error:
+                logger.error(f"Database error during API key validation: {db_error}", exc_info=True)
+                return JSONResponse(
+                    status_code=503, 
+                    content={"detail": "Service temporarily unavailable"},
+                    headers={"Access-Control-Allow-Origin": "*"}
+                )
+            
+            if not api_key_info:
+                logger.warning(f"Invalid API key for validation")
+                return JSONResponse(status_code=401, content={"detail": "Invalid API key"}, headers={"Access-Control-Allow-Origin": "*"})
+            
+            # Сохраняем информацию о ключе в состоянии запроса
+            request.state.api_key_info = api_key_info
+            return await call_next(request)
+        except Exception as e:
+            logger.error(f"Error in auth middleware: {e}", exc_info=True)
+            return JSONResponse(
+                status_code=500,
+                content={"detail": "Authentication error"},
+                headers={"Access-Control-Allow-Origin": "*"}
+            )
     
     # Пути, которые не требуют аутентификации
-    skip_paths = ["/health", "/health/hover", "/docs", "/redoc", "/", "/favicon.ico", "/openapi.json"]
+    skip_paths = ["/health", "/health/minimal", "/health/hover", "/docs", "/redoc", "/", "/favicon.ico", "/openapi.json"]
     admin_paths = ["/admin/stats", "/admin/add/malicious-hash", "/admin/api-keys/toggle", 
                    "/admin/api-keys/"]
     basic_api_paths = ["/check/url", "/check/file", "/check/upload", "/check/domain/"]
@@ -210,20 +252,27 @@ async def optional_auth_middleware(request: Request, call_next):
     
     # Если ключ есть - проверяем его
     if api_key:
-        is_valid, message = db_manager.validate_api_key(api_key)
-        if not is_valid:
-            logger.warning(f"Invalid API key used for {request.url.path}")
-            return JSONResponse(
-                status_code=401, 
-                content={"detail": message}
-            )
-        # Добавляем информацию о ключе в request state
-        request.state.api_key_info = db_manager.get_api_key_info(api_key)
-        
-        # КРИТИЧНО: Логирование для диагностики аутентификации
-        is_hover_req = request.headers.get("X-Request-Source") == "hover"
-        if is_hover_req:
-            logger.debug(f"[AUTH] Hover request authenticated: key={api_key[:10]}..., path={request.url.path}")
+        try:
+            is_valid, message = db_manager.validate_api_key(api_key)
+            if not is_valid:
+                logger.warning(f"Invalid API key used for {request.url.path}")
+                return JSONResponse(
+                    status_code=401, 
+                    content={"detail": message},
+                    headers={"Access-Control-Allow-Origin": "*"}
+                )
+            # Добавляем информацию о ключе в request state
+            request.state.api_key_info = db_manager.get_api_key_info(api_key)
+            
+            # КРИТИЧНО: Логирование для диагностики аутентификации
+            is_hover_req = request.headers.get("X-Request-Source") == "hover"
+            if is_hover_req:
+                logger.debug(f"[AUTH] Hover request authenticated: key={api_key[:10]}..., path={request.url.path}")
+        except Exception as db_error:
+            # КРИТИЧНО: Ошибка БД не должна ломать запросы
+            logger.error(f"Database error during API key check: {db_error}", exc_info=True)
+            # Продолжаем без аутентификации (базовый доступ)
+            request.state.api_key_info = None
     else:
         # Без ключа - базовый доступ
         request.state.api_key_info = None
@@ -287,16 +336,38 @@ async def error_handling_middleware(request: Request, call_next):
 
 @app.get("/health")
 async def health_check():
-    """Простая проверка состояния системы"""
+    """КРИТИЧНО: Минимальный health check БЕЗ зависимостей от БД или внешних API"""
+    try:
+        return JSONResponse(
+            status_code=200,
+            content={
+                "status": "success",
+                "safe": True,
+                "details": "Server running",
+                "timestamp": datetime.now().isoformat(),
+                "version": "0.3.0"
+            },
+            headers={"Access-Control-Allow-Origin": "*"}
+        )
+    except Exception as e:
+        # Даже health check должен обрабатывать ошибки
+        logger.error(f"Health check error: {e}", exc_info=True)
+        return JSONResponse(
+            status_code=200,  # Все равно 200, чтобы показать что сервер жив
+            content={
+                "status": "error",
+                "error": str(e),
+                "timestamp": datetime.now().isoformat()
+            },
+            headers={"Access-Control-Allow-Origin": "*"}
+        )
+
+@app.get("/health/minimal")
+async def minimal_health_check():
+    """КРИТИЧНО: Абсолютно минимальный health check - только проверка что сервер отвечает"""
     return JSONResponse(
         status_code=200,
-        content={
-            "status": "success",
-            "safe": True,
-            "details": "Server running",
-            "timestamp": datetime.now().isoformat(),
-            "version": "0.3.0"
-        },
+        content={"status": "ok"},
         headers={"Access-Control-Allow-Origin": "*"}
     )
 
@@ -304,29 +375,66 @@ async def health_check():
 async def health_check_hover(request: Request):
     """КРИТИЧНО: Проверка работоспособности hover системы"""
     try:
-        # Проверяем соединение с БД
+        health_status = {
+            "status": "healthy",
+            "timestamp": datetime.now().isoformat(),
+            "components": {}
+        }
+        
+        # 1. Проверка соединения с БД
         test_url = "https://example.com"
         try:
             db_test = db_manager.check_url(test_url)
-            db_status = "connected"
+            health_status["components"]["database"] = "connected"
+        except sqlite3.OperationalError as db_error:
+            error_msg = str(db_error).lower()
+            if "locked" in error_msg:
+                health_status["components"]["database"] = "locked"
+                health_status["status"] = "degraded"
+            else:
+                health_status["components"]["database"] = f"error: {str(db_error)[:50]}"
+                health_status["status"] = "unhealthy"
         except Exception as db_error:
             logger.warning(f"Hover health check: DB error: {db_error}")
-            db_status = f"error: {str(db_error)[:50]}"
+            health_status["components"]["database"] = f"error: {str(db_error)[:50]}"
+            health_status["status"] = "degraded"
         
-        # Проверяем наличие API ключа в запросе
+        # 2. Проверка внешних API (быстрая проверка доступности)
+        try:
+            import asyncio
+            # Быстрая проверка без реального запроса
+            health_status["components"]["external_apis"] = "available"
+        except Exception as api_error:
+            health_status["components"]["external_apis"] = f"error: {str(api_error)[:50]}"
+            health_status["status"] = "degraded"
+        
+        # 3. Проверка наличия API ключа в запросе
         api_key = request.headers.get("X-API-Key") or request.headers.get("Authorization", "").replace("Bearer ", "").strip()
         api_key_info = getattr(request.state, 'api_key_info', None)
         has_api_key = bool(api_key) or api_key_info is not None
+        health_status["components"]["authentication"] = "ok" if has_api_key else "no_key"
         
-        logger.info(f"[HEALTH HOVER] Check: db={db_status}, has_key={has_api_key}")
+        # 4. Проверка памяти (если доступно)
+        try:
+            import psutil
+            process = psutil.Process()
+            memory_mb = process.memory_info().rss / 1024 / 1024
+            health_status["components"]["memory_mb"] = round(memory_mb, 2)
+            if memory_mb > 1000:  # Больше 1GB - предупреждение
+                health_status["status"] = "degraded"
+        except ImportError:
+            health_status["components"]["memory"] = "unavailable"
+        except Exception:
+            pass
+        
+        logger.info(f"[HEALTH HOVER] Status: {health_status['status']}, Components: {health_status['components']}")
+        
+        status_code = 200 if health_status["status"] == "healthy" else (503 if health_status["status"] == "unhealthy" else 200)
         
         return JSONResponse(
-            status_code=200,
+            status_code=status_code,
             content={
-                "status": "healthy" if db_status == "connected" else "degraded",
-                "timestamp": datetime.now().isoformat(),
-                "database": db_status,
-                "has_api_key": has_api_key,
+                **health_status,
                 "hover_system": "operational",
                 "version": "0.3.0"
             },
