@@ -104,6 +104,13 @@ class AnalysisService:
     
     async def analyze_url(self, url: str, use_external_apis: bool = None) -> Dict[str, Any]:
         """Улучшенный анализ URL с внешними API"""
+        # КРИТИЧНО: Сохраняем оригинальный URL для логирования
+        original_url = url
+        # КРИТИЧНО: Инициализируем все переменные в начале
+        cache_key = None
+        domain = None
+        domain_cache_key = None
+        
         try:
             logger.info(f"🔍 Analyzing URL: {url}")
             # Нормализация URL (убираем якорь, приводим к нижнему регистру хоста)
@@ -113,7 +120,7 @@ class AnalysisService:
                 normalized_netloc = parts.netloc.lower()
                 url = urlunsplit((parts.scheme, normalized_netloc, parts.path, parts.query, ""))
             except Exception:
-                pass
+                pass  # Используем оригинальный url если нормализация не удалась
             # Кэш
             cache_key = f"url:{url}"
             cached = self._cache_get(cache_key)
@@ -221,7 +228,25 @@ class AnalysisService:
                     logger.error(f"External API check failed: {e}", exc_info=True)
             
             # 4. Локальная эвристика (если внешние API чистые или недоступны)
-            heuristic_result = self._url_heuristic_analysis(url, domain)
+            try:
+                heuristic_result = self._url_heuristic_analysis(url, domain)
+            except Exception as heuristic_error:
+                logger.error(f"Heuristic analysis failed: {heuristic_error}", exc_info=True)
+                heuristic_result = {
+                    "safe": True,
+                    "threat_type": None,
+                    "details": "Heuristic analysis unavailable",
+                    "confidence": 50
+                }
+            
+            # КРИТИЧНО: Убеждаемся что heuristic_result валиден
+            if not heuristic_result or not isinstance(heuristic_result, dict):
+                heuristic_result = {
+                    "safe": True,
+                    "threat_type": None,
+                    "details": "Heuristic analysis returned invalid result",
+                    "confidence": 50
+                }
             
             # 5. Объединяем результаты - ПРИОРИТЕТ ВНЕШНИМ API
             if external_result and not external_result.get("safe", True):
@@ -265,7 +290,9 @@ class AnalysisService:
                 return result
                 
         except Exception as e:
-            logger.error(f"❌ URL analysis error: {e}", exc_info=True)
+            # КРИТИЧНО: Используем original_url который всегда определен
+            error_url = original_url if 'original_url' in locals() else url if 'url' in locals() else "unknown"
+            logger.error(f"❌ URL analysis error for {error_url}: {e}", exc_info=True)
             return {
                 "safe": None,
                 "threat_type": "analysis_error",

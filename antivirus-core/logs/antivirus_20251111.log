@@ -6450,3 +6450,297 @@ UnboundLocalError: local variable 'asyncio' referenced before assignment
 2025-11-11 22:01:54,957 - app.logger - INFO - Rate limits reset
 2025-11-11 22:01:54,957 - app.logger - INFO - Background job manager started
 2025-11-11 22:01:54,957 - app.logger - INFO - Background job manager started
+2025-11-11 22:02:24,393 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://www.google.com/search?q=%D0%BA%D1%83%D1%80, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:02:24,394 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 22:02:24,397 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 22:02:24,398 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:02:24,400 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=None, source=error
+2025-11-11 22:02:28,928 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://www.google.com/search?q=%D0%BA%D1%83%D1%80, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:02:28,929 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 22:02:28,932 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 22:02:28,932 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:02:28,933 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=None, source=error
+2025-11-11 22:02:34,352 - app.logger - INFO - [HEALTH HOVER] Status: healthy, Components: {'database': 'connected', 'external_apis': 'available', 'authentication': 'ok', 'memory': 'unavailable'}
+2025-11-11 22:02:34,392 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://pikabu.ru/story/kak_nalit_pobolshe_vodyi_v, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:02:34,392 - app.logger - INFO - 🔍 Analyzing URL: https://pikabu.ru/story/kak_nalit_pobolshe_vodyi_v_kursovuyu_13365005
+2025-11-11 22:02:34,395 - app.logger - INFO - 🔍 Checking external APIs for: https://pikabu.ru/story/kak_nalit_pobolshe_vodyi_v_kursovuyu_13365005
+2025-11-11 22:02:34,396 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:02:34,396 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=None, source=error
+2025-11-11 22:02:53,184 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://www.google.com/search?q=%D0%BA%D1%83%D1%80, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:02:53,185 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 22:02:53,188 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F&sca_esv=c019091b52478373&sxsrf=AE3TifPPBKPxPgkMU_-7OfFjBjquRdSN2g:1762880623694&ei=b2wTaYCOKo2TwPAP8IO0uQE&start=60&sa=N&sstk=Af77f_dN9RQArC41aOj71D1LrKB4-JLbZvTmJVKsB546kUCB6un1bHfYpdrR9xkcV5wWYqqpRwsG8U6OtsCJ9nD5ed-KA9C7Y4hIDQ&ved=2ahUKEwjAge2KyuqQAxWNCRAIHfABLRcQ8tMDegQICRAO&biw=1920&bih=1032&dpr=1
+2025-11-11 22:02:53,188 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:02:53,188 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=None, source=error
+2025-11-11 22:02:55,083 - app.logger - INFO - [HEALTH HOVER] Status: healthy, Components: {'database': 'connected', 'external_apis': 'available', 'authentication': 'ok', 'memory': 'unavailable'}
+2025-11-11 22:02:55,122 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://pikabu.ru/story/kak_nalit_pobolshe_vodyi_v, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:02:55,122 - app.logger - INFO - 🔍 Analyzing URL: https://pikabu.ru/story/kak_nalit_pobolshe_vodyi_v_kursovuyu_13365005
+2025-11-11 22:02:55,125 - app.logger - INFO - 🔍 Checking external APIs for: https://pikabu.ru/story/kak_nalit_pobolshe_vodyi_v_kursovuyu_13365005
+2025-11-11 22:02:55,125 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:02:55,125 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=None, source=error
+2025-11-11 22:03:42,563 - app.logger - INFO - [HEALTH HOVER] Status: healthy, Components: {'database': 'connected', 'external_apis': 'available', 'authentication': 'ok', 'memory': 'unavailable'}
+2025-11-11 22:03:42,607 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://tebestudent.ru/polezno-znat/kursovye-rabot, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:03:42,607 - app.logger - INFO - 🔍 Analyzing URL: https://tebestudent.ru/polezno-znat/kursovye-raboty/obrazec-kursovoj-raboty/
+2025-11-11 22:03:42,610 - app.logger - INFO - 🔍 Checking external APIs for: https://tebestudent.ru/polezno-znat/kursovye-raboty/obrazec-kursovoj-raboty/
+2025-11-11 22:03:42,610 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:03:42,611 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=None, source=error
+2025-11-11 22:04:06,071 - app.logger - INFO - [HEALTH HOVER] Status: healthy, Components: {'database': 'connected', 'external_apis': 'available', 'authentication': 'ok', 'memory': 'unavailable'}
+2025-11-11 22:04:06,116 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://mgimo.ru/study/faculty/mp/kkp/docs/papers-, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:04:06,116 - app.logger - INFO - 🔍 Analyzing URL: https://mgimo.ru/study/faculty/mp/kkp/docs/papers-rules/
+2025-11-11 22:04:06,119 - app.logger - INFO - 🔍 Checking external APIs for: https://mgimo.ru/study/faculty/mp/kkp/docs/papers-rules/
+2025-11-11 22:04:06,119 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:04:06,120 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=None, source=error
+2025-11-11 22:04:07,790 - app.logger - INFO - [HEALTH HOVER] Status: healthy, Components: {'database': 'connected', 'external_apis': 'available', 'authentication': 'ok', 'memory': 'unavailable'}
+2025-11-11 22:04:07,833 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://studlance.ru/zakaz/kursovaya, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:04:07,834 - app.logger - INFO - 🔍 Analyzing URL: https://studlance.ru/zakaz/kursovaya
+2025-11-11 22:04:07,837 - app.logger - INFO - 🔍 Checking external APIs for: https://studlance.ru/zakaz/kursovaya
+2025-11-11 22:04:07,837 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:04:07,838 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=None, source=error
+2025-11-11 22:10:48,226 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://cursor.com/dashboard, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:10:48,228 - app.logger - INFO - 🔍 Analyzing URL: https://cursor.com/dashboard
+2025-11-11 22:10:48,232 - app.logger - INFO - 🔍 Checking external APIs for: https://cursor.com/dashboard
+2025-11-11 22:10:48,232 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:10:48,233 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=None, source=error
+2025-11-11 22:10:52,528 - app.logger - INFO - [HEALTH HOVER] Status: healthy, Components: {'database': 'connected', 'external_apis': 'available', 'authentication': 'ok', 'memory': 'unavailable'}
+2025-11-11 22:10:52,567 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://authenticator.cursor.sh/api/login?provider, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:10:52,567 - app.logger - INFO - 🔍 Analyzing URL: https://authenticator.cursor.sh/api/login?provider=AppleOAuth&state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%2522b32ce94b-108c-418f-a759-bd4732933f89%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&client_id=client_01GS6W3C96KW4WRS6Z93JCE2RJ&source=signin&authorization_session_id=01K9T57WRWRCZBDGRZ60AY4CFN
+2025-11-11 22:10:52,571 - app.logger - INFO - 🔍 Checking external APIs for: https://authenticator.cursor.sh/api/login?provider=AppleOAuth&state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%2522b32ce94b-108c-418f-a759-bd4732933f89%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&client_id=client_01GS6W3C96KW4WRS6Z93JCE2RJ&source=signin&authorization_session_id=01K9T57WRWRCZBDGRZ60AY4CFN
+2025-11-11 22:10:52,571 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:10:52,572 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=None, source=error
+2025-11-11 22:10:52,820 - app.logger - INFO - [HEALTH HOVER] Status: healthy, Components: {'database': 'connected', 'external_apis': 'available', 'authentication': 'ok', 'memory': 'unavailable'}
+2025-11-11 22:10:52,864 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://authenticator.cursor.sh/sign-up?state=%257, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:10:52,864 - app.logger - INFO - 🔍 Analyzing URL: https://authenticator.cursor.sh/sign-up?state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%2522b32ce94b-108c-418f-a759-bd4732933f89%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&authorization_session_id=01K9T57WRWRCZBDGRZ60AY4CFN
+2025-11-11 22:10:52,868 - app.logger - INFO - 🔍 Checking external APIs for: https://authenticator.cursor.sh/sign-up?state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%2522b32ce94b-108c-418f-a759-bd4732933f89%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&authorization_session_id=01K9T57WRWRCZBDGRZ60AY4CFN
+2025-11-11 22:10:52,868 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:10:52,869 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=None, source=error
+2025-11-11 22:10:52,923 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://authenticator.cursor.sh/sign-up?state=%257, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:10:52,923 - app.logger - INFO - 🔍 Analyzing URL: https://authenticator.cursor.sh/sign-up?state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%2522b32ce94b-108c-418f-a759-bd4732933f89%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&authorization_session_id=01K9T57WRWRCZBDGRZ60AY4CFN
+2025-11-11 22:10:52,927 - app.logger - INFO - 🔍 Checking external APIs for: https://authenticator.cursor.sh/sign-up?state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%2522b32ce94b-108c-418f-a759-bd4732933f89%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&authorization_session_id=01K9T57WRWRCZBDGRZ60AY4CFN
+2025-11-11 22:10:52,927 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:10:52,928 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=None, source=error
+2025-11-11 22:11:13,639 - app.logger - INFO - [HEALTH HOVER] Status: healthy, Components: {'database': 'connected', 'external_apis': 'available', 'authentication': 'ok', 'memory': 'unavailable'}
+2025-11-11 22:11:13,683 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://authenticator.cursor.sh/api/login?provider, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:11:13,684 - app.logger - INFO - 🔍 Analyzing URL: https://authenticator.cursor.sh/api/login?provider=AppleOAuth&state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%2522b32ce94b-108c-418f-a759-bd4732933f89%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&client_id=client_01GS6W3C96KW4WRS6Z93JCE2RJ&source=signup&authorization_session_id=01K9T57WRWRCZBDGRZ60AY4CFN
+2025-11-11 22:11:13,687 - app.logger - INFO - 🔍 Checking external APIs for: https://authenticator.cursor.sh/api/login?provider=AppleOAuth&state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%2522b32ce94b-108c-418f-a759-bd4732933f89%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&client_id=client_01GS6W3C96KW4WRS6Z93JCE2RJ&source=signup&authorization_session_id=01K9T57WRWRCZBDGRZ60AY4CFN
+2025-11-11 22:11:13,687 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:11:13,688 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=None, source=error
+2025-11-11 22:11:15,433 - app.logger - INFO - [HEALTH HOVER] Status: healthy, Components: {'database': 'connected', 'external_apis': 'available', 'authentication': 'ok', 'memory': 'unavailable'}
+2025-11-11 22:11:15,474 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://authenticator.cursor.sh/api/login?provider, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:11:15,474 - app.logger - INFO - 🔍 Analyzing URL: https://authenticator.cursor.sh/api/login?provider=GitHubOAuth&state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%2522b32ce94b-108c-418f-a759-bd4732933f89%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&client_id=client_01GS6W3C96KW4WRS6Z93JCE2RJ&source=signup&authorization_session_id=01K9T57WRWRCZBDGRZ60AY4CFN
+2025-11-11 22:11:15,477 - app.logger - INFO - 🔍 Checking external APIs for: https://authenticator.cursor.sh/api/login?provider=GitHubOAuth&state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%2522b32ce94b-108c-418f-a759-bd4732933f89%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&client_id=client_01GS6W3C96KW4WRS6Z93JCE2RJ&source=signup&authorization_session_id=01K9T57WRWRCZBDGRZ60AY4CFN
+2025-11-11 22:11:15,478 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:11:15,478 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=None, source=error
+2025-11-11 22:11:16,070 - app.logger - INFO - [HEALTH HOVER] Status: healthy, Components: {'database': 'connected', 'external_apis': 'available', 'authentication': 'ok', 'memory': 'unavailable'}
+2025-11-11 22:11:29,092 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://authenticator.cursor.sh/sign-up?state=%257, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:11:29,093 - app.logger - INFO - 🔍 Analyzing URL: https://authenticator.cursor.sh/sign-up?state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%2522b32ce94b-108c-418f-a759-bd4732933f89%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&authorization_session_id=01K9T57WRWRCZBDGRZ60AY4CFN
+2025-11-11 22:11:29,095 - app.logger - INFO - 🔍 Checking external APIs for: https://authenticator.cursor.sh/sign-up?state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%2522b32ce94b-108c-418f-a759-bd4732933f89%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&authorization_session_id=01K9T57WRWRCZBDGRZ60AY4CFN
+2025-11-11 22:11:29,096 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:11:29,096 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=None, source=error
+2025-11-11 22:15:42,314 - app.logger - INFO - [HEALTH HOVER] Status: healthy, Components: {'database': 'connected', 'external_apis': 'available', 'authentication': 'ok', 'memory': 'unavailable'}
+2025-11-11 22:15:42,361 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://cursor.com/agents, has_api_key=True, ip=127.0.0.1
+2025-11-11 22:15:42,361 - app.logger - INFO - 🔍 Analyzing URL: https://cursor.com/agents
+2025-11-11 22:15:42,365 - app.logger - INFO - 🔍 Checking external APIs for: https://cursor.com/agents
+2025-11-11 22:15:42,367 - app.logger - ERROR - ❌ URL analysis error: local variable 'asyncio' referenced before assignment
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 192, in analyze_url
+    external_result = await asyncio.wait_for(
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/Aegis/antivirus-core/app/services.py", line 218, in analyze_url
+    except asyncio.TimeoutError:
+UnboundLocalError: local variable 'asyncio' referenced before assignment
+2025-11-11 22:15:42,368 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=None, source=error
+2025-11-11 22:25:18,005 - app.logger - INFO - Background job manager stopped
+2025-11-11 22:25:18,006 - app.logger - INFO - Background job manager stopped
+2025-11-11 22:25:18,673 - app.logger - INFO - Logging system initialized with rotation
+2025-11-11 22:25:18,690 - app.database - INFO - Database initialized successfully with all tables
+2025-11-11 22:25:18,918 - app.logger - INFO - Database connection established successfully
+2025-11-11 22:25:18,919 - app.database - INFO - Rate limits reset successfully
+2025-11-11 22:25:18,920 - app.logger - INFO - Rate limits reset
+2025-11-11 22:25:18,920 - app.logger - INFO - Background job manager started
+2025-11-11 22:25:18,920 - app.logger - INFO - Background job manager started
+2025-11-11 22:25:37,908 - app.logger - INFO - Background job manager stopped
+2025-11-11 22:25:37,909 - app.logger - INFO - Background job manager stopped
+2025-11-11 22:25:38,627 - app.logger - INFO - Logging system initialized with rotation
+2025-11-11 22:25:38,637 - app.database - INFO - Database initialized successfully with all tables
+2025-11-11 22:25:38,833 - app.logger - INFO - Database connection established successfully
+2025-11-11 22:25:38,834 - app.database - INFO - Rate limits reset successfully
+2025-11-11 22:25:38,835 - app.logger - INFO - Rate limits reset
+2025-11-11 22:25:38,835 - app.logger - INFO - Background job manager started
+2025-11-11 22:25:38,835 - app.logger - INFO - Background job manager started
+2025-11-11 22:25:50,493 - app.logger - INFO - Background job manager stopped
+2025-11-11 22:25:50,494 - app.logger - INFO - Background job manager stopped
+2025-11-11 22:25:51,108 - app.logger - INFO - Logging system initialized with rotation
+2025-11-11 22:25:51,119 - app.database - INFO - Database initialized successfully with all tables
+2025-11-11 22:25:51,332 - app.logger - INFO - Database connection established successfully
+2025-11-11 22:25:51,333 - app.database - INFO - Rate limits reset successfully
+2025-11-11 22:25:51,333 - app.logger - INFO - Rate limits reset
+2025-11-11 22:25:51,334 - app.logger - INFO - Background job manager started
+2025-11-11 22:25:51,334 - app.logger - INFO - Background job manager started
