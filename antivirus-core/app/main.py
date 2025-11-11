@@ -1,6 +1,5 @@
 # app/main.py
 from fastapi import FastAPI, HTTPException, File, UploadFile, Request, Depends
-app = FastAPI()
 from app.services import analysis_service
 from app.database import db_manager
 from app.logger import logger
@@ -9,14 +8,6 @@ from fastapi.staticfiles import StaticFiles
 import time
 from datetime import datetime
 from app.security import api_key_auth  # этот импорт должен быть
-from fastapi.middleware.cors import CORSMiddleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 def check_feature_access(request: Request, required_feature: str) -> bool:
     """Проверяет доступ к конкретной функции"""
@@ -195,7 +186,7 @@ async def optional_auth_middleware(request: Request, call_next):
         return await call_next(request)
     
     # Пути, которые не требуют аутентификации
-    skip_paths = ["/health", "/docs", "/redoc", "/", "/favicon.ico", "/openapi.json"]
+    skip_paths = ["/health", "/health/hover", "/docs", "/redoc", "/", "/favicon.ico", "/openapi.json"]
     admin_paths = ["/admin/stats", "/admin/add/malicious-hash", "/admin/api-keys/toggle", 
                    "/admin/api-keys/"]
     basic_api_paths = ["/check/url", "/check/file", "/check/upload", "/check/domain/"]
@@ -228,6 +219,11 @@ async def optional_auth_middleware(request: Request, call_next):
             )
         # Добавляем информацию о ключе в request state
         request.state.api_key_info = db_manager.get_api_key_info(api_key)
+        
+        # КРИТИЧНО: Логирование для диагностики аутентификации
+        is_hover_req = request.headers.get("X-Request-Source") == "hover"
+        if is_hover_req:
+            logger.debug(f"[AUTH] Hover request authenticated: key={api_key[:10]}..., path={request.url.path}")
     else:
         # Без ключа - базовый доступ
         request.state.api_key_info = None
@@ -278,6 +274,50 @@ async def health_check():
         headers={"Access-Control-Allow-Origin": "*"}
     )
 
+@app.get("/health/hover")
+async def health_check_hover(request: Request):
+    """КРИТИЧНО: Проверка работоспособности hover системы"""
+    try:
+        # Проверяем соединение с БД
+        test_url = "https://example.com"
+        try:
+            db_test = db_manager.check_url(test_url)
+            db_status = "connected"
+        except Exception as db_error:
+            logger.warning(f"Hover health check: DB error: {db_error}")
+            db_status = f"error: {str(db_error)[:50]}"
+        
+        # Проверяем наличие API ключа в запросе
+        api_key = request.headers.get("X-API-Key") or request.headers.get("Authorization", "").replace("Bearer ", "").strip()
+        api_key_info = getattr(request.state, 'api_key_info', None)
+        has_api_key = bool(api_key) or api_key_info is not None
+        
+        logger.info(f"[HEALTH HOVER] Check: db={db_status}, has_key={has_api_key}")
+        
+        return JSONResponse(
+            status_code=200,
+            content={
+                "status": "healthy" if db_status == "connected" else "degraded",
+                "timestamp": datetime.now().isoformat(),
+                "database": db_status,
+                "has_api_key": has_api_key,
+                "hover_system": "operational",
+                "version": "0.3.0"
+            },
+            headers={"Access-Control-Allow-Origin": "*"}
+        )
+    except Exception as e:
+        logger.error(f"Hover health check failed: {e}", exc_info=True)
+        return JSONResponse(
+            status_code=500,
+            content={
+                "status": "unhealthy",
+                "error": str(e),
+                "timestamp": datetime.now().isoformat()
+            },
+            headers={"Access-Control-Allow-Origin": "*"}
+        )
+
 @app.get("/auth/validate")
 async def validate_key(key_info: Dict = Depends(api_key_auth)):
     """Проверка валидности API ключа для клиентских приложений"""
@@ -324,9 +364,18 @@ async def check_url_secure(
     request: Request
 ):
     """Проверка URL - базовый функционал доступен всем"""
+    # КРИТИЧНО: Логирование для диагностики разницы между popup и hover запросами
+    client_ip = request.headers.get("X-Forwarded-For") or (request.client.host if request.client else None)
+    user_agent = request.headers.get("User-Agent", "")
+    api_key = request.headers.get("X-API-Key") or request.headers.get("Authorization", "").replace("Bearer ", "").strip()
+    is_hover = "hover" in user_agent.lower() or request.headers.get("X-Request-Source") == "hover"
+    
+    logger.info(f"[CHECK_URL] Request from {'HOVER' if is_hover else 'POPUP'}: url={url_request.url[:50]}, has_api_key={bool(api_key)}, ip={client_ip}")
+    
     try:
         validation_error = security_validator.validate_url(str(url_request.url))
         if validation_error:
+            logger.warning(f"[CHECK_URL] Validation error ({'HOVER' if is_hover else 'POPUP'}): {validation_error}")
             return JSONResponse(
                 status_code=400,
                 content={"detail": validation_error, "safe": None, "source": "validation_error"},
@@ -337,8 +386,16 @@ async def check_url_secure(
         api_key_info = getattr(request.state, 'api_key_info', None)
         use_external_apis = True  # Включаем внешние API для всех пользователей для базовой безопасности
         
+        # КРИТИЧНО: Для hover запросов всегда используем внешние API и логируем
+        if is_hover:
+            logger.debug(f"[CHECK_URL HOVER] Starting analysis with external APIs")
+        
         # Используем асинхронный вызов с учетом уровня доступа
         result = await analysis_service.analyze_url(str(url_request.url), use_external_apis=use_external_apis)
+        
+        # КРИТИЧНО: Логирование результата для диагностики
+        logger.info(f"[CHECK_URL] Result ({'HOVER' if is_hover else 'POPUP'}): safe={result.get('safe')}, source={result.get('source')}")
+        
         response_data = CheckResponse(**result).dict()
         return JSONResponse(
             content=response_data,

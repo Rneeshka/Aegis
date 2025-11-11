@@ -1,0 +1,22 @@
+2025-11-11 21:20:02,271 - app.logger - INFO - Logging system initialized with rotation
+2025-11-11 21:20:02,502 - app.logger - INFO - Database connection established successfully
+2025-11-11 21:20:02,503 - app.database - INFO - Rate limits reset successfully
+2025-11-11 21:20:02,503 - app.logger - INFO - Rate limits reset
+2025-11-11 21:20:02,504 - app.logger - INFO - Background job manager started
+2025-11-11 21:20:02,504 - app.logger - INFO - Background job manager started
+2025-11-11 21:20:20,284 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:20:20,285 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:20:20,929 - app.logger - INFO - Logging system initialized with rotation
+2025-11-11 21:20:21,135 - app.logger - INFO - Database connection established successfully
+2025-11-11 21:20:21,136 - app.database - INFO - Rate limits reset successfully
+2025-11-11 21:20:21,136 - app.logger - INFO - Rate limits reset
+2025-11-11 21:20:21,137 - app.logger - INFO - Background job manager started
+2025-11-11 21:20:21,137 - app.logger - INFO - Background job manager started
+2025-11-11 21:20:37,114 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:20:37,114 - app.logger - INFO - Background job manager stopped
+2025-11-11 21:20:37,710 - app.logger - INFO - Logging system initialized with rotation
+2025-11-11 21:20:37,886 - app.logger - INFO - Database connection established successfully
+2025-11-11 21:20:37,887 - app.database - INFO - Rate limits reset successfully
+2025-11-11 21:20:37,887 - app.logger - INFO - Rate limits reset
+2025-11-11 21:20:37,887 - app.logger - INFO - Background job manager started
+2025-11-11 21:20:37,888 - app.logger - INFO - Background job manager started

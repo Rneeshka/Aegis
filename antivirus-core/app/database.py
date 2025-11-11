@@ -28,26 +28,49 @@ class DatabaseManager:
     def _get_connection(self) -> sqlite3.Connection:
         """
         Создает и возвращает подключение к базе данных с таймаутом.
+        КРИТИЧНО: Автоматическое переподключение при ошибках соединения.
         
         Returns:
             sqlite3.Connection: Подключение к базе данных
         """
-        try:
-            conn = sqlite3.connect(
-                self.db_path, 
-                timeout=30,  # Таймаут 30 секунд
-                check_same_thread=False  # Для многопоточности
-            )
-            conn.row_factory = sqlite3.Row  # Возвращать результаты как словари
-            # Включаем foreign keys и улучшаем производительность
-            conn.execute("PRAGMA foreign_keys = ON")
-            conn.execute("PRAGMA journal_mode = WAL")
-            conn.execute("PRAGMA synchronous = NORMAL")
-            conn.execute("PRAGMA cache_size = -10000")  # 10MB кеша
-            return conn
-        except sqlite3.Error as e:
-            logger.error(f"Database connection error: {e}")
-            raise
+        max_retries = 3
+        retry_delay = 0.1
+        
+        for attempt in range(max_retries):
+            try:
+                conn = sqlite3.connect(
+                    self.db_path, 
+                    timeout=30,  # Таймаут 30 секунд
+                    check_same_thread=False  # Для многопоточности
+                )
+                conn.row_factory = sqlite3.Row  # Возвращать результаты как словари
+                # Включаем foreign keys и улучшаем производительность
+                conn.execute("PRAGMA foreign_keys = ON")
+                conn.execute("PRAGMA journal_mode = WAL")
+                conn.execute("PRAGMA synchronous = NORMAL")
+                conn.execute("PRAGMA cache_size = -10000")  # 10MB кеша
+                
+                # КРИТИЧНО: Проверяем что соединение действительно работает
+                conn.execute("SELECT 1").fetchone()
+                
+                return conn
+            except sqlite3.OperationalError as e:
+                if "database is locked" in str(e).lower() and attempt < max_retries - 1:
+                    logger.warning(f"Database locked, retrying ({attempt + 1}/{max_retries})...")
+                    import time
+                    time.sleep(retry_delay * (attempt + 1))
+                    continue
+                logger.error(f"Database connection error (attempt {attempt + 1}): {e}")
+                if attempt == max_retries - 1:
+                    raise
+            except sqlite3.Error as e:
+                logger.error(f"Database connection error: {e}")
+                if attempt == max_retries - 1:
+                    raise
+                import time
+                time.sleep(retry_delay * (attempt + 1))
+        
+        raise sqlite3.Error("Failed to establish database connection after retries")
     
     def _init_database(self):
         """

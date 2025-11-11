@@ -121,7 +121,20 @@ class AnalysisService:
                 return cached
             
             # 1. Проверка в локальной базе данных
-            url_threat = db_manager.check_url(url)
+            # КРИТИЧНО: Обработка ошибок соединения с БД с автоматическим восстановлением
+            try:
+                url_threat = db_manager.check_url(url)
+            except Exception as db_error:
+                logger.warning(f"Database check failed for {url}, retrying: {db_error}")
+                # Повторная попытка после короткой задержки
+                import asyncio
+                await asyncio.sleep(0.1)
+                try:
+                    url_threat = db_manager.check_url(url)
+                except Exception as retry_error:
+                    logger.error(f"Database check failed after retry: {retry_error}")
+                    url_threat = None
+            
             if url_threat:
                 return {
                     "safe": False,
@@ -147,7 +160,13 @@ class AnalysisService:
                 self._cache_set(cache_key, result)
                 return result
             
-            domain_threats = db_manager.check_domain(domain)
+            # КРИТИЧНО: Обработка ошибок соединения с БД
+            try:
+                domain_threats = db_manager.check_domain(domain)
+            except Exception as db_error:
+                logger.warning(f"Database domain check failed for {domain}: {db_error}")
+                domain_threats = []
+            
             if domain_threats:
                 return {
                     "safe": False,
