@@ -83,11 +83,29 @@ class LoginRequest(BaseModel):
     username: str  # username или email
     password: str
 
+API_PREFIX = "/proxy"
+
+
+def strip_api_prefix(path: str) -> str:
+    """Возвращает путь без префикса /proxy для внутренней логики."""
+    if not path:
+        return "/"
+    if API_PREFIX and path.startswith(API_PREFIX):
+        stripped = path[len(API_PREFIX):]
+        if stripped and not stripped.startswith("/"):
+            return path
+        if not stripped:
+            return "/"
+        if not stripped.startswith("/"):
+            stripped = "/" + stripped
+        return stripped
+    return path
+
+
 app = FastAPI(
     title="Antivirus Core API",
     description="API ядра для антивирусного расширения браузера", 
     version="0.3.0",
-    root_path="/proxy",
 )
 
 # Note: do not mount static at /admin/ui to avoid masking /admin/ui/* router routes
@@ -160,6 +178,8 @@ async def request_logging_middleware(request: Request, call_next):
 @app.middleware("http")
 async def filter_invalid_requests(request: Request, call_next):
     """Фильтрует некорректные HTTP запросы"""
+    full_path = request.url.path
+    normalized_path = strip_api_prefix(full_path)
     
     # OPTIONS запросы (CORS preflight) пропускаем сразу
     if request.method == "OPTIONS":
@@ -182,14 +202,17 @@ async def filter_invalid_requests(request: Request, call_next):
         )
     
     # Пропускаем только корректные пути
-    if request.url.path == "" or request.url.path == "/":
+    if normalized_path == "" or normalized_path == "/":
         response = await call_next(request)
         return response
     
     # Блокируем известные вредоносные пути (но разрешаем наши /admin эндпоинты)
     malicious_paths = {"/.env", "/config", "/phpmyadmin", "/wp-admin"}
     # Исключаем наши легитимные admin эндпоинты
-    if any(request.url.path.startswith(path) for path in malicious_paths) and not request.url.path.startswith("/admin/stats") and not request.url.path.startswith("/admin/api-keys") and not request.url.path.startswith("/admin/add"):
+    if (any(normalized_path.startswith(path) for path in malicious_paths)
+            and not normalized_path.startswith("/admin/stats")
+            and not normalized_path.startswith("/admin/api-keys")
+            and not normalized_path.startswith("/admin/add")):
         logger.warning(f"Blocked suspicious path: {request.url.path}")
         return JSONResponse(
             status_code=404,
@@ -208,13 +231,15 @@ async def filter_invalid_requests(request: Request, call_next):
 async def optional_auth_middleware(request: Request, call_next):
     """Опциональная проверка ключей для расширенных функций"""
     # КРИТИЧНО: Все вызовы БД обернуты в try-except
+    full_path = request.url.path
+    normalized_path = strip_api_prefix(full_path)
     
     # Создание ключей теперь доступно без admin токена
-    if request.url.path == "/admin/api-keys/create":
+    if normalized_path == "/admin/api-keys/create":
         return await call_next(request)
     
     # Валидация API ключа - требует API ключ
-    if request.url.path == "/admin/api-keys/validate":
+    if normalized_path == "/admin/api-keys/validate":
         try:
             api_key = request.headers.get("X-API-Key") or request.headers.get("Authorization", "").replace("Bearer ", "").strip()
             if not api_key:
@@ -261,10 +286,10 @@ async def optional_auth_middleware(request: Request, call_next):
     basic_api_paths = ["/check/url", "/check/file", "/check/upload", "/check/domain/"]
     
     # Пропускаем все админ функции и базовые API без проверки ключей
-    if (request.url.path in skip_paths or 
-        request.url.path.startswith("/admin/ui") or 
-        any(request.url.path.startswith(path) for path in admin_paths) or
-        any(request.url.path.startswith(path) for path in basic_api_paths)):
+    if (normalized_path in skip_paths or 
+        normalized_path.startswith("/admin/ui") or 
+        any(normalized_path.startswith(path) for path in admin_paths) or
+        any(normalized_path.startswith(path) for path in basic_api_paths)):
         return await call_next(request)
     
     if request.method == "OPTIONS":
@@ -1221,3 +1246,23 @@ async def shutdown_event():
         logger.info("Background job manager stopped")
     except Exception as e:
         logger.error(f"Shutdown error: {e}")   
+
+
+# ==== Mount internal app under /proxy prefix ====
+proxy_app = app
+
+root_app = FastAPI()
+
+
+@root_app.get("/")
+async def root_info():
+    return {
+        "status": "ok",
+        "message": "Antivirus Core API mounted at /proxy"
+    }
+
+
+root_app.mount(API_PREFIX, proxy_app)
+
+# Экспортируем основное приложение как app
+app = root_app
