@@ -1,11 +1,15 @@
 # app/main.py
-from fastapi import FastAPI, HTTPException, File, UploadFile, Request, Depends
-from app.logger import logger
-from fastapi.responses import JSONResponse, FileResponse
-from fastapi.staticfiles import StaticFiles
+import asyncio
+import contextlib
 import time
 import sqlite3
 from datetime import datetime
+from typing import Any, Dict, Optional
+
+from fastapi import FastAPI, HTTPException, File, UploadFile, Request, Depends, WebSocket, WebSocketDisconnect
+from app.logger import logger
+from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from app.security import api_key_auth  # этот импорт должен быть
 
 # КРИТИЧНО: Безопасный импорт сервисов с обработкой ошибок
@@ -61,8 +65,131 @@ def require_feature(feature: str):
             return await func(*args, **kwargs)
         return wrapper
     return decorator
+
+
+async def handle_ws_message(client: ClientConnection, message: Dict[str, Any]) -> None:
+    """Обрабатывает входящее сообщение от WebSocket клиента."""
+    if not isinstance(message, dict):
+        await ws_manager.send_error(client, None, "Invalid message format", code="invalid_format")
+        return
+
+    msg_type = (message.get("type") or "").lower()
+    request_id = message.get("requestId") or message.get("id")
+    payload = message.get("payload")
+    if payload is None:
+        payload = {}
+    if not isinstance(payload, dict):
+        payload = {"value": payload}
+
+    await ws_manager.mark_heartbeat(client)
+
+    if msg_type in {"ping", "heartbeat"}:
+        await ws_manager.send_json(client, {
+            "type": "pong",
+            "requestId": request_id,
+            "timestamp": datetime.utcnow().isoformat()
+        })
+        return
+
+    if msg_type == "subscribe":
+        channels = []
+        if isinstance(payload, list):
+            channels = [str(ch) for ch in payload]
+        elif isinstance(payload, dict):
+            channels = [str(ch) for ch in payload.get("channels", [])]
+        client.subscriptions = set(channels)
+        await ws_manager.send_json(client, {
+            "type": "subscribed",
+            "channels": list(client.subscriptions),
+            "requestId": request_id,
+            "timestamp": datetime.utcnow().isoformat()
+        })
+        return
+
+    if msg_type == "analyze_url":
+        url = payload.get("url")
+        if not url:
+            await ws_manager.send_error(client, request_id, "Payload must include 'url'", code="bad_request")
+            return
+
+        use_external = payload.get("use_external_apis")
+        if use_external is None:
+            use_external = True
+
+        context = payload.get("context", "generic")
+
+        if context == "hover" and "hover_analysis" not in client.features:
+            await ws_manager.send_error(client, request_id, "Hover analysis requires premium API key", code="forbidden")
+            return
+
+        try:
+            result = await analysis_service.analyze_url(url, use_external_apis=use_external)
+            if not isinstance(result, dict):
+                raise ValueError("Invalid response from analysis service")
+        except Exception as exc:
+            logger.error(f"[WS] URL analysis failed ({url}): {exc}", exc_info=True)
+            await ws_manager.send_error(client, request_id, f"URL analysis error: {type(exc).__name__}", code="analysis_error")
+            return
+
+        response_payload = {
+            "kind": "url",
+            "url": url,
+            "context": context,
+            **result
+        }
+        await ws_manager.send_json(client, {
+            "type": "analysis_result",
+            "requestId": request_id,
+            "payload": response_payload,
+            "timestamp": datetime.utcnow().isoformat()
+        })
+        return
+
+    if msg_type == "analyze_file_hash":
+        file_hash = payload.get("hash") or payload.get("file_hash")
+        if not file_hash:
+            await ws_manager.send_error(client, request_id, "Payload must include 'hash'", code="bad_request")
+            return
+
+        use_external = payload.get("use_external_apis")
+        if use_external is None:
+            use_external = True
+
+        try:
+            result = await analysis_service.analyze_file_hash(file_hash, use_external_apis=use_external)
+            if not isinstance(result, dict):
+                raise ValueError("Invalid response from analysis service")
+        except Exception as exc:
+            logger.error(f"[WS] File hash analysis failed ({file_hash}): {exc}", exc_info=True)
+            await ws_manager.send_error(client, request_id, f"File analysis error: {type(exc).__name__}", code="analysis_error")
+            return
+
+        response_payload = {
+            "kind": "file",
+            "hash": file_hash,
+            "fileName": payload.get("file_name") or payload.get("fileName"),
+            **result
+        }
+        await ws_manager.send_json(client, {
+            "type": "analysis_result",
+            "requestId": request_id,
+            "payload": response_payload,
+            "timestamp": datetime.utcnow().isoformat()
+        })
+        return
+
+    await ws_manager.send_error(client, request_id, f"Unknown message type: {msg_type}", code="unsupported_message")
+
+
+async def websocket_cleanup_task() -> None:
+    """Периодическая очистка неактивных WebSocket соединений."""
+    while True:
+        try:
+            await ws_manager.remove_stale_clients()
+        except Exception as exc:
+            logger.error(f"[WS] Cleanup task error: {exc}", exc_info=True)
+        await asyncio.sleep(30)
 from app.schemas import CheckResponse, UrlCheckRequest, FileCheckRequest
-from typing import Dict
 from app.validators import security_validator  # ← ДОБАВЬ
 from app.external_apis.manager import external_api_manager
 from app.admin_ui import router as admin_ui_router
@@ -71,6 +198,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from app.auth import auth_manager
 from pydantic import BaseModel
+from app.websocket_manager import WebSocketManager, ClientConnection
 
 # Схемы для аутентификации
 class RegisterRequest(BaseModel):
@@ -83,30 +211,15 @@ class LoginRequest(BaseModel):
     username: str  # username или email
     password: str
 
-API_PREFIX = "/proxy"
-
-
-def strip_api_prefix(path: str) -> str:
-    """Возвращает путь без префикса /proxy для внутренней логики."""
-    if not path:
-        return "/"
-    if API_PREFIX and path.startswith(API_PREFIX):
-        stripped = path[len(API_PREFIX):]
-        if stripped and not stripped.startswith("/"):
-            return path
-        if not stripped:
-            return "/"
-        if not stripped.startswith("/"):
-            stripped = "/" + stripped
-        return stripped
-    return path
-
-
 app = FastAPI(
     title="Antivirus Core API",
     description="API ядра для антивирусного расширения браузера", 
     version="0.3.0",
 )
+
+ws_manager = WebSocketManager()
+app.state.ws_manager = ws_manager
+app.state.ws_cleanup_task = None
 
 # Note: do not mount static at /admin/ui to avoid masking /admin/ui/* router routes
 
@@ -126,6 +239,89 @@ app.include_router(admin_ui_router)
 
 # Сжатие ответов для ускорения отдачи (после CORS, чтобы не мешать заголовкам)
 app.add_middleware(GZipMiddleware, minimum_size=500)
+
+
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    """WebSocket endpoint для двусторонней связи с расширением."""
+    await websocket.accept()
+
+    api_key = (
+        websocket.query_params.get("api_key")
+        or websocket.headers.get("X-API-Key")
+        or (
+            websocket.headers.get("Authorization", "").split(" ", 1)[1].strip()
+            if (websocket.headers.get("Authorization") or "").startswith("Bearer ")
+            else None
+        )
+    )
+
+    api_key_info: Optional[Dict[str, Any]] = None
+    if api_key:
+        if not db_manager:
+            await websocket.send_json({
+                "type": "error",
+                "code": "service_unavailable",
+                "message": "Database unavailable"
+            })
+            await websocket.close(code=1011, reason="Database unavailable")
+            return
+        try:
+            is_valid, message = db_manager.validate_api_key(api_key)
+        except Exception as db_error:
+            logger.error(f"[WS] API key validation failed: {db_error}", exc_info=True)
+            await websocket.send_json({
+                "type": "error",
+                "code": "db_error",
+                "message": "API key validation error"
+            })
+            await websocket.close(code=1011, reason="API key validation error")
+            return
+
+        if not is_valid:
+            await websocket.send_json({
+                "type": "error",
+                "code": "unauthorized",
+                "message": message or "Invalid API key"
+            })
+            await websocket.close(code=4403, reason="Invalid API key")
+            return
+
+        try:
+            api_key_info = db_manager.get_api_key_info(api_key)
+        except Exception as db_error:
+            logger.error(f"[WS] Failed to fetch API key info: {db_error}", exc_info=True)
+            api_key_info = None
+
+    meta = {
+        "ip": websocket.client.host if websocket.client else None,
+        "user_agent": websocket.headers.get("User-Agent", ""),
+        "api_key": api_key,
+    }
+
+    client = await ws_manager.connect(websocket, api_key_info, meta)
+
+    try:
+        await ws_manager.send_json(client, {
+            "type": "hello",
+            "clientId": client.id,
+            "features": list(client.features),
+            "timestamp": datetime.utcnow().isoformat()
+        })
+
+        while True:
+            message = await websocket.receive_json()
+            await handle_ws_message(client, message)
+    except WebSocketDisconnect:
+        logger.info(f"[WS] Client disconnected gracefully: {client.id}")
+    except Exception as exc:
+        logger.error(f"[WS] Unexpected error for client {client.id}: {exc}", exc_info=True)
+        try:
+            await ws_manager.send_error(client, None, f"Server error: {type(exc).__name__}", code="server_error")
+        except Exception:
+            pass
+    finally:
+        await ws_manager.disconnect(client.id, reason="cleanup")
 
 # Middleware логирования запросов в БД
 @app.middleware("http")
@@ -178,8 +374,6 @@ async def request_logging_middleware(request: Request, call_next):
 @app.middleware("http")
 async def filter_invalid_requests(request: Request, call_next):
     """Фильтрует некорректные HTTP запросы"""
-    full_path = request.url.path
-    normalized_path = strip_api_prefix(full_path)
     
     # OPTIONS запросы (CORS preflight) пропускаем сразу
     if request.method == "OPTIONS":
@@ -202,17 +396,14 @@ async def filter_invalid_requests(request: Request, call_next):
         )
     
     # Пропускаем только корректные пути
-    if normalized_path == "" or normalized_path == "/":
+    if request.url.path == "" or request.url.path == "/":
         response = await call_next(request)
         return response
     
     # Блокируем известные вредоносные пути (но разрешаем наши /admin эндпоинты)
     malicious_paths = {"/.env", "/config", "/phpmyadmin", "/wp-admin"}
     # Исключаем наши легитимные admin эндпоинты
-    if (any(normalized_path.startswith(path) for path in malicious_paths)
-            and not normalized_path.startswith("/admin/stats")
-            and not normalized_path.startswith("/admin/api-keys")
-            and not normalized_path.startswith("/admin/add")):
+    if (any(request.url.path.startswith(path) for path in malicious_paths) and not request.url.path.startswith("/admin/stats") and not request.url.path.startswith("/admin/api-keys") and not request.url.path.startswith("/admin/add")):
         logger.warning(f"Blocked suspicious path: {request.url.path}")
         return JSONResponse(
             status_code=404,
@@ -231,15 +422,13 @@ async def filter_invalid_requests(request: Request, call_next):
 async def optional_auth_middleware(request: Request, call_next):
     """Опциональная проверка ключей для расширенных функций"""
     # КРИТИЧНО: Все вызовы БД обернуты в try-except
-    full_path = request.url.path
-    normalized_path = strip_api_prefix(full_path)
     
     # Создание ключей теперь доступно без admin токена
-    if normalized_path == "/admin/api-keys/create":
+    if request.url.path == "/admin/api-keys/create":
         return await call_next(request)
     
     # Валидация API ключа - требует API ключ
-    if normalized_path == "/admin/api-keys/validate":
+    if request.url.path == "/admin/api-keys/validate":
         try:
             api_key = request.headers.get("X-API-Key") or request.headers.get("Authorization", "").replace("Bearer ", "").strip()
             if not api_key:
@@ -286,10 +475,10 @@ async def optional_auth_middleware(request: Request, call_next):
     basic_api_paths = ["/check/url", "/check/file", "/check/upload", "/check/domain/"]
     
     # Пропускаем все админ функции и базовые API без проверки ключей
-    if (normalized_path in skip_paths or 
-        normalized_path.startswith("/admin/ui") or 
-        any(normalized_path.startswith(path) for path in admin_paths) or
-        any(normalized_path.startswith(path) for path in basic_api_paths)):
+    if (request.url.path in skip_paths or 
+        request.url.path.startswith("/admin/ui") or 
+        any(request.url.path.startswith(path) for path in admin_paths) or
+        any(request.url.path.startswith(path) for path in basic_api_paths)):
         return await call_next(request)
     
     if request.method == "OPTIONS":
@@ -1233,6 +1422,10 @@ async def startup_event():
         # Запускаем фоновый менеджер задач
         await background_job_manager.start()
         logger.info("Background job manager started")
+
+        if not app.state.ws_cleanup_task:
+            app.state.ws_cleanup_task = asyncio.create_task(websocket_cleanup_task())
+            logger.info("WebSocket cleanup task started")
         
     except Exception as e:
         logger.error(f"Startup error: {e}")
@@ -1245,24 +1438,19 @@ async def shutdown_event():
         await background_job_manager.stop()
         logger.info("Background job manager stopped")
     except Exception as e:
-        logger.error(f"Shutdown error: {e}")   
+        logger.error(f"Shutdown error: {e}")
 
+    cleanup_task = getattr(app.state, "ws_cleanup_task", None)
+    if cleanup_task:
+        cleanup_task.cancel()
+        with contextlib.suppress(asyncio.CancelledError):
+            try:
+                await cleanup_task
+            except Exception as e:
+                logger.error(f"WebSocket cleanup task stop error: {e}", exc_info=True)
+        app.state.ws_cleanup_task = None
 
-# ==== Mount internal app under /proxy prefix ====
-proxy_app = app
-
-root_app = FastAPI()
-
-
-@root_app.get("/")
-async def root_info():
-    return {
-        "status": "ok",
-        "message": "Antivirus Core API mounted at /proxy"
-    }
-
-
-root_app.mount(API_PREFIX, proxy_app)
-
-# Экспортируем основное приложение как app
-app = root_app
+    try:
+        await ws_manager.close_all()
+    except Exception as exc:
+        logger.error(f"Error closing WebSocket clients: {exc}", exc_info=True)
