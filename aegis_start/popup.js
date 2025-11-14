@@ -13,7 +13,7 @@
     antivirusEnabled: true,
     linkCheck: true,
     notify: true,
-    apiBase: 'https://45.87.247.88/proxy',
+    apiBase: 'https://aegis.builders',
     apiKey: ''
   };
 
@@ -68,7 +68,7 @@
     updateConnectionStatus('checking', 'Проверка подключения...');
     try {
       const settings = await loadSettings();
-      const apiUrl = (settings.apiBase || 'https://45.87.247.88/proxy').replace(/\/$/, '');
+      const apiUrl = (settings.apiBase || 'https://aegis.builders').replace(/\/$/, '');
       const res = await fetch(`${apiUrl}/health`, { method: 'GET' });
       if (res.ok) {
         updateConnectionStatus('online', 'Подключено к API');
@@ -238,7 +238,7 @@
     if (statusText) statusText.innerText = 'Сканируем...';
     setBadge('scanning');
     try {
-      const apiUrl = (settings.apiBase || 'https://45.87.247.88/proxy').replace(/\/$/, '');
+      const apiUrl = (settings.apiBase || 'https://aegis.builders').replace(/\/$/, '');
       const headers = { 'Content-Type': 'application/json' };
       if (settings.apiKey) headers['X-API-Key'] = settings.apiKey;
       const apiResponse = await fetch(`${apiUrl}/check/url`, {
