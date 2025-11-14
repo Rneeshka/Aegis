@@ -5,7 +5,7 @@
     linkCheck: true,
     hoverScan: true,
     notify: true,
-    apiBase: 'https://45.87.247.88/proxy',
+    apiBase: 'https://aegis.builders',
     apiKey: ''
   };
 
@@ -48,10 +48,10 @@
 
   function normalizeApiBase(v) {
     let base = (v || '').trim();
-    if (!base) return 'https://45.87.247.88/proxy';
+    if (!base) return 'https://aegis.builders';
     base = base.replace(/\/+$/, '');
     base = base.replace(/\/admin\/ui$/i, '');
-    return base || 'https://45.87.247.88/proxy';
+    return base || 'https://aegis.builders';
   }
 
   function load() {
