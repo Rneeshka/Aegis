@@ -238,7 +238,7 @@
     if (statusText) statusText.innerText = 'Сканируем...';
     setBadge('scanning');
     try {
-      const apiUrl = (settings.apiBase || 'http://127.0.0.1:8000').replace(/\/$/, '');
+      const apiUrl = (settings.apiBase || 'https://45.87.247.88/proxy').replace(/\/$/, '');
       const headers = { 'Content-Type': 'application/json' };
       if (settings.apiKey) headers['X-API-Key'] = settings.apiKey;
       const apiResponse = await fetch(`${apiUrl}/check/url`, {
