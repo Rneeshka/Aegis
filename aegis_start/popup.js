@@ -13,7 +13,7 @@
     antivirusEnabled: true,
     linkCheck: true,
     notify: true,
-    apiBase: 'http://127.0.0.1:8000',
+    apiBase: 'https://45.87.247.88/proxy',
     apiKey: ''
   };
 
@@ -68,7 +68,7 @@
     updateConnectionStatus('checking', 'Проверка подключения...');
     try {
       const settings = await loadSettings();
-      const apiUrl = (settings.apiBase || 'http://127.0.0.1:8000').replace(/\/$/, '');
+      const apiUrl = (settings.apiBase || 'https://45.87.247.88/proxy').replace(/\/$/, '');
       const res = await fetch(`${apiUrl}/health`, { method: 'GET' });
       if (res.ok) {
         updateConnectionStatus('online', 'Подключено к API');
