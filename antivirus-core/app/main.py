@@ -11,6 +11,7 @@ from app.logger import logger
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from app.security import api_key_auth  # этот импорт должен быть
+from app.websocket_manager import WebSocketManager, ClientConnection
 
 # КРИТИЧНО: Безопасный импорт сервисов с обработкой ошибок
 try:
@@ -241,10 +242,28 @@ app.include_router(admin_ui_router)
 app.add_middleware(GZipMiddleware, minimum_size=500)
 
 
+@app.get("/ws/health")
+async def websocket_health_check():
+    """Проверка доступности WebSocket endpoint."""
+    return JSONResponse(
+        status_code=200,
+        content={
+            "status": "ok",
+            "websocket_available": True,
+            "endpoint": "/ws",
+            "timestamp": datetime.utcnow().isoformat()
+        },
+        headers={"Access-Control-Allow-Origin": "*"}
+    )
+
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     """WebSocket endpoint для двусторонней связи с расширением."""
-    await websocket.accept()
+    try:
+        await websocket.accept()
+    except Exception as e:
+        logger.error(f"[WS] Failed to accept connection: {e}", exc_info=True)
+        return
 
     api_key = (
         websocket.query_params.get("api_key")

@@ -1,6 +1,22 @@
 // background.js
 const DEFAULTS = { antivirusEnabled: true, linkCheck: true, hoverScan: true, notify: true };
 
+// --- KEEP ALIVE — предотвращает выгрузку Service Worker ---
+let keepAliveInterval = null;
+
+// Chrome выгружает SW если нет активности >30s.
+// Ping имитирует активность.
+function keepAlivePing() {
+  chrome.runtime.sendMessage({ type: "keepalive" }, () => {});
+}
+
+function startKeepAlive() {
+  if (keepAliveInterval) clearInterval(keepAliveInterval);
+  keepAliveInterval = setInterval(keepAlivePing, 20 * 1000); // каждые 20 секунд
+}
+
+startKeepAlive();
+
 // Кеш результатов для быстрого анализа по наведению
 const cache = new Map();
 const CACHE_TTL = 5 * 60 * 1000; // 5 минут
@@ -123,6 +139,7 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
     const url = msg.url;
     getConfig().then(async (cfg) => {
       if (!cfg.antivirusEnabled || !cfg.linkCheck) return;
+
       const res = await scanUrl(url, false);
       const verdict = res.safe === false ? 'malicious' : res.safe === true ? 'clean' : 'unknown';
       maybeNotify(cfg, verdict, url);
@@ -132,26 +149,38 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
   if (msg && msg.type === 'hover_url') {
     const url = msg.url;
     const tabId = sender && sender.tab && sender.tab.id;
-    
+
     getConfig().then(async (cfg) => {
-      if (!cfg.antivirusEnabled || !cfg.hoverScan) {
-        return;
-      }
-      
+      if (!cfg.antivirusEnabled || !cfg.hoverScan) return;
+
       const apiKey = await getApiKey();
-      if (!apiKey) return; // без ключа не запускаем ничего и не шлём hover_result
-      
+      if (!apiKey) return; // Без API ключа hover не работает
+
       try {
         const cached = getCached(url);
         const res = cached || await scanHover(url);
-        
-        if (!cached && res && typeof res.safe === 'boolean') setCached(url, res);
-        if (tabId != null && res) {
-          chrome.tabs.sendMessage(tabId, { type: 'hover_result', url, res, mouseX: msg.mouseX, mouseY: msg.mouseY });
+
+        if (!cached && res && typeof res.safe === 'boolean') {
+          setCached(url, res);
         }
+
+        if (tabId != null && res) {
+          try {
+            chrome.tabs.sendMessage(tabId, {
+              type: 'hover_result',
+              url,
+              res,
+              mouseX: msg.mouseX,
+              mouseY: msg.mouseY
+            });
+          } catch (e) {
+            console.warn("Failed to send hover result – tab closed or SW restarted", e);
+          }
+        }
+
       } catch (e) {
         console.error('Hover processing error:', e);
-        // молчим без отправки результата, чтобы не было анимации
+        // Молчим, чтобы не ломать UI
       }
     });
   }
@@ -185,6 +214,10 @@ chrome.runtime.onStartup.addListener(() => {
   reinjectContentScriptIntoAllTabs();
 });
 
+chrome.runtime.onMessage.addListener((msg) => {
+  if (msg.type === "keepalive") return true;
+});
+/*  ----------- UNUSED / LEGACY CODE (causes crash) -----------
 async function checkUrlSafety(url) {
   try {
     const response = await fetch(`${API_BASE_URL}/check/url`, {
@@ -214,3 +247,4 @@ async function checkUrlSafety(url) {
     return { safe: true, error: "Check failed" };
   }
 }
+----------- END LEGACY CODE ----------- */

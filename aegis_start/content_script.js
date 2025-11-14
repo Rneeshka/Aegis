@@ -120,7 +120,28 @@ function initTooltip() {
     setTimeout(initTooltip, 100);
   }
 }
+// Persistent port so background doesn't unload
+const aegisPort = chrome.runtime.connect({ name: "aegis-port" });
 
+aegisPort.onMessage.addListener((msg) => {
+  if (msg.type === "hover_result" &&
+      currentHoveredLink &&
+      currentHoveredLink.href === msg.url) {
+
+    const content = formatAnalysisResult(msg.res, msg.url);
+    const verdict = msg.res?.safe === false ? 'malicious'
+                   : msg.res?.safe === true ? 'safe'
+                   : msg.res?.result?.toLowerCase() || 'unknown';
+
+    updateTooltip(
+      tooltip,
+      msg.mouseX,
+      msg.mouseY,
+      content,
+      verdict
+    );
+  }
+});
 // Enhanced link hover detection
 document.addEventListener('mouseover', (e) => {
   const link = e.target.closest('a');
