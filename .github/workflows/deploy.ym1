@@ -20,8 +20,8 @@ jobs:
           username: ${{ secrets.AEGIS_USER }}
           key: ${{ secrets.AEGIS_SSH_KEY }}
           script: |
-            cd /opt/Aegis
+            cd /opt/Aegis/antivirus-core
             git pull origin main
-            source venv/bin/activate
-            pip install -r requirements.txt
+            source /opt/Aegis/venv/bin/activate
+            pip install -r /opt/Aegis/requirements.txt
             sudo systemctl restart aegis
