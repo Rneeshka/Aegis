@@ -1,4 +1,46 @@
-# Runtime data (НЕ должно быть в Git)
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Env
+venv/
+env/
+*.env
+
+# VSCode settings
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+*.sqlite3
+*.db
+
+# Backups
+*.bak
+*.swp
+
+# Chrome extension build
+extension/build/
+extension/dist/
+
+# Node
+node_modules/
+
+# Your data
+data/
+*/data/
+*.db
+
+# Uploads
+uploads/
+
+# Cache
+.cache/# Runtime data (НЕ должно быть в Git)
 antivirus-core/data/*.db
 antivirus-core/logs/*
 logs/*

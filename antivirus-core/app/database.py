@@ -15,7 +15,7 @@ class DatabaseManager:
     Включает управление API ключами, блокировками и оптимизацией.
     """
     
-    def __init__(self, db_path: str = "data/antivirus.db"):
+    def __init__(self, db_path: str = "/opt/Aegis/data/antivirus.db"):
         """
         Инициализация менеджера базы данных.
         
