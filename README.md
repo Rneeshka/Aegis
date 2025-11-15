@@ -124,4 +124,4 @@ cd antivirus-core
 The main repository contains Aegis's core and frontend. 
 **Aegis v2.0** - Структурированная и оптимизированная версия системы антивирусной защиты.
 hmmmm
-hmmmm
+hmmm
