@@ -1,0 +1,22 @@
+2025-11-20 01:34:12,503 - app.logger - INFO - Logging system initialized with rotation
+2025-11-20 01:34:12,518 - app.database - INFO - Initializing database at: /opt/Aegis/data/antivirus.db
+2025-11-20 01:34:12,529 - app.database - INFO - Database initialized successfully with all tables
+2025-11-20 01:34:12,742 - app.logger - INFO - Database connection established successfully
+2025-11-20 01:34:12,743 - app.database - INFO - Rate limits reset successfully
+2025-11-20 01:34:12,744 - app.logger - INFO - Rate limits reset
+2025-11-20 01:34:12,744 - app.logger - INFO - Background job manager started
+2025-11-20 01:34:12,744 - app.logger - INFO - Background job manager started
+2025-11-20 01:34:12,744 - app.logger - INFO - WebSocket cleanup task started
+2025-11-20 01:35:09,050 - app.logger - INFO - Background job manager stopped
+2025-11-20 01:35:09,051 - app.logger - INFO - Background job manager stopped
+2025-11-20 01:35:24,357 - app.logger - INFO - Logging system initialized with rotation
+2025-11-20 01:35:24,360 - app.database - INFO - Initializing database at: /opt/Aegis/data/antivirus.db
+2025-11-20 01:35:24,362 - app.database - INFO - Database initialized successfully with all tables
+2025-11-20 01:35:24,514 - app.logger - INFO - Database connection established successfully
+2025-11-20 01:35:24,515 - app.database - INFO - Rate limits reset successfully
+2025-11-20 01:35:24,515 - app.logger - INFO - Rate limits reset
+2025-11-20 01:35:24,515 - app.logger - INFO - Background job manager started
+2025-11-20 01:35:24,515 - app.logger - INFO - Background job manager started
+2025-11-20 01:35:24,516 - app.logger - INFO - WebSocket cleanup task started
+2025-11-20 01:37:13,830 - app.logger - WARNING - Blocked suspicious path: /.env
+2025-11-20 01:37:15,400 - app.logger - WARNING - Blocked suspicious path: /config.json
