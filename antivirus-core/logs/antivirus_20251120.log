@@ -7819,3 +7819,718 @@ RuntimeError: WebSocket is not connected. Need to call "accept" first.
 2025-11-24 02:01:57,631 - app.logger - INFO - 🔍 Final external API result for https://en.wikipedia.org/wiki/Final_Fantasy: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
 2025-11-24 02:01:57,631 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
 2025-11-24 02:01:57,631 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://en.wikipedia.org/wiki/Final_Fantasy: safe=None
+2025-11-24 03:19:33,435 - app.database - ERROR - Get all threats error: no such table: threats
+2025-11-24 03:48:33,710 - app.logger - INFO - [WS] Client disconnected gracefully: c21ec162-57e9-4c5c-a8cd-e93db1ee5957
+2025-11-24 03:48:33,711 - app.logger - INFO - [WS] Client disconnected: id=c21ec162-57e9-4c5c-a8cd-e93db1ee5957, reason=cleanup
+2025-11-24 11:42:39,469 - app.logger - WARNING - Blocked suspicious path: /.env
+2025-11-24 11:47:48,334 - app.logger - INFO - [WS] Client connected: id=5136c3e3-b617-4a13-853a-6afc9bc0148f, ip=91.238.89.66
+2025-11-24 11:47:49,945 - app.logger - INFO - 🔍 Analyzing URL: https://itorrents-igruha.org/new-pc-games/
+2025-11-24 11:47:49,948 - app.logger - INFO - 🔍 Checking external APIs for: https://itorrents-igruha.org/new-pc-games/
+2025-11-24 11:47:49,949 - app.logger - INFO - 🔍 Combining external results for https://itorrents-igruha.org/new-pc-games/: {}
+2025-11-24 11:47:49,949 - app.logger - INFO - 🔍 Final external API result for https://itorrents-igruha.org/new-pc-games/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:47:49,950 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:47:49,950 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://itorrents-igruha.org/new-pc-games/: safe=None
+2025-11-24 11:47:50,262 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?sca_esv=16a5b3c49c9a2e73&sxsrf=AE3TifM2XZW839XCRVMOlcPJBugGdrk23w:1763760590376&q=%D0%98%D0%B3%D1%80%D1%8B&stick=H4sIAAAAAAAAAE2TP2zTQBTG40qNEjegJhUCZUJlqbLEf2ObgVZAmaiQaBZYrNjOObXvzv9Ots9TFYmJBTEgBibEwMCGkKASHdiIEEoYYEOCBbF1ZCQp8ZXbfvfe--7T93S1VenibDw9nh3ODqdvpu9n48vTt9PXc3w44da6qCuIou47Hpxwja7bFUe2EIWRKk24cwsUiVOY0JSMCccvmk2A09Qui9TTNOqbVskAQh14Ni05NTxfIz7jnISmokPM-n2H-F7ulIzckQi9IizZlkIvz0WBmXEFikVTWpoZFTGJ1bLo2UCSbJewZjtPcc8rSg7VxPU1ZDLxREhg7mmsDkYjikRUMrSKUMVn-lnkCUKi6cvHXQREhznDSQoBNZhz4gEKDCMqOZJy11N1JgaxqKfUSf5jSxItdSnupwCdDaeFEiuRDEtOCtWQUsBiJVZRSEUisyQ8gRo0nJupLcQkWWYby2NMRjJmvilwnF6G4jJRObK1uU59AUruKuxN6ka6jZQRWxVBPQIBSzdTYCrGxGD9Rp5ZvZit1lc1nOcpSzvJcz3NHdYPFSeVAUyWRmI50zyfDZtyD8tZzMRtR9V8BbD0kZ0YyMyYGTkCmRieBaaZlmUhvBS3Bdl2ip_cD25t_fef7xvtb9zjVx-_clOOX78dBMkQ0rtDOCBDpx-0LvHVXUwOCG2dbzf403ldADRLWrv82v6Q9IO9wDkAtNVrKXx9b4isYZzcAa0rPH8jgHBok4MAty60N_hm12YXXXeAhsnVlS1u85506-jLk8_VnWZlfj492N9pb3WafPVmgAYHuHn_5LDRv_Ziu7PB1_qDPMABos3rz96NO0e_tjfr9crpOdnuVB6tcOPjlx-qtRq3XpFWapWi0ni-Wps-_ffd_wI-iWugCgQAAA&npsic=0&sa=X&sqi=2&ved=2ahUKEwj8-tSbmISRAxVqTlUIHXOFNTwQ1i96BAgnEAI
+2025-11-24 11:47:50,270 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?sca_esv=16a5b3c49c9a2e73&sxsrf=AE3TifM2XZW839XCRVMOlcPJBugGdrk23w:1763760590376&q=%D0%98%D0%B3%D1%80%D1%8B&stick=H4sIAAAAAAAAAE2TP2zTQBTG40qNEjegJhUCZUJlqbLEf2ObgVZAmaiQaBZYrNjOObXvzv9Ots9TFYmJBTEgBibEwMCGkKASHdiIEEoYYEOCBbF1ZCQp8ZXbfvfe--7T93S1VenibDw9nh3ODqdvpu9n48vTt9PXc3w44da6qCuIou47Hpxwja7bFUe2EIWRKk24cwsUiVOY0JSMCccvmk2A09Qui9TTNOqbVskAQh14Ni05NTxfIz7jnISmokPM-n2H-F7ulIzckQi9IizZlkIvz0WBmXEFikVTWpoZFTGJ1bLo2UCSbJewZjtPcc8rSg7VxPU1ZDLxREhg7mmsDkYjikRUMrSKUMVn-lnkCUKi6cvHXQREhznDSQoBNZhz4gEKDCMqOZJy11N1JgaxqKfUSf5jSxItdSnupwCdDaeFEiuRDEtOCtWQUsBiJVZRSEUisyQ8gRo0nJupLcQkWWYby2NMRjJmvilwnF6G4jJRObK1uU59AUruKuxN6ka6jZQRWxVBPQIBSzdTYCrGxGD9Rp5ZvZit1lc1nOcpSzvJcz3NHdYPFSeVAUyWRmI50zyfDZtyD8tZzMRtR9V8BbD0kZ0YyMyYGTkCmRieBaaZlmUhvBS3Bdl2ip_cD25t_fef7xvtb9zjVx-_clOOX78dBMkQ0rtDOCBDpx-0LvHVXUwOCG2dbzf403ldADRLWrv82v6Q9IO9wDkAtNVrKXx9b4isYZzcAa0rPH8jgHBok4MAty60N_hm12YXXXeAhsnVlS1u85506-jLk8_VnWZlfj492N9pb3WafPVmgAYHuHn_5LDRv_Ziu7PB1_qDPMABos3rz96NO0e_tjfr9crpOdnuVB6tcOPjlx-qtRq3XpFWapWi0ni-Wps-_ffd_wI-iWugCgQAAA&npsic=0&sa=X&sqi=2&ved=2ahUKEwj8-tSbmISRAxVqTlUIHXOFNTwQ1i96BAgnEAI
+2025-11-24 11:47:50,271 - app.logger - INFO - 🔍 Combining external results for https://www.google.com/search?sca_esv=16a5b3c49c9a2e73&sxsrf=AE3TifM2XZW839XCRVMOlcPJBugGdrk23w:1763760590376&q=%D0%98%D0%B3%D1%80%D1%8B&stick=H4sIAAAAAAAAAE2TP2zTQBTG40qNEjegJhUCZUJlqbLEf2ObgVZAmaiQaBZYrNjOObXvzv9Ots9TFYmJBTEgBibEwMCGkKASHdiIEEoYYEOCBbF1ZCQp8ZXbfvfe--7T93S1VenibDw9nh3ODqdvpu9n48vTt9PXc3w44da6qCuIou47Hpxwja7bFUe2EIWRKk24cwsUiVOY0JSMCccvmk2A09Qui9TTNOqbVskAQh14Ni05NTxfIz7jnISmokPM-n2H-F7ulIzckQi9IizZlkIvz0WBmXEFikVTWpoZFTGJ1bLo2UCSbJewZjtPcc8rSg7VxPU1ZDLxREhg7mmsDkYjikRUMrSKUMVn-lnkCUKi6cvHXQREhznDSQoBNZhz4gEKDCMqOZJy11N1JgaxqKfUSf5jSxItdSnupwCdDaeFEiuRDEtOCtWQUsBiJVZRSEUisyQ8gRo0nJupLcQkWWYby2NMRjJmvilwnF6G4jJRObK1uU59AUruKuxN6ka6jZQRWxVBPQIBSzdTYCrGxGD9Rp5ZvZit1lc1nOcpSzvJcz3NHdYPFSeVAUyWRmI50zyfDZtyD8tZzMRtR9V8BbD0kZ0YyMyYGTkCmRieBaaZlmUhvBS3Bdl2ip_cD25t_fef7xvtb9zjVx-_clOOX78dBMkQ0rtDOCBDpx-0LvHVXUwOCG2dbzf403ldADRLWrv82v6Q9IO9wDkAtNVrKXx9b4isYZzcAa0rPH8jgHBok4MAty60N_hm12YXXXeAhsnVlS1u85506-jLk8_VnWZlfj492N9pb3WafPVmgAYHuHn_5LDRv_Ziu7PB1_qDPMABos3rz96NO0e_tjfr9crpOdnuVB6tcOPjlx-qtRq3XpFWapWi0ni-Wps-_ffd_wI-iWugCgQAAA&npsic=0&sa=X&sqi=2&ved=2ahUKEwj8-tSbmISRAxVqTlUIHXOFNTwQ1i96BAgnEAI: {}
+2025-11-24 11:47:50,271 - app.logger - INFO - 🔍 Final external API result for https://www.google.com/search?sca_esv=16a5b3c49c9a2e73&sxsrf=AE3TifM2XZW839XCRVMOlcPJBugGdrk23w:1763760590376&q=%D0%98%D0%B3%D1%80%D1%8B&stick=H4sIAAAAAAAAAE2TP2zTQBTG40qNEjegJhUCZUJlqbLEf2ObgVZAmaiQaBZYrNjOObXvzv9Ots9TFYmJBTEgBibEwMCGkKASHdiIEEoYYEOCBbF1ZCQp8ZXbfvfe--7T93S1VenibDw9nh3ODqdvpu9n48vTt9PXc3w44da6qCuIou47Hpxwja7bFUe2EIWRKk24cwsUiVOY0JSMCccvmk2A09Qui9TTNOqbVskAQh14Ni05NTxfIz7jnISmokPM-n2H-F7ulIzckQi9IizZlkIvz0WBmXEFikVTWpoZFTGJ1bLo2UCSbJewZjtPcc8rSg7VxPU1ZDLxREhg7mmsDkYjikRUMrSKUMVn-lnkCUKi6cvHXQREhznDSQoBNZhz4gEKDCMqOZJy11N1JgaxqKfUSf5jSxItdSnupwCdDaeFEiuRDEtOCtWQUsBiJVZRSEUisyQ8gRo0nJupLcQkWWYby2NMRjJmvilwnF6G4jJRObK1uU59AUruKuxN6ka6jZQRWxVBPQIBSzdTYCrGxGD9Rp5ZvZit1lc1nOcpSzvJcz3NHdYPFSeVAUyWRmI50zyfDZtyD8tZzMRtR9V8BbD0kZ0YyMyYGTkCmRieBaaZlmUhvBS3Bdl2ip_cD25t_fef7xvtb9zjVx-_clOOX78dBMkQ0rtDOCBDpx-0LvHVXUwOCG2dbzf403ldADRLWrv82v6Q9IO9wDkAtNVrKXx9b4isYZzcAa0rPH8jgHBok4MAty60N_hm12YXXXeAhsnVlS1u85506-jLk8_VnWZlfj492N9pb3WafPVmgAYHuHn_5LDRv_Ziu7PB1_qDPMABos3rz96NO0e_tjfr9crpOdnuVB6tcOPjlx-qtRq3XpFWapWi0ni-Wps-_ffd_wI-iWugCgQAAA&npsic=0&sa=X&sqi=2&ved=2ahUKEwj8-tSbmISRAxVqTlUIHXOFNTwQ1i96BAgnEAI: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:47:50,271 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:47:50,272 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.google.com/search?sca_esv=16a5b3c49c9a2e73&sxsrf=AE3TifM2XZW839XCRVMOlcPJBugGdrk23w:1763760590376&q=%D0%98%D0%B3%D1%80%D1%8B&stick=H4sIAAAAAAAAAE2TP2zTQBTG40qNEjegJhUCZUJlqbLEf2ObgVZAmaiQaBZYrNjOObXvzv9Ots9TFYmJBTEgBibEwMCGkKASHdiIEEoYYEOCBbF1ZCQp8ZXbfvfe--7T93S1VenibDw9nh3ODqdvpu9n48vTt9PXc3w44da6qCuIou47Hpxwja7bFUe2EIWRKk24cwsUiVOY0JSMCccvmk2A09Qui9TTNOqbVskAQh14Ni05NTxfIz7jnISmokPM-n2H-F7ulIzckQi9IizZlkIvz0WBmXEFikVTWpoZFTGJ1bLo2UCSbJewZjtPcc8rSg7VxPU1ZDLxREhg7mmsDkYjikRUMrSKUMVn-lnkCUKi6cvHXQREhznDSQoBNZhz4gEKDCMqOZJy11N1JgaxqKfUSf5jSxItdSnupwCdDaeFEiuRDEtOCtWQUsBiJVZRSEUisyQ8gRo0nJupLcQkWWYby2NMRjJmvilwnF6G4jJRObK1uU59AUruKuxN6ka6jZQRWxVBPQIBSzdTYCrGxGD9Rp5ZvZit1lc1nOcpSzvJcz3NHdYPFSeVAUyWRmI50zyfDZtyD8tZzMRtR9V8BbD0kZ0YyMyYGTkCmRieBaaZlmUhvBS3Bdl2ip_cD25t_fef7xvtb9zjVx-_clOOX78dBMkQ0rtDOCBDpx-0LvHVXUwOCG2dbzf403ldADRLWrv82v6Q9IO9wDkAtNVrKXx9b4isYZzcAa0rPH8jgHBok4MAty60N_hm12YXXXeAhsnVlS1u85506-jLk8_VnWZlfj492N9pb3WafPVmgAYHuHn_5LDRv_Ziu7PB1_qDPMABos3rz96NO0e_tjfr9crpOdnuVB6tcOPjlx-qtRq3XpFWapWi0ni-Wps-_ffd_wI-iWugCgQAAA&npsic=0&sa=X&sqi=2&ved=2ahUKEwj8-tSbmISRAxVqTlUIHXOFNTwQ1i96BAgnEAI: safe=None
+2025-11-24 11:47:53,149 - app.logger - INFO - 🔍 Analyzing URL: https://byxatab.com/
+2025-11-24 11:47:53,152 - app.logger - INFO - 🔍 Checking external APIs for: https://byxatab.com/
+2025-11-24 11:47:53,152 - app.logger - INFO - 🔍 Combining external results for https://byxatab.com/: {}
+2025-11-24 11:47:53,152 - app.logger - INFO - 🔍 Final external API result for https://byxatab.com/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:47:53,153 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:47:53,153 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://byxatab.com/: safe=None
+2025-11-24 11:47:53,821 - app.logger - INFO - 🔍 Analyzing URL: https://games-torrents.org/
+2025-11-24 11:47:53,824 - app.logger - INFO - 🔍 Checking external APIs for: https://games-torrents.org/
+2025-11-24 11:47:53,824 - app.logger - INFO - 🔍 Combining external results for https://games-torrents.org/: {}
+2025-11-24 11:47:53,824 - app.logger - INFO - 🔍 Final external API result for https://games-torrents.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:47:53,825 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:47:53,825 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://games-torrents.org/: safe=None
+2025-11-24 11:47:57,910 - app.logger - INFO - 🔍 Analyzing URL: https://utorrentgames.ru/
+2025-11-24 11:47:57,913 - app.logger - INFO - 🔍 Checking external APIs for: https://utorrentgames.ru/
+2025-11-24 11:47:57,913 - app.logger - INFO - 🔍 Combining external results for https://utorrentgames.ru/: {}
+2025-11-24 11:47:57,914 - app.logger - INFO - 🔍 Final external API result for https://utorrentgames.ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:47:57,914 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:47:57,914 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://utorrentgames.ru/: safe=None
+2025-11-24 11:48:22,390 - app.logger - INFO - 🔍 Analyzing URL: https://vms.drweb.ru/online/
+2025-11-24 11:48:22,395 - app.logger - INFO - 🔍 Checking external APIs for: https://vms.drweb.ru/online/
+2025-11-24 11:48:22,396 - app.logger - INFO - 🔍 Combining external results for https://vms.drweb.ru/online/: {}
+2025-11-24 11:48:22,397 - app.logger - INFO - 🔍 Final external API result for https://vms.drweb.ru/online/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:48:22,397 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:48:22,397 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://vms.drweb.ru/online/: safe=None
+2025-11-24 11:48:22,541 - app.logger - INFO - 🔍 Analyzing URL: https://vms.drweb.ru/online/
+2025-11-24 11:48:25,241 - app.logger - INFO - 🔍 Analyzing URL: https://download.drweb.ru/android/
+2025-11-24 11:48:25,245 - app.logger - INFO - 🔍 Checking external APIs for: https://download.drweb.ru/android/
+2025-11-24 11:48:25,246 - app.logger - INFO - 🔍 Combining external results for https://download.drweb.ru/android/: {}
+2025-11-24 11:48:25,247 - app.logger - INFO - 🔍 Final external API result for https://download.drweb.ru/android/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:48:25,247 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:48:25,248 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://download.drweb.ru/android/: safe=None
+2025-11-24 11:48:33,011 - app.logger - INFO - 🔍 Analyzing URL: https://itorrents-igruha.org/
+2025-11-24 11:48:33,014 - app.logger - INFO - 🔍 Checking external APIs for: https://itorrents-igruha.org/
+2025-11-24 11:48:33,014 - app.logger - INFO - 🔍 Combining external results for https://itorrents-igruha.org/: {}
+2025-11-24 11:48:33,015 - app.logger - INFO - 🔍 Final external API result for https://itorrents-igruha.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:48:33,015 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:48:33,015 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://itorrents-igruha.org/: safe=None
+2025-11-24 11:48:34,046 - app.logger - INFO - 🔍 Analyzing URL: https://selezen.games/
+2025-11-24 11:48:34,049 - app.logger - INFO - 🔍 Checking external APIs for: https://selezen.games/
+2025-11-24 11:48:34,050 - app.logger - INFO - 🔍 Combining external results for https://selezen.games/: {}
+2025-11-24 11:48:34,051 - app.logger - INFO - 🔍 Final external API result for https://selezen.games/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:48:34,051 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:48:34,051 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://selezen.games/: safe=None
+2025-11-24 11:48:36,359 - app.logger - INFO - 🔍 Analyzing URL: https://utorrentgames.ru/
+2025-11-24 11:48:38,477 - app.logger - INFO - 🔍 Analyzing URL: https://utorrentgames.ru/
+2025-11-24 11:48:39,379 - app.logger - INFO - 🔍 Analyzing URL: https://utorrentgames.ru/
+2025-11-24 11:48:39,381 - app.logger - INFO - 🔍 Analyzing URL: https://utorrentgames.ru/
+2025-11-24 11:48:43,371 - app.logger - INFO - 🔍 Analyzing URL: https://utorrentgames.ru/
+2025-11-24 11:48:54,600 - app.logger - INFO - 🔍 Analyzing URL: https://xatab-repack.rip/top/
+2025-11-24 11:48:54,608 - app.logger - INFO - 🔍 Checking external APIs for: https://xatab-repack.rip/top/
+2025-11-24 11:48:54,610 - app.logger - INFO - 🔍 Combining external results for https://xatab-repack.rip/top/: {}
+2025-11-24 11:48:54,610 - app.logger - INFO - 🔍 Final external API result for https://xatab-repack.rip/top/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:48:54,611 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:48:54,611 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://xatab-repack.rip/top/: safe=None
+2025-11-24 11:48:55,341 - app.logger - INFO - 🔍 Analyzing URL: https://xatab-repack.rip/top/
+2025-11-24 11:49:14,305 - app.logger - INFO - 🔍 Analyzing URL: http://vms.drweb.com/online/
+2025-11-24 11:49:14,308 - app.logger - INFO - 🔍 Checking external APIs for: http://vms.drweb.com/online/
+2025-11-24 11:49:14,308 - app.logger - INFO - 🔍 Combining external results for http://vms.drweb.com/online/: {}
+2025-11-24 11:49:14,308 - app.logger - INFO - 🔍 Final external API result for http://vms.drweb.com/online/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:49:14,309 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:49:14,309 - app.logger - WARNING - ⚠️ External APIs returned unclear result for http://vms.drweb.com/online/: safe=None
+2025-11-24 11:49:14,659 - app.logger - INFO - 🔍 Analyzing URL: http://vms.drweb.com/online/
+2025-11-24 11:49:22,576 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=50&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEA0
+2025-11-24 11:49:22,579 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=50&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEA0
+2025-11-24 11:49:22,580 - app.logger - INFO - 🔍 Combining external results for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=50&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEA0: {}
+2025-11-24 11:49:22,581 - app.logger - INFO - 🔍 Final external API result for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=50&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEA0: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:49:22,581 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:49:22,582 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=50&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEA0: safe=None
+2025-11-24 11:49:22,857 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=40&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAs
+2025-11-24 11:49:22,860 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=40&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAs
+2025-11-24 11:49:22,861 - app.logger - INFO - 🔍 Combining external results for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=40&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAs: {}
+2025-11-24 11:49:22,861 - app.logger - INFO - 🔍 Final external API result for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=40&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAs: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:49:22,861 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:49:22,861 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=40&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAs: safe=None
+2025-11-24 11:49:23,215 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk
+2025-11-24 11:49:23,219 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk
+2025-11-24 11:49:23,219 - app.logger - INFO - 🔍 Combining external results for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk: {}
+2025-11-24 11:49:23,219 - app.logger - INFO - 🔍 Final external API result for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:49:23,219 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:49:23,220 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk: safe=None
+2025-11-24 11:49:23,223 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&biw=1920&bih=1032&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk
+2025-11-24 11:49:24,432 - app.logger - INFO - 🔍 Analyzing URL: https://brotorrent.net/
+2025-11-24 11:49:24,436 - app.logger - INFO - 🔍 Checking external APIs for: https://brotorrent.net/
+2025-11-24 11:49:24,436 - app.logger - INFO - 🔍 Combining external results for https://brotorrent.net/: {}
+2025-11-24 11:49:24,437 - app.logger - INFO - 🔍 Final external API result for https://brotorrent.net/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:49:24,437 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:49:24,437 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://brotorrent.net/: safe=None
+2025-11-24 11:49:25,686 - app.logger - INFO - 🔍 Analyzing URL: https://www.razer.ru/product/software/synapse-3?srsltid=AfmBOoqjuSfd9-t29RndlvNpMSbRk3Smixk-f9XE7lG81CD_I6mwigtJ
+2025-11-24 11:49:25,689 - app.logger - INFO - 🔍 Checking external APIs for: https://www.razer.ru/product/software/synapse-3?srsltid=AfmBOoqjuSfd9-t29RndlvNpMSbRk3Smixk-f9XE7lG81CD_I6mwigtJ
+2025-11-24 11:49:25,690 - app.logger - INFO - 🔍 Combining external results for https://www.razer.ru/product/software/synapse-3?srsltid=AfmBOoqjuSfd9-t29RndlvNpMSbRk3Smixk-f9XE7lG81CD_I6mwigtJ: {}
+2025-11-24 11:49:25,690 - app.logger - INFO - 🔍 Final external API result for https://www.razer.ru/product/software/synapse-3?srsltid=AfmBOoqjuSfd9-t29RndlvNpMSbRk3Smixk-f9XE7lG81CD_I6mwigtJ: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:49:25,690 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:49:25,690 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.razer.ru/product/software/synapse-3?srsltid=AfmBOoqjuSfd9-t29RndlvNpMSbRk3Smixk-f9XE7lG81CD_I6mwigtJ: safe=None
+2025-11-24 11:49:29,252 - app.logger - INFO - 🔍 Analyzing URL: https://trueconf.ru/downloads/windows.html
+2025-11-24 11:49:29,255 - app.logger - INFO - 🔍 Checking external APIs for: https://trueconf.ru/downloads/windows.html
+2025-11-24 11:49:29,255 - app.logger - INFO - 🔍 Combining external results for https://trueconf.ru/downloads/windows.html: {}
+2025-11-24 11:49:29,255 - app.logger - INFO - 🔍 Final external API result for https://trueconf.ru/downloads/windows.html: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:49:29,256 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:49:29,256 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://trueconf.ru/downloads/windows.html: safe=None
+2025-11-24 11:49:31,248 - app.logger - INFO - 🔍 Analyzing URL: https://brotorrent.net/
+2025-11-24 11:51:19,409 - app.logger - INFO - 🔍 Analyzing URL: http://vms.drweb.com/online/
+2025-11-24 11:51:21,854 - app.logger - INFO - 🔍 Analyzing URL: https://www.drweb.ru/
+2025-11-24 11:51:21,858 - app.logger - INFO - 🔍 Checking external APIs for: https://www.drweb.ru/
+2025-11-24 11:51:21,860 - app.logger - INFO - 🔍 Combining external results for https://www.drweb.ru/: {}
+2025-11-24 11:51:21,860 - app.logger - INFO - 🔍 Final external API result for https://www.drweb.ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:51:21,860 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:51:21,861 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.drweb.ru/: safe=None
+2025-11-24 11:51:24,061 - app.logger - INFO - 🔍 Analyzing URL: https://addons.opera.com/ru/extensions/details/drweb-anti-virus-link-checker/
+2025-11-24 11:51:24,064 - app.logger - INFO - 🔍 Checking external APIs for: https://addons.opera.com/ru/extensions/details/drweb-anti-virus-link-checker/
+2025-11-24 11:51:24,065 - app.logger - INFO - 🔍 Combining external results for https://addons.opera.com/ru/extensions/details/drweb-anti-virus-link-checker/: {}
+2025-11-24 11:51:24,065 - app.logger - INFO - 🔍 Final external API result for https://addons.opera.com/ru/extensions/details/drweb-anti-virus-link-checker/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:51:24,065 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:51:24,066 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://addons.opera.com/ru/extensions/details/drweb-anti-virus-link-checker/: safe=None
+2025-11-24 11:51:28,853 - app.logger - INFO - 🔍 Analyzing URL: https://microsoftedge.microsoft.com/addons/detail/dmknnmkgdbajfldadeeidbnjmpncofjl
+2025-11-24 11:51:28,857 - app.logger - INFO - 🔍 Checking external APIs for: https://microsoftedge.microsoft.com/addons/detail/dmknnmkgdbajfldadeeidbnjmpncofjl
+2025-11-24 11:51:28,858 - app.logger - INFO - 🔍 Combining external results for https://microsoftedge.microsoft.com/addons/detail/dmknnmkgdbajfldadeeidbnjmpncofjl: {}
+2025-11-24 11:51:28,858 - app.logger - INFO - 🔍 Final external API result for https://microsoftedge.microsoft.com/addons/detail/dmknnmkgdbajfldadeeidbnjmpncofjl: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:51:28,859 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:51:28,859 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://microsoftedge.microsoft.com/addons/detail/dmknnmkgdbajfldadeeidbnjmpncofjl: safe=None
+2025-11-24 11:51:35,943 - app.logger - INFO - 🔍 Analyzing URL: https://products.drweb.ru/mobile/android/cloud_checker/
+2025-11-24 11:51:35,947 - app.logger - INFO - 🔍 Checking external APIs for: https://products.drweb.ru/mobile/android/cloud_checker/
+2025-11-24 11:51:35,947 - app.logger - INFO - 🔍 Combining external results for https://products.drweb.ru/mobile/android/cloud_checker/: {}
+2025-11-24 11:51:35,947 - app.logger - INFO - 🔍 Final external API result for https://products.drweb.ru/mobile/android/cloud_checker/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:51:35,948 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:51:35,948 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://products.drweb.ru/mobile/android/cloud_checker/: safe=None
+2025-11-24 11:51:43,123 - app.logger - INFO - 🔍 Analyzing URL: https://vms.drweb.ru/scan_file/
+2025-11-24 11:51:43,126 - app.logger - INFO - 🔍 Checking external APIs for: https://vms.drweb.ru/scan_file/
+2025-11-24 11:51:43,127 - app.logger - INFO - 🔍 Combining external results for https://vms.drweb.ru/scan_file/: {}
+2025-11-24 11:51:43,127 - app.logger - INFO - 🔍 Final external API result for https://vms.drweb.ru/scan_file/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:51:43,127 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:51:43,128 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://vms.drweb.ru/scan_file/: safe=None
+2025-11-24 11:51:44,170 - app.logger - INFO - 🔍 Analyzing URL: https://online.drweb.com/
+2025-11-24 11:51:44,173 - app.logger - INFO - 🔍 Checking external APIs for: https://online.drweb.com/
+2025-11-24 11:51:44,174 - app.logger - INFO - 🔍 Combining external results for https://online.drweb.com/: {}
+2025-11-24 11:51:44,174 - app.logger - INFO - 🔍 Final external API result for https://online.drweb.com/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:51:44,174 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:51:44,174 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://online.drweb.com/: safe=None
+2025-11-24 11:51:44,754 - app.logger - INFO - 🔍 Analyzing URL: https://vms.drweb.ru/
+2025-11-24 11:51:44,757 - app.logger - INFO - 🔍 Checking external APIs for: https://vms.drweb.ru/
+2025-11-24 11:51:44,758 - app.logger - INFO - 🔍 Combining external results for https://vms.drweb.ru/: {}
+2025-11-24 11:51:44,758 - app.logger - INFO - 🔍 Final external API result for https://vms.drweb.ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:51:44,758 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:51:44,759 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://vms.drweb.ru/: safe=None
+2025-11-24 11:51:45,517 - app.logger - INFO - 🔍 Analyzing URL: https://drweb.datasystem.ru/pages/online
+2025-11-24 11:51:45,520 - app.logger - INFO - 🔍 Checking external APIs for: https://drweb.datasystem.ru/pages/online
+2025-11-24 11:51:45,521 - app.logger - INFO - 🔍 Combining external results for https://drweb.datasystem.ru/pages/online: {}
+2025-11-24 11:51:45,521 - app.logger - INFO - 🔍 Final external API result for https://drweb.datasystem.ru/pages/online: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:51:45,521 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:51:45,521 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://drweb.datasystem.ru/pages/online: safe=None
+2025-11-24 11:51:45,890 - app.logger - INFO - 🔍 Analyzing URL: https://xtool.ru/analyze/~vms.drweb.ru/
+2025-11-24 11:51:45,893 - app.logger - INFO - 🔍 Checking external APIs for: https://xtool.ru/analyze/~vms.drweb.ru/
+2025-11-24 11:51:45,894 - app.logger - INFO - 🔍 Combining external results for https://xtool.ru/analyze/~vms.drweb.ru/: {}
+2025-11-24 11:51:45,894 - app.logger - INFO - 🔍 Final external API result for https://xtool.ru/analyze/~vms.drweb.ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:51:45,895 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:51:45,895 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://xtool.ru/analyze/~vms.drweb.ru/: safe=None
+2025-11-24 11:52:05,312 - app.logger - INFO - 🔍 Analyzing URL: https://2ip.ru/site-virus-scaner/
+2025-11-24 11:52:05,315 - app.logger - INFO - 🔍 Checking external APIs for: https://2ip.ru/site-virus-scaner/
+2025-11-24 11:52:05,316 - app.logger - INFO - 🔍 Combining external results for https://2ip.ru/site-virus-scaner/: {}
+2025-11-24 11:52:05,317 - app.logger - INFO - 🔍 Final external API result for https://2ip.ru/site-virus-scaner/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:52:05,317 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:52:05,317 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://2ip.ru/site-virus-scaner/: safe=None
+2025-11-24 11:52:06,261 - app.logger - INFO - 🔍 Analyzing URL: https://yandex.ru/safety/
+2025-11-24 11:52:06,264 - app.logger - INFO - 🔍 Checking external APIs for: https://yandex.ru/safety/
+2025-11-24 11:52:06,265 - app.logger - INFO - 🔍 Combining external results for https://yandex.ru/safety/: {}
+2025-11-24 11:52:06,265 - app.logger - INFO - 🔍 Final external API result for https://yandex.ru/safety/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:52:06,265 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:52:06,265 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://yandex.ru/safety/: safe=None
+2025-11-24 11:52:07,560 - app.logger - INFO - 🔍 Analyzing URL: https://smm-e.ru/services/security/check-link/
+2025-11-24 11:52:07,564 - app.logger - INFO - 🔍 Checking external APIs for: https://smm-e.ru/services/security/check-link/
+2025-11-24 11:52:07,564 - app.logger - INFO - 🔍 Combining external results for https://smm-e.ru/services/security/check-link/: {}
+2025-11-24 11:52:07,564 - app.logger - INFO - 🔍 Final external API result for https://smm-e.ru/services/security/check-link/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:52:07,565 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:52:07,565 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://smm-e.ru/services/security/check-link/: safe=None
+2025-11-24 11:52:09,249 - app.logger - INFO - 🔍 Analyzing URL: https://opentip.kaspersky.com/ru
+2025-11-24 11:52:09,253 - app.logger - INFO - 🔍 Checking external APIs for: https://opentip.kaspersky.com/ru
+2025-11-24 11:52:09,253 - app.logger - INFO - 🔍 Combining external results for https://opentip.kaspersky.com/ru: {}
+2025-11-24 11:52:09,253 - app.logger - INFO - 🔍 Final external API result for https://opentip.kaspersky.com/ru: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:52:09,254 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:52:09,254 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://opentip.kaspersky.com/ru: safe=None
+2025-11-24 11:52:30,226 - app.logger - INFO - 🔍 Analyzing URL: https://otvet.mail.ru/question/214838771
+2025-11-24 11:52:30,232 - app.logger - INFO - 🔍 Checking external APIs for: https://otvet.mail.ru/question/214838771
+2025-11-24 11:52:30,234 - app.logger - INFO - 🔍 Combining external results for https://otvet.mail.ru/question/214838771: {}
+2025-11-24 11:52:30,234 - app.logger - INFO - 🔍 Final external API result for https://otvet.mail.ru/question/214838771: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:52:30,235 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:52:30,236 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://otvet.mail.ru/question/214838771: safe=None
+2025-11-24 11:52:31,107 - app.logger - INFO - 🔍 Analyzing URL: https://www.malwareurl.com/
+2025-11-24 11:52:31,110 - app.logger - INFO - 🔍 Checking external APIs for: https://www.malwareurl.com/
+2025-11-24 11:52:31,111 - app.logger - INFO - 🔍 Combining external results for https://www.malwareurl.com/: {}
+2025-11-24 11:52:31,112 - app.logger - INFO - 🔍 Final external API result for https://www.malwareurl.com/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:52:31,112 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:52:31,113 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.malwareurl.com/: safe=None
+2025-11-24 11:52:32,216 - app.logger - INFO - 🔍 Analyzing URL: https://forum.drweb.com/index.php?showtopic=336690
+2025-11-24 11:52:32,220 - app.logger - INFO - 🔍 Checking external APIs for: https://forum.drweb.com/index.php?showtopic=336690
+2025-11-24 11:52:32,220 - app.logger - INFO - 🔍 Combining external results for https://forum.drweb.com/index.php?showtopic=336690: {}
+2025-11-24 11:52:32,221 - app.logger - INFO - 🔍 Final external API result for https://forum.drweb.com/index.php?showtopic=336690: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:52:32,221 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:52:32,221 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://forum.drweb.com/index.php?showtopic=336690: safe=None
+2025-11-24 11:52:35,164 - app.logger - INFO - 🔍 Analyzing URL: https://learn.microsoft.com/ru-ru/answers/questions/3869549/net-malware-url
+2025-11-24 11:52:35,168 - app.logger - INFO - 🔍 Checking external APIs for: https://learn.microsoft.com/ru-ru/answers/questions/3869549/net-malware-url
+2025-11-24 11:52:35,169 - app.logger - INFO - 🔍 Combining external results for https://learn.microsoft.com/ru-ru/answers/questions/3869549/net-malware-url: {}
+2025-11-24 11:52:35,170 - app.logger - INFO - 🔍 Final external API result for https://learn.microsoft.com/ru-ru/answers/questions/3869549/net-malware-url: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:52:35,170 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:52:35,170 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://learn.microsoft.com/ru-ru/answers/questions/3869549/net-malware-url: safe=None
+2025-11-24 11:52:35,922 - app.logger - INFO - 🔍 Analyzing URL: https://forum.kasperskyclub.ru/topic/442494-resheno-netmalwareurl-proshu-pomoshhi-s-udaleniem/
+2025-11-24 11:52:35,925 - app.logger - INFO - 🔍 Checking external APIs for: https://forum.kasperskyclub.ru/topic/442494-resheno-netmalwareurl-proshu-pomoshhi-s-udaleniem/
+2025-11-24 11:52:35,926 - app.logger - INFO - 🔍 Combining external results for https://forum.kasperskyclub.ru/topic/442494-resheno-netmalwareurl-proshu-pomoshhi-s-udaleniem/: {}
+2025-11-24 11:52:35,926 - app.logger - INFO - 🔍 Final external API result for https://forum.kasperskyclub.ru/topic/442494-resheno-netmalwareurl-proshu-pomoshhi-s-udaleniem/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:52:35,927 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:52:35,927 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://forum.kasperskyclub.ru/topic/442494-resheno-netmalwareurl-proshu-pomoshhi-s-udaleniem/: safe=None
+2025-11-24 11:52:38,157 - app.logger - INFO - 🔍 Analyzing URL: https://otvet.mail.ru/question/214838771
+2025-11-24 11:52:41,463 - app.logger - INFO - 🔍 Analyzing URL: https://away.vk.com/away.php?mrrto=https%3A%2F%2Fthomasmr4z.com&clk=qABw7z0DboU91gzx7VXHnZEq9X*ytwdn5xwh8Xrdhm9bel954O/Jwq*24lFLkql0cl49HxFwSqhXGTsIGvo9APY1q3EU4Orh7ZY01gFL983vM7MRPcVlLGhSVn5IB98MLbb/wFhjW4MHimzhxbXRkqnQ75RWa0AtD5B*FLaax1mBMoaOZPug/m8gnQZ8sS1hBiDNxJuwIecbqrAF6U3QWdatoAgWW/nrpdez1km49AUoiHZz/OR4*zMQmUlR0YqtSeBJioUNrFu8ZOD2W3b6kXRxJrr1YFDcYfxMDP8QCaJkdBmlof5PFrk/rtriNoWF*7/cDECeeWiIfJPn/XSsJbT/TK*3vsYIa8QJ85dFnbcWsNJW4gWm4y1t1rlNRxsCrUoqCnh5t4ik/XIUDUoquohH3omuV8kSYWF7UMoeb3tKifiJ3rH6Jtw9Omusx2GKFhwFUk4FulcsAmQsLjkSry*Sa3zumiN1ewpz2ADxL4kgznSYVnfdmqPaII2MgLT8lh1*fz2cOnezxwkmiaFNVQiz24tMOVkZwwMnl8Z*t2PvnFt4aFe6448HRsW417cVHw3ooC8AD*zNg6HTYIa6hqGI18oy9RWFCuiOZe*dKB2TlrSoHMS0XJpn9kOphkNvijouItaCXtpZZ1xiUlLe4yf5jpVRJVWEt**5K/cbkQ4-&cp=aes128:373f5a17149a7130278b42d63fc6d58b530700c26f7596716d65cd3a24824528&sp=aes128:5ea50ef58d6a7028028874e91d97aab8447a3e3137a358ae1e2f9f8599eb66d7&ai=577f56acf83220220196e9f830992961
+2025-11-24 11:52:41,466 - app.logger - INFO - 🔍 Checking external APIs for: https://away.vk.com/away.php?mrrto=https%3A%2F%2Fthomasmr4z.com&clk=qABw7z0DboU91gzx7VXHnZEq9X*ytwdn5xwh8Xrdhm9bel954O/Jwq*24lFLkql0cl49HxFwSqhXGTsIGvo9APY1q3EU4Orh7ZY01gFL983vM7MRPcVlLGhSVn5IB98MLbb/wFhjW4MHimzhxbXRkqnQ75RWa0AtD5B*FLaax1mBMoaOZPug/m8gnQZ8sS1hBiDNxJuwIecbqrAF6U3QWdatoAgWW/nrpdez1km49AUoiHZz/OR4*zMQmUlR0YqtSeBJioUNrFu8ZOD2W3b6kXRxJrr1YFDcYfxMDP8QCaJkdBmlof5PFrk/rtriNoWF*7/cDECeeWiIfJPn/XSsJbT/TK*3vsYIa8QJ85dFnbcWsNJW4gWm4y1t1rlNRxsCrUoqCnh5t4ik/XIUDUoquohH3omuV8kSYWF7UMoeb3tKifiJ3rH6Jtw9Omusx2GKFhwFUk4FulcsAmQsLjkSry*Sa3zumiN1ewpz2ADxL4kgznSYVnfdmqPaII2MgLT8lh1*fz2cOnezxwkmiaFNVQiz24tMOVkZwwMnl8Z*t2PvnFt4aFe6448HRsW417cVHw3ooC8AD*zNg6HTYIa6hqGI18oy9RWFCuiOZe*dKB2TlrSoHMS0XJpn9kOphkNvijouItaCXtpZZ1xiUlLe4yf5jpVRJVWEt**5K/cbkQ4-&cp=aes128:373f5a17149a7130278b42d63fc6d58b530700c26f7596716d65cd3a24824528&sp=aes128:5ea50ef58d6a7028028874e91d97aab8447a3e3137a358ae1e2f9f8599eb66d7&ai=577f56acf83220220196e9f830992961
+2025-11-24 11:52:41,467 - app.logger - INFO - 🔍 Combining external results for https://away.vk.com/away.php?mrrto=https%3A%2F%2Fthomasmr4z.com&clk=qABw7z0DboU91gzx7VXHnZEq9X*ytwdn5xwh8Xrdhm9bel954O/Jwq*24lFLkql0cl49HxFwSqhXGTsIGvo9APY1q3EU4Orh7ZY01gFL983vM7MRPcVlLGhSVn5IB98MLbb/wFhjW4MHimzhxbXRkqnQ75RWa0AtD5B*FLaax1mBMoaOZPug/m8gnQZ8sS1hBiDNxJuwIecbqrAF6U3QWdatoAgWW/nrpdez1km49AUoiHZz/OR4*zMQmUlR0YqtSeBJioUNrFu8ZOD2W3b6kXRxJrr1YFDcYfxMDP8QCaJkdBmlof5PFrk/rtriNoWF*7/cDECeeWiIfJPn/XSsJbT/TK*3vsYIa8QJ85dFnbcWsNJW4gWm4y1t1rlNRxsCrUoqCnh5t4ik/XIUDUoquohH3omuV8kSYWF7UMoeb3tKifiJ3rH6Jtw9Omusx2GKFhwFUk4FulcsAmQsLjkSry*Sa3zumiN1ewpz2ADxL4kgznSYVnfdmqPaII2MgLT8lh1*fz2cOnezxwkmiaFNVQiz24tMOVkZwwMnl8Z*t2PvnFt4aFe6448HRsW417cVHw3ooC8AD*zNg6HTYIa6hqGI18oy9RWFCuiOZe*dKB2TlrSoHMS0XJpn9kOphkNvijouItaCXtpZZ1xiUlLe4yf5jpVRJVWEt**5K/cbkQ4-&cp=aes128:373f5a17149a7130278b42d63fc6d58b530700c26f7596716d65cd3a24824528&sp=aes128:5ea50ef58d6a7028028874e91d97aab8447a3e3137a358ae1e2f9f8599eb66d7&ai=577f56acf83220220196e9f830992961: {}
+2025-11-24 11:52:41,467 - app.logger - INFO - 🔍 Final external API result for https://away.vk.com/away.php?mrrto=https%3A%2F%2Fthomasmr4z.com&clk=qABw7z0DboU91gzx7VXHnZEq9X*ytwdn5xwh8Xrdhm9bel954O/Jwq*24lFLkql0cl49HxFwSqhXGTsIGvo9APY1q3EU4Orh7ZY01gFL983vM7MRPcVlLGhSVn5IB98MLbb/wFhjW4MHimzhxbXRkqnQ75RWa0AtD5B*FLaax1mBMoaOZPug/m8gnQZ8sS1hBiDNxJuwIecbqrAF6U3QWdatoAgWW/nrpdez1km49AUoiHZz/OR4*zMQmUlR0YqtSeBJioUNrFu8ZOD2W3b6kXRxJrr1YFDcYfxMDP8QCaJkdBmlof5PFrk/rtriNoWF*7/cDECeeWiIfJPn/XSsJbT/TK*3vsYIa8QJ85dFnbcWsNJW4gWm4y1t1rlNRxsCrUoqCnh5t4ik/XIUDUoquohH3omuV8kSYWF7UMoeb3tKifiJ3rH6Jtw9Omusx2GKFhwFUk4FulcsAmQsLjkSry*Sa3zumiN1ewpz2ADxL4kgznSYVnfdmqPaII2MgLT8lh1*fz2cOnezxwkmiaFNVQiz24tMOVkZwwMnl8Z*t2PvnFt4aFe6448HRsW417cVHw3ooC8AD*zNg6HTYIa6hqGI18oy9RWFCuiOZe*dKB2TlrSoHMS0XJpn9kOphkNvijouItaCXtpZZ1xiUlLe4yf5jpVRJVWEt**5K/cbkQ4-&cp=aes128:373f5a17149a7130278b42d63fc6d58b530700c26f7596716d65cd3a24824528&sp=aes128:5ea50ef58d6a7028028874e91d97aab8447a3e3137a358ae1e2f9f8599eb66d7&ai=577f56acf83220220196e9f830992961: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:52:41,468 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:52:41,468 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://away.vk.com/away.php?mrrto=https%3A%2F%2Fthomasmr4z.com&clk=qABw7z0DboU91gzx7VXHnZEq9X*ytwdn5xwh8Xrdhm9bel954O/Jwq*24lFLkql0cl49HxFwSqhXGTsIGvo9APY1q3EU4Orh7ZY01gFL983vM7MRPcVlLGhSVn5IB98MLbb/wFhjW4MHimzhxbXRkqnQ75RWa0AtD5B*FLaax1mBMoaOZPug/m8gnQZ8sS1hBiDNxJuwIecbqrAF6U3QWdatoAgWW/nrpdez1km49AUoiHZz/OR4*zMQmUlR0YqtSeBJioUNrFu8ZOD2W3b6kXRxJrr1YFDcYfxMDP8QCaJkdBmlof5PFrk/rtriNoWF*7/cDECeeWiIfJPn/XSsJbT/TK*3vsYIa8QJ85dFnbcWsNJW4gWm4y1t1rlNRxsCrUoqCnh5t4ik/XIUDUoquohH3omuV8kSYWF7UMoeb3tKifiJ3rH6Jtw9Omusx2GKFhwFUk4FulcsAmQsLjkSry*Sa3zumiN1ewpz2ADxL4kgznSYVnfdmqPaII2MgLT8lh1*fz2cOnezxwkmiaFNVQiz24tMOVkZwwMnl8Z*t2PvnFt4aFe6448HRsW417cVHw3ooC8AD*zNg6HTYIa6hqGI18oy9RWFCuiOZe*dKB2TlrSoHMS0XJpn9kOphkNvijouItaCXtpZZ1xiUlLe4yf5jpVRJVWEt**5K/cbkQ4-&cp=aes128:373f5a17149a7130278b42d63fc6d58b530700c26f7596716d65cd3a24824528&sp=aes128:5ea50ef58d6a7028028874e91d97aab8447a3e3137a358ae1e2f9f8599eb66d7&ai=577f56acf83220220196e9f830992961: safe=None
+2025-11-24 11:52:46,736 - app.logger - INFO - 🔍 Analyzing URL: http://185.159.81.134/
+2025-11-24 11:52:46,739 - app.logger - INFO - 🔍 Checking external APIs for: http://185.159.81.134/
+2025-11-24 11:52:46,740 - app.logger - INFO - 🔍 Combining external results for http://185.159.81.134/: {}
+2025-11-24 11:52:46,741 - app.logger - INFO - 🔍 Final external API result for http://185.159.81.134/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:52:46,741 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:52:46,742 - app.logger - WARNING - ⚠️ External APIs returned unclear result for http://185.159.81.134/: safe=None
+2025-11-24 11:53:18,017 - app.logger - INFO - 🔍 Analyzing URL: https://docs.virustotal.com/reference/overview
+2025-11-24 11:53:18,025 - app.logger - INFO - 🔍 Checking external APIs for: https://docs.virustotal.com/reference/overview
+2025-11-24 11:53:18,026 - app.logger - INFO - 🔍 Combining external results for https://docs.virustotal.com/reference/overview: {}
+2025-11-24 11:53:18,027 - app.logger - INFO - 🔍 Final external API result for https://docs.virustotal.com/reference/overview: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:53:18,027 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:53:18,028 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://docs.virustotal.com/reference/overview: safe=None
+2025-11-24 11:53:18,336 - app.logger - INFO - 🔍 Analyzing URL: https://docs.virustotal.com/reference/url-info
+2025-11-24 11:53:18,340 - app.logger - INFO - 🔍 Checking external APIs for: https://docs.virustotal.com/reference/url-info
+2025-11-24 11:53:18,341 - app.logger - INFO - 🔍 Combining external results for https://docs.virustotal.com/reference/url-info: {}
+2025-11-24 11:53:18,341 - app.logger - INFO - 🔍 Final external API result for https://docs.virustotal.com/reference/url-info: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:53:18,342 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:53:18,342 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://docs.virustotal.com/reference/url-info: safe=None
+2025-11-24 11:53:18,941 - app.logger - INFO - 🔍 Analyzing URL: https://www.virustotal.com/
+2025-11-24 11:53:18,944 - app.logger - INFO - 🔍 Checking external APIs for: https://www.virustotal.com/
+2025-11-24 11:53:18,945 - app.logger - INFO - 🔍 Combining external results for https://www.virustotal.com/: {}
+2025-11-24 11:53:18,946 - app.logger - INFO - 🔍 Final external API result for https://www.virustotal.com/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:53:18,946 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:53:18,947 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.virustotal.com/: safe=None
+2025-11-24 11:53:21,518 - app.logger - INFO - 🔍 Analyzing URL: https://www.wicar.org/
+2025-11-24 11:53:21,521 - app.logger - INFO - 🔍 Checking external APIs for: https://www.wicar.org/
+2025-11-24 11:53:21,522 - app.logger - INFO - 🔍 Combining external results for https://www.wicar.org/: {}
+2025-11-24 11:53:21,522 - app.logger - INFO - 🔍 Final external API result for https://www.wicar.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:53:21,523 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:53:21,523 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.wicar.org/: safe=None
+2025-11-24 11:53:26,457 - app.logger - INFO - 🔍 Analyzing URL: https://www.wicar.org/
+2025-11-24 11:53:31,916 - app.logger - INFO - 🔍 Analyzing URL: https://care.acronis.com/s/article/64996-Antimalware-detection-test-files-and-URLs?language=ru
+2025-11-24 11:53:31,922 - app.logger - INFO - 🔍 Checking external APIs for: https://care.acronis.com/s/article/64996-Antimalware-detection-test-files-and-URLs?language=ru
+2025-11-24 11:53:31,923 - app.logger - INFO - 🔍 Combining external results for https://care.acronis.com/s/article/64996-Antimalware-detection-test-files-and-URLs?language=ru: {}
+2025-11-24 11:53:31,923 - app.logger - INFO - 🔍 Final external API result for https://care.acronis.com/s/article/64996-Antimalware-detection-test-files-and-URLs?language=ru: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:53:31,923 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:53:31,924 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://care.acronis.com/s/article/64996-Antimalware-detection-test-files-and-URLs?language=ru: safe=None
+2025-11-24 11:53:33,222 - app.logger - INFO - 🔍 Analyzing URL: https://www.kaspersky.com/enterprise-security/threat-intelligence
+2025-11-24 11:53:33,229 - app.logger - INFO - 🔍 Checking external APIs for: https://www.kaspersky.com/enterprise-security/threat-intelligence
+2025-11-24 11:53:33,229 - app.logger - INFO - 🔍 Combining external results for https://www.kaspersky.com/enterprise-security/threat-intelligence: {}
+2025-11-24 11:53:33,230 - app.logger - INFO - 🔍 Final external API result for https://www.kaspersky.com/enterprise-security/threat-intelligence: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:53:33,230 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:53:33,231 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.kaspersky.com/enterprise-security/threat-intelligence: safe=None
+2025-11-24 11:53:34,023 - app.logger - INFO - 🔍 Analyzing URL: https://opentip.kaspersky.com/
+2025-11-24 11:53:34,030 - app.logger - INFO - 🔍 Checking external APIs for: https://opentip.kaspersky.com/
+2025-11-24 11:53:34,030 - app.logger - INFO - 🔍 Combining external results for https://opentip.kaspersky.com/: {}
+2025-11-24 11:53:34,031 - app.logger - INFO - 🔍 Final external API result for https://opentip.kaspersky.com/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:53:34,031 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:53:34,032 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://opentip.kaspersky.com/: safe=None
+2025-11-24 11:53:34,505 - app.logger - INFO - 🔍 Analyzing URL: https://global.sitesafety.trendmicro.com/
+2025-11-24 11:53:34,509 - app.logger - INFO - 🔍 Checking external APIs for: https://global.sitesafety.trendmicro.com/
+2025-11-24 11:53:34,509 - app.logger - INFO - 🔍 Combining external results for https://global.sitesafety.trendmicro.com/: {}
+2025-11-24 11:53:34,510 - app.logger - INFO - 🔍 Final external API result for https://global.sitesafety.trendmicro.com/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:53:34,511 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:53:34,511 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://global.sitesafety.trendmicro.com/: safe=None
+2025-11-24 11:53:35,945 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+%D1%84%D0%B0%D0%B9%D0%BB+%D0%BD%D0%B0+%D0%B2%D0%B8%D1%80%D1%83%D1%81%D1%8B&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg4EAE
+2025-11-24 11:53:35,948 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+%D1%84%D0%B0%D0%B9%D0%BB+%D0%BD%D0%B0+%D0%B2%D0%B8%D1%80%D1%83%D1%81%D1%8B&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg4EAE
+2025-11-24 11:53:35,949 - app.logger - INFO - 🔍 Combining external results for https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+%D1%84%D0%B0%D0%B9%D0%BB+%D0%BD%D0%B0+%D0%B2%D0%B8%D1%80%D1%83%D1%81%D1%8B&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg4EAE: {}
+2025-11-24 11:53:35,949 - app.logger - INFO - 🔍 Final external API result for https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+%D1%84%D0%B0%D0%B9%D0%BB+%D0%BD%D0%B0+%D0%B2%D0%B8%D1%80%D1%83%D1%81%D1%8B&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg4EAE: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:53:35,950 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:53:35,950 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+%D1%84%D0%B0%D0%B9%D0%BB+%D0%BD%D0%B0+%D0%B2%D0%B8%D1%80%D1%83%D1%81%D1%8B&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg4EAE: safe=None
+2025-11-24 11:53:36,399 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+URL-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%B0&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg9EAE
+2025-11-24 11:53:36,402 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+URL-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%B0&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg9EAE
+2025-11-24 11:53:36,403 - app.logger - INFO - 🔍 Combining external results for https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+URL-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%B0&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg9EAE: {}
+2025-11-24 11:53:36,403 - app.logger - INFO - 🔍 Final external API result for https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+URL-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%B0&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg9EAE: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:53:36,404 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:53:36,404 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+URL-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%B0&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg9EAE: safe=None
+2025-11-24 11:53:37,511 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+%D0%BD%D0%B0+%D0%B2%D0%B8%D1%80%D1%83%D1%81%D1%8B+%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg3EAE
+2025-11-24 11:53:37,514 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+%D0%BD%D0%B0+%D0%B2%D0%B8%D1%80%D1%83%D1%81%D1%8B+%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg3EAE
+2025-11-24 11:53:37,515 - app.logger - INFO - 🔍 Combining external results for https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+%D0%BD%D0%B0+%D0%B2%D0%B8%D1%80%D1%83%D1%81%D1%8B+%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg3EAE: {}
+2025-11-24 11:53:37,516 - app.logger - INFO - 🔍 Final external API result for https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+%D0%BD%D0%B0+%D0%B2%D0%B8%D1%80%D1%83%D1%81%D1%8B+%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg3EAE: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:53:37,516 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:53:37,516 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+%D0%BD%D0%B0+%D0%B2%D0%B8%D1%80%D1%83%D1%81%D1%8B+%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg3EAE: safe=None
+2025-11-24 11:53:44,766 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+%D1%81%D1%81%D1%8B%D0%BB%D0%BE%D0%BA+%D0%BD%D0%B0+%D1%84%D0%B8%D1%88%D0%B8%D0%BD%D0%B3&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg1EAE
+2025-11-24 11:53:44,769 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+%D1%81%D1%81%D1%8B%D0%BB%D0%BE%D0%BA+%D0%BD%D0%B0+%D1%84%D0%B8%D1%88%D0%B8%D0%BD%D0%B3&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg1EAE
+2025-11-24 11:53:44,770 - app.logger - INFO - 🔍 Combining external results for https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+%D1%81%D1%81%D1%8B%D0%BB%D0%BE%D0%BA+%D0%BD%D0%B0+%D1%84%D0%B8%D1%88%D0%B8%D0%BD%D0%B3&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg1EAE: {}
+2025-11-24 11:53:44,771 - app.logger - INFO - 🔍 Final external API result for https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+%D1%81%D1%81%D1%8B%D0%BB%D0%BE%D0%BA+%D0%BD%D0%B0+%D1%84%D0%B8%D1%88%D0%B8%D0%BD%D0%B3&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg1EAE: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:53:44,771 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:53:44,771 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifMYDPUTkKptw16JzJxt5hzZuk6fZQ:1763974395300&q=%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0+%D1%81%D1%81%D1%8B%D0%BB%D0%BE%D0%BA+%D0%BD%D0%B0+%D1%84%D0%B8%D1%88%D0%B8%D0%BD%D0%B3&sa=X&ved=2ahUKEwj47uXZtIqRAxVVU1UIHe54ArQQ1QJ6BAg1EAE: safe=None
+2025-11-24 11:55:50,336 - app.logger - INFO - 🔍 Analyzing URL: https://docs.virustotal.com/docs/mobile-apps
+2025-11-24 11:55:50,345 - app.logger - INFO - 🔍 Checking external APIs for: https://docs.virustotal.com/docs/mobile-apps
+2025-11-24 11:55:50,346 - app.logger - INFO - 🔍 Combining external results for https://docs.virustotal.com/docs/mobile-apps: {}
+2025-11-24 11:55:50,346 - app.logger - INFO - 🔍 Final external API result for https://docs.virustotal.com/docs/mobile-apps: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 11:55:50,346 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 11:55:50,347 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://docs.virustotal.com/docs/mobile-apps: safe=None
+2025-11-24 11:55:51,330 - app.logger - INFO - 🔍 Analyzing URL: https://www.virustotal.com/
+2025-11-24 12:04:52,558 - app.logger - INFO - 🔍 Analyzing URL: https://brotorrent.net/
+2025-11-24 12:04:52,561 - app.logger - INFO - 🔍 Checking external APIs for: https://brotorrent.net/
+2025-11-24 12:04:52,562 - app.logger - INFO - 🔍 Combining external results for https://brotorrent.net/: {}
+2025-11-24 12:04:52,562 - app.logger - INFO - 🔍 Final external API result for https://brotorrent.net/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 12:04:52,562 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 12:04:52,563 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://brotorrent.net/: safe=None
+2025-11-24 12:04:52,580 - app.logger - INFO - 🔍 Analyzing URL: https://brotorrent.net/
+2025-11-24 12:06:48,778 - app.logger - INFO - 🔍 Analyzing URL: https://trueconf.ru/downloads/windows.html
+2025-11-24 12:06:48,784 - app.logger - INFO - 🔍 Checking external APIs for: https://trueconf.ru/downloads/windows.html
+2025-11-24 12:06:48,785 - app.logger - INFO - 🔍 Combining external results for https://trueconf.ru/downloads/windows.html: {}
+2025-11-24 12:06:48,785 - app.logger - INFO - 🔍 Final external API result for https://trueconf.ru/downloads/windows.html: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 12:06:48,785 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 12:06:48,785 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://trueconf.ru/downloads/windows.html: safe=None
+2025-11-24 12:08:42,923 - app.logger - INFO - 🔍 Analyzing URL: https://app.prntscr.com/ru/
+2025-11-24 12:08:42,928 - app.logger - INFO - 🔍 Checking external APIs for: https://app.prntscr.com/ru/
+2025-11-24 12:08:42,929 - app.logger - INFO - 🔍 Combining external results for https://app.prntscr.com/ru/: {}
+2025-11-24 12:08:42,930 - app.logger - INFO - 🔍 Final external API result for https://app.prntscr.com/ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 12:08:42,930 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 12:08:42,930 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://app.prntscr.com/ru/: safe=None
+2025-11-24 12:08:50,321 - app.logger - INFO - 🔍 Analyzing URL: https://vms.drweb.ru/online/
+2025-11-24 12:08:50,324 - app.logger - INFO - 🔍 Checking external APIs for: https://vms.drweb.ru/online/
+2025-11-24 12:08:50,325 - app.logger - INFO - 🔍 Combining external results for https://vms.drweb.ru/online/: {}
+2025-11-24 12:08:50,325 - app.logger - INFO - 🔍 Final external API result for https://vms.drweb.ru/online/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 12:08:50,326 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 12:08:50,326 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://vms.drweb.ru/online/: safe=None
+2025-11-24 12:08:50,354 - app.logger - INFO - 🔍 Analyzing URL: https://vms.drweb.ru/online/
+2025-11-24 12:08:58,270 - app.logger - INFO - 🔍 Analyzing URL: https://brotorrent.net/
+2025-11-24 12:09:01,402 - app.logger - INFO - 🔍 Analyzing URL: https://brotorrent.net/1512-world-of-tanks.html
+2025-11-24 12:09:01,408 - app.logger - INFO - 🔍 Checking external APIs for: https://brotorrent.net/1512-world-of-tanks.html
+2025-11-24 12:09:01,409 - app.logger - INFO - 🔍 Combining external results for https://brotorrent.net/1512-world-of-tanks.html: {}
+2025-11-24 12:09:01,409 - app.logger - INFO - 🔍 Final external API result for https://brotorrent.net/1512-world-of-tanks.html: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 12:09:01,410 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 12:09:01,410 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://brotorrent.net/1512-world-of-tanks.html: safe=None
+2025-11-24 12:09:37,095 - app.logger - INFO - 🔍 Analyzing URL: http://vms.drweb.com/online/
+2025-11-24 12:09:37,098 - app.logger - INFO - 🔍 Checking external APIs for: http://vms.drweb.com/online/
+2025-11-24 12:09:37,098 - app.logger - INFO - 🔍 Combining external results for http://vms.drweb.com/online/: {}
+2025-11-24 12:09:37,099 - app.logger - INFO - 🔍 Final external API result for http://vms.drweb.com/online/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 12:09:37,099 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 12:09:37,099 - app.logger - WARNING - ⚠️ External APIs returned unclear result for http://vms.drweb.com/online/: safe=None
+2025-11-24 12:09:37,146 - app.logger - INFO - 🔍 Analyzing URL: http://vms.drweb.com/online/
+2025-11-24 12:09:41,062 - app.logger - INFO - 🔍 Analyzing URL: https://support.kaspersky.ru/downloads/eicar
+2025-11-24 12:09:41,065 - app.logger - INFO - 🔍 Checking external APIs for: https://support.kaspersky.ru/downloads/eicar
+2025-11-24 12:09:41,065 - app.logger - INFO - 🔍 Combining external results for https://support.kaspersky.ru/downloads/eicar: {}
+2025-11-24 12:09:41,065 - app.logger - INFO - 🔍 Final external API result for https://support.kaspersky.ru/downloads/eicar: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 12:09:41,066 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 12:09:41,066 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://support.kaspersky.ru/downloads/eicar: safe=None
+2025-11-24 12:09:41,066 - app.logger - WARNING - 🚨 Dangerous pattern detected in URL: eicar - https://support.kaspersky.ru/downloads/eicar
+2025-11-24 12:09:41,623 - app.logger - INFO - 🔍 Analyzing URL: https://support.kaspersky.ru/downloads/eicar
+2025-11-24 12:09:46,266 - app.logger - INFO - 🔍 Analyzing URL: https://www.eicar.com/
+2025-11-24 12:09:46,269 - app.logger - INFO - 🔍 Checking external APIs for: https://www.eicar.com/
+2025-11-24 12:09:46,269 - app.logger - INFO - 🔍 Combining external results for https://www.eicar.com/: {}
+2025-11-24 12:09:46,269 - app.logger - INFO - 🔍 Final external API result for https://www.eicar.com/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 12:09:46,269 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 12:09:46,270 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.eicar.com/: safe=None
+2025-11-24 12:09:46,270 - app.logger - WARNING - 🚨 Dangerous pattern detected in URL: eicar - https://www.eicar.com/
+2025-11-24 12:09:46,521 - app.logger - INFO - 🔍 Analyzing URL: https://www.eicar.com/
+2025-11-24 12:09:48,005 - app.logger - INFO - 🔍 Analyzing URL: https://www.eicar.com/
+2025-11-24 12:09:51,288 - app.logger - INFO - 🔍 Analyzing URL: https://www.eicar.com/
+2025-11-24 12:09:53,875 - app.logger - INFO - 🔍 Analyzing URL: https://www.eicar.org/download-anti-malware-testfile/
+2025-11-24 12:09:53,878 - app.logger - INFO - 🔍 Checking external APIs for: https://www.eicar.org/download-anti-malware-testfile/
+2025-11-24 12:09:53,879 - app.logger - INFO - 🔍 Combining external results for https://www.eicar.org/download-anti-malware-testfile/: {}
+2025-11-24 12:09:53,879 - app.logger - INFO - 🔍 Final external API result for https://www.eicar.org/download-anti-malware-testfile/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 12:09:53,879 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 12:09:53,880 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.eicar.org/download-anti-malware-testfile/: safe=None
+2025-11-24 12:09:53,880 - app.logger - WARNING - 🚨 Dangerous pattern detected in URL: eicar - https://www.eicar.org/download-anti-malware-testfile/
+2025-11-24 12:09:54,372 - app.logger - INFO - 🔍 Analyzing URL: https://www.eicar.org/download-anti-malware-testfile/
+2025-11-24 12:09:56,438 - app.logger - INFO - 🔍 Analyzing URL: https://support.kaspersky.ru/downloads/eicar
+2025-11-24 12:10:44,672 - app.logger - INFO - 🔍 Analyzing URL: http://vms.drweb.com/online/
+2025-11-24 12:10:48,735 - app.logger - INFO - 🔍 Analyzing URL: https://vms.drweb.ru/
+2025-11-24 12:10:48,738 - app.logger - INFO - 🔍 Checking external APIs for: https://vms.drweb.ru/
+2025-11-24 12:10:48,738 - app.logger - INFO - 🔍 Combining external results for https://vms.drweb.ru/: {}
+2025-11-24 12:10:48,739 - app.logger - INFO - 🔍 Final external API result for https://vms.drweb.ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 12:10:48,739 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 12:10:48,739 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://vms.drweb.ru/: safe=None
+2025-11-24 14:07:50,662 - app.logger - WARNING - Blocked suspicious path: /.env
+2025-11-24 15:40:26,534 - app.logger - INFO - 🔍 Analyzing URL: https://brotorrent.net/
+2025-11-24 15:40:26,538 - app.logger - INFO - 🔍 Checking external APIs for: https://brotorrent.net/
+2025-11-24 15:40:26,539 - app.logger - INFO - 🔍 Combining external results for https://brotorrent.net/: {}
+2025-11-24 15:40:26,539 - app.logger - INFO - 🔍 Final external API result for https://brotorrent.net/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:40:26,539 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:40:26,540 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://brotorrent.net/: safe=None
+2025-11-24 15:40:32,664 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:40:32,671 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:40:32,672 - app.logger - INFO - 🔍 Combining external results for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1: {}
+2025-11-24 15:40:32,673 - app.logger - INFO - 🔍 Final external API result for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:40:32,673 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:40:32,674 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1: safe=None
+2025-11-24 15:40:33,418 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:40:33,419 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:40:55,152 - app.logger - INFO - 🔍 Analyzing URL: https://www.ea.com/ru-ru/ea-app
+2025-11-24 15:40:55,157 - app.logger - INFO - 🔍 Checking external APIs for: https://www.ea.com/ru-ru/ea-app
+2025-11-24 15:40:55,158 - app.logger - INFO - 🔍 Combining external results for https://www.ea.com/ru-ru/ea-app: {}
+2025-11-24 15:40:55,158 - app.logger - INFO - 🔍 Final external API result for https://www.ea.com/ru-ru/ea-app: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:40:55,159 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:40:55,159 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.ea.com/ru-ru/ea-app: safe=None
+2025-11-24 15:40:56,043 - app.logger - INFO - 🔍 Analyzing URL: https://trueconf.ru/downloads/windows.html
+2025-11-24 15:40:56,046 - app.logger - INFO - 🔍 Checking external APIs for: https://trueconf.ru/downloads/windows.html
+2025-11-24 15:40:56,047 - app.logger - INFO - 🔍 Combining external results for https://trueconf.ru/downloads/windows.html: {}
+2025-11-24 15:40:56,047 - app.logger - INFO - 🔍 Final external API result for https://trueconf.ru/downloads/windows.html: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:40:56,048 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:40:56,048 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://trueconf.ru/downloads/windows.html: safe=None
+2025-11-24 15:40:56,883 - app.logger - INFO - 🔍 Analyzing URL: https://app.prntscr.com/ru/
+2025-11-24 15:40:56,886 - app.logger - INFO - 🔍 Checking external APIs for: https://app.prntscr.com/ru/
+2025-11-24 15:40:56,886 - app.logger - INFO - 🔍 Combining external results for https://app.prntscr.com/ru/: {}
+2025-11-24 15:40:56,887 - app.logger - INFO - 🔍 Final external API result for https://app.prntscr.com/ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:40:56,887 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:40:56,887 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://app.prntscr.com/ru/: safe=None
+2025-11-24 15:41:19,978 - app.logger - INFO - 🔍 Analyzing URL: https://ru.warface.com/download/
+2025-11-24 15:41:19,981 - app.logger - INFO - 🔍 Checking external APIs for: https://ru.warface.com/download/
+2025-11-24 15:41:19,982 - app.logger - INFO - 🔍 Combining external results for https://ru.warface.com/download/: {}
+2025-11-24 15:41:19,982 - app.logger - INFO - 🔍 Final external API result for https://ru.warface.com/download/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:41:19,982 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:41:19,982 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://ru.warface.com/download/: safe=None
+2025-11-24 15:41:21,105 - app.logger - INFO - 🔍 Analyzing URL: https://www.razer.ru/product/software/synapse-3?srsltid=AfmBOoqjuSfd9-t29RndlvNpMSbRk3Smixk-f9XE7lG81CD_I6mwigtJ
+2025-11-24 15:41:21,108 - app.logger - INFO - 🔍 Checking external APIs for: https://www.razer.ru/product/software/synapse-3?srsltid=AfmBOoqjuSfd9-t29RndlvNpMSbRk3Smixk-f9XE7lG81CD_I6mwigtJ
+2025-11-24 15:41:21,109 - app.logger - INFO - 🔍 Combining external results for https://www.razer.ru/product/software/synapse-3?srsltid=AfmBOoqjuSfd9-t29RndlvNpMSbRk3Smixk-f9XE7lG81CD_I6mwigtJ: {}
+2025-11-24 15:41:21,109 - app.logger - INFO - 🔍 Final external API result for https://www.razer.ru/product/software/synapse-3?srsltid=AfmBOoqjuSfd9-t29RndlvNpMSbRk3Smixk-f9XE7lG81CD_I6mwigtJ: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:41:21,109 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:41:21,109 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.razer.ru/product/software/synapse-3?srsltid=AfmBOoqjuSfd9-t29RndlvNpMSbRk3Smixk-f9XE7lG81CD_I6mwigtJ: safe=None
+2025-11-24 15:41:22,042 - app.logger - INFO - 🔍 Analyzing URL: https://www.bittorrent.com/ru/
+2025-11-24 15:41:22,046 - app.logger - INFO - 🔍 Checking external APIs for: https://www.bittorrent.com/ru/
+2025-11-24 15:41:22,047 - app.logger - INFO - 🔍 Combining external results for https://www.bittorrent.com/ru/: {}
+2025-11-24 15:41:22,047 - app.logger - INFO - 🔍 Final external API result for https://www.bittorrent.com/ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:41:22,047 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:41:22,047 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.bittorrent.com/ru/: safe=None
+2025-11-24 15:41:45,471 - app.logger - INFO - 🔍 Analyzing URL: https://www.eicar.org/download-anti-malware-testfile/
+2025-11-24 15:41:45,474 - app.logger - INFO - 🔍 Checking external APIs for: https://www.eicar.org/download-anti-malware-testfile/
+2025-11-24 15:41:45,475 - app.logger - INFO - 🔍 Combining external results for https://www.eicar.org/download-anti-malware-testfile/: {}
+2025-11-24 15:41:45,475 - app.logger - INFO - 🔍 Final external API result for https://www.eicar.org/download-anti-malware-testfile/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:41:45,475 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:41:45,475 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.eicar.org/download-anti-malware-testfile/: safe=None
+2025-11-24 15:41:45,475 - app.logger - WARNING - 🚨 Dangerous pattern detected in URL: eicar - https://www.eicar.org/download-anti-malware-testfile/
+2025-11-24 15:41:47,533 - app.logger - INFO - 🔍 Analyzing URL: https://www.eicar.com/
+2025-11-24 15:41:47,536 - app.logger - INFO - 🔍 Checking external APIs for: https://www.eicar.com/
+2025-11-24 15:41:47,537 - app.logger - INFO - 🔍 Combining external results for https://www.eicar.com/: {}
+2025-11-24 15:41:47,537 - app.logger - INFO - 🔍 Final external API result for https://www.eicar.com/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:41:47,537 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:41:47,537 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.eicar.com/: safe=None
+2025-11-24 15:41:47,538 - app.logger - WARNING - 🚨 Dangerous pattern detected in URL: eicar - https://www.eicar.com/
+2025-11-24 15:41:48,375 - app.logger - INFO - 🔍 Analyzing URL: https://support.kaspersky.ru/downloads/eicar
+2025-11-24 15:41:48,378 - app.logger - INFO - 🔍 Checking external APIs for: https://support.kaspersky.ru/downloads/eicar
+2025-11-24 15:41:48,379 - app.logger - INFO - 🔍 Combining external results for https://support.kaspersky.ru/downloads/eicar: {}
+2025-11-24 15:41:48,379 - app.logger - INFO - 🔍 Final external API result for https://support.kaspersky.ru/downloads/eicar: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:41:48,379 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:41:48,379 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://support.kaspersky.ru/downloads/eicar: safe=None
+2025-11-24 15:41:48,379 - app.logger - WARNING - 🚨 Dangerous pattern detected in URL: eicar - https://support.kaspersky.ru/downloads/eicar
+2025-11-24 15:41:51,001 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifNip_hvSE0J0sQGIhtINWX5K1wSmA:1763988099098&q=EICAR-Test-File&si=AMgyJEsgWKLo2JlxUdMZ5hORdNO1106BmnQkysKJM4_WR4Uxk_jcuL1SeicJhBqn1jC_OeZYtlsYYOggpUzhD8EV0jKYFnNk9lmM0lSa5i5ikvq7ssKqrnuhnSDGQ9III-pPf-ZCe7KBn1Kw-BSEshMBojIvt3p6KaujZiAurKWhlf3nD2S3lUQ%3D&sa=X&ved=2ahUKEwjhs6Pg54qRAxU2IRAIHYZ3LKEQ6RN6BAgdEAE
+2025-11-24 15:41:51,004 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifNip_hvSE0J0sQGIhtINWX5K1wSmA:1763988099098&q=EICAR-Test-File&si=AMgyJEsgWKLo2JlxUdMZ5hORdNO1106BmnQkysKJM4_WR4Uxk_jcuL1SeicJhBqn1jC_OeZYtlsYYOggpUzhD8EV0jKYFnNk9lmM0lSa5i5ikvq7ssKqrnuhnSDGQ9III-pPf-ZCe7KBn1Kw-BSEshMBojIvt3p6KaujZiAurKWhlf3nD2S3lUQ%3D&sa=X&ved=2ahUKEwjhs6Pg54qRAxU2IRAIHYZ3LKEQ6RN6BAgdEAE
+2025-11-24 15:41:51,005 - app.logger - INFO - 🔍 Combining external results for https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifNip_hvSE0J0sQGIhtINWX5K1wSmA:1763988099098&q=EICAR-Test-File&si=AMgyJEsgWKLo2JlxUdMZ5hORdNO1106BmnQkysKJM4_WR4Uxk_jcuL1SeicJhBqn1jC_OeZYtlsYYOggpUzhD8EV0jKYFnNk9lmM0lSa5i5ikvq7ssKqrnuhnSDGQ9III-pPf-ZCe7KBn1Kw-BSEshMBojIvt3p6KaujZiAurKWhlf3nD2S3lUQ%3D&sa=X&ved=2ahUKEwjhs6Pg54qRAxU2IRAIHYZ3LKEQ6RN6BAgdEAE: {}
+2025-11-24 15:41:51,005 - app.logger - INFO - 🔍 Final external API result for https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifNip_hvSE0J0sQGIhtINWX5K1wSmA:1763988099098&q=EICAR-Test-File&si=AMgyJEsgWKLo2JlxUdMZ5hORdNO1106BmnQkysKJM4_WR4Uxk_jcuL1SeicJhBqn1jC_OeZYtlsYYOggpUzhD8EV0jKYFnNk9lmM0lSa5i5ikvq7ssKqrnuhnSDGQ9III-pPf-ZCe7KBn1Kw-BSEshMBojIvt3p6KaujZiAurKWhlf3nD2S3lUQ%3D&sa=X&ved=2ahUKEwjhs6Pg54qRAxU2IRAIHYZ3LKEQ6RN6BAgdEAE: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:41:51,006 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:41:51,006 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifNip_hvSE0J0sQGIhtINWX5K1wSmA:1763988099098&q=EICAR-Test-File&si=AMgyJEsgWKLo2JlxUdMZ5hORdNO1106BmnQkysKJM4_WR4Uxk_jcuL1SeicJhBqn1jC_OeZYtlsYYOggpUzhD8EV0jKYFnNk9lmM0lSa5i5ikvq7ssKqrnuhnSDGQ9III-pPf-ZCe7KBn1Kw-BSEshMBojIvt3p6KaujZiAurKWhlf3nD2S3lUQ%3D&sa=X&ved=2ahUKEwjhs6Pg54qRAxU2IRAIHYZ3LKEQ6RN6BAgdEAE: safe=None
+2025-11-24 15:41:51,006 - app.logger - WARNING - 🚨 Dangerous pattern detected in URL: eicar - https://www.google.com/search?sca_esv=41170075ba466ac6&sxsrf=AE3TifNip_hvSE0J0sQGIhtINWX5K1wSmA:1763988099098&q=EICAR-Test-File&si=AMgyJEsgWKLo2JlxUdMZ5hORdNO1106BmnQkysKJM4_WR4Uxk_jcuL1SeicJhBqn1jC_OeZYtlsYYOggpUzhD8EV0jKYFnNk9lmM0lSa5i5ikvq7ssKqrnuhnSDGQ9III-pPf-ZCe7KBn1Kw-BSEshMBojIvt3p6KaujZiAurKWhlf3nD2S3lUQ%3D&sa=X&ved=2ahUKEwjhs6Pg54qRAxU2IRAIHYZ3LKEQ6RN6BAgdEAE
+2025-11-24 15:42:21,144 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=eicar&sca_esv=41170075ba466ac6&sxsrf=AE3TifO53vTrnHgSY_v4KC8JAgRWmve1dQ%3A1763974071021&ei=txskaYGLAZOPwPAPqtrMsQs&oq=E&gs_lp=Egxnd3Mtd2l6LXNlcnAiAUUqAggAMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgsQLhiABBixAxiDATIREC4YgAQYsQMY0QMYgwEYxwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDATILEAAYgAQYsQMYgwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDAUjNDVAAWABwAHgAkAEAmAFcoAFcqgEBMbgBAcgBAPgBAZgCAaACZJgDAJIHAzAuMaAHgBCyBwMwLjG4B2TCBwMyLTHIBwU&sclient=gws-wiz-serp
+2025-11-24 15:42:21,148 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?q=eicar&sca_esv=41170075ba466ac6&sxsrf=AE3TifO53vTrnHgSY_v4KC8JAgRWmve1dQ%3A1763974071021&ei=txskaYGLAZOPwPAPqtrMsQs&oq=E&gs_lp=Egxnd3Mtd2l6LXNlcnAiAUUqAggAMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgsQLhiABBixAxiDATIREC4YgAQYsQMY0QMYgwEYxwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDATILEAAYgAQYsQMYgwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDAUjNDVAAWABwAHgAkAEAmAFcoAFcqgEBMbgBAcgBAPgBAZgCAaACZJgDAJIHAzAuMaAHgBCyBwMwLjG4B2TCBwMyLTHIBwU&sclient=gws-wiz-serp
+2025-11-24 15:42:21,149 - app.logger - INFO - 🔍 Combining external results for https://www.google.com/search?q=eicar&sca_esv=41170075ba466ac6&sxsrf=AE3TifO53vTrnHgSY_v4KC8JAgRWmve1dQ%3A1763974071021&ei=txskaYGLAZOPwPAPqtrMsQs&oq=E&gs_lp=Egxnd3Mtd2l6LXNlcnAiAUUqAggAMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgsQLhiABBixAxiDATIREC4YgAQYsQMY0QMYgwEYxwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDATILEAAYgAQYsQMYgwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDAUjNDVAAWABwAHgAkAEAmAFcoAFcqgEBMbgBAcgBAPgBAZgCAaACZJgDAJIHAzAuMaAHgBCyBwMwLjG4B2TCBwMyLTHIBwU&sclient=gws-wiz-serp: {}
+2025-11-24 15:42:21,149 - app.logger - INFO - 🔍 Final external API result for https://www.google.com/search?q=eicar&sca_esv=41170075ba466ac6&sxsrf=AE3TifO53vTrnHgSY_v4KC8JAgRWmve1dQ%3A1763974071021&ei=txskaYGLAZOPwPAPqtrMsQs&oq=E&gs_lp=Egxnd3Mtd2l6LXNlcnAiAUUqAggAMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgsQLhiABBixAxiDATIREC4YgAQYsQMY0QMYgwEYxwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDATILEAAYgAQYsQMYgwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDAUjNDVAAWABwAHgAkAEAmAFcoAFcqgEBMbgBAcgBAPgBAZgCAaACZJgDAJIHAzAuMaAHgBCyBwMwLjG4B2TCBwMyLTHIBwU&sclient=gws-wiz-serp: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:42:21,150 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:42:21,150 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.google.com/search?q=eicar&sca_esv=41170075ba466ac6&sxsrf=AE3TifO53vTrnHgSY_v4KC8JAgRWmve1dQ%3A1763974071021&ei=txskaYGLAZOPwPAPqtrMsQs&oq=E&gs_lp=Egxnd3Mtd2l6LXNlcnAiAUUqAggAMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgsQLhiABBixAxiDATIREC4YgAQYsQMY0QMYgwEYxwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDATILEAAYgAQYsQMYgwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDAUjNDVAAWABwAHgAkAEAmAFcoAFcqgEBMbgBAcgBAPgBAZgCAaACZJgDAJIHAzAuMaAHgBCyBwMwLjG4B2TCBwMyLTHIBwU&sclient=gws-wiz-serp: safe=None
+2025-11-24 15:42:21,150 - app.logger - WARNING - 🚨 Dangerous pattern detected in URL: eicar - https://www.google.com/search?q=eicar&sca_esv=41170075ba466ac6&sxsrf=AE3TifO53vTrnHgSY_v4KC8JAgRWmve1dQ%3A1763974071021&ei=txskaYGLAZOPwPAPqtrMsQs&oq=E&gs_lp=Egxnd3Mtd2l6LXNlcnAiAUUqAggAMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgsQLhiABBixAxiDATIREC4YgAQYsQMY0QMYgwEYxwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDATILEAAYgAQYsQMYgwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDAUjNDVAAWABwAHgAkAEAmAFcoAFcqgEBMbgBAcgBAPgBAZgCAaACZJgDAJIHAzAuMaAHgBCyBwMwLjG4B2TCBwMyLTHIBwU&sclient=gws-wiz-serp
+2025-11-24 15:42:21,846 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=eicar&sca_esv=41170075ba466ac6&sxsrf=AE3TifO53vTrnHgSY_v4KC8JAgRWmve1dQ%3A1763974071021&ei=txskaYGLAZOPwPAPqtrMsQs&oq=E&gs_lp=Egxnd3Mtd2l6LXNlcnAiAUUqAggAMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgsQLhiABBixAxiDATIREC4YgAQYsQMY0QMYgwEYxwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDATILEAAYgAQYsQMYgwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDAUjNDVAAWABwAHgAkAEAmAFcoAFcqgEBMbgBAcgBAPgBAZgCAaACZJgDAJIHAzAuMaAHgBCyBwMwLjG4B2TCBwMyLTHIBwU&sclient=gws-wiz-serp
+2025-11-24 15:42:21,847 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=eicar&sca_esv=41170075ba466ac6&sxsrf=AE3TifO53vTrnHgSY_v4KC8JAgRWmve1dQ%3A1763974071021&ei=txskaYGLAZOPwPAPqtrMsQs&oq=E&gs_lp=Egxnd3Mtd2l6LXNlcnAiAUUqAggAMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgoQIxiABBgnGIoFMgsQLhiABBixAxiDATIREC4YgAQYsQMY0QMYgwEYxwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDATILEAAYgAQYsQMYgwEyERAuGIAEGLEDGNEDGIMBGMcBMgsQABiABBixAxiDAUjNDVAAWABwAHgAkAEAmAFcoAFcqgEBMbgBAcgBAPgBAZgCAaACZJgDAJIHAzAuMaAHgBCyBwMwLjG4B2TCBwMyLTHIBwU&sclient=gws-wiz-serp
+2025-11-24 15:42:36,806 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:42:37,423 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:42:37,424 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:42:43,648 - app.logger - INFO - 🔍 Analyzing URL: https://brotorrent.net/
+2025-11-24 15:42:45,335 - app.logger - INFO - 🔍 Analyzing URL: https://brotorrent.net/
+2025-11-24 15:42:46,634 - app.logger - INFO - 🔍 Analyzing URL: https://brotorrent.net/
+2025-11-24 15:42:46,635 - app.logger - INFO - 🔍 Analyzing URL: https://brotorrent.net/
+2025-11-24 15:44:24,386 - app.logger - INFO - 🔍 Analyzing URL: https://vms.drweb.ru/scan_file/
+2025-11-24 15:44:24,391 - app.logger - INFO - 🔍 Checking external APIs for: https://vms.drweb.ru/scan_file/
+2025-11-24 15:44:24,392 - app.logger - INFO - 🔍 Combining external results for https://vms.drweb.ru/scan_file/: {}
+2025-11-24 15:44:24,393 - app.logger - INFO - 🔍 Final external API result for https://vms.drweb.ru/scan_file/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:44:24,393 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:44:24,393 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://vms.drweb.ru/scan_file/: safe=None
+2025-11-24 15:44:25,366 - app.logger - INFO - 🔍 Analyzing URL: https://vms.drweb.ru/online/
+2025-11-24 15:44:25,369 - app.logger - INFO - 🔍 Checking external APIs for: https://vms.drweb.ru/online/
+2025-11-24 15:44:25,370 - app.logger - INFO - 🔍 Combining external results for https://vms.drweb.ru/online/: {}
+2025-11-24 15:44:25,370 - app.logger - INFO - 🔍 Final external API result for https://vms.drweb.ru/online/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:44:25,371 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:44:25,371 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://vms.drweb.ru/online/: safe=None
+2025-11-24 15:46:39,769 - app.logger - INFO - 🔍 Analyzing URL: https://www.virustotal.com/gui/url/62f3d1fdd3c60503cd23fa39ce40ec7d0a9b66011daa07ca0b823a42272735ec/detection
+2025-11-24 15:46:39,778 - app.logger - INFO - 🔍 Checking external APIs for: https://www.virustotal.com/gui/url/62f3d1fdd3c60503cd23fa39ce40ec7d0a9b66011daa07ca0b823a42272735ec/detection
+2025-11-24 15:46:39,779 - app.logger - INFO - 🔍 Combining external results for https://www.virustotal.com/gui/url/62f3d1fdd3c60503cd23fa39ce40ec7d0a9b66011daa07ca0b823a42272735ec/detection: {}
+2025-11-24 15:46:39,779 - app.logger - INFO - 🔍 Final external API result for https://www.virustotal.com/gui/url/62f3d1fdd3c60503cd23fa39ce40ec7d0a9b66011daa07ca0b823a42272735ec/detection: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:46:39,780 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:46:39,780 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.virustotal.com/gui/url/62f3d1fdd3c60503cd23fa39ce40ec7d0a9b66011daa07ca0b823a42272735ec/detection: safe=None
+2025-11-24 15:46:41,185 - app.logger - INFO - 🔍 Analyzing URL: https://www.virustotal.com/gui/url/62f3d1fdd3c60503cd23fa39ce40ec7d0a9b66011daa07ca0b823a42272735ec/detection
+2025-11-24 15:46:41,185 - app.logger - INFO - 🔍 Analyzing URL: https://www.virustotal.com/gui/url/62f3d1fdd3c60503cd23fa39ce40ec7d0a9b66011daa07ca0b823a42272735ec/detection
+2025-11-24 15:49:11,465 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:49:11,469 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:49:11,470 - app.logger - INFO - 🔍 Combining external results for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1: {}
+2025-11-24 15:49:11,470 - app.logger - INFO - 🔍 Final external API result for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:49:11,470 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:49:11,470 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1: safe=None
+2025-11-24 15:49:28,581 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:49:56,808 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:50:08,395 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:50:11,574 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:50:11,575 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:50:29,914 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:50:40,240 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifMlkCqel31zpGIvRIFTVa7gu0rfBg:1763922971485&ei=G1QjabCiHfGR1fIPoLuxgA4&start=30&sa=N&sstk=Af77f_cigctUbneR72sHkZMlaAldbP2RsHSTgILhtoYL2hNBo_quE5WkAyzrkaQH3QM1kbDse0lmjcQp9EkP4NK_b93MTbqx4ut3W4N0uRtaco_LcsA4VjPaoNeM3VdzYFGL&ved=2ahUKEwjwm4GR9YiRAxXxSFUIHaBdDOA4ChDy0wN6BAgGEAk&biw=1920&bih=945&dpr=1
+2025-11-24 15:56:18,218 - app.logger - INFO - 🔍 Analyzing URL: https://ru.warface.com/download/
+2025-11-24 15:56:18,221 - app.logger - INFO - 🔍 Checking external APIs for: https://ru.warface.com/download/
+2025-11-24 15:56:18,222 - app.logger - INFO - 🔍 Combining external results for https://ru.warface.com/download/: {}
+2025-11-24 15:56:18,222 - app.logger - INFO - 🔍 Final external API result for https://ru.warface.com/download/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:56:18,222 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:56:18,222 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://ru.warface.com/download/: safe=None
+2025-11-24 15:56:39,371 - app.logger - INFO - 🔍 Analyzing URL: http://old-dos.ru/index.php?page=files&mode=files&do=show&id=4109
+2025-11-24 15:56:39,378 - app.logger - INFO - 🔍 Checking external APIs for: http://old-dos.ru/index.php?page=files&mode=files&do=show&id=4109
+2025-11-24 15:56:39,379 - app.logger - INFO - 🔍 Combining external results for http://old-dos.ru/index.php?page=files&mode=files&do=show&id=4109: {}
+2025-11-24 15:56:39,379 - app.logger - INFO - 🔍 Final external API result for http://old-dos.ru/index.php?page=files&mode=files&do=show&id=4109: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:56:39,380 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:56:39,380 - app.logger - WARNING - ⚠️ External APIs returned unclear result for http://old-dos.ru/index.php?page=files&mode=files&do=show&id=4109: safe=None
+2025-11-24 15:56:41,465 - app.logger - INFO - 🔍 Analyzing URL: https://learn.microsoft.com/ru-ru/answers/questions/4030451/question-4030451
+2025-11-24 15:56:41,468 - app.logger - INFO - 🔍 Checking external APIs for: https://learn.microsoft.com/ru-ru/answers/questions/4030451/question-4030451
+2025-11-24 15:56:41,469 - app.logger - INFO - 🔍 Combining external results for https://learn.microsoft.com/ru-ru/answers/questions/4030451/question-4030451: {}
+2025-11-24 15:56:41,469 - app.logger - INFO - 🔍 Final external API result for https://learn.microsoft.com/ru-ru/answers/questions/4030451/question-4030451: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:56:41,470 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:56:41,470 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://learn.microsoft.com/ru-ru/answers/questions/4030451/question-4030451: safe=None
+2025-11-24 15:56:44,995 - app.logger - INFO - 🔍 Analyzing URL: http://old-dos.ru/index.php?page=files&mode=files&do=show&id=4109
+2025-11-24 15:56:49,450 - app.logger - INFO - 🔍 Analyzing URL: http://old-dos.ru/dl.php?id=20533
+2025-11-24 15:56:49,454 - app.logger - INFO - 🔍 Checking external APIs for: http://old-dos.ru/dl.php?id=20533
+2025-11-24 15:56:49,454 - app.logger - INFO - 🔍 Combining external results for http://old-dos.ru/dl.php?id=20533: {}
+2025-11-24 15:56:49,454 - app.logger - INFO - 🔍 Final external API result for http://old-dos.ru/dl.php?id=20533: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:56:49,455 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:56:49,455 - app.logger - WARNING - ⚠️ External APIs returned unclear result for http://old-dos.ru/dl.php?id=20533: safe=None
+2025-11-24 15:56:52,556 - app.logger - INFO - 🔍 Analyzing URL: http://old-dos.ru/index.php?page=gb
+2025-11-24 15:56:52,561 - app.logger - INFO - 🔍 Checking external APIs for: http://old-dos.ru/index.php?page=gb
+2025-11-24 15:56:52,562 - app.logger - INFO - 🔍 Combining external results for http://old-dos.ru/index.php?page=gb: {}
+2025-11-24 15:56:52,563 - app.logger - INFO - 🔍 Final external API result for http://old-dos.ru/index.php?page=gb: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:56:52,563 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:56:52,563 - app.logger - WARNING - ⚠️ External APIs returned unclear result for http://old-dos.ru/index.php?page=gb: safe=None
+2025-11-24 15:56:58,960 - app.logger - INFO - 🔍 Analyzing URL: http://old-dos.ru/index.php?page=files&mode=files&do=show&id=4109
+2025-11-24 15:59:58,576 - app.logger - INFO - 🔍 Analyzing URL: https://support.kaspersky.ru/downloads/eicar
+2025-11-24 15:59:58,579 - app.logger - INFO - 🔍 Checking external APIs for: https://support.kaspersky.ru/downloads/eicar
+2025-11-24 15:59:58,580 - app.logger - INFO - 🔍 Combining external results for https://support.kaspersky.ru/downloads/eicar: {}
+2025-11-24 15:59:58,581 - app.logger - INFO - 🔍 Final external API result for https://support.kaspersky.ru/downloads/eicar: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:59:58,581 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:59:58,581 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://support.kaspersky.ru/downloads/eicar: safe=None
+2025-11-24 15:59:58,582 - app.logger - WARNING - 🚨 Dangerous pattern detected in URL: eicar - https://support.kaspersky.ru/downloads/eicar
+2025-11-24 15:59:59,064 - app.logger - INFO - 🔍 Analyzing URL: https://www.eicar.com/
+2025-11-24 15:59:59,067 - app.logger - INFO - 🔍 Checking external APIs for: https://www.eicar.com/
+2025-11-24 15:59:59,067 - app.logger - INFO - 🔍 Combining external results for https://www.eicar.com/: {}
+2025-11-24 15:59:59,068 - app.logger - INFO - 🔍 Final external API result for https://www.eicar.com/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 15:59:59,068 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 15:59:59,069 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.eicar.com/: safe=None
+2025-11-24 15:59:59,069 - app.logger - WARNING - 🚨 Dangerous pattern detected in URL: eicar - https://www.eicar.com/
+2025-11-24 15:59:59,326 - app.logger - INFO - 🔍 Analyzing URL: https://www.eicar.com/
+2025-11-24 16:00:03,503 - app.logger - INFO - 🔍 Analyzing URL: https://ru.wikipedia.org/wiki/EICAR-Test-File
+2025-11-24 16:00:03,506 - app.logger - INFO - 🔍 Checking external APIs for: https://ru.wikipedia.org/wiki/EICAR-Test-File
+2025-11-24 16:00:03,507 - app.logger - INFO - 🔍 Combining external results for https://ru.wikipedia.org/wiki/EICAR-Test-File: {}
+2025-11-24 16:00:03,507 - app.logger - INFO - 🔍 Final external API result for https://ru.wikipedia.org/wiki/EICAR-Test-File: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:00:03,508 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:00:03,508 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://ru.wikipedia.org/wiki/EICAR-Test-File: safe=None
+2025-11-24 16:00:03,508 - app.logger - WARNING - 🚨 Dangerous pattern detected in URL: eicar - https://ru.wikipedia.org/wiki/EICAR-Test-File
+2025-11-24 16:00:05,685 - app.logger - INFO - 🔍 Analyzing URL: https://internet-lab.ru/antivirus_test_eicar
+2025-11-24 16:00:05,688 - app.logger - INFO - 🔍 Checking external APIs for: https://internet-lab.ru/antivirus_test_eicar
+2025-11-24 16:00:05,689 - app.logger - INFO - 🔍 Combining external results for https://internet-lab.ru/antivirus_test_eicar: {}
+2025-11-24 16:00:05,689 - app.logger - INFO - 🔍 Final external API result for https://internet-lab.ru/antivirus_test_eicar: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:00:05,690 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:00:05,690 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://internet-lab.ru/antivirus_test_eicar: safe=None
+2025-11-24 16:00:05,690 - app.logger - WARNING - 🚨 Dangerous pattern detected in URL: eicar - https://internet-lab.ru/antivirus_test_eicar
+2025-11-24 16:00:07,067 - app.logger - INFO - 🔍 Analyzing URL: https://www.drweb.ru/pravda/issue/?number=708
+2025-11-24 16:00:07,071 - app.logger - INFO - 🔍 Checking external APIs for: https://www.drweb.ru/pravda/issue/?number=708
+2025-11-24 16:00:07,071 - app.logger - INFO - 🔍 Combining external results for https://www.drweb.ru/pravda/issue/?number=708: {}
+2025-11-24 16:00:07,072 - app.logger - INFO - 🔍 Final external API result for https://www.drweb.ru/pravda/issue/?number=708: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:00:07,072 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:00:07,072 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.drweb.ru/pravda/issue/?number=708: safe=None
+2025-11-24 16:00:08,464 - app.logger - INFO - 🔍 Analyzing URL: https://www.eicar.org/membership-registration/
+2025-11-24 16:00:08,468 - app.logger - INFO - 🔍 Checking external APIs for: https://www.eicar.org/membership-registration/
+2025-11-24 16:00:08,469 - app.logger - INFO - 🔍 Combining external results for https://www.eicar.org/membership-registration/: {}
+2025-11-24 16:00:08,469 - app.logger - INFO - 🔍 Final external API result for https://www.eicar.org/membership-registration/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:00:08,469 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:00:08,470 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.eicar.org/membership-registration/: safe=None
+2025-11-24 16:00:08,470 - app.logger - WARNING - 🚨 Dangerous pattern detected in URL: eicar - https://www.eicar.org/membership-registration/
+2025-11-24 16:00:52,764 - app.logger - INFO - 🔍 Analyzing URL: https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0
+2025-11-24 16:00:52,767 - app.logger - INFO - 🔍 Checking external APIs for: https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0
+2025-11-24 16:00:52,768 - app.logger - INFO - 🔍 Combining external results for https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0: {}
+2025-11-24 16:00:52,768 - app.logger - INFO - 🔍 Final external API result for https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:00:52,769 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:00:52,769 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0: safe=None
+2025-11-24 16:00:53,485 - app.logger - INFO - 🔍 Analyzing URL: https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0
+2025-11-24 16:01:42,897 - app.logger - INFO - 🔍 Analyzing URL: https://pro32.com/ru/article/top-10-kompyuternykh-virusov/?srsltid=AfmBOoqYk2L3ZCr7pzqHmu6T5HKed50DvbXpBhVXJM_TxXt5vKXoDanw
+2025-11-24 16:01:42,906 - app.logger - INFO - 🔍 Checking external APIs for: https://pro32.com/ru/article/top-10-kompyuternykh-virusov/?srsltid=AfmBOoqYk2L3ZCr7pzqHmu6T5HKed50DvbXpBhVXJM_TxXt5vKXoDanw
+2025-11-24 16:01:42,907 - app.logger - INFO - 🔍 Combining external results for https://pro32.com/ru/article/top-10-kompyuternykh-virusov/?srsltid=AfmBOoqYk2L3ZCr7pzqHmu6T5HKed50DvbXpBhVXJM_TxXt5vKXoDanw: {}
+2025-11-24 16:01:42,907 - app.logger - INFO - 🔍 Final external API result for https://pro32.com/ru/article/top-10-kompyuternykh-virusov/?srsltid=AfmBOoqYk2L3ZCr7pzqHmu6T5HKed50DvbXpBhVXJM_TxXt5vKXoDanw: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:01:42,908 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:01:42,908 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://pro32.com/ru/article/top-10-kompyuternykh-virusov/?srsltid=AfmBOoqYk2L3ZCr7pzqHmu6T5HKed50DvbXpBhVXJM_TxXt5vKXoDanw: safe=None
+2025-11-24 16:01:42,995 - app.logger - INFO - 🔍 Analyzing URL: https://pro32.com/ru/article/top-10-kompyuternykh-virusov/?srsltid=AfmBOoqYk2L3ZCr7pzqHmu6T5HKed50DvbXpBhVXJM_TxXt5vKXoDanw
+2025-11-24 16:01:56,483 - app.logger - INFO - 🔍 Analyzing URL: https://www.gosuslugi.ru/
+2025-11-24 16:01:56,500 - app.logger - INFO - 🔍 Checking external APIs for: https://www.gosuslugi.ru/
+2025-11-24 16:01:56,501 - app.logger - INFO - 🔍 Combining external results for https://www.gosuslugi.ru/: {}
+2025-11-24 16:01:56,502 - app.logger - INFO - 🔍 Final external API result for https://www.gosuslugi.ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:01:56,502 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:01:56,503 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.gosuslugi.ru/: safe=None
+2025-11-24 16:01:56,697 - app.logger - INFO - 🔍 Analyzing URL: https://www.gosuslugi.ru/
+2025-11-24 16:02:26,785 - app.logger - INFO - 🔍 Analyzing URL: https://max.ru/
+2025-11-24 16:02:26,791 - app.logger - INFO - 🔍 Checking external APIs for: https://max.ru/
+2025-11-24 16:02:26,792 - app.logger - INFO - 🔍 Combining external results for https://max.ru/: {}
+2025-11-24 16:02:26,793 - app.logger - INFO - 🔍 Final external API result for https://max.ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:02:26,793 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:02:26,793 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://max.ru/: safe=None
+2025-11-24 16:02:29,803 - app.logger - INFO - 🔍 Analyzing URL: https://max.ru/
+2025-11-24 16:03:03,261 - app.logger - INFO - 🔍 Analyzing URL: https://pgu.krasnodar.ru/
+2025-11-24 16:03:03,266 - app.logger - INFO - 🔍 Checking external APIs for: https://pgu.krasnodar.ru/
+2025-11-24 16:03:03,267 - app.logger - INFO - 🔍 Combining external results for https://pgu.krasnodar.ru/: {}
+2025-11-24 16:03:03,267 - app.logger - INFO - 🔍 Final external API result for https://pgu.krasnodar.ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:03:03,268 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:03:03,268 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://pgu.krasnodar.ru/: safe=None
+2025-11-24 16:03:04,515 - app.logger - INFO - 🔍 Analyzing URL: https://kubsau.ru/
+2025-11-24 16:03:04,518 - app.logger - INFO - 🔍 Checking external APIs for: https://kubsau.ru/
+2025-11-24 16:03:04,519 - app.logger - INFO - 🔍 Combining external results for https://kubsau.ru/: {}
+2025-11-24 16:03:04,519 - app.logger - INFO - 🔍 Final external API result for https://kubsau.ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:03:04,519 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:03:04,519 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://kubsau.ru/: safe=None
+2025-11-24 16:03:30,893 - app.logger - INFO - 🔍 Analyzing URL: https://www.intex-ltd.ru/
+2025-11-24 16:03:30,896 - app.logger - INFO - 🔍 Checking external APIs for: https://www.intex-ltd.ru/
+2025-11-24 16:03:30,896 - app.logger - INFO - 🔍 Combining external results for https://www.intex-ltd.ru/: {}
+2025-11-24 16:03:30,897 - app.logger - INFO - 🔍 Final external API result for https://www.intex-ltd.ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:03:30,897 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:03:30,898 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.intex-ltd.ru/: safe=None
+2025-11-24 16:42:24,412 - app.logger - INFO - 🔍 Analyzing URL: https://stoigr.org/
+2025-11-24 16:42:24,419 - app.logger - INFO - 🔍 Checking external APIs for: https://stoigr.org/
+2025-11-24 16:42:24,420 - app.logger - INFO - 🔍 Combining external results for https://stoigr.org/: {}
+2025-11-24 16:42:24,421 - app.logger - INFO - 🔍 Final external API result for https://stoigr.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:42:24,422 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:42:24,422 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://stoigr.org/: safe=None
+2025-11-24 16:42:24,604 - app.logger - INFO - 🔍 Analyzing URL: https://stoigr.org/
+2025-11-24 16:42:27,018 - app.logger - INFO - 🔍 Analyzing URL: https://stoigr.org/shuter-games/10394-battlefield-6.html
+2025-11-24 16:42:27,023 - app.logger - INFO - 🔍 Checking external APIs for: https://stoigr.org/shuter-games/10394-battlefield-6.html
+2025-11-24 16:42:27,023 - app.logger - INFO - 🔍 Combining external results for https://stoigr.org/shuter-games/10394-battlefield-6.html: {}
+2025-11-24 16:42:27,024 - app.logger - INFO - 🔍 Final external API result for https://stoigr.org/shuter-games/10394-battlefield-6.html: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:42:27,024 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:42:27,024 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://stoigr.org/shuter-games/10394-battlefield-6.html: safe=None
+2025-11-24 16:42:27,417 - app.logger - INFO - 🔍 Analyzing URL: https://stoigr.org/strategii-games/14483-europa-universalis-5.html
+2025-11-24 16:42:27,420 - app.logger - INFO - 🔍 Checking external APIs for: https://stoigr.org/strategii-games/14483-europa-universalis-5.html
+2025-11-24 16:42:27,420 - app.logger - INFO - 🔍 Combining external results for https://stoigr.org/strategii-games/14483-europa-universalis-5.html: {}
+2025-11-24 16:42:27,421 - app.logger - INFO - 🔍 Final external API result for https://stoigr.org/strategii-games/14483-europa-universalis-5.html: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:42:27,421 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:42:27,421 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://stoigr.org/strategii-games/14483-europa-universalis-5.html: safe=None
+2025-11-24 16:58:34,949 - app.logger - INFO - 🔍 Analyzing URL: https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-44bf-b393-3ad864af0836
+2025-11-24 16:58:34,953 - app.logger - INFO - 🔍 Checking external APIs for: https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-44bf-b393-3ad864af0836
+2025-11-24 16:58:34,954 - app.logger - INFO - 🔍 Combining external results for https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-44bf-b393-3ad864af0836: {}
+2025-11-24 16:58:34,955 - app.logger - INFO - 🔍 Final external API result for https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-44bf-b393-3ad864af0836: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:58:34,955 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:58:34,955 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-44bf-b393-3ad864af0836: safe=None
+2025-11-24 16:58:35,174 - app.logger - INFO - 🔍 Analyzing URL: https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-44bf-b393-3ad864af0836
+2025-11-24 16:58:36,219 - app.logger - INFO - 🔍 Analyzing URL: https://chat.deepseek.com/a/chat/s/f3e1fc76-ebe0-46c6-9373-066866f497b4
+2025-11-24 16:58:36,227 - app.logger - INFO - 🔍 Checking external APIs for: https://chat.deepseek.com/a/chat/s/f3e1fc76-ebe0-46c6-9373-066866f497b4
+2025-11-24 16:58:36,228 - app.logger - INFO - 🔍 Combining external results for https://chat.deepseek.com/a/chat/s/f3e1fc76-ebe0-46c6-9373-066866f497b4: {}
+2025-11-24 16:58:36,228 - app.logger - INFO - 🔍 Final external API result for https://chat.deepseek.com/a/chat/s/f3e1fc76-ebe0-46c6-9373-066866f497b4: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:58:36,229 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:58:36,229 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://chat.deepseek.com/a/chat/s/f3e1fc76-ebe0-46c6-9373-066866f497b4: safe=None
+2025-11-24 16:58:39,275 - app.logger - INFO - 🔍 Analyzing URL: https://chat.deepseek.com/a/chat/s/f3e1fc76-ebe0-46c6-9373-066866f497b4
+2025-11-24 16:58:42,604 - app.logger - INFO - 🔍 Analyzing URL: https://chat.deepseek.com/a/chat/s/88b070a5-7ad8-4463-a72e-a44b2c50ac9c
+2025-11-24 16:58:42,607 - app.logger - INFO - 🔍 Checking external APIs for: https://chat.deepseek.com/a/chat/s/88b070a5-7ad8-4463-a72e-a44b2c50ac9c
+2025-11-24 16:58:42,608 - app.logger - INFO - 🔍 Combining external results for https://chat.deepseek.com/a/chat/s/88b070a5-7ad8-4463-a72e-a44b2c50ac9c: {}
+2025-11-24 16:58:42,608 - app.logger - INFO - 🔍 Final external API result for https://chat.deepseek.com/a/chat/s/88b070a5-7ad8-4463-a72e-a44b2c50ac9c: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:58:42,609 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:58:42,609 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://chat.deepseek.com/a/chat/s/88b070a5-7ad8-4463-a72e-a44b2c50ac9c: safe=None
+2025-11-24 16:58:43,329 - app.logger - INFO - 🔍 Analyzing URL: https://chat.deepseek.com/a/chat/s/8a2d7433-9f96-4307-81e5-294a5280d4d9
+2025-11-24 16:58:43,332 - app.logger - INFO - 🔍 Checking external APIs for: https://chat.deepseek.com/a/chat/s/8a2d7433-9f96-4307-81e5-294a5280d4d9
+2025-11-24 16:58:43,333 - app.logger - INFO - 🔍 Combining external results for https://chat.deepseek.com/a/chat/s/8a2d7433-9f96-4307-81e5-294a5280d4d9: {}
+2025-11-24 16:58:43,333 - app.logger - INFO - 🔍 Final external API result for https://chat.deepseek.com/a/chat/s/8a2d7433-9f96-4307-81e5-294a5280d4d9: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 16:58:43,333 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 16:58:43,334 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://chat.deepseek.com/a/chat/s/8a2d7433-9f96-4307-81e5-294a5280d4d9: safe=None
+2025-11-24 16:58:44,989 - app.logger - INFO - 🔍 Analyzing URL: https://chat.deepseek.com/a/chat/s/8a2d7433-9f96-4307-81e5-294a5280d4d9
+2025-11-24 17:18:10,712 - app.logger - INFO - 🔍 Analyzing URL: https://cursor.com/api/auth/logout
+2025-11-24 17:18:10,716 - app.logger - INFO - 🔍 Checking external APIs for: https://cursor.com/api/auth/logout
+2025-11-24 17:18:10,717 - app.logger - INFO - 🔍 Combining external results for https://cursor.com/api/auth/logout: {}
+2025-11-24 17:18:10,718 - app.logger - INFO - 🔍 Final external API result for https://cursor.com/api/auth/logout: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 17:18:10,718 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 17:18:10,718 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://cursor.com/api/auth/logout: safe=None
+2025-11-24 17:18:10,945 - app.logger - INFO - 🔍 Analyzing URL: https://cursor.com/api/auth/logout
+2025-11-24 17:18:13,026 - app.logger - INFO - 🔍 Analyzing URL: https://cursor.com/dashboard
+2025-11-24 17:18:13,029 - app.logger - INFO - 🔍 Checking external APIs for: https://cursor.com/dashboard
+2025-11-24 17:18:13,030 - app.logger - INFO - 🔍 Combining external results for https://cursor.com/dashboard: {}
+2025-11-24 17:18:13,030 - app.logger - INFO - 🔍 Final external API result for https://cursor.com/dashboard: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 17:18:13,031 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 17:18:13,031 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://cursor.com/dashboard: safe=None
+2025-11-24 17:18:13,079 - app.logger - INFO - 🔍 Analyzing URL: https://cursor.com/dashboard
+2025-11-24 17:18:18,969 - app.logger - INFO - 🔍 Analyzing URL: https://authenticator.cursor.sh/sign-up?state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%25220e03815a-4903-4df1-87c3-00caa8c9e358%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&authorization_session_id=01KAV3NGFYYSS71G02D7YPW9WG
+2025-11-24 17:18:18,977 - app.logger - INFO - 🔍 Checking external APIs for: https://authenticator.cursor.sh/sign-up?state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%25220e03815a-4903-4df1-87c3-00caa8c9e358%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&authorization_session_id=01KAV3NGFYYSS71G02D7YPW9WG
+2025-11-24 17:18:18,978 - app.logger - INFO - 🔍 Combining external results for https://authenticator.cursor.sh/sign-up?state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%25220e03815a-4903-4df1-87c3-00caa8c9e358%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&authorization_session_id=01KAV3NGFYYSS71G02D7YPW9WG: {}
+2025-11-24 17:18:18,978 - app.logger - INFO - 🔍 Final external API result for https://authenticator.cursor.sh/sign-up?state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%25220e03815a-4903-4df1-87c3-00caa8c9e358%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&authorization_session_id=01KAV3NGFYYSS71G02D7YPW9WG: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 17:18:18,978 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 17:18:18,978 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://authenticator.cursor.sh/sign-up?state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%25220e03815a-4903-4df1-87c3-00caa8c9e358%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&authorization_session_id=01KAV3NGFYYSS71G02D7YPW9WG: safe=None
+2025-11-24 17:18:18,984 - app.logger - INFO - 🔍 Analyzing URL: https://authenticator.cursor.sh/sign-up?state=%257B%2522returnTo%2522%253A%2522https%253A%252F%252Fcursor.com%252Fdashboard%2522%252C%2522nonce%2522%253A%25220e03815a-4903-4df1-87c3-00caa8c9e358%2522%257D&redirect_uri=https%3A%2F%2Fcursor.com%2Fapi%2Fauth%2Fcallback&authorization_session_id=01KAV3NGFYYSS71G02D7YPW9WG
+2025-11-24 17:20:09,441 - app.logger - INFO - 🔍 Analyzing URL: https://cursor.com/agents
+2025-11-24 17:20:09,447 - app.logger - INFO - 🔍 Checking external APIs for: https://cursor.com/agents
+2025-11-24 17:20:09,447 - app.logger - INFO - 🔍 Combining external results for https://cursor.com/agents: {}
+2025-11-24 17:20:09,448 - app.logger - INFO - 🔍 Final external API result for https://cursor.com/agents: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 17:20:09,448 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 17:20:09,449 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://cursor.com/agents: safe=None
+2025-11-24 17:20:09,605 - app.logger - INFO - 🔍 Analyzing URL: https://cursor.com/agents
