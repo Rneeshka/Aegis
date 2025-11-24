@@ -9237,3 +9237,484 @@ RuntimeError: WebSocket is not connected. Need to call "accept" first.
 2025-11-24 18:43:12,639 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://love-games1.net/, has_api_key=True, ip=91.238.89.66
 2025-11-24 18:43:12,639 - app.logger - INFO - 🔍 Analyzing URL: https://love-games1.net/
 2025-11-24 18:43:12,640 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:07:25,548 - app.logger - INFO - 🔍 Analyzing URL: https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-44bf-b393-3ad864af0836
+2025-11-24 20:07:25,554 - app.logger - INFO - 🔍 Checking external APIs for: https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-44bf-b393-3ad864af0836
+2025-11-24 20:07:25,555 - app.logger - INFO - 🔍 Combining external results for https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-44bf-b393-3ad864af0836: {}
+2025-11-24 20:07:25,555 - app.logger - INFO - 🔍 Final external API result for https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-44bf-b393-3ad864af0836: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:07:25,555 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:07:25,555 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-44bf-b393-3ad864af0836: safe=None
+2025-11-24 20:07:25,593 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-4, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:07:25,595 - app.logger - INFO - 🔍 Analyzing URL: https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-44bf-b393-3ad864af0836
+2025-11-24 20:07:25,596 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:07:29,259 - app.logger - INFO - 🔍 Analyzing URL: https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-44bf-b393-3ad864af0836
+2025-11-24 20:07:29,292 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-4, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:07:29,293 - app.logger - INFO - 🔍 Analyzing URL: https://chat.deepseek.com/a/chat/s/8cd8e0e5-5fd8-44bf-b393-3ad864af0836
+2025-11-24 20:07:29,293 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=True, source=local_only
+2025-11-24 20:08:21,610 - app.logger - INFO - 🔍 Analyzing URL: https://www.avast.ru/download-update
+2025-11-24 20:08:21,620 - app.logger - INFO - 🔍 Checking external APIs for: https://www.avast.ru/download-update
+2025-11-24 20:08:21,621 - app.logger - INFO - 🔍 Combining external results for https://www.avast.ru/download-update: {}
+2025-11-24 20:08:21,622 - app.logger - INFO - 🔍 Final external API result for https://www.avast.ru/download-update: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:08:21,622 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:08:21,623 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.avast.ru/download-update: safe=None
+2025-11-24 20:08:21,660 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://www.avast.ru/download-update, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:08:21,661 - app.logger - INFO - 🔍 Analyzing URL: https://www.avast.ru/download-update
+2025-11-24 20:08:21,662 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:08:22,716 - app.logger - INFO - 🔍 Analyzing URL: https://www.avast.ru/download-update
+2025-11-24 20:08:22,745 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://www.avast.ru/download-update, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:08:22,745 - app.logger - INFO - 🔍 Analyzing URL: https://www.avast.ru/download-update
+2025-11-24 20:08:22,746 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=True, source=local_only
+2025-11-24 20:09:14,340 - app.logger - INFO - 🔍 Analyzing URL: https://www.phishtank.com/
+2025-11-24 20:09:14,345 - app.logger - INFO - 🔍 Checking external APIs for: https://www.phishtank.com/
+2025-11-24 20:09:14,345 - app.logger - INFO - 🔍 Combining external results for https://www.phishtank.com/: {}
+2025-11-24 20:09:14,346 - app.logger - INFO - 🔍 Final external API result for https://www.phishtank.com/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:09:14,346 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:09:14,346 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.phishtank.com/: safe=None
+2025-11-24 20:09:14,385 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://www.phishtank.com/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:09:14,386 - app.logger - INFO - 🔍 Analyzing URL: https://www.phishtank.com/
+2025-11-24 20:09:14,387 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:09:15,133 - app.logger - INFO - 🔍 Analyzing URL: https://www.phishtank.com/
+2025-11-24 20:09:15,163 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://www.phishtank.com/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:09:15,164 - app.logger - INFO - 🔍 Analyzing URL: https://www.phishtank.com/
+2025-11-24 20:09:15,164 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=True, source=local_only
+2025-11-24 20:09:59,439 - app.logger - INFO - 🔍 Analyzing URL: https://precisionsec.com/threat-intelligence-feeds/malware-domain-list/
+2025-11-24 20:09:59,444 - app.logger - INFO - 🔍 Checking external APIs for: https://precisionsec.com/threat-intelligence-feeds/malware-domain-list/
+2025-11-24 20:09:59,445 - app.logger - INFO - 🔍 Combining external results for https://precisionsec.com/threat-intelligence-feeds/malware-domain-list/: {}
+2025-11-24 20:09:59,445 - app.logger - INFO - 🔍 Final external API result for https://precisionsec.com/threat-intelligence-feeds/malware-domain-list/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:09:59,445 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:09:59,445 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://precisionsec.com/threat-intelligence-feeds/malware-domain-list/: safe=None
+2025-11-24 20:09:59,487 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://precisionsec.com/threat-intelligence-feeds, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:09:59,488 - app.logger - INFO - 🔍 Analyzing URL: https://precisionsec.com/threat-intelligence-feeds/malware-domain-list/
+2025-11-24 20:09:59,489 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:10:04,613 - app.logger - INFO - 🔍 Analyzing URL: https://precisionsec.com/threat-intelligence-feeds/malware-domain-list/
+2025-11-24 20:10:04,667 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://precisionsec.com/threat-intelligence-feeds, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:10:04,668 - app.logger - INFO - 🔍 Analyzing URL: https://precisionsec.com/threat-intelligence-feeds/malware-domain-list/
+2025-11-24 20:10:04,668 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=True, source=local_only
+2025-11-24 20:11:19,304 - app.logger - INFO - 🔍 Analyzing URL: https://threatfeeds.io/?feed=Malware%20Domains%20List
+2025-11-24 20:11:19,309 - app.logger - INFO - 🔍 Checking external APIs for: https://threatfeeds.io/?feed=Malware%20Domains%20List
+2025-11-24 20:11:19,312 - app.logger - INFO - 🔍 Combining external results for https://threatfeeds.io/?feed=Malware%20Domains%20List: {}
+2025-11-24 20:11:19,312 - app.logger - INFO - 🔍 Final external API result for https://threatfeeds.io/?feed=Malware%20Domains%20List: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:11:19,313 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:11:19,313 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://threatfeeds.io/?feed=Malware%20Domains%20List: safe=None
+2025-11-24 20:11:19,355 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://threatfeeds.io/?feed=Malware%20Domains%20L, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:11:19,356 - app.logger - INFO - 🔍 Analyzing URL: https://threatfeeds.io/?feed=Malware%20Domains%20List
+2025-11-24 20:11:19,356 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:11:19,392 - app.logger - INFO - 🔍 Analyzing URL: https://threatfeeds.io/?feed=Malware%20Domains%20List
+2025-11-24 20:11:19,515 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://threatfeeds.io/?feed=Malware%20Domains%20L, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:11:19,515 - app.logger - INFO - 🔍 Analyzing URL: https://threatfeeds.io/?feed=Malware%20Domains%20List
+2025-11-24 20:11:19,516 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=True, source=local_only
+2025-11-24 20:14:05,072 - app.logger - INFO - 🔍 Analyzing URL: https://safebrowsing.google.com/
+2025-11-24 20:14:05,077 - app.logger - INFO - 🔍 Checking external APIs for: https://safebrowsing.google.com/
+2025-11-24 20:14:05,078 - app.logger - INFO - 🔍 Combining external results for https://safebrowsing.google.com/: {}
+2025-11-24 20:14:05,079 - app.logger - INFO - 🔍 Final external API result for https://safebrowsing.google.com/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:14:05,079 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:14:05,080 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://safebrowsing.google.com/: safe=None
+2025-11-24 20:14:05,118 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://safebrowsing.google.com/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:14:05,119 - app.logger - INFO - 🔍 Analyzing URL: https://safebrowsing.google.com/
+2025-11-24 20:14:05,119 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:14:05,199 - app.logger - INFO - 🔍 Analyzing URL: https://safebrowsing.google.com/
+2025-11-24 20:14:05,242 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://safebrowsing.google.com/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:14:05,243 - app.logger - INFO - 🔍 Analyzing URL: https://safebrowsing.google.com/
+2025-11-24 20:14:05,243 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=True, source=local_only
+2025-11-24 20:14:27,716 - app.logger - INFO - 🔍 Analyzing URL: https://developers.google.com/safe-browsing/
+2025-11-24 20:14:27,723 - app.logger - INFO - 🔍 Checking external APIs for: https://developers.google.com/safe-browsing/
+2025-11-24 20:14:27,723 - app.logger - INFO - 🔍 Combining external results for https://developers.google.com/safe-browsing/: {}
+2025-11-24 20:14:27,723 - app.logger - INFO - 🔍 Final external API result for https://developers.google.com/safe-browsing/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:14:27,724 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:14:27,724 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://developers.google.com/safe-browsing/: safe=None
+2025-11-24 20:14:27,757 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://developers.google.com/safe-browsing/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:14:27,758 - app.logger - INFO - 🔍 Analyzing URL: https://developers.google.com/safe-browsing/
+2025-11-24 20:14:27,758 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:14:28,251 - app.logger - INFO - 🔍 Analyzing URL: https://support.google.com/webmasters/answer/3258249?hl=en&ref_topic=4596795
+2025-11-24 20:14:28,254 - app.logger - INFO - 🔍 Checking external APIs for: https://support.google.com/webmasters/answer/3258249?hl=en&ref_topic=4596795
+2025-11-24 20:14:28,255 - app.logger - INFO - 🔍 Combining external results for https://support.google.com/webmasters/answer/3258249?hl=en&ref_topic=4596795: {}
+2025-11-24 20:14:28,255 - app.logger - INFO - 🔍 Final external API result for https://support.google.com/webmasters/answer/3258249?hl=en&ref_topic=4596795: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:14:28,255 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:14:28,255 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://support.google.com/webmasters/answer/3258249?hl=en&ref_topic=4596795: safe=None
+2025-11-24 20:14:28,292 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://support.google.com/webmasters/answer/32582, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:14:28,293 - app.logger - INFO - 🔍 Analyzing URL: https://support.google.com/webmasters/answer/3258249?hl=en&ref_topic=4596795
+2025-11-24 20:14:28,293 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:14:28,371 - app.logger - INFO - 🔍 Analyzing URL: https://support.google.com/webmasters/answer/3258249?hl=en&ref_topic=4596795
+2025-11-24 20:14:28,494 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://support.google.com/webmasters/answer/32582, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:14:28,494 - app.logger - INFO - 🔍 Analyzing URL: https://support.google.com/webmasters/answer/3258249?hl=en&ref_topic=4596795
+2025-11-24 20:14:28,495 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=True, source=local_only
+2025-11-24 20:14:44,142 - app.logger - INFO - 🔍 Analyzing URL: https://accounts.google.com/SignOutOptions?hl=en&continue=https%3A%2F%2Fdevelopers.google.com%2Fsearch%2Fdocs%2Fmonitor-debug%2Fsecurity%2Fmalware%3Fhl%3Den%26ref_topic%3D4596795%26visit_id%3D638996012683950424-1522139128%26rd%3D1&ec=GBRAywI
+2025-11-24 20:14:44,148 - app.logger - INFO - 🔍 Checking external APIs for: https://accounts.google.com/SignOutOptions?hl=en&continue=https%3A%2F%2Fdevelopers.google.com%2Fsearch%2Fdocs%2Fmonitor-debug%2Fsecurity%2Fmalware%3Fhl%3Den%26ref_topic%3D4596795%26visit_id%3D638996012683950424-1522139128%26rd%3D1&ec=GBRAywI
+2025-11-24 20:14:44,148 - app.logger - INFO - 🔍 Combining external results for https://accounts.google.com/SignOutOptions?hl=en&continue=https%3A%2F%2Fdevelopers.google.com%2Fsearch%2Fdocs%2Fmonitor-debug%2Fsecurity%2Fmalware%3Fhl%3Den%26ref_topic%3D4596795%26visit_id%3D638996012683950424-1522139128%26rd%3D1&ec=GBRAywI: {}
+2025-11-24 20:14:44,149 - app.logger - INFO - 🔍 Final external API result for https://accounts.google.com/SignOutOptions?hl=en&continue=https%3A%2F%2Fdevelopers.google.com%2Fsearch%2Fdocs%2Fmonitor-debug%2Fsecurity%2Fmalware%3Fhl%3Den%26ref_topic%3D4596795%26visit_id%3D638996012683950424-1522139128%26rd%3D1&ec=GBRAywI: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:14:44,149 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:14:44,149 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://accounts.google.com/SignOutOptions?hl=en&continue=https%3A%2F%2Fdevelopers.google.com%2Fsearch%2Fdocs%2Fmonitor-debug%2Fsecurity%2Fmalware%3Fhl%3Den%26ref_topic%3D4596795%26visit_id%3D638996012683950424-1522139128%26rd%3D1&ec=GBRAywI: safe=None
+2025-11-24 20:14:44,187 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://accounts.google.com/SignOutOptions?hl=en&c, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:14:44,188 - app.logger - INFO - 🔍 Analyzing URL: https://accounts.google.com/SignOutOptions?hl=en&continue=https%3A%2F%2Fdevelopers.google.com%2Fsearch%2Fdocs%2Fmonitor-debug%2Fsecurity%2Fmalware%3Fhl%3Den%26ref_topic%3D4596795%26visit_id%3D638996012683950424-1522139128%26rd%3D1&ec=GBRAywI
+2025-11-24 20:14:44,188 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:14:49,991 - app.logger - INFO - 🔍 Analyzing URL: https://developers.google.com/search
+2025-11-24 20:14:49,995 - app.logger - INFO - 🔍 Checking external APIs for: https://developers.google.com/search
+2025-11-24 20:14:49,995 - app.logger - INFO - 🔍 Combining external results for https://developers.google.com/search: {}
+2025-11-24 20:14:49,996 - app.logger - INFO - 🔍 Final external API result for https://developers.google.com/search: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:14:49,996 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:14:49,996 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://developers.google.com/search: safe=None
+2025-11-24 20:14:50,030 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://developers.google.com/search, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:14:50,030 - app.logger - INFO - 🔍 Analyzing URL: https://developers.google.com/search
+2025-11-24 20:14:50,030 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:14:50,647 - app.logger - INFO - 🔍 Analyzing URL: https://developers.google.com/search/help
+2025-11-24 20:14:50,650 - app.logger - INFO - 🔍 Checking external APIs for: https://developers.google.com/search/help
+2025-11-24 20:14:50,651 - app.logger - INFO - 🔍 Combining external results for https://developers.google.com/search/help: {}
+2025-11-24 20:14:50,651 - app.logger - INFO - 🔍 Final external API result for https://developers.google.com/search/help: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:14:50,651 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:14:50,651 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://developers.google.com/search/help: safe=None
+2025-11-24 20:14:50,707 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://developers.google.com/search/help, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:14:50,708 - app.logger - INFO - 🔍 Analyzing URL: https://developers.google.com/search/help
+2025-11-24 20:14:50,708 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:14:51,769 - app.logger - INFO - 🔍 Analyzing URL: https://developers.google.com/search/docs
+2025-11-24 20:14:51,773 - app.logger - INFO - 🔍 Checking external APIs for: https://developers.google.com/search/docs
+2025-11-24 20:14:51,774 - app.logger - INFO - 🔍 Combining external results for https://developers.google.com/search/docs: {}
+2025-11-24 20:14:51,774 - app.logger - INFO - 🔍 Final external API result for https://developers.google.com/search/docs: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:14:51,775 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:14:51,775 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://developers.google.com/search/docs: safe=None
+2025-11-24 20:14:51,812 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://developers.google.com/search/docs, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:14:51,813 - app.logger - INFO - 🔍 Analyzing URL: https://developers.google.com/search/docs
+2025-11-24 20:14:51,813 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:15:32,551 - app.logger - INFO - 🔍 Analyzing URL: https://www.keepersecurity.com/blog/ru/2024/11/05/what-to-do-if-you-opened-a-phishing-pdf/
+2025-11-24 20:15:32,560 - app.logger - INFO - 🔍 Checking external APIs for: https://www.keepersecurity.com/blog/ru/2024/11/05/what-to-do-if-you-opened-a-phishing-pdf/
+2025-11-24 20:15:32,560 - app.logger - INFO - 🔍 Combining external results for https://www.keepersecurity.com/blog/ru/2024/11/05/what-to-do-if-you-opened-a-phishing-pdf/: {}
+2025-11-24 20:15:32,561 - app.logger - INFO - 🔍 Final external API result for https://www.keepersecurity.com/blog/ru/2024/11/05/what-to-do-if-you-opened-a-phishing-pdf/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:15:32,561 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:15:32,561 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.keepersecurity.com/blog/ru/2024/11/05/what-to-do-if-you-opened-a-phishing-pdf/: safe=None
+2025-11-24 20:15:32,599 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://www.keepersecurity.com/blog/ru/2024/11/05/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:15:32,600 - app.logger - INFO - 🔍 Analyzing URL: https://www.keepersecurity.com/blog/ru/2024/11/05/what-to-do-if-you-opened-a-phishing-pdf/
+2025-11-24 20:15:32,601 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:15:50,862 - app.logger - INFO - 🔍 Analyzing URL: https://www.abuseipdb.com/
+2025-11-24 20:15:50,867 - app.logger - INFO - 🔍 Checking external APIs for: https://www.abuseipdb.com/
+2025-11-24 20:15:50,867 - app.logger - INFO - 🔍 Combining external results for https://www.abuseipdb.com/: {}
+2025-11-24 20:15:50,868 - app.logger - INFO - 🔍 Final external API result for https://www.abuseipdb.com/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:15:50,868 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:15:50,869 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.abuseipdb.com/: safe=None
+2025-11-24 20:15:50,891 - app.logger - INFO - 🔍 Analyzing URL: https://www.abuseipdb.com/
+2025-11-24 20:15:50,903 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://www.abuseipdb.com/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:15:50,904 - app.logger - INFO - 🔍 Analyzing URL: https://www.abuseipdb.com/
+2025-11-24 20:15:50,905 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=True, source=local_only
+2025-11-24 20:15:50,918 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://www.abuseipdb.com/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:15:50,918 - app.logger - INFO - 🔍 Analyzing URL: https://www.abuseipdb.com/
+2025-11-24 20:15:50,919 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:19:00,265 - app.logger - INFO - 🔍 Analyzing URL: https://github.com/pi-hole/pi-hole/issues/3925
+2025-11-24 20:19:00,273 - app.logger - INFO - 🔍 Checking external APIs for: https://github.com/pi-hole/pi-hole/issues/3925
+2025-11-24 20:19:00,274 - app.logger - INFO - 🔍 Combining external results for https://github.com/pi-hole/pi-hole/issues/3925: {}
+2025-11-24 20:19:00,275 - app.logger - INFO - 🔍 Final external API result for https://github.com/pi-hole/pi-hole/issues/3925: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:19:00,276 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:19:00,276 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://github.com/pi-hole/pi-hole/issues/3925: safe=None
+2025-11-24 20:19:00,314 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://github.com/pi-hole/pi-hole/issues/3925, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:19:00,315 - app.logger - INFO - 🔍 Analyzing URL: https://github.com/pi-hole/pi-hole/issues/3925
+2025-11-24 20:19:00,315 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:19:10,103 - app.logger - INFO - 🔍 Analyzing URL: https://github.com/pi-hole/pi-hole/issues/3925
+2025-11-24 20:19:10,133 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://github.com/pi-hole/pi-hole/issues/3925, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:19:10,134 - app.logger - INFO - 🔍 Analyzing URL: https://github.com/pi-hole/pi-hole/issues/3925
+2025-11-24 20:19:10,134 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=True, source=local_only
+2025-11-24 20:19:14,399 - app.logger - INFO - 🔍 Analyzing URL: https://github.com/pi-hole/pi-hole/issues/new/choose
+2025-11-24 20:19:14,406 - app.logger - INFO - 🔍 Checking external APIs for: https://github.com/pi-hole/pi-hole/issues/new/choose
+2025-11-24 20:19:14,407 - app.logger - INFO - 🔍 Combining external results for https://github.com/pi-hole/pi-hole/issues/new/choose: {}
+2025-11-24 20:19:14,407 - app.logger - INFO - 🔍 Final external API result for https://github.com/pi-hole/pi-hole/issues/new/choose: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:19:14,408 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:19:14,408 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://github.com/pi-hole/pi-hole/issues/new/choose: safe=None
+2025-11-24 20:19:14,439 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://github.com/pi-hole/pi-hole/issues/new/choo, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:19:14,440 - app.logger - INFO - 🔍 Analyzing URL: https://github.com/pi-hole/pi-hole/issues/new/choose
+2025-11-24 20:19:14,440 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:19:32,971 - app.logger - INFO - 🔍 Analyzing URL: https://github.com/pi-hole/pi-hole/issues/new/choose
+2025-11-24 20:19:33,000 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://github.com/pi-hole/pi-hole/issues/new/choo, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:19:33,000 - app.logger - INFO - 🔍 Analyzing URL: https://github.com/pi-hole/pi-hole/issues/new/choose
+2025-11-24 20:19:33,000 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=True, source=local_only
+2025-11-24 20:19:37,952 - app.logger - INFO - 🔍 Analyzing URL: https://github.com/pi-hole/pi-hole
+2025-11-24 20:19:37,959 - app.logger - INFO - 🔍 Checking external APIs for: https://github.com/pi-hole/pi-hole
+2025-11-24 20:19:37,960 - app.logger - INFO - 🔍 Combining external results for https://github.com/pi-hole/pi-hole: {}
+2025-11-24 20:19:37,960 - app.logger - INFO - 🔍 Final external API result for https://github.com/pi-hole/pi-hole: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:19:37,961 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:19:37,961 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://github.com/pi-hole/pi-hole: safe=None
+2025-11-24 20:19:37,993 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://github.com/pi-hole/pi-hole, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:19:37,994 - app.logger - INFO - 🔍 Analyzing URL: https://github.com/pi-hole/pi-hole
+2025-11-24 20:19:37,995 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:25:54,644 - app.logger - INFO - 🔍 Analyzing URL: https://stoigr.org/
+2025-11-24 20:25:54,649 - app.logger - INFO - 🔍 Checking external APIs for: https://stoigr.org/
+2025-11-24 20:25:54,650 - app.logger - INFO - 🔍 Combining external results for https://stoigr.org/: {}
+2025-11-24 20:25:54,650 - app.logger - INFO - 🔍 Final external API result for https://stoigr.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:25:54,651 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:25:54,651 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://stoigr.org/: safe=None
+2025-11-24 20:25:54,689 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://stoigr.org/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:25:54,689 - app.logger - INFO - 🔍 Analyzing URL: https://stoigr.org/
+2025-11-24 20:25:54,690 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:26:13,991 - app.logger - INFO - 🔍 Analyzing URL: https://itorrents-igruha.org/
+2025-11-24 20:26:13,996 - app.logger - INFO - 🔍 Checking external APIs for: https://itorrents-igruha.org/
+2025-11-24 20:26:13,997 - app.logger - INFO - 🔍 Combining external results for https://itorrents-igruha.org/: {}
+2025-11-24 20:26:13,998 - app.logger - INFO - 🔍 Final external API result for https://itorrents-igruha.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:26:13,998 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:26:13,999 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://itorrents-igruha.org/: safe=None
+2025-11-24 20:26:14,039 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://itorrents-igruha.org/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:26:14,040 - app.logger - INFO - 🔍 Analyzing URL: https://itorrents-igruha.org/
+2025-11-24 20:26:14,040 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:26:26,445 - app.logger - INFO - 🔍 Analyzing URL: https://torentino.org/
+2025-11-24 20:26:26,449 - app.logger - INFO - 🔍 Checking external APIs for: https://torentino.org/
+2025-11-24 20:26:26,450 - app.logger - INFO - 🔍 Combining external results for https://torentino.org/: {}
+2025-11-24 20:26:26,450 - app.logger - INFO - 🔍 Final external API result for https://torentino.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:26:26,451 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:26:26,451 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://torentino.org/: safe=None
+2025-11-24 20:26:26,486 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://torentino.org/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:26:26,487 - app.logger - INFO - 🔍 Analyzing URL: https://torentino.org/
+2025-11-24 20:26:26,487 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:26:29,119 - app.logger - INFO - 🔍 Analyzing URL: https://moreigr.games/
+2025-11-24 20:26:29,122 - app.logger - INFO - 🔍 Checking external APIs for: https://moreigr.games/
+2025-11-24 20:26:29,123 - app.logger - INFO - 🔍 Combining external results for https://moreigr.games/: {}
+2025-11-24 20:26:29,123 - app.logger - INFO - 🔍 Final external API result for https://moreigr.games/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:26:29,123 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:26:29,123 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://moreigr.games/: safe=None
+2025-11-24 20:26:29,159 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://moreigr.games/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:26:29,159 - app.logger - INFO - 🔍 Analyzing URL: https://moreigr.games/
+2025-11-24 20:26:29,159 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:26:30,354 - app.logger - INFO - 🔍 Analyzing URL: https://selezen.games/
+2025-11-24 20:26:30,357 - app.logger - INFO - 🔍 Checking external APIs for: https://selezen.games/
+2025-11-24 20:26:30,358 - app.logger - INFO - 🔍 Combining external results for https://selezen.games/: {}
+2025-11-24 20:26:30,358 - app.logger - INFO - 🔍 Final external API result for https://selezen.games/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:26:30,358 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:26:30,358 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://selezen.games/: safe=None
+2025-11-24 20:26:30,392 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://selezen.games/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:26:30,393 - app.logger - INFO - 🔍 Analyzing URL: https://selezen.games/
+2025-11-24 20:26:30,393 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:26:37,972 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?sa=N&sca_esv=f4f0d3251154213d&biw=1920&bih=1032&sxsrf=AE3TifNxZIRD0_dxRa4M42VK3sxShpJtww:1763998988546&udm=28&fbs=AIIjpHwwNPETX5EBoozzDpA6aXu5XYAzN4o-3fmjRDfstF_kz0skqC0oXotIwy8HUVK4QZthnkYB06MDSy77GQEUQS1jPjDgu5TRNklNXUcupMNV6yE0xmGlsvdO2-PtO_JglZdaOm2OtA3nCGZ_lT1UC9MhAyjdheD1PPibfpRns-3_PRG43rd_sEq-BMdW7Pmkb6n_e6vHzviUkDaU6RpJNmiWWXRUhmAuygu0We9yRrTJNwkyDi4A20YoWxMa3e_VA-QuFQfLIE3q_LnXRWb1UGqAAfn-Gg&q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&ved=1t:220175&ictx=111
+2025-11-24 20:26:37,979 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?sa=N&sca_esv=f4f0d3251154213d&biw=1920&bih=1032&sxsrf=AE3TifNxZIRD0_dxRa4M42VK3sxShpJtww:1763998988546&udm=28&fbs=AIIjpHwwNPETX5EBoozzDpA6aXu5XYAzN4o-3fmjRDfstF_kz0skqC0oXotIwy8HUVK4QZthnkYB06MDSy77GQEUQS1jPjDgu5TRNklNXUcupMNV6yE0xmGlsvdO2-PtO_JglZdaOm2OtA3nCGZ_lT1UC9MhAyjdheD1PPibfpRns-3_PRG43rd_sEq-BMdW7Pmkb6n_e6vHzviUkDaU6RpJNmiWWXRUhmAuygu0We9yRrTJNwkyDi4A20YoWxMa3e_VA-QuFQfLIE3q_LnXRWb1UGqAAfn-Gg&q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&ved=1t:220175&ictx=111
+2025-11-24 20:26:37,980 - app.logger - INFO - 🔍 Combining external results for https://www.google.com/search?sa=N&sca_esv=f4f0d3251154213d&biw=1920&bih=1032&sxsrf=AE3TifNxZIRD0_dxRa4M42VK3sxShpJtww:1763998988546&udm=28&fbs=AIIjpHwwNPETX5EBoozzDpA6aXu5XYAzN4o-3fmjRDfstF_kz0skqC0oXotIwy8HUVK4QZthnkYB06MDSy77GQEUQS1jPjDgu5TRNklNXUcupMNV6yE0xmGlsvdO2-PtO_JglZdaOm2OtA3nCGZ_lT1UC9MhAyjdheD1PPibfpRns-3_PRG43rd_sEq-BMdW7Pmkb6n_e6vHzviUkDaU6RpJNmiWWXRUhmAuygu0We9yRrTJNwkyDi4A20YoWxMa3e_VA-QuFQfLIE3q_LnXRWb1UGqAAfn-Gg&q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&ved=1t:220175&ictx=111: {}
+2025-11-24 20:26:37,981 - app.logger - INFO - 🔍 Final external API result for https://www.google.com/search?sa=N&sca_esv=f4f0d3251154213d&biw=1920&bih=1032&sxsrf=AE3TifNxZIRD0_dxRa4M42VK3sxShpJtww:1763998988546&udm=28&fbs=AIIjpHwwNPETX5EBoozzDpA6aXu5XYAzN4o-3fmjRDfstF_kz0skqC0oXotIwy8HUVK4QZthnkYB06MDSy77GQEUQS1jPjDgu5TRNklNXUcupMNV6yE0xmGlsvdO2-PtO_JglZdaOm2OtA3nCGZ_lT1UC9MhAyjdheD1PPibfpRns-3_PRG43rd_sEq-BMdW7Pmkb6n_e6vHzviUkDaU6RpJNmiWWXRUhmAuygu0We9yRrTJNwkyDi4A20YoWxMa3e_VA-QuFQfLIE3q_LnXRWb1UGqAAfn-Gg&q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&ved=1t:220175&ictx=111: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:26:37,981 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:26:37,982 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.google.com/search?sa=N&sca_esv=f4f0d3251154213d&biw=1920&bih=1032&sxsrf=AE3TifNxZIRD0_dxRa4M42VK3sxShpJtww:1763998988546&udm=28&fbs=AIIjpHwwNPETX5EBoozzDpA6aXu5XYAzN4o-3fmjRDfstF_kz0skqC0oXotIwy8HUVK4QZthnkYB06MDSy77GQEUQS1jPjDgu5TRNklNXUcupMNV6yE0xmGlsvdO2-PtO_JglZdaOm2OtA3nCGZ_lT1UC9MhAyjdheD1PPibfpRns-3_PRG43rd_sEq-BMdW7Pmkb6n_e6vHzviUkDaU6RpJNmiWWXRUhmAuygu0We9yRrTJNwkyDi4A20YoWxMa3e_VA-QuFQfLIE3q_LnXRWb1UGqAAfn-Gg&q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&ved=1t:220175&ictx=111: safe=None
+2025-11-24 20:26:38,020 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://www.google.com/search?sa=N&sca_esv=f4f0d32, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:26:38,021 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?sa=N&sca_esv=f4f0d3251154213d&biw=1920&bih=1032&sxsrf=AE3TifNxZIRD0_dxRa4M42VK3sxShpJtww:1763998988546&udm=28&fbs=AIIjpHwwNPETX5EBoozzDpA6aXu5XYAzN4o-3fmjRDfstF_kz0skqC0oXotIwy8HUVK4QZthnkYB06MDSy77GQEUQS1jPjDgu5TRNklNXUcupMNV6yE0xmGlsvdO2-PtO_JglZdaOm2OtA3nCGZ_lT1UC9MhAyjdheD1PPibfpRns-3_PRG43rd_sEq-BMdW7Pmkb6n_e6vHzviUkDaU6RpJNmiWWXRUhmAuygu0We9yRrTJNwkyDi4A20YoWxMa3e_VA-QuFQfLIE3q_LnXRWb1UGqAAfn-Gg&q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&ved=1t:220175&ictx=111
+2025-11-24 20:26:38,021 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:30:03,337 - app.logger - INFO - 🔍 Analyzing URL: http://phishing-site.com/
+2025-11-24 20:30:03,341 - app.logger - INFO - 🔍 Checking external APIs for: http://phishing-site.com/
+2025-11-24 20:30:03,342 - app.logger - INFO - 🔍 Combining external results for http://phishing-site.com/: {}
+2025-11-24 20:30:03,342 - app.logger - INFO - 🔍 Final external API result for http://phishing-site.com/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:30:03,342 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:30:03,343 - app.logger - WARNING - ⚠️ External APIs returned unclear result for http://phishing-site.com/: safe=None
+2025-11-24 20:30:03,381 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=http://phishing-site.com/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:30:03,381 - app.logger - INFO - 🔍 Analyzing URL: http://phishing-site.com/
+2025-11-24 20:30:03,381 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:39:40,829 - app.logger - INFO - 🔍 Analyzing URL: https://vms.drweb.ru/scan_file/
+2025-11-24 20:39:40,837 - app.logger - INFO - 🔍 Checking external APIs for: https://vms.drweb.ru/scan_file/
+2025-11-24 20:39:40,837 - app.logger - INFO - 🔍 Combining external results for https://vms.drweb.ru/scan_file/: {}
+2025-11-24 20:39:40,838 - app.logger - INFO - 🔍 Final external API result for https://vms.drweb.ru/scan_file/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:39:40,838 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:39:40,839 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://vms.drweb.ru/scan_file/: safe=None
+2025-11-24 20:39:40,884 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://vms.drweb.ru/scan_file/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:39:40,884 - app.logger - INFO - 🔍 Analyzing URL: https://vms.drweb.ru/scan_file/
+2025-11-24 20:39:40,885 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:39:43,747 - app.logger - INFO - 🔍 Analyzing URL: https://vms.drweb.ru/online/
+2025-11-24 20:39:43,750 - app.logger - INFO - 🔍 Checking external APIs for: https://vms.drweb.ru/online/
+2025-11-24 20:39:43,751 - app.logger - INFO - 🔍 Combining external results for https://vms.drweb.ru/online/: {}
+2025-11-24 20:39:43,751 - app.logger - INFO - 🔍 Final external API result for https://vms.drweb.ru/online/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:39:43,752 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:39:43,752 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://vms.drweb.ru/online/: safe=None
+2025-11-24 20:39:43,788 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://vms.drweb.ru/online/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:39:43,789 - app.logger - INFO - 🔍 Analyzing URL: https://vms.drweb.ru/online/
+2025-11-24 20:39:43,790 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:39:49,246 - app.logger - INFO - 🔍 Analyzing URL: https://online.drweb.com/
+2025-11-24 20:39:49,249 - app.logger - INFO - 🔍 Checking external APIs for: https://online.drweb.com/
+2025-11-24 20:39:49,250 - app.logger - INFO - 🔍 Combining external results for https://online.drweb.com/: {}
+2025-11-24 20:39:49,251 - app.logger - INFO - 🔍 Final external API result for https://online.drweb.com/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:39:49,251 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:39:49,251 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://online.drweb.com/: safe=None
+2025-11-24 20:39:49,286 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://online.drweb.com/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:39:49,286 - app.logger - INFO - 🔍 Analyzing URL: https://online.drweb.com/
+2025-11-24 20:39:49,287 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:39:49,694 - app.logger - INFO - 🔍 Analyzing URL: https://vms.drweb.ru/
+2025-11-24 20:39:49,696 - app.logger - INFO - 🔍 Checking external APIs for: https://vms.drweb.ru/
+2025-11-24 20:39:49,697 - app.logger - INFO - 🔍 Combining external results for https://vms.drweb.ru/: {}
+2025-11-24 20:39:49,697 - app.logger - INFO - 🔍 Final external API result for https://vms.drweb.ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:39:49,698 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:39:49,698 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://vms.drweb.ru/: safe=None
+2025-11-24 20:39:49,729 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://vms.drweb.ru/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:39:49,730 - app.logger - INFO - 🔍 Analyzing URL: https://vms.drweb.ru/
+2025-11-24 20:39:49,730 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:40:17,894 - app.logger - INFO - 🔍 Analyzing URL: https://stoigr.org/
+2025-11-24 20:40:17,899 - app.logger - INFO - 🔍 Checking external APIs for: https://stoigr.org/
+2025-11-24 20:40:17,900 - app.logger - INFO - 🔍 Combining external results for https://stoigr.org/: {}
+2025-11-24 20:40:17,900 - app.logger - INFO - 🔍 Final external API result for https://stoigr.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:40:17,900 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:40:17,900 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://stoigr.org/: safe=None
+2025-11-24 20:40:17,940 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://stoigr.org/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:40:17,941 - app.logger - INFO - 🔍 Analyzing URL: https://stoigr.org/
+2025-11-24 20:40:17,941 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:40:18,817 - app.logger - INFO - 🔍 Analyzing URL: https://itorrents-igruha.org/
+2025-11-24 20:40:18,819 - app.logger - INFO - 🔍 Checking external APIs for: https://itorrents-igruha.org/
+2025-11-24 20:40:18,820 - app.logger - INFO - 🔍 Combining external results for https://itorrents-igruha.org/: {}
+2025-11-24 20:40:18,820 - app.logger - INFO - 🔍 Final external API result for https://itorrents-igruha.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:40:18,820 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:40:18,820 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://itorrents-igruha.org/: safe=None
+2025-11-24 20:40:18,851 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://itorrents-igruha.org/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:40:18,852 - app.logger - INFO - 🔍 Analyzing URL: https://itorrents-igruha.org/
+2025-11-24 20:40:18,852 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:40:19,466 - app.logger - INFO - 🔍 Analyzing URL: https://torentino.org/
+2025-11-24 20:40:19,469 - app.logger - INFO - 🔍 Checking external APIs for: https://torentino.org/
+2025-11-24 20:40:19,470 - app.logger - INFO - 🔍 Combining external results for https://torentino.org/: {}
+2025-11-24 20:40:19,470 - app.logger - INFO - 🔍 Final external API result for https://torentino.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:40:19,470 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:40:19,471 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://torentino.org/: safe=None
+2025-11-24 20:40:19,504 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://torentino.org/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:40:19,504 - app.logger - INFO - 🔍 Analyzing URL: https://torentino.org/
+2025-11-24 20:40:19,505 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:43:17,009 - app.logger - INFO - 🔍 Analyzing URL: https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s
+2025-11-24 20:43:17,013 - app.logger - INFO - 🔍 Checking external APIs for: https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s
+2025-11-24 20:43:17,014 - app.logger - INFO - 🔍 Combining external results for https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s: {}
+2025-11-24 20:43:17,015 - app.logger - INFO - 🔍 Final external API result for https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:43:17,015 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:43:17,015 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s: safe=None
+2025-11-24 20:43:17,054 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://www.cybersport.ru/tags/games/syuzhetnaya-k, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:43:17,055 - app.logger - INFO - 🔍 Analyzing URL: https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s
+2025-11-24 20:43:17,055 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:43:19,639 - app.logger - INFO - 🔍 Analyzing URL: https://selezen.games/
+2025-11-24 20:43:19,642 - app.logger - INFO - 🔍 Checking external APIs for: https://selezen.games/
+2025-11-24 20:43:19,643 - app.logger - INFO - 🔍 Combining external results for https://selezen.games/: {}
+2025-11-24 20:43:19,643 - app.logger - INFO - 🔍 Final external API result for https://selezen.games/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:43:19,643 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:43:19,644 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://selezen.games/: safe=None
+2025-11-24 20:43:19,677 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://selezen.games/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:43:19,678 - app.logger - INFO - 🔍 Analyzing URL: https://selezen.games/
+2025-11-24 20:43:19,679 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:43:49,350 - app.logger - INFO - 🔍 Analyzing URL: https://moreigr.games/
+2025-11-24 20:43:49,356 - app.logger - INFO - 🔍 Checking external APIs for: https://moreigr.games/
+2025-11-24 20:43:49,357 - app.logger - INFO - 🔍 Combining external results for https://moreigr.games/: {}
+2025-11-24 20:43:49,358 - app.logger - INFO - 🔍 Final external API result for https://moreigr.games/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:43:49,358 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:43:49,359 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://moreigr.games/: safe=None
+2025-11-24 20:43:49,397 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://moreigr.games/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:43:49,398 - app.logger - INFO - 🔍 Analyzing URL: https://moreigr.games/
+2025-11-24 20:43:49,399 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:46:27,265 - app.logger - INFO - 🔍 Analyzing URL: https://torentino.org/
+2025-11-24 20:46:27,271 - app.logger - INFO - 🔍 Checking external APIs for: https://torentino.org/
+2025-11-24 20:46:27,271 - app.logger - INFO - 🔍 Combining external results for https://torentino.org/: {}
+2025-11-24 20:46:27,272 - app.logger - INFO - 🔍 Final external API result for https://torentino.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:46:27,272 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:46:27,272 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://torentino.org/: safe=None
+2025-11-24 20:46:27,305 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://torentino.org/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:46:27,305 - app.logger - INFO - 🔍 Analyzing URL: https://torentino.org/
+2025-11-24 20:46:27,306 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:47:19,770 - app.logger - INFO - 🔍 Analyzing URL: https://gofrag.ru/
+2025-11-24 20:47:19,774 - app.logger - INFO - 🔍 Checking external APIs for: https://gofrag.ru/
+2025-11-24 20:47:19,775 - app.logger - INFO - 🔍 Combining external results for https://gofrag.ru/: {}
+2025-11-24 20:47:19,775 - app.logger - INFO - 🔍 Final external API result for https://gofrag.ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:47:19,775 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:47:19,775 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://gofrag.ru/: safe=None
+2025-11-24 20:47:19,812 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://gofrag.ru/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:47:19,812 - app.logger - INFO - 🔍 Analyzing URL: https://gofrag.ru/
+2025-11-24 20:47:19,813 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:49:02,699 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=f4f0d3251154213d&sxsrf=AE3TifMLHuJj22DVofdHoM-uC4fkmFyIZA:1763996425672&ei=CXMkaaXlKKqnwPAP7pGsSQ&start=10&sa=N&sstk=Af77f_fdE2ipd-e8oe2HdlYDuntnvgUyjdwCOPsAMbbcTp8NQl6DJpjy7R_ytbHW388nGYR2ItEF635l-I8Hi_W7qg-3c3vDp4oW0w&ved=2ahUKEwjljdnihouRAxWqExAIHe4IKwkQ8tMDegQIChAE&biw=1920&bih=1032&dpr=1
+2025-11-24 20:49:02,709 - app.logger - INFO - 🔍 Checking external APIs for: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=f4f0d3251154213d&sxsrf=AE3TifMLHuJj22DVofdHoM-uC4fkmFyIZA:1763996425672&ei=CXMkaaXlKKqnwPAP7pGsSQ&start=10&sa=N&sstk=Af77f_fdE2ipd-e8oe2HdlYDuntnvgUyjdwCOPsAMbbcTp8NQl6DJpjy7R_ytbHW388nGYR2ItEF635l-I8Hi_W7qg-3c3vDp4oW0w&ved=2ahUKEwjljdnihouRAxWqExAIHe4IKwkQ8tMDegQIChAE&biw=1920&bih=1032&dpr=1
+2025-11-24 20:49:02,710 - app.logger - INFO - 🔍 Combining external results for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=f4f0d3251154213d&sxsrf=AE3TifMLHuJj22DVofdHoM-uC4fkmFyIZA:1763996425672&ei=CXMkaaXlKKqnwPAP7pGsSQ&start=10&sa=N&sstk=Af77f_fdE2ipd-e8oe2HdlYDuntnvgUyjdwCOPsAMbbcTp8NQl6DJpjy7R_ytbHW388nGYR2ItEF635l-I8Hi_W7qg-3c3vDp4oW0w&ved=2ahUKEwjljdnihouRAxWqExAIHe4IKwkQ8tMDegQIChAE&biw=1920&bih=1032&dpr=1: {}
+2025-11-24 20:49:02,710 - app.logger - INFO - 🔍 Final external API result for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=f4f0d3251154213d&sxsrf=AE3TifMLHuJj22DVofdHoM-uC4fkmFyIZA:1763996425672&ei=CXMkaaXlKKqnwPAP7pGsSQ&start=10&sa=N&sstk=Af77f_fdE2ipd-e8oe2HdlYDuntnvgUyjdwCOPsAMbbcTp8NQl6DJpjy7R_ytbHW388nGYR2ItEF635l-I8Hi_W7qg-3c3vDp4oW0w&ved=2ahUKEwjljdnihouRAxWqExAIHe4IKwkQ8tMDegQIChAE&biw=1920&bih=1032&dpr=1: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:49:02,711 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:49:02,711 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=f4f0d3251154213d&sxsrf=AE3TifMLHuJj22DVofdHoM-uC4fkmFyIZA:1763996425672&ei=CXMkaaXlKKqnwPAP7pGsSQ&start=10&sa=N&sstk=Af77f_fdE2ipd-e8oe2HdlYDuntnvgUyjdwCOPsAMbbcTp8NQl6DJpjy7R_ytbHW388nGYR2ItEF635l-I8Hi_W7qg-3c3vDp4oW0w&ved=2ahUKEwjljdnihouRAxWqExAIHe4IKwkQ8tMDegQIChAE&biw=1920&bih=1032&dpr=1: safe=None
+2025-11-24 20:49:02,746 - app.logger - INFO - [CHECK_URL] Request from POPUP: url=https://www.google.com/search?q=%D1%82%D0%BE%D1%80, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:49:02,747 - app.logger - INFO - 🔍 Analyzing URL: https://www.google.com/search?q=%D1%82%D0%BE%D1%80%D1%80%D0%B5%D0%BD%D1%82+%D0%B8%D0%B3%D1%80%D1%8B&sca_esv=f4f0d3251154213d&sxsrf=AE3TifMLHuJj22DVofdHoM-uC4fkmFyIZA:1763996425672&ei=CXMkaaXlKKqnwPAP7pGsSQ&start=10&sa=N&sstk=Af77f_fdE2ipd-e8oe2HdlYDuntnvgUyjdwCOPsAMbbcTp8NQl6DJpjy7R_ytbHW388nGYR2ItEF635l-I8Hi_W7qg-3c3vDp4oW0w&ved=2ahUKEwjljdnihouRAxWqExAIHe4IKwkQ8tMDegQIChAE&biw=1920&bih=1032&dpr=1
+2025-11-24 20:49:02,747 - app.logger - INFO - [CHECK_URL] Result (POPUP): safe=True, source=local_only
+2025-11-24 20:49:23,108 - app.logger - INFO - 🔍 Analyzing URL: https://worldoftanks.eu/ru/game/download/
+2025-11-24 20:49:23,111 - app.logger - INFO - 🔍 Checking external APIs for: https://worldoftanks.eu/ru/game/download/
+2025-11-24 20:49:23,112 - app.logger - INFO - 🔍 Combining external results for https://worldoftanks.eu/ru/game/download/: {}
+2025-11-24 20:49:23,112 - app.logger - INFO - 🔍 Final external API result for https://worldoftanks.eu/ru/game/download/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:49:23,113 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:49:23,113 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://worldoftanks.eu/ru/game/download/: safe=None
+2025-11-24 20:49:23,148 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://worldoftanks.eu/ru/game/download/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:49:23,149 - app.logger - INFO - 🔍 Analyzing URL: https://worldoftanks.eu/ru/game/download/
+2025-11-24 20:49:23,150 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:53:17,854 - app.logger - INFO - 🔍 Analyzing URL: https://selezen.games/
+2025-11-24 20:53:17,859 - app.logger - INFO - 🔍 Checking external APIs for: https://selezen.games/
+2025-11-24 20:53:17,860 - app.logger - INFO - 🔍 Combining external results for https://selezen.games/: {}
+2025-11-24 20:53:17,860 - app.logger - INFO - 🔍 Final external API result for https://selezen.games/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:53:17,860 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:53:17,860 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://selezen.games/: safe=None
+2025-11-24 20:53:17,971 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://selezen.games/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:53:17,972 - app.logger - INFO - 🔍 Analyzing URL: https://selezen.games/
+2025-11-24 20:53:17,972 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:54:19,795 - app.logger - INFO - 🔍 Analyzing URL: https://gofrag.ru/
+2025-11-24 20:54:19,799 - app.logger - INFO - 🔍 Checking external APIs for: https://gofrag.ru/
+2025-11-24 20:54:19,799 - app.logger - INFO - 🔍 Combining external results for https://gofrag.ru/: {}
+2025-11-24 20:54:19,800 - app.logger - INFO - 🔍 Final external API result for https://gofrag.ru/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:54:19,800 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:54:19,801 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://gofrag.ru/: safe=None
+2025-11-24 20:54:19,836 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://gofrag.ru/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:54:19,837 - app.logger - INFO - 🔍 Analyzing URL: https://gofrag.ru/
+2025-11-24 20:54:19,838 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:54:20,287 - app.logger - INFO - 🔍 Analyzing URL: https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s
+2025-11-24 20:54:20,290 - app.logger - INFO - 🔍 Checking external APIs for: https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s
+2025-11-24 20:54:20,291 - app.logger - INFO - 🔍 Combining external results for https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s: {}
+2025-11-24 20:54:20,291 - app.logger - INFO - 🔍 Final external API result for https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:54:20,292 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:54:20,292 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s: safe=None
+2025-11-24 20:54:20,323 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://www.cybersport.ru/tags/games/syuzhetnaya-k, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:54:20,324 - app.logger - INFO - 🔍 Analyzing URL: https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s
+2025-11-24 20:54:20,324 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:54:23,429 - app.logger - INFO - 🔍 Analyzing URL: https://stoigr.org/
+2025-11-24 20:54:23,433 - app.logger - INFO - 🔍 Checking external APIs for: https://stoigr.org/
+2025-11-24 20:54:23,434 - app.logger - INFO - 🔍 Combining external results for https://stoigr.org/: {}
+2025-11-24 20:54:23,434 - app.logger - INFO - 🔍 Final external API result for https://stoigr.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:54:23,435 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:54:23,435 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://stoigr.org/: safe=None
+2025-11-24 20:54:23,467 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://stoigr.org/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:54:23,467 - app.logger - INFO - 🔍 Analyzing URL: https://stoigr.org/
+2025-11-24 20:54:23,468 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 20:54:24,291 - app.logger - INFO - 🔍 Analyzing URL: https://itorrents-igruha.org/
+2025-11-24 20:54:24,294 - app.logger - INFO - 🔍 Checking external APIs for: https://itorrents-igruha.org/
+2025-11-24 20:54:24,295 - app.logger - INFO - 🔍 Combining external results for https://itorrents-igruha.org/: {}
+2025-11-24 20:54:24,295 - app.logger - INFO - 🔍 Final external API result for https://itorrents-igruha.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 20:54:24,295 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 20:54:24,296 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://itorrents-igruha.org/: safe=None
+2025-11-24 20:54:24,330 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://itorrents-igruha.org/, has_api_key=True, ip=91.238.89.66
+2025-11-24 20:54:24,331 - app.logger - INFO - 🔍 Analyzing URL: https://itorrents-igruha.org/
+2025-11-24 20:54:24,331 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 21:07:03,435 - app.logger - INFO - 🔍 Analyzing URL: https://stoigr.org/
+2025-11-24 21:07:03,441 - app.logger - INFO - 🔍 Checking external APIs for: https://stoigr.org/
+2025-11-24 21:07:03,442 - app.logger - INFO - 🔍 Combining external results for https://stoigr.org/: {}
+2025-11-24 21:07:03,442 - app.logger - INFO - 🔍 Final external API result for https://stoigr.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 21:07:03,442 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 21:07:03,443 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://stoigr.org/: safe=None
+2025-11-24 21:07:03,482 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://stoigr.org/, has_api_key=True, ip=91.238.89.66
+2025-11-24 21:07:03,483 - app.logger - INFO - 🔍 Analyzing URL: https://stoigr.org/
+2025-11-24 21:07:03,483 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 21:07:07,080 - app.logger - INFO - 🔍 Analyzing URL: https://itorrents-igruha.org/
+2025-11-24 21:07:07,083 - app.logger - INFO - 🔍 Checking external APIs for: https://itorrents-igruha.org/
+2025-11-24 21:07:07,083 - app.logger - INFO - 🔍 Combining external results for https://itorrents-igruha.org/: {}
+2025-11-24 21:07:07,083 - app.logger - INFO - 🔍 Final external API result for https://itorrents-igruha.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 21:07:07,084 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 21:07:07,084 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://itorrents-igruha.org/: safe=None
+2025-11-24 21:07:07,121 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://itorrents-igruha.org/, has_api_key=True, ip=91.238.89.66
+2025-11-24 21:07:07,121 - app.logger - INFO - 🔍 Analyzing URL: https://itorrents-igruha.org/
+2025-11-24 21:07:07,121 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 21:07:07,913 - app.logger - INFO - 🔍 Analyzing URL: https://torentino.org/
+2025-11-24 21:07:07,916 - app.logger - INFO - 🔍 Checking external APIs for: https://torentino.org/
+2025-11-24 21:07:07,916 - app.logger - INFO - 🔍 Combining external results for https://torentino.org/: {}
+2025-11-24 21:07:07,917 - app.logger - INFO - 🔍 Final external API result for https://torentino.org/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 21:07:07,917 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 21:07:07,917 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://torentino.org/: safe=None
+2025-11-24 21:07:07,949 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://torentino.org/, has_api_key=True, ip=91.238.89.66
+2025-11-24 21:07:07,950 - app.logger - INFO - 🔍 Analyzing URL: https://torentino.org/
+2025-11-24 21:07:07,950 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 21:07:09,083 - app.logger - INFO - 🔍 Analyzing URL: https://moreigr.games/
+2025-11-24 21:07:09,085 - app.logger - INFO - 🔍 Checking external APIs for: https://moreigr.games/
+2025-11-24 21:07:09,086 - app.logger - INFO - 🔍 Combining external results for https://moreigr.games/: {}
+2025-11-24 21:07:09,086 - app.logger - INFO - 🔍 Final external API result for https://moreigr.games/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 21:07:09,086 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 21:07:09,086 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://moreigr.games/: safe=None
+2025-11-24 21:07:09,116 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://moreigr.games/, has_api_key=True, ip=91.238.89.66
+2025-11-24 21:07:09,117 - app.logger - INFO - 🔍 Analyzing URL: https://moreigr.games/
+2025-11-24 21:07:09,117 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 21:07:09,530 - app.logger - INFO - 🔍 Analyzing URL: https://selezen.games/
+2025-11-24 21:07:09,533 - app.logger - INFO - 🔍 Checking external APIs for: https://selezen.games/
+2025-11-24 21:07:09,534 - app.logger - INFO - 🔍 Combining external results for https://selezen.games/: {}
+2025-11-24 21:07:09,535 - app.logger - INFO - 🔍 Final external API result for https://selezen.games/: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 21:07:09,535 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 21:07:09,536 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://selezen.games/: safe=None
+2025-11-24 21:07:09,577 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://selezen.games/, has_api_key=True, ip=91.238.89.66
+2025-11-24 21:07:09,578 - app.logger - INFO - 🔍 Analyzing URL: https://selezen.games/
+2025-11-24 21:07:09,578 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
+2025-11-24 21:07:10,722 - app.logger - INFO - 🔍 Analyzing URL: https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s
+2025-11-24 21:07:10,726 - app.logger - INFO - 🔍 Checking external APIs for: https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s
+2025-11-24 21:07:10,726 - app.logger - INFO - 🔍 Combining external results for https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s: {}
+2025-11-24 21:07:10,726 - app.logger - INFO - 🔍 Final external API result for https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s: {'safe': None, 'threat_type': None, 'details': 'Unable to determine safety', 'external_scans': {}, 'confidence': 0}
+2025-11-24 21:07:10,727 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-11-24 21:07:10,727 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s: safe=None
+2025-11-24 21:07:10,760 - app.logger - INFO - [CHECK_URL] Request from HOVER: url=https://www.cybersport.ru/tags/games/syuzhetnaya-k, has_api_key=True, ip=91.238.89.66
+2025-11-24 21:07:10,760 - app.logger - INFO - 🔍 Analyzing URL: https://www.cybersport.ru/tags/games/syuzhetnaya-kampaniya-battlefield-6-poyavilas-na-torrentakh-spustya-mesyats-s
+2025-11-24 21:07:10,761 - app.logger - INFO - [CHECK_URL] Result (HOVER): safe=True, source=local_only
