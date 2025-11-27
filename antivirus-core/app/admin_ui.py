@@ -65,6 +65,7 @@ def _layout(request: Request, title: str, body: str) -> str:
       <a href=\"{p('admin/ui/cache')}\">Кэш URL</a>
       <a href=\"{p('admin/ui/ip')}\">IP репутация</a>
       <a href=\"{p('admin/ui/logs')}\">Логи</a>
+      <a href=\"{p('admin/ui/danger')}\" style=\"color: #dc2626;\">⚠️ Опасная зона</a>
       <a href=\"{p('docs')}\" style=\"float:right\">Документация</a>
     </nav>
   </header>
@@ -818,6 +819,86 @@ async def clear_cache_action(
     
     prefix = request.scope.get("root_path", "")
     redirect = RedirectResponse(url=(prefix + ("/admin/ui/cache" if not prefix.endswith('/') else "admin/ui/cache")), status_code=303)
+    redirect.set_cookie("flash", quote(msg), max_age=10)
+    return redirect
+
+
+@router.get("/danger", response_class=HTMLResponse)
+async def danger_zone_page(request: Request):
+    """Страница опасной зоны - полная очистка базы данных"""
+    body = f"""
+    <div class="card" style="border: 2px solid #dc2626;">
+      <h1 style="color: #dc2626;">⚠️ ОПАСНАЯ ЗОНА</h1>
+      <p style="color: #dc2626; font-weight: 600; font-size: 16px;">
+        ВНИМАНИЕ: Все операции на этой странице необратимы!
+      </p>
+    </div>
+    <div class="card" style="border: 2px solid #dc2626;">
+      <h2 style="color: #dc2626;">Полная очистка базы данных</h2>
+      <p class="muted">
+        Эта операция удалит <strong>ВСЕ</strong> данные из следующих таблиц:
+      </p>
+      <ul style="color: #dc2626;">
+        <li>Все вредоносные URL (malicious_urls)</li>
+        <li>Все вредоносные хэши (malicious_hashes)</li>
+        <li>Весь whitelist кэш (cached_whitelist)</li>
+        <li>Весь blacklist кэш (cached_blacklist)</li>
+        <li>Всю IP репутацию (ip_reputation)</li>
+        <li>Все логи запросов (request_logs)</li>
+        <li>Все фоновые задачи (background_jobs)</li>
+      </ul>
+      <p style="color: #059669; font-weight: 600; margin-top: 16px;">
+        ✅ Сохранятся: API ключи, аккаунты пользователей
+      </p>
+      <form method="post" action="{request.scope.get('root_path','') + ('/admin/ui/danger/clear-all' if not request.scope.get('root_path','').endswith('/') else 'admin/ui/danger/clear-all')}" style="margin-top:20px; display:grid; gap:12px; max-width:500px;">
+        <label style="font-weight: 600; color: #dc2626;">Пароль для подтверждения:</label>
+        <input name="password" type="password" required placeholder="Введите пароль" style="padding: 12px; font-size: 14px;" />
+        <label style="font-weight: 600; color: #dc2626;">
+          <input type="checkbox" name="confirm" required style="margin-right: 8px;" />
+          Я понимаю, что это действие необратимо и удалит все данные
+        </label>
+        <button type="submit" style="background: #dc2626; padding: 14px; font-size: 16px; font-weight: 600;">
+          🗑️ ПОЛНОСТЬЮ ОЧИСТИТЬ БАЗУ ДАННЫХ
+        </button>
+      </form>
+    </div>
+    """
+    return _layout(request, "⚠️ Опасная зона", body)
+
+
+@router.post("/danger/clear-all")
+async def clear_all_database_action(
+    request: Request,
+    password: str = Form(...),
+    confirm: str = Form(None),
+):
+    """Полная очистка базы данных с проверкой пароля"""
+    # Пароль для защиты
+    ADMIN_PASSWORD = "90~kz=Ut!I123nikita12364"
+    
+    if password != ADMIN_PASSWORD:
+        prefix = request.scope.get("root_path", "")
+        redirect = RedirectResponse(url=(prefix + ("/admin/ui/danger" if not prefix.endswith('/') else "admin/ui/danger")), status_code=303)
+        redirect.set_cookie("flash", quote("❌ Неверный пароль!"), max_age=10)
+        return redirect
+    
+    if not confirm:
+        prefix = request.scope.get("root_path", "")
+        redirect = RedirectResponse(url=(prefix + ("/admin/ui/danger" if not prefix.endswith('/') else "admin/ui/danger")), status_code=303)
+        redirect.set_cookie("flash", quote("❌ Необходимо подтвердить операцию!"), max_age=10)
+        return redirect
+    
+    try:
+        results = db_manager.clear_all_database_data()
+        total_deleted = sum(results.values())
+        msg = f"✅ База данных полностью очищена! Удалено записей: {total_deleted}"
+        logging.getLogger(__name__).warning(f"FULL DATABASE CLEAR executed by admin - {total_deleted} records deleted")
+    except Exception as e:
+        logging.getLogger(__name__).error(f"Clear all database error: {e}")
+        msg = f"❌ Ошибка очистки: {str(e)}"
+    
+    prefix = request.scope.get("root_path", "")
+    redirect = RedirectResponse(url=(prefix + ("/admin/ui" if not prefix.endswith('/') else "admin/ui")), status_code=303)
     redirect.set_cookie("flash", quote(msg), max_age=10)
     return redirect
 
