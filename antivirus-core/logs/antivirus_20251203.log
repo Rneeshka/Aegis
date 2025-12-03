@@ -1,0 +1,59 @@
+2025-12-03 23:08:48,881 - app.logger - INFO - Logging system initialized with rotation
+2025-12-03 23:08:48,883 - app.logger - INFO - Removed old log file: logs/antivirus_20251120.log
+2025-12-03 23:08:48,883 - app.logger - INFO - Removed old log file: logs/antivirus_20251125.log
+2025-12-03 23:08:48,902 - app.database - INFO - Initializing database at: /opt/Aegis/data/antivirus.db
+2025-12-03 23:08:48,909 - app.database - INFO - Database initialized successfully with all tables
+2025-12-03 23:08:49,038 - app.logger - INFO - [ENV] env.env loaded: yes (/opt/aegis/antivirus-core/app/env.env)
+2025-12-03 23:08:49,039 - app.logger - INFO - [ENV] VIRUSTOTAL_API_KEY: 8958...96ce
+2025-12-03 23:08:49,040 - app.logger - INFO - [External APIs] Enabled map: {'virustotal': True, 'google_safe_browsing': False, 'abuseipdb': True}
+2025-12-03 23:08:49,131 - app.logger - INFO - 🚀 AEGIS Server starting up...
+2025-12-03 23:08:49,132 - app.logger - INFO - ✅ Database tables verified
+2025-12-03 23:08:49,133 - app.logger - INFO - Database connection established successfully
+2025-12-03 23:08:49,135 - app.database - INFO - Rate limits reset successfully
+2025-12-03 23:08:49,135 - app.logger - INFO - Rate limits reset
+2025-12-03 23:08:49,136 - app.logger - INFO - Background job manager started
+2025-12-03 23:08:49,136 - app.logger - INFO - Background job manager started
+2025-12-03 23:08:49,136 - app.logger - INFO - WebSocket cleanup task started
+2025-12-03 23:08:49,136 - app.logger - INFO - ✅ AEGIS Server startup complete
+2025-12-03 23:08:49,227 - app.logger - INFO - [WS] WebSocket connection attempt from 91.238.89.66
+2025-12-03 23:08:49,228 - app.logger - INFO - [WS] WebSocket connection accepted from 91.238.89.66
+2025-12-03 23:08:49,233 - app.logger - INFO - [WS] Client connected: id=86dabb67-2b05-4cf5-9f64-ec797932694c, ip=91.238.89.66
+2025-12-03 23:08:49,236 - app.logger - INFO - [WS] WebSocket connection attempt from 91.238.89.66
+2025-12-03 23:08:49,236 - app.logger - INFO - [WS] WebSocket connection accepted from 91.238.89.66
+2025-12-03 23:08:49,242 - app.logger - INFO - [WS] Client connected: id=af6f0166-a953-4919-be95-77cf86dbb7e1, ip=91.238.89.66
+2025-12-03 23:10:06,325 - app.logger - INFO - [WS] Client disconnected gracefully: af6f0166-a953-4919-be95-77cf86dbb7e1
+2025-12-03 23:10:06,327 - app.logger - INFO - [WS] Client disconnected: id=af6f0166-a953-4919-be95-77cf86dbb7e1, reason=cleanup
+2025-12-03 23:10:06,328 - app.logger - INFO - [WS] Client disconnected gracefully: 86dabb67-2b05-4cf5-9f64-ec797932694c
+2025-12-03 23:10:06,328 - app.logger - INFO - [WS] Client disconnected: id=86dabb67-2b05-4cf5-9f64-ec797932694c, reason=cleanup
+2025-12-03 23:12:30,162 - app.logger - INFO - Background job manager stopped
+2025-12-03 23:12:30,162 - app.logger - INFO - Background job manager stopped
+2025-12-03 23:12:31,419 - app.logger - INFO - Logging system initialized with rotation
+2025-12-03 23:12:31,423 - app.database - INFO - Initializing database at: /opt/Aegis/data/antivirus.db
+2025-12-03 23:12:31,427 - app.database - INFO - Database initialized successfully with all tables
+2025-12-03 23:12:31,574 - app.logger - INFO - [ENV] env.env loaded: yes (/opt/aegis/antivirus-core/app/env.env)
+2025-12-03 23:12:31,575 - app.logger - INFO - [ENV] VIRUSTOTAL_API_KEY: 8958...96ce
+2025-12-03 23:12:31,576 - app.logger - INFO - [External APIs] Enabled map: {'virustotal': True, 'google_safe_browsing': False, 'abuseipdb': True}
+2025-12-03 23:12:31,671 - app.logger - INFO - 🚀 AEGIS Server starting up...
+2025-12-03 23:12:31,672 - app.logger - INFO - ✅ Database tables verified
+2025-12-03 23:12:31,673 - app.logger - INFO - Database connection established successfully
+2025-12-03 23:12:31,676 - app.database - INFO - Rate limits reset successfully
+2025-12-03 23:12:31,677 - app.logger - INFO - Rate limits reset
+2025-12-03 23:12:31,677 - app.logger - INFO - Background job manager started
+2025-12-03 23:12:31,677 - app.logger - INFO - Background job manager started
+2025-12-03 23:12:31,677 - app.logger - INFO - WebSocket cleanup task started
+2025-12-03 23:12:31,677 - app.logger - INFO - ✅ AEGIS Server startup complete
+2025-12-03 23:32:16,218 - app.database - INFO - Generated API key: PREMIE-RVA... for Telegram User 696019842
+2025-12-03 23:32:16,222 - app.database - INFO - ✅ API key created successfully for Telegram User 696019842 with level premium: PREMIE-RVA...
+2025-12-03 23:32:47,071 - app.logger - INFO - [WS] WebSocket connection attempt from 91.238.89.66
+2025-12-03 23:32:47,073 - app.logger - INFO - [WS] WebSocket connection accepted from 91.238.89.66
+2025-12-03 23:32:47,080 - app.logger - INFO - [WS] Client connected: id=ca963f33-34f8-4b82-9cdc-523fc78dd2a7, ip=91.238.89.66
+2025-12-03 23:32:48,445 - app.logger - INFO - [WS] Starting URL analysis for: https://api.aegis.builders/admin/ui/keys (context: link_check)
+2025-12-03 23:32:48,446 - app.logger - INFO - 🔍 Analyzing URL: https://api.aegis.builders/admin/ui/keys (ignore_db=False)
+2025-12-03 23:32:48,455 - app.logger - WARNING - ⚠️ Private/internal URL detected, skipping external APIs: https://api.aegis.builders/admin/ui/keys
+2025-12-03 23:32:48,458 - app.logger - INFO - [WS] URL analysis completed for https://api.aegis.builders/admin/ui/keys: safe=True, source=internal_only
+2025-12-03 23:32:48,459 - app.logger - INFO - [WS] Sent analysis_result for https://api.aegis.builders/admin/ui/keys to client ca963f33-34f8-4b82-9cdc-523fc78dd2a7
+2025-12-03 23:32:48,459 - app.logger - INFO - [WS] Starting URL analysis for: https://api.aegis.builders/admin/ui (context: hover)
+2025-12-03 23:32:48,459 - app.logger - INFO - 🔍 Analyzing URL: https://api.aegis.builders/admin/ui (ignore_db=False)
+2025-12-03 23:32:48,464 - app.logger - WARNING - ⚠️ Private/internal URL detected, skipping external APIs: https://api.aegis.builders/admin/ui
+2025-12-03 23:32:48,467 - app.logger - INFO - [WS] URL analysis completed for https://api.aegis.builders/admin/ui: safe=True, source=internal_only
+2025-12-03 23:32:48,468 - app.logger - INFO - [WS] Sent analysis_result for https://api.aegis.builders/admin/ui to client ca963f33-34f8-4b82-9cdc-523fc78dd2a7
