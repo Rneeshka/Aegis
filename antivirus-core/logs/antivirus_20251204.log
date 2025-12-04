@@ -47,3 +47,25 @@
 2025-12-04 23:21:58,074 - app.logger - WARNING - ⚠️ Private/internal URL detected, skipping external APIs: https://cursor.com/dashboard
 2025-12-04 23:21:58,077 - app.logger - INFO - [WS] URL analysis completed for https://cursor.com/dashboard: safe=True, source=internal_only
 2025-12-04 23:21:58,078 - app.logger - INFO - [WS] Sent analysis_result for https://cursor.com/dashboard to client 90b7b6fe-6579-47d4-bde0-46cdbd3d4908
+2025-12-04 23:29:35,323 - app.logger - INFO - [WS] Client disconnected gracefully: 90b7b6fe-6579-47d4-bde0-46cdbd3d4908
+2025-12-04 23:29:35,324 - app.logger - INFO - [WS] Client disconnected: id=90b7b6fe-6579-47d4-bde0-46cdbd3d4908, reason=cleanup
+2025-12-04 23:29:35,424 - app.logger - INFO - Background job manager stopped
+2025-12-04 23:29:35,425 - app.logger - INFO - Background job manager stopped
+2025-12-04 23:29:36,078 - app.logger - INFO - Logging system initialized with rotation
+2025-12-04 23:29:36,081 - app.database - INFO - Initializing database at: /opt/Aegis/data/antivirus.db
+2025-12-04 23:29:36,084 - app.database - INFO - Database initialized successfully with all tables
+2025-12-04 23:29:36,202 - app.logger - INFO - [ENV] env.env loaded: yes (/opt/aegis/antivirus-core/app/env.env)
+2025-12-04 23:29:36,202 - app.logger - INFO - [ENV] VIRUSTOTAL_API_KEY: 8958...96ce
+2025-12-04 23:29:36,203 - app.logger - INFO - [External APIs] Enabled map: {'virustotal': True, 'google_safe_browsing': False, 'abuseipdb': True}
+2025-12-04 23:29:36,282 - app.logger - INFO - 🚀 AEGIS Server starting up...
+2025-12-04 23:29:36,284 - app.logger - INFO - ✅ Database tables verified
+2025-12-04 23:29:36,285 - app.logger - INFO - Database connection established successfully
+2025-12-04 23:29:36,288 - app.database - INFO - Rate limits reset successfully
+2025-12-04 23:29:36,289 - app.logger - INFO - Rate limits reset
+2025-12-04 23:29:36,289 - app.logger - INFO - Background job manager started
+2025-12-04 23:29:36,289 - app.logger - INFO - Background job manager started
+2025-12-04 23:29:36,289 - app.logger - INFO - WebSocket cleanup task started
+2025-12-04 23:29:36,289 - app.logger - INFO - ✅ AEGIS Server startup complete
+2025-12-04 23:29:36,934 - app.logger - INFO - [WS] WebSocket connection attempt from 91.238.88.83
+2025-12-04 23:29:36,935 - app.logger - INFO - [WS] WebSocket connection accepted from 91.238.88.83
+2025-12-04 23:29:36,943 - app.logger - INFO - [WS] Client connected: id=3e49efda-60da-46a7-b0ae-ccd38b9ec943, ip=91.238.88.83
