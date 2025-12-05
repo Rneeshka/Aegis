@@ -479,3 +479,28 @@
 2025-12-05 23:56:29,775 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/acts: safe=True, source=external_apis
 2025-12-05 23:56:29,775 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/acts to client 823b6f20-dec3-4c19-bd7f-099f85f080a9
 2025-12-06 00:12:39,657 - app.logger - WARNING - Blocked suspicious path: /.env
+2025-12-06 00:22:57,639 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/api-keys (context: link_check)
+2025-12-06 00:22:57,641 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/api-keys (ignore_db=False)
+2025-12-06 00:22:57,647 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/api-keys
+2025-12-06 00:22:57,648 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/api-keys: safe=True, source=external_apis
+2025-12-06 00:22:57,649 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/api-keys to client 823b6f20-dec3-4c19-bd7f-099f85f080a9
+2025-12-06 00:23:00,743 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/registries (context: hover)
+2025-12-06 00:23:00,744 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/registries (ignore_db=False)
+2025-12-06 00:23:00,749 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/registries
+2025-12-06 00:23:00,750 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/registries: safe=True, source=external_apis
+2025-12-06 00:23:00,750 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/registries to client 823b6f20-dec3-4c19-bd7f-099f85f080a9
+2025-12-06 00:23:04,820 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/analytics (context: link_check)
+2025-12-06 00:23:04,821 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/analytics (ignore_db=False)
+2025-12-06 00:23:04,826 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/analytics
+2025-12-06 00:23:04,826 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/analytics: safe=True, source=external_apis
+2025-12-06 00:23:04,827 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/analytics to client 823b6f20-dec3-4c19-bd7f-099f85f080a9
+2025-12-06 00:23:21,121 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/registries (context: link_check)
+2025-12-06 00:23:21,122 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/registries (ignore_db=False)
+2025-12-06 00:23:21,128 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/registries
+2025-12-06 00:23:21,128 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/registries: safe=True, source=external_apis
+2025-12-06 00:23:21,129 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/registries to client 823b6f20-dec3-4c19-bd7f-099f85f080a9
+2025-12-06 00:23:38,286 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/registries/ajax/register-download-example?registerId=019aee83-adb7-7308-a761-57d204950132&merchantId=1208526 (context: link_check)
+2025-12-06 00:23:38,286 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/registries/ajax/register-download-example?registerId=019aee83-adb7-7308-a761-57d204950132&merchantId=1208526 (ignore_db=False)
+2025-12-06 00:23:38,291 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/registries/ajax/register-download-example?registerId=019aee83-adb7-7308-a761-57d204950132&merchantId=1208526
+2025-12-06 00:23:38,291 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/registries/ajax/register-download-example?registerId=019aee83-adb7-7308-a761-57d204950132&merchantId=1208526: safe=True, source=external_apis
+2025-12-06 00:23:38,291 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/registries/ajax/register-download-example?registerId=019aee83-adb7-7308-a761-57d204950132&merchantId=1208526 to client 823b6f20-dec3-4c19-bd7f-099f85f080a9
