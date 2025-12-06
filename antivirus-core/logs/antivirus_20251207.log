@@ -322,3 +322,5 @@
 2025-12-07 00:55:27,091 - app.logger - INFO - [WS] Client connected: id=06a15658-dde7-43f7-aeca-966baac99b23, ip=185.46.16.165
 2025-12-07 00:56:00,272 - app.database - INFO - Initializing database at: /opt/Aegis/data/antivirus.db
 2025-12-07 00:56:00,277 - app.database - INFO - Database initialized successfully with all tables
+2025-12-07 01:13:13,139 - app.database - INFO - Generated API key: PREMIP-IX6... for kit
+2025-12-07 01:13:13,143 - app.database - INFO - ✅ API key created successfully for kit with level premium: PREMIP-IX6...
