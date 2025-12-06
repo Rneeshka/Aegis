@@ -933,3 +933,267 @@ connector: <aiohttp.connector.TCPConnector object at 0x7ff640b546d0>
 2025-12-06 00:47:19,153 - app.logger - WARNING - ⚠️ Private/internal URL detected, skipping external APIs: https://cursor.com/dashboard
 2025-12-06 00:47:19,157 - app.logger - INFO - [WS] URL analysis completed for https://cursor.com/dashboard: safe=True, source=internal_only
 2025-12-06 00:47:19,159 - app.logger - INFO - [WS] Sent analysis_result for https://cursor.com/dashboard to client 823b6f20-dec3-4c19-bd7f-099f85f080a9
+2025-12-06 00:53:46,992 - app.logger - INFO - [WS] Client disconnected gracefully: 823b6f20-dec3-4c19-bd7f-099f85f080a9
+2025-12-06 00:53:46,995 - app.logger - INFO - [WS] Client disconnected: id=823b6f20-dec3-4c19-bd7f-099f85f080a9, reason=cleanup
+2025-12-06 01:14:14,885 - app.logger - WARNING - Blocked suspicious path: /.env
+2025-12-06 05:25:01,557 - app.logger - WARNING - Blocked suspicious path: /.env
+2025-12-06 05:25:04,345 - app.logger - WARNING - Blocked suspicious path: /.env.production
+2025-12-06 05:25:05,270 - app.logger - WARNING - Blocked suspicious path: /.env.local
+2025-12-06 05:25:05,884 - app.logger - WARNING - Blocked suspicious path: /.env.save
+2025-12-06 05:25:07,430 - app.logger - WARNING - Blocked suspicious path: /.env.old
+2025-12-06 05:25:07,734 - app.logger - WARNING - Blocked suspicious path: /.env.sample
+2025-12-06 05:25:08,657 - app.logger - WARNING - Blocked suspicious path: /.env.development
+2025-12-06 05:25:10,202 - app.logger - WARNING - Blocked suspicious path: /.env.dev.local
+2025-12-06 05:25:10,506 - app.logger - WARNING - Blocked suspicious path: /.env.prod.local
+2025-12-06 05:25:10,811 - app.logger - WARNING - Blocked suspicious path: /.env.1
+2025-12-06 05:25:11,115 - app.logger - WARNING - Blocked suspicious path: /.env.backup
+2025-12-06 05:25:11,420 - app.logger - WARNING - Blocked suspicious path: /.env.test
+2025-12-06 05:25:12,964 - app.logger - WARNING - Blocked suspicious path: /configuration.php
+2025-12-06 05:25:13,890 - app.logger - WARNING - Blocked suspicious path: /config.zip
+2025-12-06 05:25:15,124 - app.logger - WARNING - Blocked suspicious path: /.env.bak
+2025-12-06 05:25:26,593 - app.logger - WARNING - Blocked suspicious path: /.env.2
+2025-12-06 05:25:26,897 - app.logger - WARNING - Blocked suspicious path: /.env.staging
+2025-12-06 05:25:27,202 - app.logger - WARNING - Blocked suspicious path: /.env.remote
+2025-12-06 06:55:40,038 - app.logger - WARNING - Blocked suspicious path: /.env
+2025-12-06 06:55:40,195 - app.logger - WARNING - Blocked suspicious path: /.env.example
+2025-12-06 06:55:40,380 - app.logger - WARNING - Blocked suspicious path: /.env.development
+2025-12-06 06:55:40,612 - app.logger - WARNING - Blocked suspicious path: /.env.production
+2025-12-06 06:55:43,044 - app.logger - WARNING - Blocked suspicious path: /config/database.yml
+2025-12-06 06:55:43,497 - app.logger - WARNING - Blocked suspicious path: /.env.js
+2025-12-06 08:30:31,973 - app.logger - WARNING - Blocked suspicious path: /.env
+2025-12-06 08:30:32,540 - app.logger - WARNING - Blocked suspicious path: /.env.production
+2025-12-06 08:30:32,727 - app.logger - WARNING - Blocked suspicious path: /.env.local
+2025-12-06 08:30:32,851 - app.logger - WARNING - Blocked suspicious path: /.env.save
+2025-12-06 08:30:33,167 - app.logger - WARNING - Blocked suspicious path: /.env.old
+2025-12-06 08:30:33,225 - app.logger - WARNING - Blocked suspicious path: /.env.sample
+2025-12-06 08:30:33,410 - app.logger - WARNING - Blocked suspicious path: /.env.development
+2025-12-06 08:30:33,723 - app.logger - WARNING - Blocked suspicious path: /.env.dev.local
+2025-12-06 08:30:33,786 - app.logger - WARNING - Blocked suspicious path: /.env.prod.local
+2025-12-06 08:30:33,843 - app.logger - WARNING - Blocked suspicious path: /.env.1
+2025-12-06 08:30:33,901 - app.logger - WARNING - Blocked suspicious path: /.env.backup
+2025-12-06 08:30:33,960 - app.logger - WARNING - Blocked suspicious path: /.env.test
+2025-12-06 08:30:34,276 - app.logger - WARNING - Blocked suspicious path: /configuration.php
+2025-12-06 08:30:34,461 - app.logger - WARNING - Blocked suspicious path: /config.zip
+2025-12-06 08:30:34,729 - app.logger - WARNING - Blocked suspicious path: /.env.bak
+2025-12-06 08:30:37,107 - app.logger - WARNING - Blocked suspicious path: /.env.2
+2025-12-06 08:30:37,166 - app.logger - WARNING - Blocked suspicious path: /.env.staging
+2025-12-06 08:30:37,227 - app.logger - WARNING - Blocked suspicious path: /.env.remote
+2025-12-06 11:51:50,901 - app.logger - INFO - [WS] WebSocket connection attempt from 185.46.16.165
+2025-12-06 11:51:50,902 - app.logger - INFO - [WS] WebSocket connection accepted from 185.46.16.165
+2025-12-06 11:51:50,909 - app.logger - INFO - [WS] Client connected: id=5abfbf53-3279-4c66-a833-e6f1f99dca70, ip=185.46.16.165
+2025-12-06 11:52:08,112 - app.logger - INFO - [WS] Starting URL analysis for: https://api.aegis.builders/admin/ui/keys (context: hover)
+2025-12-06 11:52:08,114 - app.logger - INFO - 🔍 Analyzing URL: https://api.aegis.builders/admin/ui/keys (ignore_db=False)
+2025-12-06 11:52:08,118 - app.logger - WARNING - ⚠️ Private/internal URL detected, skipping external APIs: https://api.aegis.builders/admin/ui/keys
+2025-12-06 11:52:08,121 - app.logger - INFO - [WS] URL analysis completed for https://api.aegis.builders/admin/ui/keys: safe=True, source=internal_only
+2025-12-06 11:52:08,122 - app.logger - INFO - [WS] Sent analysis_result for https://api.aegis.builders/admin/ui/keys to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:52:12,068 - app.logger - INFO - [WS] Starting URL analysis for: https://api.aegis.builders/admin/ui/ip (context: hover)
+2025-12-06 11:52:12,069 - app.logger - INFO - 🔍 Analyzing URL: https://api.aegis.builders/admin/ui/ip (ignore_db=False)
+2025-12-06 11:52:12,073 - app.logger - WARNING - ⚠️ Private/internal URL detected, skipping external APIs: https://api.aegis.builders/admin/ui/ip
+2025-12-06 11:52:12,076 - app.logger - INFO - [WS] URL analysis completed for https://api.aegis.builders/admin/ui/ip: safe=True, source=internal_only
+2025-12-06 11:52:12,077 - app.logger - INFO - [WS] Sent analysis_result for https://api.aegis.builders/admin/ui/ip to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:52:12,079 - app.logger - INFO - [WS] Starting URL analysis for: https://api.aegis.builders/admin/ui/ip (context: link_check)
+2025-12-06 11:52:12,079 - app.logger - INFO - 🔍 Analyzing URL: https://api.aegis.builders/admin/ui/ip (ignore_db=False)
+2025-12-06 11:52:12,079 - app.logger - WARNING - Ignoring cached safe=True result with source=internal_only for url:https://api.aegis.builders/admin/ui/ip
+2025-12-06 11:52:12,085 - app.logger - WARNING - ⚠️ Private/internal URL detected, skipping external APIs: https://api.aegis.builders/admin/ui/ip
+2025-12-06 11:52:12,089 - app.logger - INFO - [WS] URL analysis completed for https://api.aegis.builders/admin/ui/ip: safe=True, source=internal_only
+2025-12-06 11:52:12,089 - app.logger - INFO - [WS] Sent analysis_result for https://api.aegis.builders/admin/ui/ip to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:52:12,734 - app.logger - INFO - [WS] Starting URL analysis for: https://api.aegis.builders/admin/ui/cache (context: link_check)
+2025-12-06 11:52:12,734 - app.logger - INFO - 🔍 Analyzing URL: https://api.aegis.builders/admin/ui/cache (ignore_db=False)
+2025-12-06 11:52:12,738 - app.logger - WARNING - ⚠️ Private/internal URL detected, skipping external APIs: https://api.aegis.builders/admin/ui/cache
+2025-12-06 11:52:12,742 - app.logger - INFO - [WS] URL analysis completed for https://api.aegis.builders/admin/ui/cache: safe=True, source=internal_only
+2025-12-06 11:52:12,743 - app.logger - INFO - [WS] Sent analysis_result for https://api.aegis.builders/admin/ui/cache to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:52:16,254 - app.logger - INFO - [WS] Starting URL analysis for: https://otvet.mail.ru/ (context: hover)
+2025-12-06 11:52:16,254 - app.logger - INFO - 🔍 Analyzing URL: https://otvet.mail.ru/ (ignore_db=False)
+2025-12-06 11:52:16,262 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://otvet.mail.ru/
+2025-12-06 11:52:16,263 - app.logger - INFO - [WS] URL analysis completed for https://otvet.mail.ru/: safe=True, source=external_apis
+2025-12-06 11:52:16,264 - app.logger - INFO - [WS] Sent analysis_result for https://otvet.mail.ru/ to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:52:18,805 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/registries (context: hover)
+2025-12-06 11:52:18,805 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/registries (ignore_db=False)
+2025-12-06 11:52:18,812 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/registries
+2025-12-06 11:52:18,812 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/registries: safe=True, source=external_apis
+2025-12-06 11:52:18,813 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/registries to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:52:23,232 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/self-employed/receipts (context: hover)
+2025-12-06 11:52:23,232 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/self-employed/receipts (ignore_db=False)
+2025-12-06 11:52:23,238 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/self-employed/receipts
+2025-12-06 11:52:23,238 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/self-employed/receipts: safe=True, source=external_apis
+2025-12-06 11:52:23,239 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/self-employed/receipts to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:52:25,357 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/prepared-solutions (context: hover)
+2025-12-06 11:52:25,357 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/prepared-solutions (ignore_db=False)
+2025-12-06 11:52:25,362 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/prepared-solutions
+2025-12-06 11:52:25,362 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/prepared-solutions: safe=True, source=external_apis
+2025-12-06 11:52:25,363 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/prepared-solutions to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:52:26,116 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/prepared-solutions (context: link_check)
+2025-12-06 11:52:26,116 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/prepared-solutions (ignore_db=False)
+2025-12-06 11:52:26,122 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/prepared-solutions
+2025-12-06 11:52:26,122 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/prepared-solutions: safe=True, source=external_apis
+2025-12-06 11:52:26,123 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/prepared-solutions to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:52:30,492 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/api-keys (context: link_check)
+2025-12-06 11:52:30,492 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/api-keys (ignore_db=False)
+2025-12-06 11:52:30,497 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/api-keys
+2025-12-06 11:52:30,497 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/api-keys: safe=True, source=external_apis
+2025-12-06 11:52:30,498 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/api-keys to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:52:35,945 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/http-notifications (context: link_check)
+2025-12-06 11:52:35,946 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/http-notifications (ignore_db=False)
+2025-12-06 11:52:35,951 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/http-notifications
+2025-12-06 11:52:35,951 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/http-notifications: safe=True, source=external_apis
+2025-12-06 11:52:35,952 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/http-notifications to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:52:36,002 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/http-notifications (context: hover)
+2025-12-06 11:52:36,003 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/http-notifications (ignore_db=False)
+2025-12-06 11:52:36,009 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/http-notifications
+2025-12-06 11:52:36,009 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/http-notifications: safe=True, source=external_apis
+2025-12-06 11:52:36,010 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/http-notifications to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:53:07,146 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/oauth (context: hover)
+2025-12-06 11:53:07,148 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/oauth (ignore_db=False)
+2025-12-06 11:53:07,155 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/oauth
+2025-12-06 11:53:07,155 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/oauth: safe=True, source=external_apis
+2025-12-06 11:53:07,156 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/oauth to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:53:08,327 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/oauth (context: link_check)
+2025-12-06 11:53:08,328 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/oauth (ignore_db=False)
+2025-12-06 11:53:08,334 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/oauth
+2025-12-06 11:53:08,334 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/oauth: safe=True, source=external_apis
+2025-12-06 11:53:08,334 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/oauth to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:53:11,915 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/logs (context: hover)
+2025-12-06 11:53:11,917 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/logs (ignore_db=False)
+2025-12-06 11:53:11,922 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/logs
+2025-12-06 11:53:11,923 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/logs: safe=True, source=external_apis
+2025-12-06 11:53:11,923 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/logs to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:53:12,414 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/http-notifications (context: link_check)
+2025-12-06 11:53:12,414 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/http-notifications (ignore_db=False)
+2025-12-06 11:53:12,420 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/http-notifications
+2025-12-06 11:53:12,421 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/http-notifications: safe=True, source=external_apis
+2025-12-06 11:53:12,422 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/http-notifications to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:53:23,410 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/prepared-solutions (context: link_check)
+2025-12-06 11:53:23,411 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/prepared-solutions (ignore_db=False)
+2025-12-06 11:53:23,416 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/prepared-solutions
+2025-12-06 11:53:23,416 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/prepared-solutions: safe=True, source=external_apis
+2025-12-06 11:53:23,417 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/prepared-solutions to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:53:25,187 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/ (context: hover)
+2025-12-06 11:53:25,187 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/ (ignore_db=False)
+2025-12-06 11:53:25,192 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/
+2025-12-06 11:53:25,192 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/: safe=True, source=external_apis
+2025-12-06 11:53:25,193 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/ to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:53:26,226 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/api-keys (context: link_check)
+2025-12-06 11:53:26,227 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/api-keys (ignore_db=False)
+2025-12-06 11:53:26,232 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/api-keys
+2025-12-06 11:53:26,232 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/api-keys: safe=True, source=external_apis
+2025-12-06 11:53:26,233 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/api-keys to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:54:34,317 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/analytics (context: hover)
+2025-12-06 11:54:34,318 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/analytics (ignore_db=False)
+2025-12-06 11:54:34,324 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/analytics
+2025-12-06 11:54:34,325 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/analytics: safe=True, source=external_apis
+2025-12-06 11:54:34,326 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/analytics to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:54:34,888 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/prepared-solutions (context: link_check)
+2025-12-06 11:54:34,888 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/prepared-solutions (ignore_db=False)
+2025-12-06 11:54:34,893 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/prepared-solutions
+2025-12-06 11:54:34,894 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/prepared-solutions: safe=True, source=external_apis
+2025-12-06 11:54:34,895 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/prepared-solutions to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:54:37,468 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/api-keys (context: link_check)
+2025-12-06 11:54:37,469 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/api-keys (ignore_db=False)
+2025-12-06 11:54:37,474 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/api-keys
+2025-12-06 11:54:37,475 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/api-keys: safe=True, source=external_apis
+2025-12-06 11:54:37,476 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/api-keys to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:54:40,592 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/http-notifications (context: link_check)
+2025-12-06 11:54:40,592 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/http-notifications (ignore_db=False)
+2025-12-06 11:54:40,597 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/http-notifications
+2025-12-06 11:54:40,598 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/http-notifications: safe=True, source=external_apis
+2025-12-06 11:54:40,598 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/http-notifications to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:56:08,966 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/api-keys (context: link_check)
+2025-12-06 11:56:08,968 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/api-keys (ignore_db=False)
+2025-12-06 11:56:08,974 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/api-keys
+2025-12-06 11:56:08,975 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/api-keys: safe=True, source=external_apis
+2025-12-06 11:56:08,975 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/api-keys to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:56:13,668 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/oauth (context: link_check)
+2025-12-06 11:56:13,669 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/oauth (ignore_db=False)
+2025-12-06 11:56:13,674 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/oauth
+2025-12-06 11:56:13,674 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/oauth: safe=True, source=external_apis
+2025-12-06 11:56:13,675 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/oauth to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:57:20,683 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/http-notifications (context: link_check)
+2025-12-06 11:57:20,683 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/http-notifications (ignore_db=False)
+2025-12-06 11:57:20,695 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/http-notifications
+2025-12-06 11:57:20,696 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/http-notifications: safe=True, source=external_apis
+2025-12-06 11:57:20,696 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/http-notifications to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:57:23,076 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/api-keys (context: link_check)
+2025-12-06 11:57:23,077 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/api-keys (ignore_db=False)
+2025-12-06 11:57:23,082 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/api-keys
+2025-12-06 11:57:23,083 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/api-keys: safe=True, source=external_apis
+2025-12-06 11:57:23,084 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/api-keys to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:57:26,454 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/developers/using-api/basics#auth (context: hover)
+2025-12-06 11:57:26,454 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/developers/using-api/basics#auth (ignore_db=False)
+2025-12-06 11:57:26,460 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/developers/using-api/basics
+2025-12-06 11:57:26,460 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/developers/using-api/basics#auth: safe=True, source=external_apis
+2025-12-06 11:57:26,461 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/developers/using-api/basics#auth to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:57:26,497 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/developers/using-api/basics#auth (context: link_check)
+2025-12-06 11:57:26,498 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/developers/using-api/basics#auth (ignore_db=False)
+2025-12-06 11:57:26,504 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/developers/using-api/basics
+2025-12-06 11:57:26,505 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/developers/using-api/basics#auth: safe=True, source=external_apis
+2025-12-06 11:57:26,505 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/developers/using-api/basics#auth to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:58:20,111 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/developers (context: hover)
+2025-12-06 11:58:20,113 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/developers (ignore_db=False)
+2025-12-06 11:58:20,119 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/developers
+2025-12-06 11:58:20,120 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/developers: safe=True, source=external_apis
+2025-12-06 11:58:20,120 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/developers to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:58:23,530 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/developers (context: link_check)
+2025-12-06 11:58:23,531 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/developers (ignore_db=False)
+2025-12-06 11:58:23,536 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/developers
+2025-12-06 11:58:23,537 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/developers: safe=True, source=external_apis
+2025-12-06 11:58:23,537 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/developers to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:58:27,226 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/developers/payment-acceptance/getting-started/quick-start (context: hover)
+2025-12-06 11:58:27,227 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/developers/payment-acceptance/getting-started/quick-start (ignore_db=False)
+2025-12-06 11:58:27,232 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/developers/payment-acceptance/getting-started/quick-start
+2025-12-06 11:58:27,233 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/developers/payment-acceptance/getting-started/quick-start: safe=True, source=external_apis
+2025-12-06 11:58:27,233 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/developers/payment-acceptance/getting-started/quick-start to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:58:27,489 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/developers/payment-acceptance/getting-started/quick-start (context: link_check)
+2025-12-06 11:58:27,489 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/developers/payment-acceptance/getting-started/quick-start (ignore_db=False)
+2025-12-06 11:58:27,495 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/developers/payment-acceptance/getting-started/quick-start
+2025-12-06 11:58:27,495 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/developers/payment-acceptance/getting-started/quick-start: safe=True, source=external_apis
+2025-12-06 11:58:27,495 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/developers/payment-acceptance/getting-started/quick-start to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:58:50,955 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/developers/using-api/interaction-format (context: hover)
+2025-12-06 11:58:50,956 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/developers/using-api/interaction-format (ignore_db=False)
+2025-12-06 11:58:50,962 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/developers/using-api/interaction-format
+2025-12-06 11:58:50,963 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/developers/using-api/interaction-format: safe=True, source=external_apis
+2025-12-06 11:58:50,963 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/developers/using-api/interaction-format to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 11:59:03,357 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/developers/payment-acceptance/testing-and-going-live/testing (context: hover)
+2025-12-06 11:59:03,358 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/developers/payment-acceptance/testing-and-going-live/testing (ignore_db=False)
+2025-12-06 11:59:03,364 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/developers/payment-acceptance/testing-and-going-live/testing
+2025-12-06 11:59:03,364 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/developers/payment-acceptance/testing-and-going-live/testing: safe=True, source=external_apis
+2025-12-06 11:59:03,365 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/developers/payment-acceptance/testing-and-going-live/testing to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 12:01:00,787 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/prepared-solutions (context: hover)
+2025-12-06 12:01:00,787 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/prepared-solutions (ignore_db=False)
+2025-12-06 12:01:00,794 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/prepared-solutions
+2025-12-06 12:01:00,795 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/prepared-solutions: safe=True, source=external_apis
+2025-12-06 12:01:00,796 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/prepared-solutions to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 12:01:01,630 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/merchant/integration/oauth (context: link_check)
+2025-12-06 12:01:01,630 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/merchant/integration/oauth (ignore_db=False)
+2025-12-06 12:01:01,635 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/merchant/integration/oauth
+2025-12-06 12:01:01,636 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/merchant/integration/oauth: safe=True, source=external_apis
+2025-12-06 12:01:01,637 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/merchant/integration/oauth to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 12:01:04,625 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/logs (context: hover)
+2025-12-06 12:01:04,627 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/logs (ignore_db=False)
+2025-12-06 12:01:04,634 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/logs
+2025-12-06 12:01:04,635 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/logs: safe=True, source=external_apis
+2025-12-06 12:01:04,635 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/logs to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 12:01:04,663 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/logs (context: link_check)
+2025-12-06 12:01:04,663 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/logs (ignore_db=False)
+2025-12-06 12:01:04,669 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/logs
+2025-12-06 12:01:04,670 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/logs: safe=True, source=external_apis
+2025-12-06 12:01:04,671 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/logs to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 12:01:07,340 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/refund (context: hover)
+2025-12-06 12:01:07,341 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/refund (ignore_db=False)
+2025-12-06 12:01:07,346 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/refund
+2025-12-06 12:01:07,347 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/refund: safe=True, source=external_apis
+2025-12-06 12:01:07,347 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/refund to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 12:01:07,684 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/payments (context: hover)
+2025-12-06 12:01:07,685 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/payments (ignore_db=False)
+2025-12-06 12:01:07,690 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/payments
+2025-12-06 12:01:07,690 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/payments: safe=True, source=external_apis
+2025-12-06 12:01:07,691 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/payments to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 12:01:12,981 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/finance (context: hover)
+2025-12-06 12:01:12,982 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/finance (ignore_db=False)
+2025-12-06 12:01:12,988 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/finance
+2025-12-06 12:01:12,989 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/finance: safe=True, source=external_apis
+2025-12-06 12:01:12,989 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/finance to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
+2025-12-06 12:01:13,034 - app.logger - INFO - [WS] Starting URL analysis for: https://yookassa.ru/my/finance (context: link_check)
+2025-12-06 12:01:13,034 - app.logger - INFO - 🔍 Analyzing URL: https://yookassa.ru/my/finance (ignore_db=False)
+2025-12-06 12:01:13,039 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://yookassa.ru/my/finance
+2025-12-06 12:01:13,040 - app.logger - INFO - [WS] URL analysis completed for https://yookassa.ru/my/finance: safe=True, source=external_apis
+2025-12-06 12:01:13,040 - app.logger - INFO - [WS] Sent analysis_result for https://yookassa.ru/my/finance to client 5abfbf53-3279-4c66-a833-e6f1f99dca70
