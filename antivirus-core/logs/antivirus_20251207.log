@@ -1918,3 +1918,27 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f33604378e0>
 2025-12-07 14:42:39,974 - app.logger - INFO - [WS] Client connected: id=d5374172-8368-4b37-a868-3c96aa1251f5, ip=185.46.16.165
 2025-12-07 14:43:07,072 - app.database - INFO - Generated API key: PREMI3-DUB... for esrg
 2025-12-07 14:43:07,078 - app.database - INFO - ✅ API key created successfully for esrg with level premium: PREMI3-DUB...
+2025-12-07 14:44:55,556 - app.logger - INFO - [WS] Client disconnected gracefully: d5374172-8368-4b37-a868-3c96aa1251f5
+2025-12-07 14:44:55,557 - app.logger - INFO - [WS] Client disconnected: id=d5374172-8368-4b37-a868-3c96aa1251f5, reason=cleanup
+2025-12-07 14:44:55,657 - app.logger - INFO - Background job manager stopped
+2025-12-07 14:44:55,657 - app.logger - INFO - Background job manager stopped
+2025-12-07 14:44:56,349 - app.logger - INFO - Logging system initialized with rotation
+2025-12-07 14:44:56,352 - app.database - INFO - Initializing database at: /opt/Aegis/data/aegis.db
+2025-12-07 14:44:56,356 - app.database - INFO - Database initialized successfully with all tables
+2025-12-07 14:44:56,478 - app.logger - INFO - [ENV] env.env loaded: yes (/opt/aegis/antivirus-core/app/env.env)
+2025-12-07 14:44:56,479 - app.logger - INFO - [ENV] VIRUSTOTAL_API_KEY: 8958...96ce
+2025-12-07 14:44:56,479 - app.logger - INFO - [External APIs] Enabled map: {'virustotal': True, 'google_safe_browsing': False, 'abuseipdb': True}
+2025-12-07 14:44:56,583 - app.logger - INFO - 🚀 AEGIS Server starting up...
+2025-12-07 14:44:56,584 - app.logger - INFO - ✅ Database tables verified
+2025-12-07 14:44:56,586 - app.logger - INFO - Database connection established successfully
+2025-12-07 14:44:56,588 - app.database - INFO - Rate limits reset successfully
+2025-12-07 14:44:56,588 - app.logger - INFO - Rate limits reset
+2025-12-07 14:44:56,589 - app.logger - INFO - Background job manager started
+2025-12-07 14:44:56,589 - app.logger - INFO - Background job manager started
+2025-12-07 14:44:56,590 - app.logger - INFO - WebSocket cleanup task started
+2025-12-07 14:44:56,590 - app.logger - INFO - ✅ AEGIS Server startup complete
+2025-12-07 14:44:56,706 - app.logger - INFO - [WS] WebSocket connection attempt from 185.46.16.165
+2025-12-07 14:44:56,708 - app.logger - INFO - [WS] WebSocket connection accepted from 185.46.16.165
+2025-12-07 14:44:56,708 - app.logger - INFO - [WS] Client connected: id=16dd9792-0280-4941-8fe8-224fe5767d9e, ip=185.46.16.165
+2025-12-07 14:45:30,365 - app.database - INFO - Generated API key: PREMIE-NIK... for u,krymjunt
+2025-12-07 14:45:30,369 - app.database - INFO - ✅ API key created successfully for u,krymjunt with level premium: PREMIE-NIK...
