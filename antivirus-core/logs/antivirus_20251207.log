@@ -1942,3 +1942,30 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f33604378e0>
 2025-12-07 14:44:56,708 - app.logger - INFO - [WS] Client connected: id=16dd9792-0280-4941-8fe8-224fe5767d9e, ip=185.46.16.165
 2025-12-07 14:45:30,365 - app.database - INFO - Generated API key: PREMIE-NIK... for u,krymjunt
 2025-12-07 14:45:30,369 - app.database - INFO - ✅ API key created successfully for u,krymjunt with level premium: PREMIE-NIK...
+2025-12-07 15:57:41,529 - app.logger - INFO - [WS] Client disconnected gracefully: 16dd9792-0280-4941-8fe8-224fe5767d9e
+2025-12-07 15:57:41,530 - app.logger - INFO - [WS] Client disconnected: id=16dd9792-0280-4941-8fe8-224fe5767d9e, reason=cleanup
+2025-12-07 15:57:41,630 - app.logger - INFO - Background job manager stopped
+2025-12-07 15:57:41,630 - app.logger - INFO - Background job manager stopped
+2025-12-07 15:57:42,290 - app.logger - INFO - Logging system initialized with rotation
+2025-12-07 15:57:42,293 - app.database - INFO - Initializing database at: /opt/Aegis/data/aegis.db
+2025-12-07 15:57:42,296 - app.database - INFO - Database initialized successfully with all tables
+2025-12-07 15:57:42,422 - app.logger - INFO - [ENV] env.env loaded: yes (/opt/aegis/antivirus-core/app/env.env)
+2025-12-07 15:57:42,422 - app.logger - INFO - [ENV] VIRUSTOTAL_API_KEY: 8958...96ce
+2025-12-07 15:57:42,423 - app.logger - INFO - [External APIs] Enabled map: {'virustotal': True, 'google_safe_browsing': False, 'abuseipdb': True}
+2025-12-07 15:57:42,515 - app.logger - INFO - 🚀 AEGIS Server starting up...
+2025-12-07 15:57:42,516 - app.logger - INFO - ✅ Database tables verified
+2025-12-07 15:57:42,517 - app.logger - INFO - Database connection established successfully
+2025-12-07 15:57:42,518 - app.database - INFO - Rate limits reset successfully
+2025-12-07 15:57:42,518 - app.logger - INFO - Rate limits reset
+2025-12-07 15:57:42,519 - app.logger - INFO - Background job manager started
+2025-12-07 15:57:42,519 - app.logger - INFO - Background job manager started
+2025-12-07 15:57:42,519 - app.logger - INFO - WebSocket cleanup task started
+2025-12-07 15:57:42,519 - app.logger - INFO - ✅ AEGIS Server startup complete
+2025-12-07 15:57:42,651 - app.logger - INFO - [WS] WebSocket connection attempt from 185.46.16.165
+2025-12-07 15:57:42,653 - app.logger - INFO - [WS] WebSocket connection accepted from 185.46.16.165
+2025-12-07 15:57:42,653 - app.logger - INFO - [WS] Client connected: id=2ca966f4-1a0c-45e6-a2a5-fd4b9aa89455, ip=185.46.16.165
+2025-12-07 16:00:42,918 - app.logger - INFO - [WS] Client disconnected gracefully: 2ca966f4-1a0c-45e6-a2a5-fd4b9aa89455
+2025-12-07 16:00:42,919 - app.logger - INFO - [WS] Client disconnected: id=2ca966f4-1a0c-45e6-a2a5-fd4b9aa89455, reason=cleanup
+2025-12-07 16:12:42,996 - app.logger - INFO - [WS] WebSocket connection attempt from 185.46.16.165
+2025-12-07 16:12:43,002 - app.logger - INFO - [WS] WebSocket connection accepted from 185.46.16.165
+2025-12-07 16:12:43,003 - app.logger - INFO - [WS] Client connected: id=a6be4cc7-ef1e-44d6-93c3-496c4e018909, ip=185.46.16.165
