@@ -2314,3 +2314,526 @@
 2025-12-13 11:02:56,945 - app.logger - WARNING - External APIs returned None for https://www.ozon.ru/product/hudi-2129886739/, using heuristic analysis
 2025-12-13 11:02:56,948 - app.logger - INFO - [WS] URL analysis completed for https://www.ozon.ru/product/hudi-2129886739/: safe=True, source=heuristic
 2025-12-13 11:02:56,949 - app.logger - INFO - [WS] Sent analysis_result for https://www.ozon.ru/product/hudi-2129886739/ to client 49b6ab49-4f2d-4410-8c4c-d1a24540ea98
+2025-12-13 11:05:01,650 - app.logger - INFO - [WS] Starting URL analysis for: https://x.com/notifications (context: link_check)
+2025-12-13 11:05:01,653 - app.logger - INFO - 🔍 Analyzing URL: https://x.com/notifications (ignore_db=False)
+2025-12-13 11:05:01,664 - app.logger - INFO - 🔍 Checking external APIs for: https://x.com/notifications
+2025-12-13 11:05:01,666 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:05:01,667 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:05:01,668 - app.logger - INFO - 🔍 Combining external results for https://x.com/notifications: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:05:01,668 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:05:01,669 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:05:01,669 - app.logger - INFO - 🔍 Final external API result for https://x.com/notifications: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:05:01,669 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:05:01,670 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://x.com/notifications: safe=None
+2025-12-13 11:05:01,671 - app.logger - WARNING - External APIs returned None for https://x.com/notifications, using heuristic analysis
+2025-12-13 11:05:01,676 - app.logger - INFO - [WS] URL analysis completed for https://x.com/notifications: safe=True, source=heuristic
+2025-12-13 11:05:01,677 - app.logger - INFO - [WS] Sent analysis_result for https://x.com/notifications to client 52dbf360-6874-4b87-b15b-c45314ec75f1
+2025-12-13 11:05:10,235 - app.logger - INFO - [WS] Starting URL analysis for: https://x.com/home (context: link_check)
+2025-12-13 11:05:10,235 - app.logger - INFO - 🔍 Analyzing URL: https://x.com/home (ignore_db=False)
+2025-12-13 11:05:10,240 - app.logger - INFO - 🔍 Checking external APIs for: https://x.com/home
+2025-12-13 11:05:10,241 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:05:10,241 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:05:10,241 - app.logger - INFO - 🔍 Combining external results for https://x.com/home: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:05:10,242 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:05:10,242 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:05:10,242 - app.logger - INFO - 🔍 Final external API result for https://x.com/home: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:05:10,242 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:05:10,242 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://x.com/home: safe=None
+2025-12-13 11:05:10,242 - app.logger - WARNING - External APIs returned None for https://x.com/home, using heuristic analysis
+2025-12-13 11:05:10,246 - app.logger - INFO - [WS] URL analysis completed for https://x.com/home: safe=True, source=heuristic
+2025-12-13 11:05:10,246 - app.logger - INFO - [WS] Sent analysis_result for https://x.com/home to client 52dbf360-6874-4b87-b15b-c45314ec75f1
+2025-12-13 11:05:15,322 - app.logger - INFO - [WS] Starting URL analysis for: https://x.com/home (context: link_check)
+2025-12-13 11:05:15,322 - app.logger - INFO - 🔍 Analyzing URL: https://x.com/home (ignore_db=False)
+2025-12-13 11:05:15,323 - app.logger - WARNING - Ignoring cached safe=True result with source=heuristic for url:https://x.com/home
+2025-12-13 11:05:15,329 - app.logger - INFO - 🔍 Checking external APIs for: https://x.com/home
+2025-12-13 11:05:15,330 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:05:15,330 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:05:15,331 - app.logger - INFO - 🔍 Combining external results for https://x.com/home: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:05:15,331 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:05:15,331 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:05:15,332 - app.logger - INFO - 🔍 Final external API result for https://x.com/home: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:05:15,332 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:05:15,332 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://x.com/home: safe=None
+2025-12-13 11:05:15,333 - app.logger - WARNING - External APIs returned None for https://x.com/home, using heuristic analysis
+2025-12-13 11:05:15,335 - app.logger - INFO - [WS] URL analysis completed for https://x.com/home: safe=True, source=heuristic
+2025-12-13 11:05:15,336 - app.logger - INFO - [WS] Sent analysis_result for https://x.com/home to client 52dbf360-6874-4b87-b15b-c45314ec75f1
+2025-12-13 11:05:16,190 - app.logger - INFO - [WS] Starting URL analysis for: https://x.com/home (context: link_check)
+2025-12-13 11:05:16,191 - app.logger - INFO - 🔍 Analyzing URL: https://x.com/home (ignore_db=False)
+2025-12-13 11:05:16,191 - app.logger - WARNING - Ignoring cached safe=True result with source=heuristic for url:https://x.com/home
+2025-12-13 11:05:16,199 - app.logger - INFO - 🔍 Checking external APIs for: https://x.com/home
+2025-12-13 11:05:16,200 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:05:16,201 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:05:16,201 - app.logger - INFO - 🔍 Combining external results for https://x.com/home: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:05:16,201 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:05:16,202 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:05:16,202 - app.logger - INFO - 🔍 Final external API result for https://x.com/home: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:05:16,202 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:05:16,203 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://x.com/home: safe=None
+2025-12-13 11:05:16,203 - app.logger - WARNING - External APIs returned None for https://x.com/home, using heuristic analysis
+2025-12-13 11:05:16,206 - app.logger - INFO - [WS] URL analysis completed for https://x.com/home: safe=True, source=heuristic
+2025-12-13 11:05:16,207 - app.logger - INFO - [WS] Sent analysis_result for https://x.com/home to client 52dbf360-6874-4b87-b15b-c45314ec75f1
+2025-12-13 11:05:16,434 - app.logger - INFO - [WS] Starting URL analysis for: https://x.com/home (context: link_check)
+2025-12-13 11:05:16,435 - app.logger - INFO - 🔍 Analyzing URL: https://x.com/home (ignore_db=False)
+2025-12-13 11:05:16,435 - app.logger - WARNING - Ignoring cached safe=True result with source=heuristic for url:https://x.com/home
+2025-12-13 11:05:16,442 - app.logger - INFO - 🔍 Checking external APIs for: https://x.com/home
+2025-12-13 11:05:16,443 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:05:16,443 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:05:16,444 - app.logger - INFO - 🔍 Combining external results for https://x.com/home: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:05:16,444 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:05:16,444 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:05:16,444 - app.logger - INFO - 🔍 Final external API result for https://x.com/home: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:05:16,445 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:05:16,445 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://x.com/home: safe=None
+2025-12-13 11:05:16,445 - app.logger - WARNING - External APIs returned None for https://x.com/home, using heuristic analysis
+2025-12-13 11:05:16,448 - app.logger - INFO - [WS] URL analysis completed for https://x.com/home: safe=True, source=heuristic
+2025-12-13 11:05:16,448 - app.logger - INFO - [WS] Sent analysis_result for https://x.com/home to client 52dbf360-6874-4b87-b15b-c45314ec75f1
+2025-12-13 11:05:20,631 - app.logger - INFO - [WS] Starting URL analysis for: https://x.com/home (context: link_check)
+2025-12-13 11:05:20,632 - app.logger - INFO - 🔍 Analyzing URL: https://x.com/home (ignore_db=False)
+2025-12-13 11:05:20,632 - app.logger - WARNING - Ignoring cached safe=True result with source=heuristic for url:https://x.com/home
+2025-12-13 11:05:20,639 - app.logger - INFO - 🔍 Checking external APIs for: https://x.com/home
+2025-12-13 11:05:20,639 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:05:20,640 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:05:20,640 - app.logger - INFO - 🔍 Combining external results for https://x.com/home: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:05:20,640 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:05:20,640 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:05:20,640 - app.logger - INFO - 🔍 Final external API result for https://x.com/home: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:05:20,640 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:05:20,640 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://x.com/home: safe=None
+2025-12-13 11:05:20,640 - app.logger - WARNING - External APIs returned None for https://x.com/home, using heuristic analysis
+2025-12-13 11:05:20,643 - app.logger - INFO - [WS] URL analysis completed for https://x.com/home: safe=True, source=heuristic
+2025-12-13 11:05:20,643 - app.logger - INFO - [WS] Sent analysis_result for https://x.com/home to client 52dbf360-6874-4b87-b15b-c45314ec75f1
+2025-12-13 11:05:20,847 - app.logger - INFO - [WS] Starting URL analysis for: https://x.com/home (context: link_check)
+2025-12-13 11:05:20,847 - app.logger - INFO - 🔍 Analyzing URL: https://x.com/home (ignore_db=False)
+2025-12-13 11:05:20,847 - app.logger - WARNING - Ignoring cached safe=True result with source=heuristic for url:https://x.com/home
+2025-12-13 11:05:20,854 - app.logger - INFO - 🔍 Checking external APIs for: https://x.com/home
+2025-12-13 11:05:20,855 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:05:20,855 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:05:20,855 - app.logger - INFO - 🔍 Combining external results for https://x.com/home: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:05:20,855 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:05:20,855 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:05:20,855 - app.logger - INFO - 🔍 Final external API result for https://x.com/home: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:05:20,856 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:05:20,856 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://x.com/home: safe=None
+2025-12-13 11:05:20,856 - app.logger - WARNING - External APIs returned None for https://x.com/home, using heuristic analysis
+2025-12-13 11:05:20,858 - app.logger - INFO - [WS] URL analysis completed for https://x.com/home: safe=True, source=heuristic
+2025-12-13 11:05:20,859 - app.logger - INFO - [WS] Sent analysis_result for https://x.com/home to client 52dbf360-6874-4b87-b15b-c45314ec75f1
+2025-12-13 11:05:55,905 - app.logger - INFO - [WS] WebSocket connection attempt from 85.175.196.109
+2025-12-13 11:05:55,906 - app.logger - INFO - [WS] WebSocket connection accepted from 85.175.196.109
+2025-12-13 11:05:55,907 - app.logger - INFO - [WS] Client connected: id=95d3d66e-c1e7-4999-91db-a3ba50a89953, ip=85.175.196.109
+2025-12-13 11:06:01,096 - app.logger - INFO - [WS] Client disconnected gracefully: 95d3d66e-c1e7-4999-91db-a3ba50a89953
+2025-12-13 11:06:01,096 - app.logger - INFO - [WS] Client disconnected: id=95d3d66e-c1e7-4999-91db-a3ba50a89953, reason=cleanup
+2025-12-13 11:06:01,954 - app.logger - INFO - [WS] Client disconnected gracefully: b181b16d-8458-47f3-9449-d846aeb53777
+2025-12-13 11:06:01,954 - app.logger - INFO - [WS] Client disconnected: id=b181b16d-8458-47f3-9449-d846aeb53777, reason=cleanup
+2025-12-13 11:06:12,632 - app.logger - INFO - [WS] WebSocket connection attempt from 85.175.196.109
+2025-12-13 11:06:12,634 - app.logger - INFO - [WS] WebSocket connection accepted from 85.175.196.109
+2025-12-13 11:06:12,634 - app.logger - INFO - [WS] Client connected: id=57706b4f-9958-43b4-8775-155006986c57, ip=85.175.196.109
+2025-12-13 11:06:13,108 - app.logger - INFO - [WS] Starting URL analysis for: https://x.com/home (context: link_check)
+2025-12-13 11:06:13,108 - app.logger - INFO - 🔍 Analyzing URL: https://x.com/home (ignore_db=False)
+2025-12-13 11:06:13,109 - app.logger - WARNING - Ignoring cached safe=True result with source=heuristic for url:https://x.com/home
+2025-12-13 11:06:13,115 - app.logger - INFO - 🔍 Checking external APIs for: https://x.com/home
+2025-12-13 11:06:13,117 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:06:13,117 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:06:13,118 - app.logger - INFO - 🔍 Combining external results for https://x.com/home: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:06:13,118 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:06:13,119 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:06:13,119 - app.logger - INFO - 🔍 Final external API result for https://x.com/home: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:06:13,119 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:06:13,120 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://x.com/home: safe=None
+2025-12-13 11:06:13,120 - app.logger - WARNING - External APIs returned None for https://x.com/home, using heuristic analysis
+2025-12-13 11:06:13,123 - app.logger - INFO - [WS] URL analysis completed for https://x.com/home: safe=True, source=heuristic
+2025-12-13 11:06:13,124 - app.logger - INFO - [WS] Sent analysis_result for https://x.com/home to client 52dbf360-6874-4b87-b15b-c45314ec75f1
+2025-12-13 11:06:30,242 - app.auth - ERROR - 🔥 SMTP DEBUG: _send_email() CALLED
+2025-12-13 11:06:30,244 - app.auth - ERROR - 🔥 SMTP DEBUG: host=smtp.yandex.ru port=587 user=noreply@aegis.builders
+2025-12-13 11:06:30,713 - app.auth - ERROR - 🔥 SMTP DEBUG: Email sent successfully
+2025-12-13 11:06:30,714 - app.logger - INFO - Password reset code for tematemaru846@gmail.com: 80c07de4fc7de939400c1fb7d85f7e43
+2025-12-13 11:07:01,530 - app.database - ERROR - Error verifying token: 'DatabaseManager' object has no attribute 'get_connection'
+2025-12-13 11:08:00,446 - app.database - ERROR - Error verifying token: 'DatabaseManager' object has no attribute 'get_connection'
+2025-12-13 11:08:00,663 - app.logger - INFO - [WS] Starting URL analysis for: https://x.com/gruznov (context: link_check)
+2025-12-13 11:08:00,664 - app.logger - INFO - 🔍 Analyzing URL: https://x.com/gruznov (ignore_db=False)
+2025-12-13 11:08:00,670 - app.logger - INFO - 🔍 Checking external APIs for: https://x.com/gruznov
+2025-12-13 11:08:00,673 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:08:00,673 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:08:00,674 - app.logger - INFO - 🔍 Combining external results for https://x.com/gruznov: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:08:00,674 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:08:00,674 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:08:00,674 - app.logger - INFO - 🔍 Final external API result for https://x.com/gruznov: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:08:00,675 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:08:00,675 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://x.com/gruznov: safe=None
+2025-12-13 11:08:00,675 - app.logger - WARNING - External APIs returned None for https://x.com/gruznov, using heuristic analysis
+2025-12-13 11:08:00,678 - app.logger - INFO - [WS] URL analysis completed for https://x.com/gruznov: safe=True, source=heuristic
+2025-12-13 11:08:00,678 - app.logger - INFO - [WS] Sent analysis_result for https://x.com/gruznov to client 52dbf360-6874-4b87-b15b-c45314ec75f1
+2025-12-13 11:08:01,736 - app.database - ERROR - Error verifying token: 'DatabaseManager' object has no attribute 'get_connection'
+2025-12-13 11:08:02,109 - app.database - ERROR - Error verifying token: 'DatabaseManager' object has no attribute 'get_connection'
+2025-12-13 11:08:02,279 - app.database - ERROR - Error verifying token: 'DatabaseManager' object has no attribute 'get_connection'
+2025-12-13 11:08:02,454 - app.database - ERROR - Error verifying token: 'DatabaseManager' object has no attribute 'get_connection'
+2025-12-13 11:08:02,597 - app.database - ERROR - Error verifying token: 'DatabaseManager' object has no attribute 'get_connection'
+2025-12-13 11:08:29,593 - app.logger - INFO - [WS] Client disconnected gracefully: 0d7aaf12-2cd9-4fde-99e5-54c7c670291a
+2025-12-13 11:08:29,593 - app.logger - INFO - [WS] Client disconnected: id=0d7aaf12-2cd9-4fde-99e5-54c7c670291a, reason=cleanup
+2025-12-13 11:08:45,680 - app.logger - INFO - [WS] WebSocket connection attempt from 109.236.106.198
+2025-12-13 11:08:45,683 - app.logger - INFO - [WS] WebSocket connection accepted from 109.236.106.198
+2025-12-13 11:08:45,684 - app.logger - INFO - [WS] Client connected: id=b0488cb8-d350-445b-a630-e9b806b6e30f, ip=109.236.106.198
+2025-12-13 11:08:47,145 - app.logger - INFO - [WS] Starting URL analysis for: https://www.ozon.ru/product/kolonka-portativnaya-kolonka-blyutuz-moshchnost-5-vt-1-dinamika-s-fm-radio-usb-tf-500-mach-do-2793938420/?at=6WtZYPoPjckyXR8zHk2qAoyhXWxZWGt6q2NR1iAnD7nK (context: link_check)
+2025-12-13 11:08:47,145 - app.logger - INFO - 🔍 Analyzing URL: https://www.ozon.ru/product/kolonka-portativnaya-kolonka-blyutuz-moshchnost-5-vt-1-dinamika-s-fm-radio-usb-tf-500-mach-do-2793938420/?at=6WtZYPoPjckyXR8zHk2qAoyhXWxZWGt6q2NR1iAnD7nK (ignore_db=False)
+2025-12-13 11:08:47,151 - app.logger - INFO - 🔍 Checking external APIs for: https://www.ozon.ru/product/kolonka-portativnaya-kolonka-blyutuz-moshchnost-5-vt-1-dinamika-s-fm-radio-usb-tf-500-mach-do-2793938420/?at=6WtZYPoPjckyXR8zHk2qAoyhXWxZWGt6q2NR1iAnD7nK
+2025-12-13 11:08:47,152 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:08:47,152 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:08:47,152 - app.logger - INFO - 🔍 Combining external results for https://www.ozon.ru/product/kolonka-portativnaya-kolonka-blyutuz-moshchnost-5-vt-1-dinamika-s-fm-radio-usb-tf-500-mach-do-2793938420/?at=6WtZYPoPjckyXR8zHk2qAoyhXWxZWGt6q2NR1iAnD7nK: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:08:47,152 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:08:47,153 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:08:47,153 - app.logger - INFO - 🔍 Final external API result for https://www.ozon.ru/product/kolonka-portativnaya-kolonka-blyutuz-moshchnost-5-vt-1-dinamika-s-fm-radio-usb-tf-500-mach-do-2793938420/?at=6WtZYPoPjckyXR8zHk2qAoyhXWxZWGt6q2NR1iAnD7nK: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:08:47,153 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:08:47,153 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.ozon.ru/product/kolonka-portativnaya-kolonka-blyutuz-moshchnost-5-vt-1-dinamika-s-fm-radio-usb-tf-500-mach-do-2793938420/?at=6WtZYPoPjckyXR8zHk2qAoyhXWxZWGt6q2NR1iAnD7nK: safe=None
+2025-12-13 11:08:47,153 - app.logger - WARNING - External APIs returned None for https://www.ozon.ru/product/kolonka-portativnaya-kolonka-blyutuz-moshchnost-5-vt-1-dinamika-s-fm-radio-usb-tf-500-mach-do-2793938420/?at=6WtZYPoPjckyXR8zHk2qAoyhXWxZWGt6q2NR1iAnD7nK, using heuristic analysis
+2025-12-13 11:08:47,156 - app.logger - INFO - [WS] URL analysis completed for https://www.ozon.ru/product/kolonka-portativnaya-kolonka-blyutuz-moshchnost-5-vt-1-dinamika-s-fm-radio-usb-tf-500-mach-do-2793938420/?at=6WtZYPoPjckyXR8zHk2qAoyhXWxZWGt6q2NR1iAnD7nK: safe=True, source=heuristic
+2025-12-13 11:08:47,156 - app.logger - INFO - [WS] Sent analysis_result for https://www.ozon.ru/product/kolonka-portativnaya-kolonka-blyutuz-moshchnost-5-vt-1-dinamika-s-fm-radio-usb-tf-500-mach-do-2793938420/?at=6WtZYPoPjckyXR8zHk2qAoyhXWxZWGt6q2NR1iAnD7nK to client 49b6ab49-4f2d-4410-8c4c-d1a24540ea98
+2025-12-13 11:10:03,104 - app.logger - INFO - [WS] Starting URL analysis for: https://account.mail.ru/login?from=main&rf=auth.mail.ru&app_id_mytracker=58519 (context: link_check)
+2025-12-13 11:10:03,105 - app.logger - INFO - 🔍 Analyzing URL: https://account.mail.ru/login?from=main&rf=auth.mail.ru&app_id_mytracker=58519 (ignore_db=False)
+2025-12-13 11:10:03,111 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://account.mail.ru/login?from=main&rf=auth.mail.ru&app_id_mytracker=58519
+2025-12-13 11:10:03,112 - app.logger - INFO - [WS] URL analysis completed for https://account.mail.ru/login?from=main&rf=auth.mail.ru&app_id_mytracker=58519: safe=True, source=external_apis
+2025-12-13 11:10:03,112 - app.logger - INFO - [WS] Sent analysis_result for https://account.mail.ru/login?from=main&rf=auth.mail.ru&app_id_mytracker=58519 to client b0488cb8-d350-445b-a630-e9b806b6e30f
+2025-12-13 11:10:48,617 - app.logger - INFO - [WS] Starting URL analysis for: https://mail.ru/ (context: link_check)
+2025-12-13 11:10:48,618 - app.logger - INFO - 🔍 Analyzing URL: https://mail.ru/ (ignore_db=False)
+2025-12-13 11:10:48,622 - app.logger - INFO - [WS] URL analysis completed for https://mail.ru/: safe=False, source=local_db
+2025-12-13 11:10:48,623 - app.logger - INFO - [WS] Sent analysis_result for https://mail.ru/ to client b0488cb8-d350-445b-a630-e9b806b6e30f
+2025-12-13 11:10:52,146 - app.logger - INFO - [WS] Starting URL analysis for: https://account.mail.ru/login?from=main&rf=auth.mail.ru&app_id_mytracker=58519 (context: link_check)
+2025-12-13 11:10:52,146 - app.logger - INFO - 🔍 Analyzing URL: https://account.mail.ru/login?from=main&rf=auth.mail.ru&app_id_mytracker=58519 (ignore_db=False)
+2025-12-13 11:10:52,151 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://account.mail.ru/login?from=main&rf=auth.mail.ru&app_id_mytracker=58519
+2025-12-13 11:10:52,152 - app.logger - INFO - [WS] URL analysis completed for https://account.mail.ru/login?from=main&rf=auth.mail.ru&app_id_mytracker=58519: safe=True, source=external_apis
+2025-12-13 11:10:52,153 - app.logger - INFO - [WS] Sent analysis_result for https://account.mail.ru/login?from=main&rf=auth.mail.ru&app_id_mytracker=58519 to client b0488cb8-d350-445b-a630-e9b806b6e30f
+2025-12-13 11:11:05,525 - app.logger - INFO - [WS] Starting URL analysis for: https://x.com/viewsoff_ (context: link_check)
+2025-12-13 11:11:05,527 - app.logger - INFO - 🔍 Analyzing URL: https://x.com/viewsoff_ (ignore_db=False)
+2025-12-13 11:11:05,532 - app.logger - INFO - 🔍 Checking external APIs for: https://x.com/viewsoff_
+2025-12-13 11:11:05,534 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:11:05,534 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:11:05,535 - app.logger - INFO - 🔍 Combining external results for https://x.com/viewsoff_: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:11:05,535 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:11:05,535 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:11:05,535 - app.logger - INFO - 🔍 Final external API result for https://x.com/viewsoff_: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:11:05,536 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:11:05,536 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://x.com/viewsoff_: safe=None
+2025-12-13 11:11:05,536 - app.logger - WARNING - External APIs returned None for https://x.com/viewsoff_, using heuristic analysis
+2025-12-13 11:11:05,539 - app.logger - INFO - [WS] URL analysis completed for https://x.com/viewsoff_: safe=True, source=heuristic
+2025-12-13 11:11:05,540 - app.logger - INFO - [WS] Sent analysis_result for https://x.com/viewsoff_ to client 52dbf360-6874-4b87-b15b-c45314ec75f1
+2025-12-13 11:11:12,042 - app.logger - INFO - [WS] Starting URL analysis for: https://mail.ru/ (context: link_check)
+2025-12-13 11:11:12,043 - app.logger - INFO - 🔍 Analyzing URL: https://mail.ru/ (ignore_db=False)
+2025-12-13 11:11:12,047 - app.logger - INFO - [WS] URL analysis completed for https://mail.ru/: safe=False, source=local_db
+2025-12-13 11:11:12,048 - app.logger - INFO - [WS] Sent analysis_result for https://mail.ru/ to client b0488cb8-d350-445b-a630-e9b806b6e30f
+2025-12-13 11:11:19,819 - app.logger - INFO - [WS] Starting URL analysis for: https://e.mail.ru/inbox/0:17656133191234569549:0/?from=splash (context: link_check)
+2025-12-13 11:11:19,819 - app.logger - INFO - 🔍 Analyzing URL: https://e.mail.ru/inbox/0:17656133191234569549:0/?from=splash (ignore_db=False)
+2025-12-13 11:11:19,827 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://e.mail.ru/inbox/0:17656133191234569549:0/?from=splash
+2025-12-13 11:11:19,828 - app.logger - INFO - [WS] URL analysis completed for https://e.mail.ru/inbox/0:17656133191234569549:0/?from=splash: safe=True, source=external_apis
+2025-12-13 11:11:19,828 - app.logger - INFO - [WS] Sent analysis_result for https://e.mail.ru/inbox/0:17656133191234569549:0/?from=splash to client b0488cb8-d350-445b-a630-e9b806b6e30f
+2025-12-13 11:11:24,705 - app.logger - INFO - [WS] Starting URL analysis for: https://e.mail.ru/inbox/0:17656133191234569549:0/?from=splash (context: link_check)
+2025-12-13 11:11:24,706 - app.logger - INFO - 🔍 Analyzing URL: https://e.mail.ru/inbox/0:17656133191234569549:0/?from=splash (ignore_db=False)
+2025-12-13 11:11:24,711 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://e.mail.ru/inbox/0:17656133191234569549:0/?from=splash
+2025-12-13 11:11:24,711 - app.logger - INFO - [WS] URL analysis completed for https://e.mail.ru/inbox/0:17656133191234569549:0/?from=splash: safe=True, source=external_apis
+2025-12-13 11:11:24,712 - app.logger - INFO - [WS] Sent analysis_result for https://e.mail.ru/inbox/0:17656133191234569549:0/?from=splash to client b0488cb8-d350-445b-a630-e9b806b6e30f
+2025-12-13 11:12:21,198 - app.logger - INFO - [WS] Starting URL analysis for: https://www.youtube.com/feed/subscriptions (context: link_check)
+2025-12-13 11:12:21,199 - app.logger - INFO - 🔍 Analyzing URL: https://www.youtube.com/feed/subscriptions (ignore_db=False)
+2025-12-13 11:12:21,203 - app.logger - INFO - ✅ URL found in local cache (whitelist/blacklist), skipping external APIs: https://www.youtube.com/feed/subscriptions
+2025-12-13 11:12:21,204 - app.logger - INFO - [WS] URL analysis completed for https://www.youtube.com/feed/subscriptions: safe=True, source=external_apis
+2025-12-13 11:12:21,204 - app.logger - INFO - [WS] Sent analysis_result for https://www.youtube.com/feed/subscriptions to client b0488cb8-d350-445b-a630-e9b806b6e30f
+2025-12-13 11:12:31,403 - app.logger - INFO - [WS] Starting URL analysis for: https://www.mercedes-benz.de/passengercars/mercedes-benz-cars/car-configurator.html/configuration/CCci/DE/de/de_DE__1673891__AU-561_GC-421_LE-L_LU-922_MJ-806_PC-901-P17-P21-P47-P49-P53-P60-P64-P68-P79-P82-PAF-PAV-PBG-PBR-PDD-PSQ_PS-069%23-071%23-088%23-103%23-139%23-287%23-290%23-291%23-292%23-516%23-564%23-788%23-953%23-B15%23-S40%23_SA-01U-02B-04U-0K1-14U-16U-17U-215-228-22U-234-235-239-23U-242-243-250-252-256-266-270-273-275-293-294-311-321-32U-34U-351-355-362-365-367-399-401-413-436-443-463-465-467-475-489-4B6-500-501-513-51U-534-537-543-546-551-581-587-589-596-628-642-668-679-682-6U6-70B-724-72B-772-77B-79B-810-840-846-868-871-872-874-876-882-883-889-88B-890-897-902-906-915-927-93B-969-986-B01-B16-B51-H31-K33-K34-L6J-R01-RXV-U01-U10-U17-U19-U26-U38-U45-U47-U70-U78-U82-U88_SC-02V-0K2-0S3-0U1-1B3-2S0-2U1-2U8-31U-3S6-466-4S6-502-51B-6P5-7B2-7B4-8P3-8S8-8U6-8U8-998-9U5-9U7-B00-B10-K14-K27-K31-K37-K45-PVN-R6Q/zk041 (context: popup)
+2025-12-13 11:12:31,405 - app.logger - INFO - 🔍 Analyzing URL: https://www.mercedes-benz.de/passengercars/mercedes-benz-cars/car-configurator.html/configuration/CCci/DE/de/de_DE__1673891__AU-561_GC-421_LE-L_LU-922_MJ-806_PC-901-P17-P21-P47-P49-P53-P60-P64-P68-P79-P82-PAF-PAV-PBG-PBR-PDD-PSQ_PS-069%23-071%23-088%23-103%23-139%23-287%23-290%23-291%23-292%23-516%23-564%23-788%23-953%23-B15%23-S40%23_SA-01U-02B-04U-0K1-14U-16U-17U-215-228-22U-234-235-239-23U-242-243-250-252-256-266-270-273-275-293-294-311-321-32U-34U-351-355-362-365-367-399-401-413-436-443-463-465-467-475-489-4B6-500-501-513-51U-534-537-543-546-551-581-587-589-596-628-642-668-679-682-6U6-70B-724-72B-772-77B-79B-810-840-846-868-871-872-874-876-882-883-889-88B-890-897-902-906-915-927-93B-969-986-B01-B16-B51-H31-K33-K34-L6J-R01-RXV-U01-U10-U17-U19-U26-U38-U45-U47-U70-U78-U82-U88_SC-02V-0K2-0S3-0U1-1B3-2S0-2U1-2U8-31U-3S6-466-4S6-502-51B-6P5-7B2-7B4-8P3-8S8-8U6-8U8-998-9U5-9U7-B00-B10-K14-K27-K31-K37-K45-PVN-R6Q/zk041 (ignore_db=False)
+2025-12-13 11:12:31,412 - app.logger - WARNING - ⚠️ Private/internal URL detected, skipping external APIs: https://www.mercedes-benz.de/passengercars/mercedes-benz-cars/car-configurator.html/configuration/CCci/DE/de/de_DE__1673891__AU-561_GC-421_LE-L_LU-922_MJ-806_PC-901-P17-P21-P47-P49-P53-P60-P64-P68-P79-P82-PAF-PAV-PBG-PBR-PDD-PSQ_PS-069%23-071%23-088%23-103%23-139%23-287%23-290%23-291%23-292%23-516%23-564%23-788%23-953%23-B15%23-S40%23_SA-01U-02B-04U-0K1-14U-16U-17U-215-228-22U-234-235-239-23U-242-243-250-252-256-266-270-273-275-293-294-311-321-32U-34U-351-355-362-365-367-399-401-413-436-443-463-465-467-475-489-4B6-500-501-513-51U-534-537-543-546-551-581-587-589-596-628-642-668-679-682-6U6-70B-724-72B-772-77B-79B-810-840-846-868-871-872-874-876-882-883-889-88B-890-897-902-906-915-927-93B-969-986-B01-B16-B51-H31-K33-K34-L6J-R01-RXV-U01-U10-U17-U19-U26-U38-U45-U47-U70-U78-U82-U88_SC-02V-0K2-0S3-0U1-1B3-2S0-2U1-2U8-31U-3S6-466-4S6-502-51B-6P5-7B2-7B4-8P3-8S8-8U6-8U8-998-9U5-9U7-B00-B10-K14-K27-K31-K37-K45-PVN-R6Q/zk041
+2025-12-13 11:12:31,415 - app.logger - INFO - [WS] URL analysis completed for https://www.mercedes-benz.de/passengercars/mercedes-benz-cars/car-configurator.html/configuration/CCci/DE/de/de_DE__1673891__AU-561_GC-421_LE-L_LU-922_MJ-806_PC-901-P17-P21-P47-P49-P53-P60-P64-P68-P79-P82-PAF-PAV-PBG-PBR-PDD-PSQ_PS-069%23-071%23-088%23-103%23-139%23-287%23-290%23-291%23-292%23-516%23-564%23-788%23-953%23-B15%23-S40%23_SA-01U-02B-04U-0K1-14U-16U-17U-215-228-22U-234-235-239-23U-242-243-250-252-256-266-270-273-275-293-294-311-321-32U-34U-351-355-362-365-367-399-401-413-436-443-463-465-467-475-489-4B6-500-501-513-51U-534-537-543-546-551-581-587-589-596-628-642-668-679-682-6U6-70B-724-72B-772-77B-79B-810-840-846-868-871-872-874-876-882-883-889-88B-890-897-902-906-915-927-93B-969-986-B01-B16-B51-H31-K33-K34-L6J-R01-RXV-U01-U10-U17-U19-U26-U38-U45-U47-U70-U78-U82-U88_SC-02V-0K2-0S3-0U1-1B3-2S0-2U1-2U8-31U-3S6-466-4S6-502-51B-6P5-7B2-7B4-8P3-8S8-8U6-8U8-998-9U5-9U7-B00-B10-K14-K27-K31-K37-K45-PVN-R6Q/zk041: safe=True, source=internal_only
+2025-12-13 11:12:31,416 - app.logger - INFO - [WS] Sent analysis_result for https://www.mercedes-benz.de/passengercars/mercedes-benz-cars/car-configurator.html/configuration/CCci/DE/de/de_DE__1673891__AU-561_GC-421_LE-L_LU-922_MJ-806_PC-901-P17-P21-P47-P49-P53-P60-P64-P68-P79-P82-PAF-PAV-PBG-PBR-PDD-PSQ_PS-069%23-071%23-088%23-103%23-139%23-287%23-290%23-291%23-292%23-516%23-564%23-788%23-953%23-B15%23-S40%23_SA-01U-02B-04U-0K1-14U-16U-17U-215-228-22U-234-235-239-23U-242-243-250-252-256-266-270-273-275-293-294-311-321-32U-34U-351-355-362-365-367-399-401-413-436-443-463-465-467-475-489-4B6-500-501-513-51U-534-537-543-546-551-581-587-589-596-628-642-668-679-682-6U6-70B-724-72B-772-77B-79B-810-840-846-868-871-872-874-876-882-883-889-88B-890-897-902-906-915-927-93B-969-986-B01-B16-B51-H31-K33-K34-L6J-R01-RXV-U01-U10-U17-U19-U26-U38-U45-U47-U70-U78-U82-U88_SC-02V-0K2-0S3-0U1-1B3-2S0-2U1-2U8-31U-3S6-466-4S6-502-51B-6P5-7B2-7B4-8P3-8S8-8U6-8U8-998-9U5-9U7-B00-B10-K14-K27-K31-K37-K45-PVN-R6Q/zk041 to client b0488cb8-d350-445b-a630-e9b806b6e30f
+2025-12-13 11:12:41,509 - app.logger - INFO - [WS] Client disconnected gracefully: b0488cb8-d350-445b-a630-e9b806b6e30f
+2025-12-13 11:12:41,511 - app.logger - INFO - [WS] Client disconnected: id=b0488cb8-d350-445b-a630-e9b806b6e30f, reason=cleanup
+2025-12-13 11:13:04,412 - app.logger - INFO - [WS] Starting URL analysis for: https://checkout.hoperails.com/checkout/5df19e79-d7fb-11f0-bcf8-fa163e6df46f (context: link_check)
+2025-12-13 11:13:04,413 - app.logger - INFO - 🔍 Analyzing URL: https://checkout.hoperails.com/checkout/5df19e79-d7fb-11f0-bcf8-fa163e6df46f (ignore_db=False)
+2025-12-13 11:13:04,420 - app.logger - INFO - 🔍 Checking external APIs for: https://checkout.hoperails.com/checkout/5df19e79-d7fb-11f0-bcf8-fa163e6df46f
+2025-12-13 11:13:04,422 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:13:04,422 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:13:04,423 - app.logger - INFO - 🔍 Combining external results for https://checkout.hoperails.com/checkout/5df19e79-d7fb-11f0-bcf8-fa163e6df46f: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:13:04,423 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:13:04,423 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:13:04,424 - app.logger - INFO - 🔍 Final external API result for https://checkout.hoperails.com/checkout/5df19e79-d7fb-11f0-bcf8-fa163e6df46f: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:13:04,424 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:13:04,424 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://checkout.hoperails.com/checkout/5df19e79-d7fb-11f0-bcf8-fa163e6df46f: safe=None
+2025-12-13 11:13:04,425 - app.logger - WARNING - External APIs returned None for https://checkout.hoperails.com/checkout/5df19e79-d7fb-11f0-bcf8-fa163e6df46f, using heuristic analysis
+2025-12-13 11:13:04,427 - app.logger - INFO - [WS] URL analysis completed for https://checkout.hoperails.com/checkout/5df19e79-d7fb-11f0-bcf8-fa163e6df46f: safe=True, source=heuristic
+2025-12-13 11:13:04,428 - app.logger - INFO - [WS] Sent analysis_result for https://checkout.hoperails.com/checkout/5df19e79-d7fb-11f0-bcf8-fa163e6df46f to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:14:34,993 - app.logger - INFO - [WS] Starting URL analysis for: https://po-tck.com/ru/cabinet/deposit/fail/96470407 (context: link_check)
+2025-12-13 11:14:34,994 - app.logger - INFO - 🔍 Analyzing URL: https://po-tck.com/ru/cabinet/deposit/fail/96470407 (ignore_db=False)
+2025-12-13 11:14:35,003 - app.logger - INFO - 🔍 Checking external APIs for: https://po-tck.com/ru/cabinet/deposit/fail/96470407
+2025-12-13 11:14:35,005 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:14:35,006 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:14:35,007 - app.logger - INFO - 🔍 Combining external results for https://po-tck.com/ru/cabinet/deposit/fail/96470407: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:14:35,007 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:14:35,007 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:14:35,008 - app.logger - INFO - 🔍 Final external API result for https://po-tck.com/ru/cabinet/deposit/fail/96470407: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:14:35,008 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:14:35,008 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://po-tck.com/ru/cabinet/deposit/fail/96470407: safe=None
+2025-12-13 11:14:35,009 - app.logger - WARNING - External APIs returned None for https://po-tck.com/ru/cabinet/deposit/fail/96470407, using heuristic analysis
+2025-12-13 11:14:35,012 - app.logger - INFO - [WS] URL analysis completed for https://po-tck.com/ru/cabinet/deposit/fail/96470407: safe=True, source=heuristic
+2025-12-13 11:14:35,013 - app.logger - INFO - [WS] Sent analysis_result for https://po-tck.com/ru/cabinet/deposit/fail/96470407 to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:14:39,883 - app.logger - INFO - [WS] Starting URL analysis for: https://po-tck.com/ru/cabinet/deposit-step-1/ (context: link_check)
+2025-12-13 11:14:39,883 - app.logger - INFO - 🔍 Analyzing URL: https://po-tck.com/ru/cabinet/deposit-step-1/ (ignore_db=False)
+2025-12-13 11:14:39,887 - app.logger - INFO - 🔍 Checking external APIs for: https://po-tck.com/ru/cabinet/deposit-step-1/
+2025-12-13 11:14:39,888 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:14:39,889 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:14:39,889 - app.logger - INFO - 🔍 Combining external results for https://po-tck.com/ru/cabinet/deposit-step-1/: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:14:39,889 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:14:39,890 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:14:39,890 - app.logger - INFO - 🔍 Final external API result for https://po-tck.com/ru/cabinet/deposit-step-1/: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:14:39,890 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:14:39,890 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://po-tck.com/ru/cabinet/deposit-step-1/: safe=None
+2025-12-13 11:14:39,891 - app.logger - WARNING - External APIs returned None for https://po-tck.com/ru/cabinet/deposit-step-1/, using heuristic analysis
+2025-12-13 11:14:39,894 - app.logger - INFO - [WS] URL analysis completed for https://po-tck.com/ru/cabinet/deposit-step-1/: safe=True, source=heuristic
+2025-12-13 11:14:39,894 - app.logger - INFO - [WS] Sent analysis_result for https://po-tck.com/ru/cabinet/deposit-step-1/ to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:14:57,383 - app.logger - INFO - [WS] Starting URL analysis for: https://po-tck.com/ru/cabinet/demo-quick-high-low/ (context: link_check)
+2025-12-13 11:14:57,384 - app.logger - INFO - 🔍 Analyzing URL: https://po-tck.com/ru/cabinet/demo-quick-high-low/ (ignore_db=False)
+2025-12-13 11:14:57,389 - app.logger - INFO - 🔍 Checking external APIs for: https://po-tck.com/ru/cabinet/demo-quick-high-low/
+2025-12-13 11:14:57,391 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:14:57,392 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:14:57,392 - app.logger - INFO - 🔍 Combining external results for https://po-tck.com/ru/cabinet/demo-quick-high-low/: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:14:57,393 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:14:57,393 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:14:57,393 - app.logger - INFO - 🔍 Final external API result for https://po-tck.com/ru/cabinet/demo-quick-high-low/: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:14:57,394 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:14:57,394 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://po-tck.com/ru/cabinet/demo-quick-high-low/: safe=None
+2025-12-13 11:14:57,395 - app.logger - WARNING - External APIs returned None for https://po-tck.com/ru/cabinet/demo-quick-high-low/, using heuristic analysis
+2025-12-13 11:14:57,398 - app.logger - INFO - [WS] URL analysis completed for https://po-tck.com/ru/cabinet/demo-quick-high-low/: safe=True, source=heuristic
+2025-12-13 11:14:57,399 - app.logger - INFO - [WS] Sent analysis_result for https://po-tck.com/ru/cabinet/demo-quick-high-low/ to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:14:59,240 - app.logger - INFO - [WS] Starting URL analysis for: https://www.ozon.ru/ (context: link_check)
+2025-12-13 11:14:59,240 - app.logger - INFO - 🔍 Analyzing URL: https://www.ozon.ru/ (ignore_db=False)
+2025-12-13 11:14:59,245 - app.logger - INFO - 🔍 Checking external APIs for: https://www.ozon.ru/
+2025-12-13 11:14:59,245 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:14:59,246 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:14:59,246 - app.logger - INFO - 🔍 Combining external results for https://www.ozon.ru/: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:14:59,246 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:14:59,246 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:14:59,246 - app.logger - INFO - 🔍 Final external API result for https://www.ozon.ru/: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:14:59,247 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:14:59,247 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.ozon.ru/: safe=None
+2025-12-13 11:14:59,247 - app.logger - WARNING - External APIs returned None for https://www.ozon.ru/, using heuristic analysis
+2025-12-13 11:14:59,250 - app.logger - INFO - [WS] URL analysis completed for https://www.ozon.ru/: safe=True, source=heuristic
+2025-12-13 11:14:59,250 - app.logger - INFO - [WS] Sent analysis_result for https://www.ozon.ru/ to client 49b6ab49-4f2d-4410-8c4c-d1a24540ea98
+2025-12-13 11:15:13,033 - app.logger - INFO - [WS] Starting URL analysis for: https://www.ozon.ru/category/elektronika-15500/ (context: link_check)
+2025-12-13 11:15:13,035 - app.logger - INFO - 🔍 Analyzing URL: https://www.ozon.ru/category/elektronika-15500/ (ignore_db=False)
+2025-12-13 11:15:13,039 - app.logger - INFO - 🔍 Checking external APIs for: https://www.ozon.ru/category/elektronika-15500/
+2025-12-13 11:15:13,040 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:15:13,041 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:15:13,041 - app.logger - INFO - 🔍 Combining external results for https://www.ozon.ru/category/elektronika-15500/: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:15:13,041 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:15:13,041 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:15:13,042 - app.logger - INFO - 🔍 Final external API result for https://www.ozon.ru/category/elektronika-15500/: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:15:13,042 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:15:13,042 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.ozon.ru/category/elektronika-15500/: safe=None
+2025-12-13 11:15:13,043 - app.logger - WARNING - External APIs returned None for https://www.ozon.ru/category/elektronika-15500/, using heuristic analysis
+2025-12-13 11:15:13,045 - app.logger - INFO - [WS] URL analysis completed for https://www.ozon.ru/category/elektronika-15500/: safe=True, source=heuristic
+2025-12-13 11:15:13,046 - app.logger - INFO - [WS] Sent analysis_result for https://www.ozon.ru/category/elektronika-15500/ to client 49b6ab49-4f2d-4410-8c4c-d1a24540ea98
+2025-12-13 11:15:27,946 - app.logger - INFO - [WS] Starting URL analysis for: https://x.com/home (context: link_check)
+2025-12-13 11:15:27,947 - app.logger - INFO - 🔍 Analyzing URL: https://x.com/home (ignore_db=False)
+2025-12-13 11:15:27,954 - app.logger - INFO - 🔍 Checking external APIs for: https://x.com/home
+2025-12-13 11:15:27,955 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:15:27,956 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:15:27,956 - app.logger - INFO - 🔍 Combining external results for https://x.com/home: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:15:27,957 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:15:27,957 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:15:27,957 - app.logger - INFO - 🔍 Final external API result for https://x.com/home: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:15:27,958 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:15:27,958 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://x.com/home: safe=None
+2025-12-13 11:15:27,959 - app.logger - WARNING - External APIs returned None for https://x.com/home, using heuristic analysis
+2025-12-13 11:15:27,962 - app.logger - INFO - [WS] URL analysis completed for https://x.com/home: safe=True, source=heuristic
+2025-12-13 11:15:27,963 - app.logger - INFO - [WS] Sent analysis_result for https://x.com/home to client 52dbf360-6874-4b87-b15b-c45314ec75f1
+2025-12-13 11:16:08,256 - app.logger - INFO - [WS] Starting URL analysis for: https://www.ozon.ru/search/?from_global=true&text=%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B0%D1%8F%20%D0%BA%D0%BE%D0%BB%D0%BE%D0%BD%D0%BA%D0%B0 (context: link_check)
+2025-12-13 11:16:08,257 - app.logger - INFO - 🔍 Analyzing URL: https://www.ozon.ru/search/?from_global=true&text=%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B0%D1%8F%20%D0%BA%D0%BE%D0%BB%D0%BE%D0%BD%D0%BA%D0%B0 (ignore_db=False)
+2025-12-13 11:16:08,265 - app.logger - INFO - 🔍 Checking external APIs for: https://www.ozon.ru/search/?from_global=true&text=%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B0%D1%8F+%D0%BA%D0%BE%D0%BB%D0%BE%D0%BD%D0%BA%D0%B0
+2025-12-13 11:16:08,267 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:16:08,267 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:16:08,267 - app.logger - INFO - 🔍 Combining external results for https://www.ozon.ru/search/?from_global=true&text=%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B0%D1%8F+%D0%BA%D0%BE%D0%BB%D0%BE%D0%BD%D0%BA%D0%B0: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:16:08,267 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:16:08,268 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:16:08,268 - app.logger - INFO - 🔍 Final external API result for https://www.ozon.ru/search/?from_global=true&text=%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B0%D1%8F+%D0%BA%D0%BE%D0%BB%D0%BE%D0%BD%D0%BA%D0%B0: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:16:08,268 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:16:08,268 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.ozon.ru/search/?from_global=true&text=%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B0%D1%8F+%D0%BA%D0%BE%D0%BB%D0%BE%D0%BD%D0%BA%D0%B0: safe=None
+2025-12-13 11:16:08,268 - app.logger - WARNING - External APIs returned None for https://www.ozon.ru/search/?from_global=true&text=%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B0%D1%8F+%D0%BA%D0%BE%D0%BB%D0%BE%D0%BD%D0%BA%D0%B0, using heuristic analysis
+2025-12-13 11:16:08,271 - app.logger - INFO - [WS] URL analysis completed for https://www.ozon.ru/search/?from_global=true&text=%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B0%D1%8F%20%D0%BA%D0%BE%D0%BB%D0%BE%D0%BD%D0%BA%D0%B0: safe=True, source=heuristic
+2025-12-13 11:16:08,272 - app.logger - INFO - [WS] Sent analysis_result for https://www.ozon.ru/search/?from_global=true&text=%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B0%D1%8F%20%D0%BA%D0%BE%D0%BB%D0%BE%D0%BD%D0%BA%D0%B0 to client 49b6ab49-4f2d-4410-8c4c-d1a24540ea98
+2025-12-13 11:17:40,978 - app.database - ERROR - Error verifying token: 'DatabaseManager' object has no attribute 'get_connection'
+2025-12-13 11:20:40,188 - app.logger - INFO - [WS] Starting URL analysis for: https://www.ozon.ru/product/kolonka-chernaya-usb-akusticheskaya-sistema-2-0-moshchnost-2x3-vt-sven-sps-509-sv-020842-2810189244/?at=08tYwk2kqcWE5GmYC7LDq8PU0A3ko6cRvPGN2fz84LpZ (context: link_check)
+2025-12-13 11:20:40,189 - app.logger - INFO - 🔍 Analyzing URL: https://www.ozon.ru/product/kolonka-chernaya-usb-akusticheskaya-sistema-2-0-moshchnost-2x3-vt-sven-sps-509-sv-020842-2810189244/?at=08tYwk2kqcWE5GmYC7LDq8PU0A3ko6cRvPGN2fz84LpZ (ignore_db=False)
+2025-12-13 11:20:40,200 - app.logger - INFO - 🔍 Checking external APIs for: https://www.ozon.ru/product/kolonka-chernaya-usb-akusticheskaya-sistema-2-0-moshchnost-2x3-vt-sven-sps-509-sv-020842-2810189244/?at=08tYwk2kqcWE5GmYC7LDq8PU0A3ko6cRvPGN2fz84LpZ
+2025-12-13 11:20:40,202 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:20:40,202 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:20:40,203 - app.logger - INFO - 🔍 Combining external results for https://www.ozon.ru/product/kolonka-chernaya-usb-akusticheskaya-sistema-2-0-moshchnost-2x3-vt-sven-sps-509-sv-020842-2810189244/?at=08tYwk2kqcWE5GmYC7LDq8PU0A3ko6cRvPGN2fz84LpZ: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:20:40,203 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:20:40,203 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:20:40,203 - app.logger - INFO - 🔍 Final external API result for https://www.ozon.ru/product/kolonka-chernaya-usb-akusticheskaya-sistema-2-0-moshchnost-2x3-vt-sven-sps-509-sv-020842-2810189244/?at=08tYwk2kqcWE5GmYC7LDq8PU0A3ko6cRvPGN2fz84LpZ: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:20:40,203 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:20:40,204 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.ozon.ru/product/kolonka-chernaya-usb-akusticheskaya-sistema-2-0-moshchnost-2x3-vt-sven-sps-509-sv-020842-2810189244/?at=08tYwk2kqcWE5GmYC7LDq8PU0A3ko6cRvPGN2fz84LpZ: safe=None
+2025-12-13 11:20:40,204 - app.logger - WARNING - External APIs returned None for https://www.ozon.ru/product/kolonka-chernaya-usb-akusticheskaya-sistema-2-0-moshchnost-2x3-vt-sven-sps-509-sv-020842-2810189244/?at=08tYwk2kqcWE5GmYC7LDq8PU0A3ko6cRvPGN2fz84LpZ, using heuristic analysis
+2025-12-13 11:20:40,208 - app.logger - INFO - [WS] URL analysis completed for https://www.ozon.ru/product/kolonka-chernaya-usb-akusticheskaya-sistema-2-0-moshchnost-2x3-vt-sven-sps-509-sv-020842-2810189244/?at=08tYwk2kqcWE5GmYC7LDq8PU0A3ko6cRvPGN2fz84LpZ: safe=True, source=heuristic
+2025-12-13 11:20:40,209 - app.logger - INFO - [WS] Sent analysis_result for https://www.ozon.ru/product/kolonka-chernaya-usb-akusticheskaya-sistema-2-0-moshchnost-2x3-vt-sven-sps-509-sv-020842-2810189244/?at=08tYwk2kqcWE5GmYC7LDq8PU0A3ko6cRvPGN2fz84LpZ to client 49b6ab49-4f2d-4410-8c4c-d1a24540ea98
+2025-12-13 11:24:07,915 - app.logger - INFO - [WS] Starting URL analysis for: https://www.ozon.ru/category/akusticheskaya-sistema-50-vt/ (context: link_check)
+2025-12-13 11:24:07,917 - app.logger - INFO - 🔍 Analyzing URL: https://www.ozon.ru/category/akusticheskaya-sistema-50-vt/ (ignore_db=False)
+2025-12-13 11:24:07,925 - app.logger - INFO - 🔍 Checking external APIs for: https://www.ozon.ru/category/akusticheskaya-sistema-50-vt/
+2025-12-13 11:24:07,927 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:24:07,927 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:24:07,928 - app.logger - INFO - 🔍 Combining external results for https://www.ozon.ru/category/akusticheskaya-sistema-50-vt/: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:24:07,928 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:24:07,928 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:24:07,929 - app.logger - INFO - 🔍 Final external API result for https://www.ozon.ru/category/akusticheskaya-sistema-50-vt/: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:24:07,929 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:24:07,929 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.ozon.ru/category/akusticheskaya-sistema-50-vt/: safe=None
+2025-12-13 11:24:07,930 - app.logger - WARNING - External APIs returned None for https://www.ozon.ru/category/akusticheskaya-sistema-50-vt/, using heuristic analysis
+2025-12-13 11:24:07,933 - app.logger - INFO - [WS] URL analysis completed for https://www.ozon.ru/category/akusticheskaya-sistema-50-vt/: safe=True, source=heuristic
+2025-12-13 11:24:07,934 - app.logger - INFO - [WS] Sent analysis_result for https://www.ozon.ru/category/akusticheskaya-sistema-50-vt/ to client 49b6ab49-4f2d-4410-8c4c-d1a24540ea98
+2025-12-13 11:25:19,012 - app.logger - INFO - [WS] Starting URL analysis for: https://www.ozon.ru/product/sven-mc-50-akusticheskaya-sistema-hi-fi-provodnye-kolonki-s-bluetooth-i-pultom-du-optical-bi-2010888559/?at=ywtA57N7qunGYP9WujjVPNPsx6YKAVT4KXqm5iVGWrGJ (context: link_check)
+2025-12-13 11:25:19,016 - app.logger - INFO - 🔍 Analyzing URL: https://www.ozon.ru/product/sven-mc-50-akusticheskaya-sistema-hi-fi-provodnye-kolonki-s-bluetooth-i-pultom-du-optical-bi-2010888559/?at=ywtA57N7qunGYP9WujjVPNPsx6YKAVT4KXqm5iVGWrGJ (ignore_db=False)
+2025-12-13 11:25:19,022 - app.logger - INFO - 🔍 Checking external APIs for: https://www.ozon.ru/product/sven-mc-50-akusticheskaya-sistema-hi-fi-provodnye-kolonki-s-bluetooth-i-pultom-du-optical-bi-2010888559/?at=ywtA57N7qunGYP9WujjVPNPsx6YKAVT4KXqm5iVGWrGJ
+2025-12-13 11:25:19,025 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:25:19,026 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:25:19,026 - app.logger - INFO - 🔍 Combining external results for https://www.ozon.ru/product/sven-mc-50-akusticheskaya-sistema-hi-fi-provodnye-kolonki-s-bluetooth-i-pultom-du-optical-bi-2010888559/?at=ywtA57N7qunGYP9WujjVPNPsx6YKAVT4KXqm5iVGWrGJ: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:25:19,027 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:25:19,027 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:25:19,027 - app.logger - INFO - 🔍 Final external API result for https://www.ozon.ru/product/sven-mc-50-akusticheskaya-sistema-hi-fi-provodnye-kolonki-s-bluetooth-i-pultom-du-optical-bi-2010888559/?at=ywtA57N7qunGYP9WujjVPNPsx6YKAVT4KXqm5iVGWrGJ: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:25:19,028 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:25:19,029 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://www.ozon.ru/product/sven-mc-50-akusticheskaya-sistema-hi-fi-provodnye-kolonki-s-bluetooth-i-pultom-du-optical-bi-2010888559/?at=ywtA57N7qunGYP9WujjVPNPsx6YKAVT4KXqm5iVGWrGJ: safe=None
+2025-12-13 11:25:19,029 - app.logger - WARNING - External APIs returned None for https://www.ozon.ru/product/sven-mc-50-akusticheskaya-sistema-hi-fi-provodnye-kolonki-s-bluetooth-i-pultom-du-optical-bi-2010888559/?at=ywtA57N7qunGYP9WujjVPNPsx6YKAVT4KXqm5iVGWrGJ, using heuristic analysis
+2025-12-13 11:25:19,032 - app.logger - INFO - [WS] URL analysis completed for https://www.ozon.ru/product/sven-mc-50-akusticheskaya-sistema-hi-fi-provodnye-kolonki-s-bluetooth-i-pultom-du-optical-bi-2010888559/?at=ywtA57N7qunGYP9WujjVPNPsx6YKAVT4KXqm5iVGWrGJ: safe=True, source=heuristic
+2025-12-13 11:25:19,033 - app.logger - INFO - [WS] Sent analysis_result for https://www.ozon.ru/product/sven-mc-50-akusticheskaya-sistema-hi-fi-provodnye-kolonki-s-bluetooth-i-pultom-du-optical-bi-2010888559/?at=ywtA57N7qunGYP9WujjVPNPsx6YKAVT4KXqm5iVGWrGJ to client 49b6ab49-4f2d-4410-8c4c-d1a24540ea98
+2025-12-13 11:27:07,171 - app.logger - INFO - [WS] Starting URL analysis for: https://intrade27.bar/pay (context: link_check)
+2025-12-13 11:27:07,172 - app.logger - INFO - 🔍 Analyzing URL: https://intrade27.bar/pay (ignore_db=False)
+2025-12-13 11:27:07,180 - app.logger - INFO - 🔍 Checking external APIs for: https://intrade27.bar/pay
+2025-12-13 11:27:07,181 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:27:07,182 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:27:07,182 - app.logger - INFO - 🔍 Combining external results for https://intrade27.bar/pay: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:27:07,183 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:27:07,183 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:27:07,183 - app.logger - INFO - 🔍 Final external API result for https://intrade27.bar/pay: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:27:07,183 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:27:07,184 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://intrade27.bar/pay: safe=None
+2025-12-13 11:27:07,184 - app.logger - WARNING - External APIs returned None for https://intrade27.bar/pay, using heuristic analysis
+2025-12-13 11:27:07,186 - app.logger - INFO - [WS] URL analysis completed for https://intrade27.bar/pay: safe=True, source=heuristic
+2025-12-13 11:27:07,187 - app.logger - INFO - [WS] Sent analysis_result for https://intrade27.bar/pay to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:28:03,441 - app.logger - INFO - [WS] Starting URL analysis for: https://fkwallet.io/login (context: link_check)
+2025-12-13 11:28:03,443 - app.logger - INFO - 🔍 Analyzing URL: https://fkwallet.io/login (ignore_db=False)
+2025-12-13 11:28:03,448 - app.logger - INFO - 🔍 Checking external APIs for: https://fkwallet.io/login
+2025-12-13 11:28:03,450 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:28:03,450 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:28:03,451 - app.logger - INFO - 🔍 Combining external results for https://fkwallet.io/login: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:28:03,452 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:28:03,452 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:28:03,452 - app.logger - INFO - 🔍 Final external API result for https://fkwallet.io/login: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:28:03,453 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:28:03,453 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://fkwallet.io/login: safe=None
+2025-12-13 11:28:03,453 - app.logger - WARNING - External APIs returned None for https://fkwallet.io/login, using heuristic analysis
+2025-12-13 11:28:03,456 - app.logger - INFO - [WS] URL analysis completed for https://fkwallet.io/login: safe=True, source=heuristic
+2025-12-13 11:28:03,457 - app.logger - INFO - [WS] Sent analysis_result for https://fkwallet.io/login to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:30:24,282 - app.logger - INFO - [WS] Starting URL analysis for: https://fkwallet.io/personal (context: link_check)
+2025-12-13 11:30:24,285 - app.logger - INFO - 🔍 Analyzing URL: https://fkwallet.io/personal (ignore_db=False)
+2025-12-13 11:30:24,293 - app.logger - INFO - 🔍 Checking external APIs for: https://fkwallet.io/personal
+2025-12-13 11:30:24,295 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:30:24,296 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:30:24,296 - app.logger - INFO - 🔍 Combining external results for https://fkwallet.io/personal: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:30:24,297 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:30:24,297 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:30:24,297 - app.logger - INFO - 🔍 Final external API result for https://fkwallet.io/personal: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:30:24,297 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:30:24,298 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://fkwallet.io/personal: safe=None
+2025-12-13 11:30:24,298 - app.logger - WARNING - External APIs returned None for https://fkwallet.io/personal, using heuristic analysis
+2025-12-13 11:30:24,301 - app.logger - INFO - [WS] URL analysis completed for https://fkwallet.io/personal: safe=True, source=heuristic
+2025-12-13 11:30:24,302 - app.logger - INFO - [WS] Sent analysis_result for https://fkwallet.io/personal to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:30:31,472 - app.logger - INFO - [WS] Starting URL analysis for: https://fkwallet.io/personal/adding-funds/1 (context: link_check)
+2025-12-13 11:30:31,473 - app.logger - INFO - 🔍 Analyzing URL: https://fkwallet.io/personal/adding-funds/1 (ignore_db=False)
+2025-12-13 11:30:31,478 - app.logger - INFO - 🔍 Checking external APIs for: https://fkwallet.io/personal/adding-funds/1
+2025-12-13 11:30:31,480 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:30:31,480 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:30:31,480 - app.logger - INFO - 🔍 Combining external results for https://fkwallet.io/personal/adding-funds/1: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:30:31,481 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:30:31,481 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:30:31,481 - app.logger - INFO - 🔍 Final external API result for https://fkwallet.io/personal/adding-funds/1: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:30:31,482 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:30:31,482 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://fkwallet.io/personal/adding-funds/1: safe=None
+2025-12-13 11:30:31,482 - app.logger - WARNING - External APIs returned None for https://fkwallet.io/personal/adding-funds/1, using heuristic analysis
+2025-12-13 11:30:31,485 - app.logger - INFO - [WS] URL analysis completed for https://fkwallet.io/personal/adding-funds/1: safe=True, source=heuristic
+2025-12-13 11:30:31,486 - app.logger - INFO - [WS] Sent analysis_result for https://fkwallet.io/personal/adding-funds/1 to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:30:41,021 - app.logger - INFO - [WS] Starting URL analysis for: https://fkwallet.io/personal/settings (context: link_check)
+2025-12-13 11:30:41,022 - app.logger - INFO - 🔍 Analyzing URL: https://fkwallet.io/personal/settings (ignore_db=False)
+2025-12-13 11:30:41,026 - app.logger - INFO - 🔍 Checking external APIs for: https://fkwallet.io/personal/settings
+2025-12-13 11:30:41,027 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:30:41,027 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:30:41,028 - app.logger - INFO - 🔍 Combining external results for https://fkwallet.io/personal/settings: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:30:41,028 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:30:41,028 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:30:41,028 - app.logger - INFO - 🔍 Final external API result for https://fkwallet.io/personal/settings: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:30:41,029 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:30:41,029 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://fkwallet.io/personal/settings: safe=None
+2025-12-13 11:30:41,029 - app.logger - WARNING - External APIs returned None for https://fkwallet.io/personal/settings, using heuristic analysis
+2025-12-13 11:30:41,032 - app.logger - INFO - [WS] URL analysis completed for https://fkwallet.io/personal/settings: safe=True, source=heuristic
+2025-12-13 11:30:41,033 - app.logger - INFO - [WS] Sent analysis_result for https://fkwallet.io/personal/settings to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:30:55,951 - app.logger - INFO - [WS] Starting URL analysis for: https://fkwallet.io/personal (context: link_check)
+2025-12-13 11:30:55,951 - app.logger - INFO - 🔍 Analyzing URL: https://fkwallet.io/personal (ignore_db=False)
+2025-12-13 11:30:55,952 - app.logger - WARNING - Ignoring cached safe=True result with source=heuristic for url:https://fkwallet.io/personal
+2025-12-13 11:30:55,960 - app.logger - INFO - 🔍 Checking external APIs for: https://fkwallet.io/personal
+2025-12-13 11:30:55,960 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:30:55,961 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:30:55,961 - app.logger - INFO - 🔍 Combining external results for https://fkwallet.io/personal: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:30:55,961 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:30:55,961 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:30:55,961 - app.logger - INFO - 🔍 Final external API result for https://fkwallet.io/personal: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:30:55,961 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:30:55,961 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://fkwallet.io/personal: safe=None
+2025-12-13 11:30:55,962 - app.logger - WARNING - External APIs returned None for https://fkwallet.io/personal, using heuristic analysis
+2025-12-13 11:30:55,965 - app.logger - INFO - [WS] URL analysis completed for https://fkwallet.io/personal: safe=True, source=heuristic
+2025-12-13 11:30:55,965 - app.logger - INFO - [WS] Sent analysis_result for https://fkwallet.io/personal to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:31:00,153 - app.logger - INFO - [WS] Starting URL analysis for: https://fkwallet.io/personal/adding-funds/1 (context: link_check)
+2025-12-13 11:31:00,154 - app.logger - INFO - 🔍 Analyzing URL: https://fkwallet.io/personal/adding-funds/1 (ignore_db=False)
+2025-12-13 11:31:00,154 - app.logger - WARNING - Ignoring cached safe=True result with source=heuristic for url:https://fkwallet.io/personal/adding-funds/1
+2025-12-13 11:31:00,164 - app.logger - INFO - 🔍 Checking external APIs for: https://fkwallet.io/personal/adding-funds/1
+2025-12-13 11:31:00,166 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:31:00,166 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:31:00,167 - app.logger - INFO - 🔍 Combining external results for https://fkwallet.io/personal/adding-funds/1: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:31:00,167 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:31:00,167 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:31:00,167 - app.logger - INFO - 🔍 Final external API result for https://fkwallet.io/personal/adding-funds/1: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:31:00,168 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:31:00,168 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://fkwallet.io/personal/adding-funds/1: safe=None
+2025-12-13 11:31:00,169 - app.logger - WARNING - External APIs returned None for https://fkwallet.io/personal/adding-funds/1, using heuristic analysis
+2025-12-13 11:31:00,172 - app.logger - INFO - [WS] URL analysis completed for https://fkwallet.io/personal/adding-funds/1: safe=True, source=heuristic
+2025-12-13 11:31:00,173 - app.logger - INFO - [WS] Sent analysis_result for https://fkwallet.io/personal/adding-funds/1 to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:35:21,558 - app.logger - INFO - [WS] Starting URL analysis for: https://x.com/bateman_pa12732/status/1999750889947775215/photo/1 (context: link_check)
+2025-12-13 11:35:21,559 - app.logger - INFO - 🔍 Analyzing URL: https://x.com/bateman_pa12732/status/1999750889947775215/photo/1 (ignore_db=False)
+2025-12-13 11:35:21,566 - app.logger - INFO - 🔍 Checking external APIs for: https://x.com/bateman_pa12732/status/1999750889947775215/photo/1
+2025-12-13 11:35:21,567 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:35:21,568 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:35:21,568 - app.logger - INFO - 🔍 Combining external results for https://x.com/bateman_pa12732/status/1999750889947775215/photo/1: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:35:21,568 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:35:21,568 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:35:21,568 - app.logger - INFO - 🔍 Final external API result for https://x.com/bateman_pa12732/status/1999750889947775215/photo/1: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:35:21,568 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:35:21,569 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://x.com/bateman_pa12732/status/1999750889947775215/photo/1: safe=None
+2025-12-13 11:35:21,569 - app.logger - WARNING - External APIs returned None for https://x.com/bateman_pa12732/status/1999750889947775215/photo/1, using heuristic analysis
+2025-12-13 11:35:21,572 - app.logger - INFO - [WS] URL analysis completed for https://x.com/bateman_pa12732/status/1999750889947775215/photo/1: safe=True, source=heuristic
+2025-12-13 11:35:21,572 - app.logger - INFO - [WS] Sent analysis_result for https://x.com/bateman_pa12732/status/1999750889947775215/photo/1 to client 52dbf360-6874-4b87-b15b-c45314ec75f1
+2025-12-13 11:36:37,692 - app.logger - INFO - [WS] Starting URL analysis for: https://help.emcd.io/ru/articles/5505144-%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D0%BD%D0%B0%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B8-%D0%B2%D1%8B%D0%BF%D0%BB%D0%B0%D1%82%D1%8B-%D0%B2-emcd (context: link_check)
+2025-12-13 11:36:37,693 - app.logger - INFO - 🔍 Analyzing URL: https://help.emcd.io/ru/articles/5505144-%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D0%BD%D0%B0%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B8-%D0%B2%D1%8B%D0%BF%D0%BB%D0%B0%D1%82%D1%8B-%D0%B2-emcd (ignore_db=False)
+2025-12-13 11:36:37,700 - app.logger - INFO - 🔍 Checking external APIs for: https://help.emcd.io/ru/articles/5505144-%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D0%BD%D0%B0%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B8-%D0%B2%D1%8B%D0%BF%D0%BB%D0%B0%D1%82%D1%8B-%D0%B2-emcd
+2025-12-13 11:36:37,702 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:36:37,703 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:36:37,703 - app.logger - INFO - 🔍 Combining external results for https://help.emcd.io/ru/articles/5505144-%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D0%BD%D0%B0%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B8-%D0%B2%D1%8B%D0%BF%D0%BB%D0%B0%D1%82%D1%8B-%D0%B2-emcd: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:36:37,704 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:36:37,704 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:36:37,705 - app.logger - INFO - 🔍 Final external API result for https://help.emcd.io/ru/articles/5505144-%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D0%BD%D0%B0%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B8-%D0%B2%D1%8B%D0%BF%D0%BB%D0%B0%D1%82%D1%8B-%D0%B2-emcd: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:36:37,705 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:36:37,706 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://help.emcd.io/ru/articles/5505144-%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D0%BD%D0%B0%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B8-%D0%B2%D1%8B%D0%BF%D0%BB%D0%B0%D1%82%D1%8B-%D0%B2-emcd: safe=None
+2025-12-13 11:36:37,706 - app.logger - WARNING - External APIs returned None for https://help.emcd.io/ru/articles/5505144-%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D0%BD%D0%B0%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B8-%D0%B2%D1%8B%D0%BF%D0%BB%D0%B0%D1%82%D1%8B-%D0%B2-emcd, using heuristic analysis
+2025-12-13 11:36:37,709 - app.logger - INFO - [WS] URL analysis completed for https://help.emcd.io/ru/articles/5505144-%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D0%BD%D0%B0%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B8-%D0%B2%D1%8B%D0%BF%D0%BB%D0%B0%D1%82%D1%8B-%D0%B2-emcd: safe=True, source=heuristic
+2025-12-13 11:36:37,710 - app.logger - INFO - [WS] Sent analysis_result for https://help.emcd.io/ru/articles/5505144-%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D0%BD%D0%B0%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B8-%D0%B2%D1%8B%D0%BF%D0%BB%D0%B0%D1%82%D1%8B-%D0%B2-emcd to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:36:44,471 - app.logger - INFO - [WS] Starting URL analysis for: https://emcd.io/pool/ (context: link_check)
+2025-12-13 11:36:44,472 - app.logger - INFO - 🔍 Analyzing URL: https://emcd.io/pool/ (ignore_db=False)
+2025-12-13 11:36:44,476 - app.logger - INFO - 🔍 Checking external APIs for: https://emcd.io/pool/
+2025-12-13 11:36:44,477 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:36:44,477 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:36:44,477 - app.logger - INFO - 🔍 Combining external results for https://emcd.io/pool/: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:36:44,477 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:36:44,478 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:36:44,478 - app.logger - INFO - 🔍 Final external API result for https://emcd.io/pool/: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:36:44,478 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:36:44,478 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://emcd.io/pool/: safe=None
+2025-12-13 11:36:44,478 - app.logger - WARNING - External APIs returned None for https://emcd.io/pool/, using heuristic analysis
+2025-12-13 11:36:44,481 - app.logger - INFO - [WS] URL analysis completed for https://emcd.io/pool/: safe=True, source=heuristic
+2025-12-13 11:36:44,481 - app.logger - INFO - [WS] Sent analysis_result for https://emcd.io/pool/ to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
