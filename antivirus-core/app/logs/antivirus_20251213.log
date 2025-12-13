@@ -2837,3 +2837,85 @@
 2025-12-13 11:36:44,478 - app.logger - WARNING - External APIs returned None for https://emcd.io/pool/, using heuristic analysis
 2025-12-13 11:36:44,481 - app.logger - INFO - [WS] URL analysis completed for https://emcd.io/pool/: safe=True, source=heuristic
 2025-12-13 11:36:44,481 - app.logger - INFO - [WS] Sent analysis_result for https://emcd.io/pool/ to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:37:57,720 - app.logger - INFO - [WS] Starting URL analysis for: https://x.com/bateman_pa12732/status/1999750889947775215/photo/3 (context: link_check)
+2025-12-13 11:37:57,721 - app.logger - INFO - 🔍 Analyzing URL: https://x.com/bateman_pa12732/status/1999750889947775215/photo/3 (ignore_db=False)
+2025-12-13 11:37:57,726 - app.logger - INFO - 🔍 Checking external APIs for: https://x.com/bateman_pa12732/status/1999750889947775215/photo/3
+2025-12-13 11:37:57,727 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:37:57,728 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:37:57,728 - app.logger - INFO - 🔍 Combining external results for https://x.com/bateman_pa12732/status/1999750889947775215/photo/3: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:37:57,728 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:37:57,728 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:37:57,728 - app.logger - INFO - 🔍 Final external API result for https://x.com/bateman_pa12732/status/1999750889947775215/photo/3: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:37:57,728 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:37:57,729 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://x.com/bateman_pa12732/status/1999750889947775215/photo/3: safe=None
+2025-12-13 11:37:57,729 - app.logger - WARNING - External APIs returned None for https://x.com/bateman_pa12732/status/1999750889947775215/photo/3, using heuristic analysis
+2025-12-13 11:37:57,731 - app.logger - INFO - [WS] URL analysis completed for https://x.com/bateman_pa12732/status/1999750889947775215/photo/3: safe=True, source=heuristic
+2025-12-13 11:37:57,732 - app.logger - INFO - [WS] Sent analysis_result for https://x.com/bateman_pa12732/status/1999750889947775215/photo/3 to client 52dbf360-6874-4b87-b15b-c45314ec75f1
+2025-12-13 11:38:01,819 - app.database - ERROR - Error verifying token: 'DatabaseManager' object has no attribute 'get_connection'
+2025-12-13 11:38:02,321 - app.logger - INFO - [WS] Starting URL analysis for: https://emcd.io/wallets (context: link_check)
+2025-12-13 11:38:02,321 - app.logger - INFO - 🔍 Analyzing URL: https://emcd.io/wallets (ignore_db=False)
+2025-12-13 11:38:02,326 - app.logger - INFO - 🔍 Checking external APIs for: https://emcd.io/wallets
+2025-12-13 11:38:02,328 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:38:02,328 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:38:02,329 - app.logger - INFO - 🔍 Combining external results for https://emcd.io/wallets: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:38:02,329 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:38:02,329 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:38:02,330 - app.logger - INFO - 🔍 Final external API result for https://emcd.io/wallets: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:38:02,330 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:38:02,330 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://emcd.io/wallets: safe=None
+2025-12-13 11:38:02,331 - app.logger - WARNING - External APIs returned None for https://emcd.io/wallets, using heuristic analysis
+2025-12-13 11:38:02,334 - app.logger - INFO - [WS] URL analysis completed for https://emcd.io/wallets: safe=True, source=heuristic
+2025-12-13 11:38:02,335 - app.logger - INFO - [WS] Sent analysis_result for https://emcd.io/wallets to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:38:03,889 - app.database - ERROR - Error verifying token: 'DatabaseManager' object has no attribute 'get_connection'
+2025-12-13 11:38:04,070 - app.database - ERROR - Error verifying token: 'DatabaseManager' object has no attribute 'get_connection'
+2025-12-13 11:38:04,244 - app.database - ERROR - Error verifying token: 'DatabaseManager' object has no attribute 'get_connection'
+2025-12-13 11:38:05,762 - app.database - ERROR - Error verifying token: 'DatabaseManager' object has no attribute 'get_connection'
+2025-12-13 11:38:14,763 - app.auth - ERROR - 🔥 SMTP DEBUG: _send_email() CALLED
+2025-12-13 11:38:14,763 - app.auth - ERROR - 🔥 SMTP DEBUG: host=smtp.yandex.ru port=587 user=noreply@aegis.builders
+2025-12-13 11:38:15,162 - app.auth - ERROR - 🔥 SMTP DEBUG: Email sent successfully
+2025-12-13 11:38:15,163 - app.logger - INFO - Password reset code for tematemaru846@gmail.com: 804f1447151291d60ce73ce721cd013c
+2025-12-13 11:38:44,097 - app.database - ERROR - Error verifying token: 'DatabaseManager' object has no attribute 'get_connection'
+2025-12-13 11:38:51,949 - app.logger - INFO - [WS] Starting URL analysis for: https://emcd.io/wallets?name=TopUpWithCard (context: link_check)
+2025-12-13 11:38:51,949 - app.logger - INFO - 🔍 Analyzing URL: https://emcd.io/wallets?name=TopUpWithCard (ignore_db=False)
+2025-12-13 11:38:51,954 - app.logger - INFO - 🔍 Checking external APIs for: https://emcd.io/wallets?name=TopUpWithCard
+2025-12-13 11:38:51,956 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:38:51,956 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-13 11:38:51,957 - app.logger - INFO - 🔍 Combining external results for https://emcd.io/wallets?name=TopUpWithCard: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-13 11:38:51,957 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-13 11:38:51,957 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-13 11:38:51,958 - app.logger - INFO - 🔍 Final external API result for https://emcd.io/wallets?name=TopUpWithCard: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-13 11:38:51,958 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-13 11:38:51,958 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://emcd.io/wallets?name=TopUpWithCard: safe=None
+2025-12-13 11:38:51,959 - app.logger - WARNING - External APIs returned None for https://emcd.io/wallets?name=TopUpWithCard, using heuristic analysis
+2025-12-13 11:38:51,962 - app.logger - INFO - [WS] URL analysis completed for https://emcd.io/wallets?name=TopUpWithCard: safe=True, source=heuristic
+2025-12-13 11:38:51,963 - app.logger - INFO - [WS] Sent analysis_result for https://emcd.io/wallets?name=TopUpWithCard to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:39:27,514 - app.logger - INFO - [WS] Starting URL analysis for: https://emcd.io/pool/dashboard (context: link_check)
+2025-12-13 11:39:27,518 - app.logger - INFO - 🔍 Analyzing URL: https://emcd.io/pool/dashboard (ignore_db=False)
+2025-12-13 11:39:27,524 - app.logger - WARNING - ⚠️ Private/internal URL detected, skipping external APIs: https://emcd.io/pool/dashboard
+2025-12-13 11:39:27,527 - app.logger - INFO - [WS] URL analysis completed for https://emcd.io/pool/dashboard: safe=True, source=internal_only
+2025-12-13 11:39:27,528 - app.logger - INFO - [WS] Sent analysis_result for https://emcd.io/pool/dashboard to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:39:47,656 - app.logger - INFO - [WS] Starting URL analysis for: https://emcd.io/pool/dashboard/workers (context: link_check)
+2025-12-13 11:39:47,657 - app.logger - INFO - 🔍 Analyzing URL: https://emcd.io/pool/dashboard/workers (ignore_db=False)
+2025-12-13 11:39:47,662 - app.logger - WARNING - ⚠️ Private/internal URL detected, skipping external APIs: https://emcd.io/pool/dashboard/workers
+2025-12-13 11:39:47,665 - app.logger - INFO - [WS] URL analysis completed for https://emcd.io/pool/dashboard/workers: safe=True, source=internal_only
+2025-12-13 11:39:47,666 - app.logger - INFO - [WS] Sent analysis_result for https://emcd.io/pool/dashboard/workers to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:39:48,785 - app.logger - INFO - [WS] Starting URL analysis for: https://emcd.io/pool/dashboard/rewards (context: link_check)
+2025-12-13 11:39:48,785 - app.logger - INFO - 🔍 Analyzing URL: https://emcd.io/pool/dashboard/rewards (ignore_db=False)
+2025-12-13 11:39:48,789 - app.logger - WARNING - ⚠️ Private/internal URL detected, skipping external APIs: https://emcd.io/pool/dashboard/rewards
+2025-12-13 11:39:48,792 - app.logger - INFO - [WS] URL analysis completed for https://emcd.io/pool/dashboard/rewards: safe=True, source=internal_only
+2025-12-13 11:39:48,792 - app.logger - INFO - [WS] Sent analysis_result for https://emcd.io/pool/dashboard/rewards to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:39:56,271 - app.logger - INFO - [WS] Starting URL analysis for: https://emcd.io/pool/dashboard/payouts (context: link_check)
+2025-12-13 11:39:56,272 - app.logger - INFO - 🔍 Analyzing URL: https://emcd.io/pool/dashboard/payouts (ignore_db=False)
+2025-12-13 11:39:56,277 - app.logger - WARNING - ⚠️ Private/internal URL detected, skipping external APIs: https://emcd.io/pool/dashboard/payouts
+2025-12-13 11:39:56,280 - app.logger - INFO - [WS] URL analysis completed for https://emcd.io/pool/dashboard/payouts: safe=True, source=internal_only
+2025-12-13 11:39:56,280 - app.logger - INFO - [WS] Sent analysis_result for https://emcd.io/pool/dashboard/payouts to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:39:58,413 - app.logger - INFO - [WS] Starting URL analysis for: https://emcd.io/pool/dashboard/settings (context: link_check)
+2025-12-13 11:39:58,415 - app.logger - INFO - 🔍 Analyzing URL: https://emcd.io/pool/dashboard/settings (ignore_db=False)
+2025-12-13 11:39:58,420 - app.logger - WARNING - ⚠️ Private/internal URL detected, skipping external APIs: https://emcd.io/pool/dashboard/settings
+2025-12-13 11:39:58,423 - app.logger - INFO - [WS] URL analysis completed for https://emcd.io/pool/dashboard/settings: safe=True, source=internal_only
+2025-12-13 11:39:58,424 - app.logger - INFO - [WS] Sent analysis_result for https://emcd.io/pool/dashboard/settings to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
+2025-12-13 11:40:01,521 - app.logger - INFO - [WS] Starting URL analysis for: https://emcd.io/pool/dashboard/watcher (context: link_check)
+2025-12-13 11:40:01,522 - app.logger - INFO - 🔍 Analyzing URL: https://emcd.io/pool/dashboard/watcher (ignore_db=False)
+2025-12-13 11:40:01,527 - app.logger - WARNING - ⚠️ Private/internal URL detected, skipping external APIs: https://emcd.io/pool/dashboard/watcher
+2025-12-13 11:40:01,530 - app.logger - INFO - [WS] URL analysis completed for https://emcd.io/pool/dashboard/watcher: safe=True, source=internal_only
+2025-12-13 11:40:01,531 - app.logger - INFO - [WS] Sent analysis_result for https://emcd.io/pool/dashboard/watcher to client 6fcb9bfe-e230-4609-ba5c-3a73e94692db
