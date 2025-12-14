@@ -11342,3 +11342,39 @@ AttributeError: 'DatabaseManager' object has no attribute 'get_connection'. Did 
 2025-12-14 00:23:42,105 - app.logger - INFO - [WS] Sent analysis_result for https://x.com/home to client bb95d582-37b6-41d5-afde-f4e81c771192
 2025-12-14 00:23:51,298 - app.logger - WARNING - Invalid HTTP method: PROPFIND
 2025-12-14 00:26:25,332 - app.logger - WARNING - Invalid HTTP method: PROPFIND
+2025-12-14 00:32:35,007 - app.logger - INFO - [WS] Starting URL analysis for: https://x.com/home (context: link_check)
+2025-12-14 00:32:35,008 - app.logger - INFO - 🔍 Analyzing URL: https://x.com/home (ignore_db=False)
+2025-12-14 00:32:35,013 - app.logger - INFO - 🔍 Checking external APIs for: https://x.com/home
+2025-12-14 00:32:35,015 - app.logger - ERROR - virustotal API error (attempt 1/2): AttributeError: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-14 00:32:35,015 - app.logger - ERROR - virustotal check failed: 'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'
+2025-12-14 00:32:35,015 - app.logger - INFO - 🔍 Combining external results for https://x.com/home: {'virustotal': {'error': "'ExternalAPIConfig' object has no attribute 'VIRUSTOTAL_HOURLY_LIMIT'"}}
+2025-12-14 00:32:35,015 - app.logger - INFO - 🔍 VirusTotal parsed result: {'safe': None, 'external_scan': 'failed', 'details': 'VirusTotal: No data available'}
+2025-12-14 00:32:35,015 - app.logger - INFO - No results from APIs - returning None for heuristic fallback
+2025-12-14 00:32:35,015 - app.logger - INFO - 🔍 Final external API result for https://x.com/home: safe=None, threat_type=None, details=Unable to determine safety
+2025-12-14 00:32:35,016 - app.logger - INFO - 🔍 External API result: safe=None, threat_type=None
+2025-12-14 00:32:35,016 - app.logger - WARNING - ⚠️ External APIs returned unclear result for https://x.com/home: safe=None
+2025-12-14 00:32:35,016 - app.logger - WARNING - External APIs returned None for https://x.com/home, using heuristic analysis
+2025-12-14 00:32:35,019 - app.logger - INFO - [WS] URL analysis completed for https://x.com/home: safe=True, source=heuristic
+2025-12-14 00:32:35,019 - app.logger - INFO - [WS] Sent analysis_result for https://x.com/home to client bb95d582-37b6-41d5-afde-f4e81c771192
+2025-12-14 00:32:37,740 - app.logger - INFO - [WS] Client disconnected gracefully: 255fdf31-b097-4ebb-a68e-567443bfb03e
+2025-12-14 00:32:37,742 - app.logger - INFO - [WS] Client disconnected: id=255fdf31-b097-4ebb-a68e-567443bfb03e, reason=cleanup
+2025-12-14 00:32:37,744 - app.logger - INFO - [WS] Client disconnected gracefully: b5352909-5b71-4913-8825-fe134bf4f4cd
+2025-12-14 00:32:37,744 - app.logger - INFO - [WS] Client disconnected: id=b5352909-5b71-4913-8825-fe134bf4f4cd, reason=cleanup
+2025-12-14 00:32:37,746 - app.logger - INFO - [WS] Client disconnected gracefully: 48ad2bc9-c50f-4d03-b047-3c569c982af4
+2025-12-14 00:32:37,747 - app.logger - INFO - [WS] Client disconnected: id=48ad2bc9-c50f-4d03-b047-3c569c982af4, reason=cleanup
+2025-12-14 00:32:37,749 - app.logger - INFO - [WS] Client disconnected gracefully: f6615995-a3c4-410f-a34f-88d8488cd591
+2025-12-14 00:32:37,749 - app.logger - INFO - [WS] Client disconnected: id=f6615995-a3c4-410f-a34f-88d8488cd591, reason=cleanup
+2025-12-14 00:32:37,750 - app.logger - INFO - [WS] Client disconnected gracefully: d118abe7-9b51-4c03-9b22-f0be6cfcdb00
+2025-12-14 00:32:37,751 - app.logger - INFO - [WS] Client disconnected: id=d118abe7-9b51-4c03-9b22-f0be6cfcdb00, reason=cleanup
+2025-12-14 00:32:37,751 - app.logger - INFO - [WS] Client disconnected gracefully: 4c5f0f0d-a055-4a13-8dbd-7ca5cbd78d07
+2025-12-14 00:32:37,752 - app.logger - INFO - [WS] Client disconnected: id=4c5f0f0d-a055-4a13-8dbd-7ca5cbd78d07, reason=cleanup
+2025-12-14 00:32:37,753 - app.logger - INFO - [WS] Client disconnected gracefully: aa5cca7c-c069-4473-883f-feb47bc17f27
+2025-12-14 00:32:37,753 - app.logger - INFO - [WS] Client disconnected: id=aa5cca7c-c069-4473-883f-feb47bc17f27, reason=cleanup
+2025-12-14 00:32:37,754 - app.logger - INFO - [WS] Client disconnected gracefully: bb95d582-37b6-41d5-afde-f4e81c771192
+2025-12-14 00:32:37,754 - app.logger - INFO - [WS] Client disconnected: id=bb95d582-37b6-41d5-afde-f4e81c771192, reason=cleanup
+2025-12-14 00:32:37,755 - app.logger - INFO - [WS] Client disconnected gracefully: 72ef0564-1a3a-4ed2-bcc6-351348c64d65
+2025-12-14 00:32:37,756 - app.logger - INFO - [WS] Client disconnected: id=72ef0564-1a3a-4ed2-bcc6-351348c64d65, reason=cleanup
+2025-12-14 00:32:37,756 - app.logger - INFO - [WS] Client disconnected gracefully: bcd8855c-7bb7-4647-8aa0-5672fc3948b7
+2025-12-14 00:32:37,757 - app.logger - INFO - [WS] Client disconnected: id=bcd8855c-7bb7-4647-8aa0-5672fc3948b7, reason=cleanup
+2025-12-14 00:32:37,834 - app.logger - INFO - Background job manager stopped
+2025-12-14 00:32:37,835 - app.logger - INFO - Background job manager stopped
