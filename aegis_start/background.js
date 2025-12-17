@@ -231,36 +231,22 @@ class AegisWebSocketClient {
   }
 
 _buildUrl(apiBase, apiKey) {
-    try {
-      // Создаем URL объект из http адреса
-      const url = new URL(apiBase);
-
-      // 1. Меняем протокол на wss (или ws)
-      if (url.protocol === 'https:') {
-        url.protocol = 'wss:';
-      } else if (url.protocol === 'http:') {
-        url.protocol = 'ws:';
-      }
-
-      // 2. ЖЕСТКО задаем путь /ws
-      url.pathname = '/ws';
-
-      // 3. Очищаем лишнее и добавляем API ключ
-      url.hash = '';
-      if (apiKey) {
-        url.searchParams.set('api_key', apiKey);
-      }
-
-      const finalUrl = url.toString();
-      console.log('[Aegis WS] Built URL:', finalUrl.replace(/api_key=[^&]+/, 'api_key=***'));
-      return finalUrl;
-
-    } catch (err) {
-      console.error('[Aegis WS] URL build error, using fallback:', err);
-      // Fallback, если что-то совсем пошло не так
-      return CURRENT_ENV.WS + (apiKey ? `?api_key=${apiKey}` : '');
+  try {
+    const url = new URL(apiBase);
+    // Меняем протокол
+    url.protocol = url.protocol === 'https:' ? 'wss:' : 'ws:';
+    // ЖЕСТКО ставим путь из задания
+    url.pathname = '/ws'; 
+    
+    if (apiKey) {
+      url.searchParams.set('api_key', apiKey);
     }
+    return url.toString();
+  } catch (err) {
+    // Если apiBase сломан, берем из нашего конфига
+    return IS_DEV ? 'wss://api-dev.aegis.builders/ws' : 'wss://api.aegis.builders/ws';
   }
+}
   _handleOpen() {
     this.retryAttempt = 0;
     this.lastPong = Date.now();
@@ -957,13 +943,17 @@ async function getApiBase() {
 }
 
 async function warmUpConnection() {
-    const apiBase = await getApiBase();
-    try {
-        // Добавляем /health или оставляем как есть, но не считаем 404 критичной ошибкой
-        await fetch(`${apiBase}/health`, { method: 'GET', mode: 'no-cors' });
-    } catch (e) {
-        console.debug('[Aegis] Warm-up ignoring error:', e);
-    }
+  const apiBase = await getApiBase();
+  try {
+    // Добавляем /health или /ws к пути, чтобы сервер не выдавал 404
+    await fetch(`${apiBase}/health`, { 
+      method: 'GET', 
+      mode: 'no-cors',
+      cache: 'no-store'
+    });
+  } catch (e) {
+    // Ошибки здесь не критичны, это просто прогрев
+  }
 }
 
 // Проверка подключения к серверу
