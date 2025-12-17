@@ -257,7 +257,10 @@ app.state.ws_cleanup_task = None
 async def websocket_endpoint(websocket: WebSocket):
     """WebSocket endpoint для двусторонней связи с расширением."""
     client_ip = websocket.client.host if websocket.client else "unknown"
-    logger.info(f"[WS] WebSocket connection attempt from {client_ip}")
+    # КРИТИЧНО: Логируем все заголовки для диагностики
+    upgrade_header = websocket.headers.get("Upgrade", "")
+    connection_header = websocket.headers.get("Connection", "")
+    logger.info(f"[WS] WebSocket connection attempt from {client_ip}, Upgrade: {upgrade_header}, Connection: {connection_header}")
     
     try:
         await websocket.accept()
@@ -385,8 +388,17 @@ async def websocket_health_check():
 async def request_logging_middleware(request: Request, call_next):
     """КРИТИЧНО: Все вызовы БД обернуты в try-except для предотвращения падения"""
     # КРИТИЧНО: WebSocket upgrade запросы должны пропускаться без обработки
-    if request.url.path == "/ws" and request.headers.get("Upgrade", "").lower() == "websocket":
-        return await call_next(request)
+    if request.url.path == "/ws":
+        upgrade_header = request.headers.get("Upgrade", "").lower()
+        connection_header = request.headers.get("Connection", "").lower()
+        logger.info(f"[WS DEBUG] HTTP request to /ws - Method: {request.method}, Upgrade: {upgrade_header}, Connection: {connection_header}")
+        if upgrade_header == "websocket":
+            logger.info(f"[WS DEBUG] WebSocket upgrade detected, passing to FastAPI router")
+            return await call_next(request)
+        else:
+            logger.warning(f"[WS DEBUG] Request to /ws without WebSocket upgrade header - this might be a proxy issue")
+            # Пропускаем дальше, пусть FastAPI сам обработает (вернет 404 если не WebSocket)
+            return await call_next(request)
     
     start = time.time()
     response = None
