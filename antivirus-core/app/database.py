@@ -29,7 +29,7 @@ class DatabaseManager:
         # КРИТИЧНО: Поддержка переменной окружения для пути к БД
         # Используем единый путь для бота и backend
         if db_path is None:
-            db_path = os.getenv("DATABASE_PATH", "/opt/aegis/data/aegis.db")
+            db_path = os.getenv("DATABASE_PATH") or os.getenv("DB_PATH", "/opt/Aegis/data/aegis.db")
         
         self.db_path = db_path
         self.storage_dir = Path(self.db_path).parent
@@ -545,8 +545,8 @@ class DatabaseManager:
             return False, f"Database error: {str(e)}"
     
     def create_api_key(self, name: str, description: str = "", 
-                      access_level: str = "basic", daily_limit: Optional[int] = 1000, 
-                      hourly_limit: Optional[int] = 100, expires_days: int = 365) -> Optional[str]:
+                      access_level: str = "basic", daily_limit: Optional[int] = 10000, 
+                      hourly_limit: Optional[int] = 10000, expires_days: int = 365) -> Optional[str]:
         """Создает новый API ключ в формате XXXXX-XXXXX-XXXXX-XXXXX-XXXXX"""
         try:
             safe_name = (name or "").strip() or "Client"
@@ -561,8 +561,8 @@ class DatabaseManager:
                 except Exception:
                     return default
 
-            daily_limit = _normalize_limit(daily_limit, 1000)
-            hourly_limit = _normalize_limit(hourly_limit, 100)
+            daily_limit = _normalize_limit(daily_limit, 10000)
+            hourly_limit = _normalize_limit(hourly_limit, 10000)
 
             # Генерируем ключ в новом формате
             api_key = self._generate_formatted_key(access_level)
