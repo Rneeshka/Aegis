@@ -9,6 +9,8 @@ from pathlib import Path
 from typing import Dict, List, Any, Optional, Tuple
 from urllib.parse import urlparse
 from datetime import datetime, timedelta
+import psycopg2
+import psycopg2.extras
 
 # Настраиваем логирование
 logger = logging.getLogger(__name__)
@@ -19,72 +21,102 @@ class DatabaseManager:
     Включает управление API ключами, блокировками и оптимизацией.
     """
     
-    def __init__(self, db_path: str = None):
+
+    def __init__(self, db_url: str = None):
         """
         Инициализация менеджера базы данных.
-        
-        Args:
-            db_path (str): Путь к файлу базы данных (если None, берется из окружения или дефолтный)
+        Поддерживает SQLite и PostgreSQL через DATABASE_URL.
         """
-        # КРИТИЧНО: Поддержка переменной окружения для пути к БД
-        # Используем единый путь для бота и backend
-        if db_path is None:
-            db_path = os.getenv("DATABASE_PATH") or os.getenv("DB_PATH", "/opt/Aegis/data/aegis.db")
-        
-        self.db_path = db_path
-        self.storage_dir = Path(self.db_path).parent
-        self.storage_dir.mkdir(parents=True, exist_ok=True)
-        self.whitelist_file = self.storage_dir / "cache_whitelist.jsonl"
-        self.blacklist_file = self.storage_dir / "cache_blacklist.jsonl"
-        logger.info(f"Initializing database at: {self.db_path}")
-        self._init_database()
+
+        if db_url is None:
+            db_url = os.getenv("DATABASE_URL") or "sqlite:////opt/Aegis/data/aegis.db"
+
+        self.db_url = db_url
+        parsed = urlparse(db_url)
+        self.db_scheme = parsed.scheme
+
+        logger.info(f"Initializing database: {self.db_scheme}")
+
+        # Кеш-файлы и директории нужны ТОЛЬКО для SQLite
+        if self.db_scheme.startswith("sqlite"):
+            db_path = db_url.replace("sqlite:///", "")
+            self.db_path = db_path
+
+            self.storage_dir = Path(db_path).parent
+            self.storage_dir.mkdir(parents=True, exist_ok=True)
+
+            self.whitelist_file = self.storage_dir / "cache_whitelist.jsonl"
+            self.blacklist_file = self.storage_dir / "cache_blacklist.jsonl"
+
+            # Только для SQLite создаём таблицы
+            self._init_database()
+        else:
+            # Postgres: схема уже существует
+            self.db_path = None
+            self.storage_dir = None
+            self.whitelist_file = None
+            self.blacklist_file = None
+
+            logger.info("PostgreSQL detected — skipping init_database()")
     
-    def _get_connection(self) -> sqlite3.Connection:
+    
+    def _get_connection(self):
         """
-        Создает и возвращает подключение к базе данных с таймаутом.
-        КРИТИЧНО: Автоматическое переподключение при ошибках соединения.
-        
-        Returns:
-            sqlite3.Connection: Подключение к базе данных
+        Универсальный метод получения соединения.
+        SQLite или PostgreSQL — в зависимости от DATABASE_URL.
         """
+        if self.db_scheme.startswith("sqlite"):
+            return self._get_sqlite_connection()
+        elif self.db_scheme.startswith("postgres"):
+            return self._get_postgres_connection()
+        else:
+            raise ValueError(f"Unsupported database scheme: {self.db_scheme}")
+    
+    def _get_sqlite_connection(self) -> sqlite3.Connection:
         max_retries = 3
         retry_delay = 0.1
-        
+
         for attempt in range(max_retries):
             try:
                 conn = sqlite3.connect(
-                    self.db_path, 
-                    timeout=30,  # Таймаут 30 секунд
-                    check_same_thread=False  # Для многопоточности
+                    self.db_path,
+                    timeout=30,
+                    check_same_thread=False
                 )
-                conn.row_factory = sqlite3.Row  # Возвращать результаты как словари
-                # Включаем foreign keys и улучшаем производительность
+                conn.row_factory = sqlite3.Row
+
                 conn.execute("PRAGMA foreign_keys = ON")
                 conn.execute("PRAGMA journal_mode = WAL")
                 conn.execute("PRAGMA synchronous = NORMAL")
-                conn.execute("PRAGMA cache_size = -10000")  # 10MB кеша
-                
-                # КРИТИЧНО: Проверяем что соединение действительно работает
+                conn.execute("PRAGMA cache_size = -10000")
+
                 conn.execute("SELECT 1").fetchone()
-                
                 return conn
+
             except sqlite3.OperationalError as e:
                 if "database is locked" in str(e).lower() and attempt < max_retries - 1:
-                    logger.warning(f"Database locked, retrying ({attempt + 1}/{max_retries})...")
+                    logger.warning(
+                        f"SQLite locked, retrying ({attempt + 1}/{max_retries})"
+                    )
                     import time
                     time.sleep(retry_delay * (attempt + 1))
                     continue
-                logger.error(f"Database connection error (attempt {attempt + 1}): {e}")
-                if attempt == max_retries - 1:
-                    raise
-            except sqlite3.Error as e:
-                logger.error(f"Database connection error: {e}")
-                if attempt == max_retries - 1:
-                    raise
-                import time
-                time.sleep(retry_delay * (attempt + 1))
-        
-        raise sqlite3.Error("Failed to establish database connection after retries")
+
+                logger.error(f"SQLite connection error: {e}")
+                raise
+    
+    def _get_postgres_connection(self):
+        try:
+            conn = psycopg2.connect(
+                self.db_url,
+                cursor_factory=psycopg2.extras.RealDictCursor,
+                connect_timeout=5
+            )
+            conn.autocommit = True
+            return conn
+        except Exception as e:
+            logger.error(f"PostgreSQL connection error: {e}")
+            raise
     
     def _init_database(self):
         """
