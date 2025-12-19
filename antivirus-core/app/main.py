@@ -499,10 +499,20 @@ async def filter_invalid_requests(request: Request, call_next):
 @app.middleware("http")
 async def optional_auth_middleware(request: Request, call_next):
     """Опциональная проверка ключей для расширенных функций"""
-    # КРИТИЧНО: Все вызовы БД обернуты в try-except
-    # ПРОПУСКАЕМ ВСЮ АУТЕНТИФИКАЦИЮ БЕЗ API KEY
-    if request.url.path.startswith("/auth/"):
+    # КРИТИЧНО: Публичные пути - пропускаем без проверки API ключа
+    PUBLIC_PATHS = (
+        "/auth/register",
+        "/auth/login",
+        "/health",
+        "/ws",
+    )
+    
+    # Проверяем точное совпадение или начало пути
+    if (request.url.path in PUBLIC_PATHS or 
+        any(request.url.path.startswith(path) for path in PUBLIC_PATHS)):
         return await call_next(request)
+    
+    # КРИТИЧНО: Все вызовы БД обернуты в try-except
     # Создание ключей теперь доступно без admin токена
     if request.url.path == "/admin/api-keys/create":
         return await call_next(request)

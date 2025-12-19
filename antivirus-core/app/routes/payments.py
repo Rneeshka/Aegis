@@ -48,6 +48,14 @@ async def create_payment(request_data: BotPaymentRequest):
     Создание платежа для Telegram-бота.
     Это ТО, ЧТО ОЖИДАЕТ ТВОЙ БОТ.
     """
+    # === Проверка конфигурации ЮКассы ===
+    if not YOOKASSA_SHOP_ID or not YOOKASSA_SECRET_KEY:
+        logger.error(f"[PAYMENTS] YooKassa credentials not configured. SHOP_ID={bool(YOOKASSA_SHOP_ID)}, SECRET_KEY={bool(YOOKASSA_SECRET_KEY)}")
+        raise HTTPException(
+            status_code=500,
+            detail="Payment system configuration error: YooKassa credentials not set"
+        )
+    
     amount = request_data.amount
     license_type = request_data.license_type
     telegram_id = request_data.telegram_id
