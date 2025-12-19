@@ -1237,8 +1237,7 @@ async def create_api_key(request: Request):
         if auth_header.startswith("Bearer "):
             token = auth_header.split(" ", 1)[1].strip()
             import os
-            from dotenv import load_dotenv
-            load_dotenv("app/env.env")
+            # env.env уже загружен в начале файла через _load_env_file()
             admin_token = os.getenv("ADMIN_API_TOKEN", "")
             if token != admin_token:
                 raise HTTPException(status_code=403, detail="Invalid authorization token")

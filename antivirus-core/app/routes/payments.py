@@ -5,7 +5,6 @@ import aiohttp
 from datetime import datetime, timedelta
 from typing import Optional, Dict
 import json
-from pathlib import Path
 
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse
@@ -14,26 +13,11 @@ from pydantic import BaseModel
 from app.logger import logger
 from app.database import DatabaseManager
 
-# КРИТИЧНО: Загружаем env.env явно для гарантии
-try:
-    from dotenv import load_dotenv
-    env_file = Path(__file__).parent.parent / "env.env"
-    if env_file.exists():
-        load_dotenv(env_file)
-        logger.info(f"[PAYMENTS] Loaded env.env from {env_file}")
-    else:
-        logger.warning(f"[PAYMENTS] env.env not found at {env_file}")
-except Exception as e:
-    logger.warning(f"[PAYMENTS] Failed to load env.env: {e}")
-
 router = APIRouter()
 
 # ==== YooKassa config ====
 YOOKASSA_SHOP_ID = os.getenv("YOOKASSA_SHOP_ID")
 YOOKASSA_SECRET_KEY = os.getenv("YOOKASSA_SECRET_KEY")
-
-# Логируем наличие ключей (без полного значения)
-logger.info(f"[PAYMENTS] YooKassa config: SHOP_ID={'SET' if YOOKASSA_SHOP_ID else 'MISSING'}, SECRET_KEY={'SET' if YOOKASSA_SECRET_KEY else 'MISSING'}")
 
 YOOKASSA_API_URL = "https://api.yookassa.ru/v3/payments"
 
@@ -736,6 +720,27 @@ async def check_payment_status(payment_id: str):
                                 amount_value = float(amount_obj["value"])
                             except (ValueError, TypeError):
                                 pass
+                    
+                    # КРИТИЧНО: Если платеж успешен и еще не обработан - обрабатываем автоматически
+                    if yookassa_status == "succeeded" and payment_db.get("status") != "succeeded":
+                        logger.info(f"[PAYMENTS] Payment {payment_id} succeeded, processing automatically...")
+                        try:
+                            # Получаем полные данные платежа от ЮКасса для обработки
+                            payment_object = {
+                                "id": payment_id,
+                                "status": "succeeded",
+                                "paid": True,
+                                "metadata": yookassa_metadata or {},
+                                "amount": data.get("amount", {})
+                            }
+                            # Обрабатываем платеж (выдача ключа и т.д.)
+                            success = await process_payment_succeeded(payment_object)
+                            if success:
+                                logger.info(f"[PAYMENTS] ✅ Payment {payment_id} processed successfully via status check")
+                            else:
+                                logger.error(f"[PAYMENTS] ❌ Failed to process payment {payment_id}")
+                        except Exception as process_error:
+                            logger.error(f"[PAYMENTS] Error processing payment {payment_id}: {process_error}", exc_info=True)
                     
                     return {
                         "status": yookassa_status,
