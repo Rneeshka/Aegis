@@ -3,8 +3,37 @@ import asyncio
 import contextlib
 import time
 import sqlite3
+import os
 from datetime import datetime
 from typing import Any, Dict, Optional
+from pathlib import Path
+
+# КРИТИЧНО: Загружаем env.env ПЕРЕД всеми импортами, чтобы переменные были доступны
+def _load_env_file():
+    """Загружает переменные окружения из app/env.env"""
+    env_file = Path(__file__).parent / "env.env"
+    loaded_keys = []
+    if env_file.exists():
+        try:
+            with env_file.open("r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line or line.startswith("#") or "=" not in line:
+                        continue
+                    key, value = line.split("=", 1)
+                    key = key.strip()
+                    value = value.strip().strip('"').strip("'")
+                    # Не перезаписываем, если уже задано в окружении
+                    if key and key not in os.environ:
+                        os.environ[key] = value
+                        loaded_keys.append(key)
+            print(f"[ENV] Loaded {len(loaded_keys)} variables from {env_file}: {', '.join(loaded_keys)}")
+        except Exception as e:
+            print(f"[ENV] Warning: Failed to load env.env: {e}")
+    else:
+        print(f"[ENV] Warning: env.env not found at {env_file}")
+
+_load_env_file()
 
 from fastapi import FastAPI, HTTPException, File, UploadFile, Request, Depends, WebSocket, WebSocketDisconnect
 from fastapi.responses import JSONResponse, FileResponse
@@ -1783,6 +1812,20 @@ async def startup_event():
     else:
         logger.error("❌ CRITICAL: WebSocket endpoint /ws NOT FOUND in registered routes!")
         logger.error(f"Available routes: {[r.path for r in app.routes if hasattr(r, 'path')][:20]}")
+    
+    # Проверка конфигурации ЮКассы
+    try:
+        from app.routes.payments import YOOKASSA_SHOP_ID, YOOKASSA_SECRET_KEY
+        shop_id_status = "SET" if YOOKASSA_SHOP_ID else "MISSING"
+        secret_key_status = "SET" if YOOKASSA_SECRET_KEY else "MISSING"
+        logger.info(f"💳 YooKassa config check: SHOP_ID={shop_id_status}, SECRET_KEY={secret_key_status}")
+        if not YOOKASSA_SHOP_ID or not YOOKASSA_SECRET_KEY:
+            logger.warning("⚠️ YooKassa credentials not configured! Payments will fail.")
+            logger.warning("   Set YOOKASSA_SHOP_ID and YOOKASSA_SECRET_KEY in app/env.env")
+        else:
+            logger.info(f"✅ YooKassa configured: SHOP_ID={YOOKASSA_SHOP_ID[:5]}...")
+    except Exception as yk_check_error:
+        logger.error(f"❌ Failed to check YooKassa config: {yk_check_error}")
     
     logger.info("✅ AEGIS Server startup complete")
 

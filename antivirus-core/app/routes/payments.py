@@ -5,6 +5,7 @@ import aiohttp
 from datetime import datetime, timedelta
 from typing import Optional, Dict
 import json
+from pathlib import Path
 
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse
@@ -13,11 +14,26 @@ from pydantic import BaseModel
 from app.logger import logger
 from app.database import DatabaseManager
 
+# КРИТИЧНО: Загружаем env.env явно для гарантии
+try:
+    from dotenv import load_dotenv
+    env_file = Path(__file__).parent.parent / "env.env"
+    if env_file.exists():
+        load_dotenv(env_file)
+        logger.info(f"[PAYMENTS] Loaded env.env from {env_file}")
+    else:
+        logger.warning(f"[PAYMENTS] env.env not found at {env_file}")
+except Exception as e:
+    logger.warning(f"[PAYMENTS] Failed to load env.env: {e}")
+
 router = APIRouter()
 
 # ==== YooKassa config ====
 YOOKASSA_SHOP_ID = os.getenv("YOOKASSA_SHOP_ID")
 YOOKASSA_SECRET_KEY = os.getenv("YOOKASSA_SECRET_KEY")
+
+# Логируем наличие ключей (без полного значения)
+logger.info(f"[PAYMENTS] YooKassa config: SHOP_ID={'SET' if YOOKASSA_SHOP_ID else 'MISSING'}, SECRET_KEY={'SET' if YOOKASSA_SECRET_KEY else 'MISSING'}")
 
 YOOKASSA_API_URL = "https://api.yookassa.ru/v3/payments"
 

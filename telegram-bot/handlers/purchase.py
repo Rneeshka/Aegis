@@ -77,7 +77,9 @@ async def backend_create_payment(amount: int, license_type: str, user_id: int, u
         "username": username
     }
 
-    logger.info(f"Отправляю запрос на backend: {url} | {payload}")
+    logger.info(f"[PAYMENT] Отправляю запрос на backend: {url}")
+    logger.info(f"[PAYMENT] BACKEND_URL из config: {BACKEND_URL}")
+    logger.info(f"[PAYMENT] Payload: {payload}")
 
     try:
         async with aiohttp.ClientSession() as session:
