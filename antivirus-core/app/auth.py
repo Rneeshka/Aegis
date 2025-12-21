@@ -63,12 +63,18 @@ class AuthManager:
         if not password or len(password) < 6:
             return False, None, "Пароль должен содержать минимум 6 символов", None
         
+        if not db_manager:
+            return False, None, "Database unavailable", None
+        
         if db_manager.get_account_by_username(username):
             return False, None, "Username уже занят", None
         if db_manager.get_account_by_email(email):
             return False, None, "Email уже зарегистрирован", None
         
         password_hash = AuthManager.hash_password(password)
+        if not db_manager:
+            return False, None, "Database unavailable", None
+        
         user_id = db_manager.create_account(username, email, password_hash)
         
         if not user_id:
@@ -106,6 +112,9 @@ class AuthManager:
         if not username or not password:
             return False, None, None, "Username и password обязательны"
         
+        if not db_manager:
+            return False, None, "Database unavailable", None
+        
         account = db_manager.get_account_by_username(username)
         if not account:
             account = db_manager.get_account_by_email(username)
@@ -116,7 +125,8 @@ class AuthManager:
         if not AuthManager.verify_password(password, account["password_hash"]):
             return False, None, None, "Неверный username или пароль"
         
-        db_manager.update_last_login(account["id"])
+        if db_manager:
+            db_manager.update_last_login(account["id"])
         
         account_data = {
             "id": account["id"],
@@ -163,6 +173,9 @@ class AuthManager:
             return None
         
         # Получаем аккаунт из БД для актуальных данных
+        if not db_manager:
+            return None
+        
         account = db_manager.get_account_by_id(user_id)
         if not account or not account["is_active"]:
             return None

@@ -7,6 +7,7 @@ import json
 from typing import Dict, List, Any, Optional, Tuple
 from urllib.parse import urlparse
 from datetime import datetime, timedelta
+from pathlib import Path
 import psycopg2
 import psycopg2.extras
 
@@ -18,7 +19,7 @@ class DatabaseManager:
     Менеджер базы данных для PostgreSQL.
     Только PostgreSQL - SQLite удалён.
     """
-
+    
     def __init__(self, db_url: str = None):
         """
         Инициализация менеджера базы данных.
@@ -29,7 +30,7 @@ class DatabaseManager:
             db_url = os.getenv("DATABASE_URL")
             if not db_url:
                 raise ValueError("DATABASE_URL must be set in environment variables")
-
+        
         self.db_url = db_url
         parsed = urlparse(db_url)
         self.db_scheme = parsed.scheme
@@ -47,6 +48,15 @@ class DatabaseManager:
         """Адаптирует SQL запрос для PostgreSQL (заменяет ? на %s)"""
         # PostgreSQL использует %s вместо ?
         return query.replace("?", "%s")
+    
+    def _commit_if_needed(self, conn):
+        """
+        Для PostgreSQL с autocommit=True этот метод не нужен,
+        но оставлен для совместимости кода.
+        """
+        # PostgreSQL использует autocommit=True, поэтому commit не требуется
+        # Метод оставлен для совместимости, но ничего не делает
+        pass
     
     def _get_postgres_connection(self):
         """Получает соединение с PostgreSQL с retry логикой"""
@@ -472,79 +482,6 @@ class DatabaseManager:
             cursor.execute(self._adapt_query(query), (url, domain, threat_type, severity, description))
     
     # ===== API KEYS MANAGEMENT =====
-    
-    def validate_api_key(self, api_key: str) -> Tuple[bool, str]:
-        """
-        Проверяет валидность API ключа и обновляет счетчики.
-        
-        Args:
-            api_key (str): API ключ для проверки
-            
-        Returns:
-            Tuple[bool, str]: (is_valid, error_message)
-        """
-        try:
-            with self._get_connection() as conn:
-                cursor = conn.cursor()
-                
-                # Получаем информацию о ключе
-                query = """
-                    SELECT api_key, is_active, access_level, features, rate_limit_daily, rate_limit_hourly,
-                           requests_today, requests_hour, expires_at
-                    FROM api_keys 
-                    WHERE api_key = %s
-                """
-                cursor.execute(self._adapt_query(query), (api_key,))
-                
-                result = cursor.fetchone()
-                if not result:
-                    logger.warning(f"API key not found: {api_key[:10]}...")
-                    return False, "API key not found"
-                
-                if not result["is_active"]:
-                    logger.warning(f"API key is deactivated: {api_key[:10]}...")
-                    return False, "API key is deactivated"
-                
-                # Проверяем expiration
-                if result["expires_at"]:
-                    try:
-                        expires_at = datetime.fromisoformat(result["expires_at"])
-                        if expires_at < datetime.now():
-                            logger.warning(f"API key expired: {api_key[:10]}...")
-                            return False, "API key has expired"
-                    except (ValueError, TypeError) as e:
-                        logger.warning(f"Error parsing expiration date: {e}")
-                
-                # Локальные лимиты (None или <=0 = без ограничений)
-                daily_limit = result["rate_limit_daily"]
-                hourly_limit = result["rate_limit_hourly"]
-
-                if daily_limit is not None and daily_limit > 0 and result["requests_today"] >= daily_limit:
-                    logger.warning(f"Daily rate limit exceeded for key: {api_key[:10]}...")
-                    return False, "Daily rate limit exceeded"
-                
-                if hourly_limit is not None and hourly_limit > 0 and result["requests_hour"] >= hourly_limit:
-                    logger.warning(f"Hourly rate limit exceeded for key: {api_key[:10]}...")
-                    return False, "Hourly rate limit exceeded"
-                
-                # Обновляем счетчики
-                query = """
-                    UPDATE api_keys 
-                    SET requests_total = requests_total + 1,
-                        requests_today = requests_today + 1,
-                        requests_hour = requests_hour + 1,
-                        last_used = CURRENT_TIMESTAMP
-                    WHERE api_key = %s
-                """
-                cursor.execute(self._adapt_query(query), (api_key,))
-                
-                self._commit_if_needed(conn)
-                logger.debug(f"API key validated successfully: {api_key[:10]}...")
-                return True, "Valid API key"
-                
-        except (psycopg2.Error, Exception) as e:
-            logger.error(f"API key validation error: {e}", exc_info=True)
-            return False, f"Database error: {str(e)}"
     
     def create_api_key(self, name: str, description: str = "", 
                       access_level: str = "basic", daily_limit: Optional[int] = 10000, 
@@ -1591,7 +1528,7 @@ class DatabaseManager:
                         cursor.execute(self._adapt_query(query_delete), (user_id,))
                         query_insert = """
                             INSERT INTO active_sessions 
-                            (user_id, session_token, device_id, expires_at)
+                    (user_id, session_token, device_id, expires_at)
                             VALUES (%s, %s, %s, %s)
                         """
                         cursor.execute(self._adapt_query(query_insert), (user_id, session_token, device_id, expires_at))
@@ -1608,7 +1545,7 @@ class DatabaseManager:
                             expires_at = EXCLUDED.expires_at
                     """
                     cursor.execute(self._adapt_query(query), (user_id, session_token, device_id, expires_at))
-                    logger.info(f"Active session set for user_id={user_id}, device_id={device_id}")
+                logger.info(f"Active session set for user_id={user_id}, device_id={device_id}")
                 
                 self._commit_if_needed(conn)
                 return True
@@ -1723,7 +1660,7 @@ class DatabaseManager:
                 code = str(secrets.randbelow(900000) + 100000)
 
                 expires_at = (datetime.now() + timedelta(hours=1)).isoformat()
-
+                
                 query_delete = "DELETE FROM password_resets WHERE user_id = %s"
                 cursor.execute(self._adapt_query(query_delete), (user_id,))
 
@@ -2080,7 +2017,7 @@ class DatabaseManager:
         except Exception as e:
             logger.error(f"Create YooKassa payment error: {e}", exc_info=True)
             return False
-    
+
     async def get_yookassa_payment(self, payment_id: str):
         """Получает платёж Юкассы по ID"""
         try:
@@ -2225,7 +2162,7 @@ class DatabaseManager:
         except Exception as e:
             logger.error(f"Get subscription error: {e}", exc_info=True)
             return None
-    
+            
     def create_subscription(self, user_id: int, license_key: str, license_type: str, expires_at, auto_renew: bool = False):
         """Создает подписку для пользователя"""
         try:
@@ -2391,8 +2328,26 @@ class DatabaseManager:
             return False
 # Глобальный экземпляр менеджера базы данных
 # Только PostgreSQL через DATABASE_URL
+# КРИТИЧНО: Graceful degradation - не падаем если БД недоступна
 _db_url = os.getenv("DATABASE_URL")
-if not _db_url:
-    raise ValueError("DATABASE_URL must be set in environment variables")
-logger.info(f"Using DATABASE_URL from environment: {_db_url[:30]}...")
-db_manager = DatabaseManager(_db_url)
+db_manager = None
+
+if _db_url:
+    try:
+        logger.info(f"Initializing database manager with DATABASE_URL: {_db_url[:30]}...")
+        db_manager = DatabaseManager(_db_url)
+        # Проверяем подключение (не блокирующее)
+        try:
+            conn = db_manager._get_connection()
+            conn.close()
+            logger.info("✅ Database connection successful")
+        except Exception as conn_error:
+            logger.warning(f"⚠️ Database connection failed (will retry on use): {conn_error}")
+            # Не падаем - сервис может работать без БД для JWT аутентификации
+    except Exception as init_error:
+        logger.error(f"❌ Failed to initialize database manager: {init_error}", exc_info=True)
+        logger.warning("⚠️ Service will run with limited functionality (JWT auth will work)")
+        db_manager = None
+else:
+    logger.warning("⚠️ DATABASE_URL not set - service will run with limited functionality")
+    logger.warning("⚠️ JWT authentication will work, but database features will be unavailable")
