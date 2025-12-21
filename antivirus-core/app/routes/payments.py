@@ -126,77 +126,77 @@ async def create_payment(request_data: BotPaymentRequest):
             logger.info(f"[PAYMENTS] Sending POST request to YooKassa API: {YOOKASSA_API_URL}")
             logger.debug(f"[PAYMENTS] Request payload: amount={amount}, license_type={license_type}, user={telegram_id}")
             
-            async with session.post(
-                YOOKASSA_API_URL,
-                json=payload,
-                auth=auth,
-                headers=headers
-            ) as response:
-                logger.info(f"[PAYMENTS] YooKassa responded with status: {response.status}")
+        async with session.post(
+            YOOKASSA_API_URL,
+            json=payload,
+            auth=auth,
+            headers=headers
+        ) as response:
+            logger.info(f"[PAYMENTS] YooKassa responded with status: {response.status}")
 
-                try:
-                    data = await response.json()
-                    logger.info(f"[PAYMENTS] YooKassa response received")
-                except Exception as json_error:
-                    response_text = await response.text()
-                    logger.error(f"[PAYMENTS] Failed to parse YooKassa response as JSON: {json_error}")
-                    logger.error(f"[PAYMENTS] Response text (first 500 chars): {response_text[:500]}")
-                    raise HTTPException(
-                        status_code=500,
-                        detail=f"Invalid response from payment system"
-                    )
-
-                # Ошибки ЮKassa
-                if response.status >= 300:
-                    error_description = data.get('description', 'Unknown error')
-                    error_code = data.get('code', 'N/A')
-                    error_type = data.get('type', 'N/A')
-                    logger.error(f"[PAYMENTS] YooKassa error {response.status} (code: {error_code}, type: {error_type}): {error_description}")
-                    logger.error(f"[PAYMENTS] Full error response: {data}")
-                    raise HTTPException(
-                        status_code=500,
-                        detail=f"Payment system error: {error_description}"
-                    )
-
-                payment_id = data.get("id")
-                confirmation = data.get("confirmation", {})
-                confirmation_url = confirmation.get("confirmation_url")
-
-                if not payment_id:
-                    logger.error(f"[PAYMENTS] YooKassa response missing payment_id. Response: {data}")
-                    raise HTTPException(
-                        status_code=500,
-                        detail="Invalid response from payment system: missing payment_id"
-                    )
-
-                if not confirmation_url:
-                    logger.error(f"[PAYMENTS] YooKassa response missing confirmation_url. Response: {data}")
-                    raise HTTPException(
-                        status_code=500,
-                        detail="Invalid response from payment system: missing confirmation_url"
-                    )
-
-                logger.info(f"[PAYMENTS] Payment created successfully: {payment_id}")
-                logger.info(f"[PAYMENTS] Confirmation URL: {confirmation_url}")
-
-                # === Save to DB ===
-                try:
-                    db = DatabaseManager()
-                    await db.create_yookassa_payment(
-                        payment_id=payment_id,
-                        user_id=telegram_id,
-                        amount=amount * 100,   # копейки
-                        license_type=license_type
-                    )
-                    logger.info(f"[PAYMENTS] Payment saved to database: {payment_id}")
-                except Exception as db_err:
-                    logger.error(f"[PAYMENTS] DB save error: {db_err}", exc_info=True)
-                    # Не прерываем выполнение, платеж уже создан в ЮKassa
-
-                return BotPaymentResponse(
-                    payment_id=payment_id,
-                    confirmation_url=confirmation_url
+            try:
+                data = await response.json()
+                logger.info(f"[PAYMENTS] YooKassa response received")
+            except Exception as json_error:
+                response_text = await response.text()
+                logger.error(f"[PAYMENTS] Failed to parse YooKassa response as JSON: {json_error}")
+                logger.error(f"[PAYMENTS] Response text (first 500 chars): {response_text[:500]}")
+                raise HTTPException(
+                    status_code=500,
+                    detail=f"Invalid response from payment system"
                 )
+
+            # Ошибки ЮKassa
+            if response.status >= 300:
+                error_description = data.get('description', 'Unknown error')
+                error_code = data.get('code', 'N/A')
+                error_type = data.get('type', 'N/A')
+                logger.error(f"[PAYMENTS] YooKassa error {response.status} (code: {error_code}, type: {error_type}): {error_description}")
+                logger.error(f"[PAYMENTS] Full error response: {data}")
+                raise HTTPException(
+                    status_code=500,
+                    detail=f"Payment system error: {error_description}"
+                )
+
+            payment_id = data.get("id")
+            confirmation = data.get("confirmation", {})
+            confirmation_url = confirmation.get("confirmation_url")
+
+            if not payment_id:
+                logger.error(f"[PAYMENTS] YooKassa response missing payment_id. Response: {data}")
+                raise HTTPException(
+                    status_code=500,
+                    detail="Invalid response from payment system: missing payment_id"
+                )
+
+            if not confirmation_url:
+                logger.error(f"[PAYMENTS] YooKassa response missing confirmation_url. Response: {data}")
+                raise HTTPException(
+                    status_code=500,
+                    detail="Invalid response from payment system: missing confirmation_url"
+                )
+
+            logger.info(f"[PAYMENTS] Payment created successfully: {payment_id}")
+            logger.info(f"[PAYMENTS] Confirmation URL: {confirmation_url}")
+
+            # === Save to DB ===
+            try:
+                db = DatabaseManager()
+                await db.create_yookassa_payment(
+                    payment_id=payment_id,
+                    user_id=telegram_id,
+                    amount=amount * 100,   # копейки
+                    license_type=license_type
+                )
+                logger.info(f"[PAYMENTS] Payment saved to database: {payment_id}")
+            except Exception as db_err:
+                logger.error(f"[PAYMENTS] DB save error: {db_err}", exc_info=True)
+                # Не прерываем выполнение, платеж уже создан в ЮKassa
+
+            return BotPaymentResponse(
+                payment_id=payment_id,
+                confirmation_url=confirmation_url
+            )
 
     except aiohttp.ClientError as client_error:
         logger.error(f"[PAYMENTS] Network error when calling YooKassa API: {client_error}", exc_info=True)
@@ -338,9 +338,9 @@ async def process_payment_succeeded(payment_data: Dict) -> bool:
         is_lifetime = license_type == "forever"
         
         logger.info(f"[PAYMENTS] Payment {payment_id}: user_id={user_id}, license_type={license_type}")
-        
+
         db = DatabaseManager()
-        
+
         # Получаем информацию о платеже из БД
         payment_db = await db.get_yookassa_payment(payment_id)
         

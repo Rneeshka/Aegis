@@ -83,17 +83,21 @@ except Exception as import_error:
     db_manager = None
 
 def check_feature_access(request: Request, required_feature: str) -> bool:
-    """Проверяет доступ к конкретной функции"""
-    api_key_info = getattr(request.state, 'api_key_info', None)
-    if not api_key_info:
+    """Проверяет доступ к конкретной функции через JWT токен"""
+    user_info = getattr(request.state, 'user_info', None)
+    if not user_info:
         return False
     
-    import json
-    try:
-        features = json.loads(api_key_info.get('features', '[]'))
-        return required_feature in features
-    except:
-        return False
+    # Получаем features из JWT payload или из user_info
+    features = user_info.get('features', [])
+    if isinstance(features, str):
+        import json
+        try:
+            features = json.loads(features)
+        except:
+            features = []
+    
+    return required_feature in features
 
 def require_feature(feature: str):
     """Декоратор для проверки доступа к функции"""
@@ -168,7 +172,7 @@ async def handle_ws_message(client: ClientConnection, message: Dict[str, Any]) -
         context = payload.get("context", "generic")
 
         if context == "hover" and "hover_analysis" not in client.features:
-            await ws_manager.send_error(client, request_id, "Hover analysis requires premium API key", code="forbidden")
+            await ws_manager.send_error(client, request_id, "Hover analysis requires premium token", code="forbidden")
             return
 
         # КРИТИЧНО: Отправляем статус "scan_started" перед началом анализа
@@ -264,7 +268,6 @@ class RegisterRequest(BaseModel):
     username: str
     email: str
     password: str
-    api_key: Optional[str] = None  # API ключ для привязки (опционально)
 
 class LoginRequest(BaseModel):
     username: str  # username или email
@@ -298,9 +301,11 @@ async def websocket_endpoint(websocket: WebSocket):
         logger.error(f"[WS] Failed to accept connection from {client_ip}: {e}", exc_info=True)
         return
 
-    api_key = (
-        websocket.query_params.get("api_key")
-        or websocket.headers.get("X-API-Key")
+    # Извлекаем JWT токен из WebSocket
+    from app.jwt_auth import JWTAuth
+    
+    token = (
+        websocket.query_params.get("token")
         or (
             websocket.headers.get("Authorization", "").split(" ", 1)[1].strip()
             if (websocket.headers.get("Authorization") or "").startswith("Bearer ")
@@ -308,50 +313,49 @@ async def websocket_endpoint(websocket: WebSocket):
         )
     )
 
-    api_key_info: Optional[Dict[str, Any]] = None
-    if api_key:
-        if not db_manager:
-            await websocket.send_json({
-                "type": "error",
-                "code": "service_unavailable",
-                "message": "Database unavailable"
-            })
-            await websocket.close(code=1011, reason="Database unavailable")
-            return
-        try:
-            is_valid, message = db_manager.validate_api_key(api_key)
-        except Exception as db_error:
-            logger.error(f"[WS] API key validation failed: {db_error}", exc_info=True)
-            await websocket.send_json({
-                "type": "error",
-                "code": "db_error",
-                "message": "API key validation error"
-            })
-            await websocket.close(code=1011, reason="API key validation error")
-            return
-
-        if not is_valid:
+    user_info: Optional[Dict[str, Any]] = None
+    if token:
+        # Верифицируем JWT токен (stateless - без БД)
+        payload = JWTAuth.verify_token(token)
+        
+        if not payload:
             await websocket.send_json({
                 "type": "error",
                 "code": "unauthorized",
-                "message": message or "Invalid API key"
+                "message": "Invalid or expired token"
             })
-            await websocket.close(code=4403, reason="Invalid API key")
+            await websocket.close(code=4403, reason="Invalid token")
             return
-
-        try:
-            api_key_info = db_manager.get_api_key_info(api_key)
-        except Exception as db_error:
-            logger.error(f"[WS] Failed to fetch API key info: {db_error}", exc_info=True)
-            api_key_info = None
+        
+        user_id = payload.get("user_id") or payload.get("sub")
+        if not user_id:
+            await websocket.send_json({
+                "type": "error",
+                "code": "unauthorized",
+                "message": "Token missing user_id"
+            })
+            await websocket.close(code=4403, reason="Invalid token")
+            return
+        
+        user_info = {
+            "user_id": user_id,
+            "username": payload.get("username"),
+            "email": payload.get("email"),
+            "access_level": payload.get("access_level", "basic"),
+            "features": payload.get("features", []),
+            "token_payload": payload
+        }
+    else:
+        # WebSocket может работать без токена для базового доступа
+        logger.info(f"[WS] WebSocket connection without token (basic access)")
 
     meta = {
         "ip": websocket.client.host if websocket.client else None,
         "user_agent": websocket.headers.get("User-Agent", ""),
-        "api_key": api_key,
+        "token": token[:20] + "..." if token else None,
     }
 
-    client = await ws_manager.connect(websocket, api_key_info, meta)
+    client = await ws_manager.connect(websocket, user_info, meta)
 
     try:
         await ws_manager.send_json(client, {
@@ -445,14 +449,22 @@ async def request_logging_middleware(request: Request, call_next):
         # КРИТИЧНО: Логирование в БД не должно ломать запросы
         try:
             duration_ms = int((time.time() - start) * 1000)
-            api_key = None
+            user_id = None
             try:
-                api_key = request.headers.get("X-API-Key") or (
-                    request.headers.get("Authorization").split(" ", 1)[1].strip()
-                    if (request.headers.get("Authorization") or "").startswith("Bearer ") else None
-                )
+                # Получаем user_id из JWT токена или из request.state
+                user_info = getattr(request.state, 'user_info', None)
+                if user_info:
+                    user_id = user_info.get("user_id")
+                else:
+                    # Пытаемся извлечь из токена
+                    from app.jwt_auth import JWTAuth
+                    token = JWTAuth.get_token_from_request(request)
+                    if token:
+                        payload = JWTAuth.verify_token(token)
+                        if payload:
+                            user_id = payload.get("user_id") or payload.get("sub")
             except Exception:
-                pass  # Игнорируем ошибки парсинга заголовков
+                pass  # Игнорируем ошибки парсинга токена
             
             user_agent = request.headers.get("User-Agent", "")
             client_ip = None
@@ -464,7 +476,7 @@ async def request_logging_middleware(request: Request, call_next):
             # КРИТИЧНО: Логирование в БД не должно падать
             if db_manager:
                 try:
-                    db_manager.log_request(api_key, request.url.path, request.method, status_code, duration_ms, user_agent, client_ip)
+                    db_manager.log_request(user_id, request.url.path, request.method, status_code, duration_ms, user_agent, client_ip)
                 except Exception as db_error:
                     # Логируем ошибку БД, но не падаем
                     logger.warning(f"Failed to log request to DB (non-critical): {db_error}")
@@ -526,14 +538,33 @@ async def filter_invalid_requests(request: Request, call_next):
 
 # Второй middleware - API key / Bearer authentication (опциональная)
 @app.middleware("http")
-async def optional_auth_middleware(request: Request, call_next):
-    """Опциональная проверка ключей для расширенных функций"""
-    # КРИТИЧНО: Публичные пути - пропускаем без проверки API ключа
+async def jwt_auth_middleware(request: Request, call_next):
+    """
+    JWT аутентификация middleware - stateless проверка без запросов к БД.
+    """
+    from app.jwt_auth import JWTAuth
+    
+    # Публичные пути - пропускаем без проверки JWT
     PUBLIC_PATHS = (
         "/auth/register",
         "/auth/login",
+        "/auth/refresh",
+        "/auth/forgot-password",
+        "/auth/reset-password",
         "/health",
+        "/health/minimal",
+        "/health/hover",
+        "/docs",
+        "/redoc",
+        "/openapi.json",
+        "/",
+        "/favicon.ico",
         "/ws",
+        "/ws/health",
+        "/payments/debug",
+        "/payments/create",
+        "/payments/webhook",
+        "/payments/webhook/yookassa",
     )
     
     # Проверяем точное совпадение или начало пути
@@ -541,133 +572,64 @@ async def optional_auth_middleware(request: Request, call_next):
         any(request.url.path.startswith(path) for path in PUBLIC_PATHS)):
         return await call_next(request)
     
-    # КРИТИЧНО: Все вызовы БД обернуты в try-except
-    # Создание ключей теперь доступно без admin токена
-    if request.url.path == "/admin/api-keys/create":
-        return await call_next(request)
-    
-    # Валидация API ключа - требует API ключ
-    if request.url.path == "/admin/api-keys/validate":
-        try:
-            api_key = request.headers.get("X-API-Key") or request.headers.get("Authorization", "").replace("Bearer ", "").strip()
-            if not api_key:
-                logger.warning(f"Missing API key for validation")
-                return JSONResponse(status_code=401, content={"detail": "API key required"}, headers={"Access-Control-Allow-Origin": "*"})
-            
-            # КРИТИЧНО: Проверка БД обернута в try-except
-            if not db_manager:
-                logger.error("Database manager not available")
-                return JSONResponse(
-                    status_code=503, 
-                    content={"detail": "Service temporarily unavailable"},
-                    headers={"Access-Control-Allow-Origin": "*"}
-                )
-            try:
-                api_key_info = db_manager.validate_api_key(api_key)
-            except Exception as db_error:
-                logger.error(f"Database error during API key validation: {db_error}", exc_info=True)
-                return JSONResponse(
-                    status_code=503, 
-                    content={"detail": "Service temporarily unavailable"},
-                    headers={"Access-Control-Allow-Origin": "*"}
-                )
-            
-            if not api_key_info:
-                logger.warning(f"Invalid API key for validation")
-                return JSONResponse(status_code=401, content={"detail": "Invalid API key"}, headers={"Access-Control-Allow-Origin": "*"})
-            
-            # Сохраняем информацию о ключе в состоянии запроса
-            request.state.api_key_info = api_key_info
-            return await call_next(request)
-        except Exception as e:
-            logger.error(f"Error in auth middleware: {e}", exc_info=True)
-            return JSONResponse(
-                status_code=500,
-                content={"detail": "Authentication error"},
-                headers={"Access-Control-Allow-Origin": "*"}
-            )
-    
-    # КРИТИЧНО: WebSocket upgrade запросы должны пропускаться без обработки
-    # FastAPI автоматически обрабатывает их через @app.websocket, но для надежности проверяем
+    # WebSocket upgrade запросы пропускаем
     if request.url.path == "/ws" and request.headers.get("Upgrade", "").lower() == "websocket":
         return await call_next(request)
     
-    # Пути, которые не требуют аутентификации (даже если ключ отправлен)
-    skip_paths = [
-        "/health", "/health/minimal", "/health/hover", 
-        "/docs", "/redoc", "/", "/favicon.ico", "/openapi.json",
-        "/ws", "/ws/health",  # WebSocket endpoints
-        "/auth/register", "/auth/login", "/auth/reset-password",  # Эндпоинты аутентификации
-        "/auth/forgot-password", "/payments/debug", "/payments/create", "/payments/webhook", "/payments/webhook/yookassa"  # Эндпоинты платежей для бота
-    ]
-    admin_paths = ["/admin/stats", "/admin/add/malicious-hash", "/admin/api-keys/toggle", 
-                   "/admin/api-keys/"]
-    
-    # Извлекаем API ключ (если есть) ДО проверки путей
-    api_key = request.headers.get("X-API-Key")
-    if not api_key:
-        auth_header = request.headers.get("Authorization")
-        if auth_header and auth_header.startswith("Bearer "):
-            api_key = auth_header.split(" ", 1)[1].strip()
-    
-    # Пути, которые не требуют аутентификации (пропускаем только если ключ НЕ отправлен)
-    basic_api_paths = ["/check/url", "/check/file", "/check/upload", "/check/domain/"]
-    
-    # Пропускаем без проверки только если это skip_paths или admin_paths
-    if (request.url.path in skip_paths or 
-        request.url.path.startswith("/admin/ui") or 
-        any(request.url.path.startswith(path) for path in admin_paths)):
-        return await call_next(request)
-    
+    # OPTIONS запросы пропускаем
     if request.method == "OPTIONS":
         return await call_next(request)
     
-    # КРИТИЧНО: Если ключ отправлен - ОБЯЗАТЕЛЬНО проверяем его, даже для базовых путей
-    # Это гарантирует, что удаленные/истекшие ключи не будут работать
-    if api_key:
-        if not db_manager:
-            # БД недоступна - продолжаем без аутентификации
-            logger.warning("Database manager not available, skipping API key validation")
-            request.state.api_key_info = None
-        else:
-            try:
-                is_valid, message = db_manager.validate_api_key(api_key)
-                if not is_valid:
-                    logger.warning(f"Invalid API key used for {request.url.path}")
-                    return JSONResponse(
-                        status_code=401, 
-                        content={"detail": message},
-                        headers={"Access-Control-Allow-Origin": "*"}
-                    )
-                # Добавляем информацию о ключе в request state
-                request.state.api_key_info = db_manager.get_api_key_info(api_key)
-                
-                # КРИТИЧНО: Логирование для диагностики аутентификации
-                is_hover_req = request.headers.get("X-Request-Source") == "hover"
-                if is_hover_req:
-                    logger.debug(f"[AUTH] Hover request authenticated: key={api_key[:10]}..., path={request.url.path}")
-            except Exception as db_error:
-                # КРИТИЧНО: Ошибка БД не должна ломать запросы
-                logger.error(f"Database error during API key check: {db_error}", exc_info=True)
-                # Если ключ был отправлен, но БД недоступна - отклоняем запрос
-                # Это гарантирует, что удаленные ключи не будут работать
-                return JSONResponse(
-                    status_code=503,
-                    content={"detail": "Service temporarily unavailable"},
-                    headers={"Access-Control-Allow-Origin": "*"}
-                )
-    else:
-        # Без ключа - базовый доступ (только для базовых путей)
+    # Базовые API пути - доступны без аутентификации
+    basic_api_paths = ["/check/url", "/check/file", "/check/upload", "/check/domain/"]
+    
+    # Извлекаем JWT токен из заголовков
+    token = JWTAuth.get_token_from_request(request)
+    
+    if not token:
+        # Если токен не предоставлен, проверяем базовые пути
         if any(request.url.path.startswith(path) for path in basic_api_paths):
-            request.state.api_key_info = None
+            request.state.user_info = None
             return await call_next(request)
         else:
-            # Для других путей требуется ключ
+            # Для защищённых путей требуется токен
             return JSONResponse(
                 status_code=401,
-                content={"detail": "API key required"},
-                headers={"Access-Control-Allow-Origin": "*"}
+                content={"detail": "Authorization token required"},
+                headers={"Access-Control-Allow-Origin": "*", "WWW-Authenticate": "Bearer"}
             )
+    
+    # Верифицируем JWT токен (stateless - без БД)
+    payload = JWTAuth.verify_token(token)
+    
+    if not payload:
+        # Токен невалиден или истёк
+        if any(request.url.path.startswith(path) for path in basic_api_paths):
+            # Для базовых путей разрешаем без токена
+            request.state.user_info = None
+            return await call_next(request)
+        else:
+            return JSONResponse(
+                status_code=401,
+                content={"detail": "Invalid or expired token"},
+                headers={"Access-Control-Allow-Origin": "*", "WWW-Authenticate": "Bearer"}
+            )
+    
+    # Сохраняем информацию о пользователе в request state
+    user_id = payload.get("user_id") or payload.get("sub")
+    request.state.user_info = {
+        "user_id": user_id,
+        "username": payload.get("username"),
+        "email": payload.get("email"),
+        "access_level": payload.get("access_level", "basic"),
+        "features": payload.get("features", []),
+        "token_payload": payload
+    }
+    
+    # Логирование для диагностики
+    is_hover_req = request.headers.get("X-Request-Source") == "hover"
+    if is_hover_req:
+        logger.debug(f"[JWT] Hover request authenticated: user_id={user_id}, path={request.url.path}")
     
     return await call_next(request)
 
@@ -800,11 +762,12 @@ async def health_check_hover(request: Request):
             health_status["components"]["external_apis"] = f"error: {str(api_error)[:50]}"
             health_status["status"] = "degraded"
         
-        # 3. Проверка наличия API ключа в запросе
-        api_key = request.headers.get("X-API-Key") or request.headers.get("Authorization", "").replace("Bearer ", "").strip()
-        api_key_info = getattr(request.state, 'api_key_info', None)
-        has_api_key = bool(api_key) or api_key_info is not None
-        health_status["components"]["authentication"] = "ok" if has_api_key else "no_key"
+        # 3. Проверка наличия JWT токена в запросе
+        from app.jwt_auth import JWTAuth
+        token = JWTAuth.get_token_from_request(request)
+        user_info = getattr(request.state, 'user_info', None)
+        has_token = bool(token) or user_info is not None
+        health_status["components"]["authentication"] = "ok" if has_token else "no_token"
         
         # 4. Проверка памяти (если доступно)
         try:
@@ -924,7 +887,7 @@ async def check_url_secure(
             )
         
         # Проверяем уровень доступа для расширенного анализа
-        api_key_info = getattr(request.state, 'api_key_info', None)
+        user_info = getattr(request.state, 'user_info', None)
         use_external_apis = True  # Включаем внешние API для всех пользователей для базовой безопасности
         
         # КРИТИЧНО: Для hover запросов всегда используем внешние API и логируем
@@ -1051,8 +1014,8 @@ async def check_file_secure(
     
     try:
         # Проверяем уровень доступа для расширенного анализа
-        api_key_info = getattr(request.state, 'api_key_info', None)
-        use_external_apis = api_key_info is not None and check_feature_access(request, "advanced_analysis")
+        user_info = getattr(request.state, 'user_info', None)
+        use_external_apis = user_info is not None and check_feature_access(request, "advanced_analysis")
         
         # Асинхронный вызов с учетом уровня доступа
         result = await analysis_service.analyze_file_hash(file_request.file_hash, use_external_apis=use_external_apis)
@@ -1214,18 +1177,18 @@ async def delete_api_key(api_key: str):
         raise HTTPException(status_code=500, detail="Failed to delete API key")
 
 @app.post("/admin/api-keys/validate")
-async def validate_api_key(request: Request):
-    """Валидация API ключа"""
-    api_key_info = getattr(request.state, 'api_key_info', None)
-    if not api_key_info:
-        raise HTTPException(status_code=401, detail="Invalid API key")
+async def validate_token_endpoint(request: Request):
+    """Валидация JWT токена (deprecated - используйте /auth/validate)"""
+    user_info = getattr(request.state, 'user_info', None)
+    if not user_info:
+        raise HTTPException(status_code=401, detail="Invalid token")
     
     return {
         "valid": True,
-        "key_id": api_key_info.get("id"),
-        "name": api_key_info.get("name"),
-        "access_level": api_key_info.get("access_level"),
-        "features": api_key_info.get("features", [])
+        "user_id": user_info.get("user_id"),
+        "username": user_info.get("username"),
+        "access_level": user_info.get("access_level"),
+        "features": user_info.get("features", [])
     }
 
 @app.post("/admin/api-keys/create")
@@ -1510,7 +1473,7 @@ async def forgot_password(request: Request):
         
         # Генерируем код восстановления
         reset_code = db_manager.generate_reset_code(email)
-    
+        
     # ====== EMAIL SENDING ======
         from app.auth import AuthManager
 
@@ -1554,25 +1517,25 @@ async def reset_password(request: Request):
         body = await request.json()
         code = (body.get("token") or body.get("code", "")).strip()
         new_password = body.get("new_password", "").strip()
-
+        
         if not code or not new_password:
             raise HTTPException(status_code=400, detail="Code and new_password are required")
-
+        
         if len(new_password) < 6:
             raise HTTPException(status_code=400, detail="Password must be at least 6 characters")
-
+        
         # Проверяем код восстановления → получаем user_id
         user_id = db_manager.get_user_id_by_token(code)
         if not user_id:
             raise HTTPException(status_code=400, detail="Invalid or expired code")
-
+        
         # Хешируем пароль
         password_hash = auth_manager.hash_password(new_password)
-
+        
         # Обновляем пароль
         if not db_manager.update_password(user_id, password_hash):
             raise HTTPException(status_code=500, detail="Failed to reset password")
-
+        
         # Удаляем токен восстановления
         db_manager.delete_reset_tokens(user_id)
 
@@ -1580,7 +1543,7 @@ async def reset_password(request: Request):
             "status": "success",
             "message": "Пароль успешно изменен"
         }
-
+        
     except HTTPException:
         raise
     except Exception as e:
@@ -1591,15 +1554,12 @@ async def reset_password(request: Request):
 @app.post("/auth/register")
 async def register_account(request: RegisterRequest):
     """
-    Регистрация нового аккаунта и привязка API ключа (опционально).
-    
-    API ключ не обязателен для регистрации. Если указан, он будет привязан к аккаунту.
+    Регистрация нового аккаунта с выдачей JWT токенов.
     """
-    success, user_id, error_msg = auth_manager.register(
+    success, user_id, error_msg, tokens = auth_manager.register(
         username=request.username,
         email=request.email,
-        password=request.password,
-        api_key=request.api_key
+        password=request.password
     )
     
     if not success:
@@ -1611,32 +1571,22 @@ async def register_account(request: RegisterRequest):
     response = {
         "status": "success",
         "message": "Аккаунт успешно создан",
-        "user_id": user_id
+        "user_id": user_id,
+        **tokens
     }
-    
-    # Добавляем api_key в ответ только если он был указан
-    if request.api_key:
-        response["api_key"] = request.api_key
     
     return response
 
 @app.post("/auth/login")
 async def login_account(request: LoginRequest, http_request: Request):
     """
-    Авторизация в существующем аккаунте.
+    Авторизация в существующем аккаунте с выдачей JWT токенов.
     
-    КРИТИЧНО: При входе на новом устройстве старая сессия автоматически удаляется.
-    Старое устройство автоматически выйдет из аккаунта.
-    
-    Возвращает информацию об аккаунте, привязанных API ключах и session_token.
+    Возвращает JWT access_token и refresh_token для stateless аутентификации.
     """
-    # Извлекаем device_id из заголовков
-    device_id = http_request.headers.get("X-Device-ID")
-    
-    success, account_data, session_token, error_msg = auth_manager.login(
+    success, account_data, tokens, error_msg = auth_manager.login(
         username=request.username,
-        password=request.password,
-        device_id=device_id
+        password=request.password
     )
     
     if not success:
@@ -1645,15 +1595,11 @@ async def login_account(request: LoginRequest, http_request: Request):
             detail=error_msg or "Ошибка авторизации"
         )
     
-    # Получаем привязанные API ключи
-    api_keys = db_manager.get_api_keys_for_account(account_data["id"])
-    
     return {
         "status": "success",
         "message": "Успешная авторизация",
         "account": account_data,
-        "api_keys": api_keys,
-        "session_token": session_token
+        **tokens
     }
 
 @app.post("/auth/validate-session")
@@ -1745,30 +1691,23 @@ async def startup_event():
     # КРИТИЧНО: Проверяем что база данных инициализирована и таблицы созданы
     if db_manager:
         try:
-            # Проверяем что таблицы существуют
+            # Проверяем что таблицы существуют (PostgreSQL)
             with db_manager._get_connection() as conn:
                 cursor = conn.cursor()
-                cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='cached_whitelist'")
-                whitelist_exists = cursor.fetchone() is not None
-                cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='cached_blacklist'")
-                blacklist_exists = cursor.fetchone() is not None
-                cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='api_keys'")
-                api_keys_exists = cursor.fetchone() is not None
+                cursor.execute("""
+                    SELECT table_name FROM information_schema.tables 
+                    WHERE table_schema = 'public' 
+                    AND table_name IN ('cached_whitelist', 'cached_blacklist', 'accounts')
+                """)
+                tables = {row[0] for row in cursor.fetchall()}
                 
-                if not whitelist_exists or not blacklist_exists or not api_keys_exists:
-                    logger.warning("⚠️ Some database tables missing, reinitializing...")
-                    db_manager._init_database()
-                    logger.info("✅ Database tables reinitialized")
+                if len(tables) < 3:
+                    logger.warning("⚠️ Some database tables missing. Tables should be created via init.sql")
+                    logger.info(f"Found tables: {tables}")
                 else:
                     logger.info("✅ Database tables verified")
         except Exception as e:
             logger.error(f"❌ Database verification failed: {e}", exc_info=True)
-            # Пытаемся переинициализировать
-            try:
-                db_manager._init_database()
-                logger.info("✅ Database reinitialized after error")
-            except Exception as reinit_error:
-                logger.critical(f"❌ CRITICAL: Database initialization failed: {reinit_error}", exc_info=True)
     else:
         logger.error("❌ CRITICAL: db_manager is None!")
     
