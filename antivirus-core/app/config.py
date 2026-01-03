@@ -45,7 +45,7 @@ class LoggingConfig:
 
 class SecurityConfig:
     """Конфигурация безопасности"""
-    ADMIN_API_TOKEN = os.getenv("ADMIN_API_TOKEN", "e972cfe7ff57a6175f8d5b828532c83ff62e71ad6d619714c01dbb3b23880352")
+    ADMIN_API_TOKEN = os.getenv("ADMIN_API_TOKEN", "admin_token_123")
     SECRET_KEY = os.getenv("SECRET_KEY", "your_secret_key_here")
     ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
     MAX_URL_LENGTH = int(os.getenv("MAX_URL_LENGTH", "2048"))
@@ -61,10 +61,12 @@ class ServerConfig:
     # DEV окружение
     API_BASE_DEV = "https://dev.avqon.com"
     WS_BASE_DEV = "wss://dev.avqon.com"
+    INTERNAL_API_BASE_DEV = "http://127.0.0.1:8000"
     
     # PROD окружение
     API_BASE_PROD = "https://prod.avqon.com"
     WS_BASE_PROD = "wss://prod.avqon.com"
+    INTERNAL_API_BASE_PROD = "http://127.0.0.1:8100"
     
     # Текущие значения в зависимости от окружения
     @property
@@ -74,6 +76,11 @@ class ServerConfig:
     @property
     def WS_BASE(self):
         return self.WS_BASE_DEV if self.ENVIRONMENT == "dev" else self.WS_BASE_PROD
+    
+    @property
+    def INTERNAL_API_BASE(self):
+        """Внутренний URL для API вызовов (localhost)"""
+        return self.INTERNAL_API_BASE_DEV if self.ENVIRONMENT == "dev" else self.INTERNAL_API_BASE_PROD
     
     # WebSocket endpoint path (одинаковый для всех окружений)
     WS_ENDPOINT_PATH = "/ws"
